@@ -254,3 +254,136 @@
 | vLLM | Kwon et al., SOSP | CCF-A | 2023 |
 | 知识蒸馏 | Xu et al., arXiv综述 | 高引用 | 2024 |
 | 情感分析评估 | Li et al., ACM MM | CCF-A | 2023 |
+
+---
+
+## 六、RAG检索增强生成文献
+
+### 1. 综述论文（必读）
+- **作者/年份**: Yunfan Gao, Yun Xiong等 / 2023-2024
+- **标题**: Retrieval-Augmented Generation for Large Language Models: A Survey
+- **期刊**: arXiv预印本 (高引用)
+- **核心贡献**: 全面综述RAG范式演进，涵盖Naive RAG、Advanced RAG和Modular RAG三个阶段，深入分析检索、生成和增强三大核心技术
+
+```bibtex
+@article{gao2023retrieval,
+  title={Retrieval-augmented generation for large language models: A survey},
+  author={Gao, Yunfan and Xiong, Yun and Gao, Xinyu and Jia, Kangxiang and Pan, Jinliu and Bi, Yuxi and Dai, Yi and Sun, Jiawei and Wang, Meng and Wang, Haofen},
+  journal={arXiv preprint arXiv:2312.10997},
+  year={2023}
+}
+```
+
+---
+
+## 七、多模态大语言模型文献
+
+### 1. 开创性综述（必读）
+- **作者/年份**: Shukang Yin, Chaoyou Fu等 / 2023
+- **标题**: A Survey on Multimodal Large Language Models
+- **期刊**: National Science Review (NSR)
+- **等级**: 中科院一区，影响因子16.3
+- **核心贡献**: 首次系统综述MLLM，涵盖架构、训练策略、数据、评估等，探讨多模态幻觉、M-ICL、M-CoT等扩展技术
+
+```bibtex
+@article{yin2023survey,
+  title={A survey on multimodal large language models},
+  author={Yin, Shukang and Fu, Chaoyou and Zhao, Sirui and Li, Ke and Sun, Xing and Xu, Tong and Chen, Enhong},
+  journal={National Science Review},
+  year={2023}
+}
+```
+
+### 2. 最新综合综述
+- **作者/年份**: Chia Xin Liang, Pu Tian等 / 2024-2025
+- **标题**: A Comprehensive Survey and Guide to Multimodal Large Language Models in Vision-Language Tasks
+- **期刊**: arXiv预印本
+- **核心贡献**: 涵盖MLLM架构、训练方法、视觉叙事等应用，讨论可扩展性、鲁棒性和跨模态学习挑战
+
+```bibtex
+@article{liang2024comprehensive,
+  title={A Comprehensive Survey and Guide to Multimodal Large Language Models in Vision-Language Tasks},
+  author={Liang, Chia Xin and Tian, Pu and Yin, Caitlyn Heqi and Yua, Yao and Hou, Wei An and Li, Ming and Song, Xinyuan and Wang, Tianyang and Bi, Ziqian and Liu, Ming},
+  journal={arXiv preprint arXiv:2411.06284},
+  year={2024}
+}
+```
+
+---
+
+## 八、图神经网络文献
+
+### 1. 综述论文
+- **作者/年份**: Jie Zhou, Ganqu Cui等 / 2020
+- **标题**: Graph Neural Networks: A Review of Methods and Applications
+- **期刊**: AI Open
+- **核心贡献**: 系统回顾GNN方法，分类介绍频谱方法、空间方法、注意力机制等，涵盖社交网络、推荐系统等应用
+
+```bibtex
+@article{zhou2020graph,
+  title={Graph neural networks: A review of methods and applications},
+  author={Zhou, Jie and Cui, Ganqu and Hu, Shengding and Zhang, Zhengyan and Yang, Cheng and Liu, Zhiyuan and Wang, Lifeng and Li, Changcheng and Sun, Maosong},
+  journal={AI Open},
+  volume={1},
+  pages={57--81},
+  year={2020},
+  publisher={Elsevier}
+}
+```
+
+---
+
+## 九、扩散模型文献
+
+### 1. 图像生成综述
+- **作者/年份**: Han Zhang, Weimin Tan等 / 2024
+- **标题**: Diffusion Model for Image Generation: A Survey
+- **期刊**: IEEE Transactions on Knowledge and Data Engineering
+- **核心贡献**: 综述扩散模型在图像生成中的进展，对比VAE、GAN、Flow-based模型，分析条件生成、可控生成等技术
+
+```bibtex
+@article{zhang2024diffusion,
+  title={Diffusion model for image generation: A survey},
+  author={Zhang, Han and Tan, Weimin and Huang, Ye and Tang, Wen and Xue, Jing and Li, Rui and Tang, Yuxing and Zou, He and Fu, Gang and Zhang, Li},
+  journal={IEEE Transactions on Knowledge and Data Engineering},
+  year={2024},
+  publisher={IEEE}
+}
+```
+
+---
+
+## 十、神经网络可解释性文献
+
+### 1. 综述论文
+- **作者/年份**: Qiang Zhang, Aldo Lipani等 / 2021
+- **标题**: A Survey on Neural Network Interpretability
+- **期刊**: IEEE Transactions on Neural Networks and Learning Systems
+- **核心贡献**: 全面综述神经网络可解释性研究，澄清可解释性定义，分类介绍特征重要性、概念激活向量、对抗样本解释等方法
+
+```bibtex
+@article{zhang2021survey,
+  title={A survey on neural network interpretability},
+  author={Zhang, Qiang and Lipani, Aldo and Yilmaz, Emine and Yao, Zhiwei},
+  journal={IEEE Transactions on Neural Networks and Learning Systems},
+  year={2021},
+  publisher={IEEE}
+}
+```
+
+---
+
+## 扩展总结表格
+
+| 领域 | 必读论文 | 会议/期刊等级 | 年份 |
+|------|---------|--------------|------|
+| GSDMM | Yin & Wang, KDD | CCF-A | 2014 |
+| QLoRA | Dettmers et al., NeurIPS | CCF-A | 2023 |
+| vLLM | Kwon et al., SOSP | CCF-A | 2023 |
+| 知识蒸馏 | Xu et al., arXiv综述 | 高引用 | 2024 |
+| 情感分析评估 | Li et al., ACM MM | CCF-A | 2023 |
+| **RAG** | **Gao et al., arXiv** | **高引用** | **2023** |
+| **多模态LLM** | **Yin et al., NSR** | **中科院一区** | **2023** |
+| **图神经网络** | **Zhou et al., AI Open** | **开放获取** | **2020** |
+| **扩散模型** | **Zhang et al., TKDE** | **CCF-A** | **2024** |
+| **可解释性** | **Zhang et al., TNNLS** | **CCF-B** | **2021** |
