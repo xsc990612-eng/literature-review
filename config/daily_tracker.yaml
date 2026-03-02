@@ -1,0 +1,168 @@
+# 日常管理系统配置
+# 用户：xsc
+# 身高：175cm
+# 年龄：23岁
+# 性别：男
+# 更新时间：2026-02-27
+
+timezone: Europe/Moscow
+
+## 用户基本信息
+name: xsc
+height: 175cm
+age: 23
+gender: 男
+
+## 身体成分数据记录
+body_composition_history:
+  - date: "2026-02-26"
+    weight: 83.45 kg
+    bmi: 27.2
+    body_fat: 26.8%
+    visceral_fat: 10
+    skeletal_muscle: 39.39 kg
+    muscle_mass: 58 kg
+    health_score: 73
+    
+  - date: "2026-02-27"
+    weight: 82.2 kg
+    bmi: 26.8
+    body_fat: 26.3%
+    visceral_fat: 9
+    skeletal_muscle: 39.13 kg
+    muscle_mass: 57.62 kg
+    health_score: 74.8
+
+## 体重管理
+current_weight: 83.45
+target_weight: 71.9
+weight_reminder_time: "08:00"
+
+## 锻炼计划
+workout_schedule:
+  - day: monday
+    type: 跑步
+    duration: 30min
+  - day: wednesday
+    type: 划船机
+    duration: 30min
+  - day: friday
+    type: 跑步
+    duration: 30min
+
+## 论文管理
+thesis_deadline: "2026-06-30"
+thesis_milestones:
+  - date: "2026-03-31"
+    task: 完成初稿
+  - date: "2026-05-15"
+    task: 完成修改稿
+  - date: "2026-06-15"
+    task: 最终定稿
+
+## 提醒设置
+reminders:
+  water:
+    enabled: true
+    interval: "60min"
+    start_time: "09:00"
+    end_time: "21:00"
+  
+  move:
+    enabled: true
+    interval: "90min"
+    start_time: "09:00"
+    end_time: "21:00"
+  
+  schedule:
+    enabled: true
+    check_times:
+      - "08:30"
+      - "14:00"
+      - "20:00"
+  
+  task_planning:
+    enabled: true
+    # 用户有任务时，在空闲时间提醒提前规划
+
+## 卡路里追踪
+calorie_tracking:
+  enabled: true
+  daily_target: 1689  # 基础代谢
+  today_log:
+    date: "2026-02-27"
+    meals:
+      breakfast:
+        - item: "面包"
+          amount: "约150g"
+          calories: 400
+        - item: "黑咖啡"
+          amount: "1杯"
+          calories: 5
+        - item: "鸡蛋"
+          amount: "2个"
+          calories: 140
+    total_calories: 545
+    remaining: 1144
+
+## 精力管理
+energy_management:
+  # 每日精力自评
+  daily_check:
+    enabled: true
+    time: "21:00"
+    scale: 1-10
+    
+  # 精力曲线追踪（可选）
+  hourly_tracking:
+    enabled: false  # 如需每小时记录可开启
+    
+  # 精力影响因素
+  factors:
+    - sleep_quality      # 睡眠质量
+    - exercise           # 运动
+    - diet               # 饮食
+    - stress_level       # 压力
+    - screen_time        # 屏幕时间
+    - social_interaction # 社交
+    
+  # 精力恢复建议
+  recovery_tips:
+    low_energy:
+      - "小憩15-20分钟"
+      - "深呼吸5分钟"
+      - "站起来走动"
+      - "喝杯温水"
+    medium_energy:
+      - "轻度拉伸"
+      - "听5分钟音乐"
+      - "眺望远方"
+    high_energy:
+      - "保持当前节奏"
+      - "处理重要任务"
+
+## 睡眠管理
+sleep_management:
+  target_bedtime: "23:30"
+  target_wake_time: "07:30"
+  target_duration: 8  # 小时
+  reminder_enabled: true
+  
+## 精力-任务匹配
+energy_task_matching:
+  high_energy_tasks:    # 高精力时做
+    - 论文写作
+    - 复杂编程
+    - 深度思考
+  medium_energy_tasks:  # 中等精力时做
+    - 阅读文献
+    - 整理资料
+    - 会议沟通
+  low_energy_tasks:     # 低精力时做
+    - 回复消息
+    - 简单整理
+    - 休息恢复
+
+## 每周总结
+weekly_summary_day: sunday
+weekly_summary_time: "21:00"

@@ -1,0 +1,79 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ main, master, dev ]
+    paths:
+      - 'code/ecommerce_analysis/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'code/ecommerce_analysis/**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        cache-dependency-path: code/ecommerce_analysis/requirements.txt
+
+    - name: Install core dependencies (Phase 1 only)
+      working-directory: code/ecommerce_analysis
+      run: |
+        python -m pip install --upgrade pip
+        # 只安装 Phase 1 核心依赖（数据层）
+        pip install pydantic>=2.0.0 tqdm>=4.65.0 pyyaml>=6.0 python-dotenv>=1.0.0
+        pip install datasets>=2.14.0 pandas>=2.0.0 numpy>=1.24.0 scipy>=1.10.0
+        pip install jieba>=0.42.1 nltk>=3.8.1
+        pip install pytest>=7.4.0 pytest-asyncio>=0.21.0
+
+    - name: Download NLTK data
+      run: |
+        python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('wordnet'); nltk.download('averaged_perceptron_tagger')"
+
+    - name: Run Phase 1 tests
+      working-directory: code/ecommerce_analysis
+      run: |
+        pytest tests/test_schema.py tests/test_loader.py tests/test_preprocessor.py tests/test_merger.py -v --tb=short
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install linting tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 black mypy
+
+    - name: Lint with flake8
+      working-directory: code/ecommerce_analysis
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Check formatting with black
+      working-directory: code/ecommerce_analysis
+      run: |
+        black --check --diff . || true
+
+    - name: Type check with mypy
+      working-directory: code/ecommerce_analysis
+      run: |
+        mypy . --ignore-missing-imports || true

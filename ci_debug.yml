@@ -1,0 +1,71 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ main, master, dev ]
+    paths:
+      - 'code/ecommerce_analysis/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'code/ecommerce_analysis/**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Debug - Check Python version
+      run: python --version
+
+    - name: Install dependencies
+      working-directory: code/ecommerce_analysis
+      run: |
+        python -m pip install --upgrade pip
+        pip install pydantic --upgrade
+        pip install tqdm pyyaml python-dotenv
+        pip install datasets pandas numpy scipy
+        pip install jieba nltk
+        pip install pytest pytest-asyncio
+
+    - name: Debug - Check pydantic version
+      run: python -c "import pydantic; print('Pydantic version:', pydantic.VERSION)"
+
+    - name: Download NLTK data
+      run: |
+        python -c "import nltk; nltk.download('punkt', quiet=True); nltk.download('stopwords', quiet=True); nltk.download('wordnet', quiet=True); nltk.download('averaged_perceptron_tagger', quiet=True)"
+
+    - name: Debug - Test schema import
+      working-directory: code/ecommerce_analysis
+      run: |
+        python -c "import sys; sys.path.insert(0, '.'); from data.schema import RawRecord; print('Schema import OK')"
+
+    - name: Run Phase 1 tests
+      working-directory: code/ecommerce_analysis
+      run: |
+        pytest tests/test_schema.py tests/test_loader.py tests/test_preprocessor.py tests/test_merger.py -v --tb=long 2>&1 | head -100
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install linting tools
+      run: pip install flake8 black mypy
+    - name: Lint
+      working-directory: code/ecommerce_analysis
+      run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics || true

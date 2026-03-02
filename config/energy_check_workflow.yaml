@@ -1,0 +1,85 @@
+# 精神状态询问工作流配置
+# 用户：xsc
+# 位置：俄罗斯圣彼得堡
+# 时区：Europe/Moscow
+# 创建时间：2026-02-27
+
+## 工作流说明
+# 从你起床到睡觉之间，不定时询问精神状态并提供建议
+
+## 固定时间点询问
+
+morning_check:
+  time: "09:00"
+  purpose: "了解起床后精力状况、睡眠质量"
+  questions:
+    - "昨晚睡得怎么样？"
+    - "现在精力如何（1-10分）？"
+    - "有没有压力或焦虑？"
+  suggestions_based_on:
+    high_energy: "建议处理论文等深度工作"
+    medium_energy: "建议处理中等强度任务"
+    low_energy: "建议先调整节奏，不要勉强"
+
+noon_check:
+  time: "14:00"
+  purpose: "了解上午工作后疲劳程度"
+  questions:
+    - "上午工作感觉如何？"
+    - "午餐后精力怎么样（1-10分）？"
+    - "需要小憩吗？"
+  suggestions_based_on:
+    tired: "建议小憩20-30分钟"
+    okay: "可以处理中等强度任务"
+    good: "继续保持"
+
+evening_check:
+  time: "18:00"
+  purpose: "了解下午工作后状态"
+  questions:
+    - "下午工作感觉如何？"
+    - "现在精力如何（1-10分）？"
+    - "晚上有什么安排？"
+  suggestions_based_on:
+    high_energy: "可以安排运动或轻度工作"
+    medium_energy: "建议晚餐后休息"
+    low_energy: "建议早点休息恢复"
+
+## 随机时间点询问
+
+random_checks:
+  times: ["10:30", "11:30", "15:30", "16:30", "20:30"]
+  purpose: "捕捉不同时段的精力波动"
+  questions:
+    - "现在在做什么？"
+    - "感觉怎么样（1-10分）？"
+    - "需要调整吗？"
+  suggestions:
+    - "需要休息" → 建议小憩或走动
+    - "状态很好" → 建议继续或处理重要任务
+    - "有点累" → 建议降低任务强度
+
+## 建议规则
+
+suggestion_rules:
+  energy_8_10:
+    tasks: ["论文写作", "复杂编程", "深度思考"]
+    message: "精力很好！适合处理重要任务"
+    
+  energy_5_7:
+    tasks: ["阅读文献", "整理资料", "会议沟通"]
+    message: "精力中等，适合常规工作"
+    
+  energy_1_4:
+    tasks: ["简单整理", "休息恢复", "轻度活动"]
+    message: "精力较低，建议休息或低强度任务"
+
+## 数据记录
+
+record_format:
+  timestamp: "询问时间"
+  energy_score: "1-10分"
+  current_activity: "正在做什么"
+  mood: "情绪状态"
+  suggestion_given: "提供的建议"
+  user_response: "用户反馈"
