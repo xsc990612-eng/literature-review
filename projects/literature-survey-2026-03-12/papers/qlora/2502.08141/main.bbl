@@ -1,0 +1,347 @@
+\begin{thebibliography}{10}
+
+\bibitem{askell2021general}
+Amanda Askell, Yuntao Bai, Anna Chen, Dawn Drain, Deep Ganguli, Tom Henighan,
+  Andy Jones, Nicholas Joseph, Ben Mann, Nova DasSarma, et~al.
+\newblock A general language assistant as a laboratory for alignment.
+\newblock {\em arXiv preprint arXiv:2112.00861}, 2021.
+
+\bibitem{bai2020binarybert}
+Haoli Bai, Wei Zhang, Lu~Hou, Lifeng Shang, Jing Jin, Xin Jiang, Qun Liu,
+  Michael Lyu, and Irwin King.
+\newblock Binarybert: Pushing the limit of bert quantization.
+\newblock {\em arXiv preprint arXiv:2012.15701}, 2020.
+
+\bibitem{bai2022training}
+Yuntao Bai, Andy Jones, Kamal Ndousse, Amanda Askell, Anna Chen, Nova DasSarma,
+  Dawn Drain, Stanislav Fort, Deep Ganguli, Tom Henighan, et~al.
+\newblock Training a helpful and harmless assistant with reinforcement learning
+  from human feedback.
+\newblock {\em arXiv preprint arXiv:2204.05862}, 2022.
+
+\bibitem{chai2025flexquantelasticquantizationframework}
+Yuji Chai, Mujin Kwen, David Brooks, and Gu-Yeon Wei.
+\newblock Flexquant: Elastic quantization framework for locally hosted llm on
+  edge devices, 2025.
+
+\bibitem{chen2024punica}
+Lequn Chen, Zihao Ye, Yongji Wu, Danyang Zhuo, Luis Ceze, and Arvind
+  Krishnamurthy.
+\newblock Punica: Multi-tenant lora serving.
+\newblock {\em Proceedings of Machine Learning and Systems}, 6:1--13, 2024.
+
+\bibitem{nvidia_tesla_p100}
+NVIDIA Corporation.
+\newblock {Tesla P100 GPU Accelerator}.
+\newblock \url{https://www.nvidia.com/en-in/data-center/tesla-p100/}, 2016.
+\newblock Accessed: 2025-01-29.
+
+\bibitem{nvidia_volta_v100_datasheet}
+NVIDIA Corporation.
+\newblock {Tesla V100 GPU Accelerator Datasheet}.
+\newblock
+  \url{https://images.nvidia.com/content/technologies/volta/pdf/tesla-volta-v100-datasheet-letter-fnl-web.pdf},
+  2017.
+\newblock Accessed: 2025-01-29.
+
+\bibitem{nvidia_t4_virtualization_datasheet}
+NVIDIA Corporation.
+\newblock {NVIDIA T4 Virtualization Datasheet}.
+\newblock
+  \url{https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/Datasheet_NVIDIA_T4_Virtualization.pdf},
+  2021.
+\newblock Accessed: 2025-01-29.
+
+\bibitem{dettmers2024qlora}
+Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, and Luke Zettlemoyer.
+\newblock Qlora: Efficient finetuning of quantized llms.
+\newblock {\em Advances in Neural Information Processing Systems}, 36, 2024.
+
+\bibitem{dubey2024llama}
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad
+  Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Amy Yang, Angela Fan,
+  et~al.
+\newblock The llama 3 herd of models.
+\newblock {\em arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem{esser2019learned}
+Steven~K Esser, Jeffrey~L McKinstry, Deepika Bablani, Rathinakumar Appuswamy,
+  and Dharmendra~S Modha.
+\newblock Learned step size quantization.
+\newblock {\em arXiv preprint arXiv:1902.08153}, 2019.
+
+\bibitem{raspberry_pi_4_model_b}
+Raspberry~Pi Foundation.
+\newblock {Raspberry Pi 4 Model B}.
+\newblock \url{https://www.raspberrypi.com/products/raspberry-pi-4-model-b/},
+  2019.
+\newblock Accessed: 2025-01-29.
+
+\bibitem{hermann2015teaching}
+Karl~Moritz Hermann, Tomas Kocisky, Edward Grefenstette, Lasse Espeholt, Will
+  Kay, Mustafa Suleyman, and Phil Blunsom.
+\newblock Teaching machines to read and comprehend.
+\newblock {\em Advances in neural information processing systems}, 28, 2015.
+
+\bibitem{hu2021lora}
+Edward~J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+  Wang, Lu~Wang, and Weizhu Chen.
+\newblock Lora: Low-rank adaptation of large language models.
+\newblock {\em arXiv preprint arXiv:2106.09685}, 2021.
+
+\bibitem{hu2024mitigating}
+Minda Hu, Bowei He, Yufei Wang, Liangyou Li, Chen Ma, and Irwin King.
+\newblock Mitigating large language model hallucination with faithful
+  finetuning.
+\newblock {\em arXiv preprint arXiv:2406.11267}, 2024.
+
+\bibitem{hubara2021accurate}
+Itay Hubara, Yury Nahshan, Yair Hanani, Ron Banner, and Daniel Soudry.
+\newblock Accurate post training quantization with small calibration sets.
+\newblock In {\em International Conference on Machine Learning}, pages
+  4466--4475. PMLR, 2021.
+
+\bibitem{jeon2024l4q}
+Hyesung Jeon, Yulhwa Kim, and Jae-joon Kim.
+\newblock L4q: Parameter efficient quantization-aware training on large
+  language models via lora-wise lsq.
+\newblock {\em arXiv preprint arXiv:2402.04902}, 2024.
+
+\bibitem{klema1980singular}
+Virginia Klema and Alan Laub.
+\newblock The singular value decomposition: Its computation and some
+  applications.
+\newblock {\em IEEE Transactions on automatic control}, 25(2):164--176, 1980.
+
+\bibitem{kopf2024openassistant}
+Andreas K{\"o}pf, Yannic Kilcher, Dimitri von R{\"u}tte, Sotiris Anagnostidis,
+  Zhi~Rui Tam, Keith Stevens, Abdullah Barhoum, Duc Nguyen, Oliver Stanley,
+  Rich{\'a}rd Nagyfi, et~al.
+\newblock Openassistant conversations-democratizing large language model
+  alignment.
+\newblock {\em Advances in Neural Information Processing Systems}, 36, 2024.
+
+\bibitem{lewis2019bart}
+Mike Lewis.
+\newblock Bart: Denoising sequence-to-sequence pre-training for natural
+  language generation, translation, and comprehension.
+\newblock {\em arXiv preprint arXiv:1910.13461}, 2019.
+
+\bibitem{huggingface-bart-large}
+Mike Lewis and Facebook AI.
+\newblock {BART-Large Model Card}.
+\newblock \url{https://huggingface.co/facebook/bart-large}, 2023.
+\newblock Accessed: [Jan 26th 2025].
+
+\bibitem{li2024svdqunat}
+Muyang Li, Yujun Lin, Zhekai Zhang, Tianle Cai, Xiuyu Li, Junxian Guo, Enze
+  Xie, Chenlin Meng, Jun-Yan Zhu, and Song Han.
+\newblock Svdqunat: Absorbing outliers by low-rank components for 4-bit
+  diffusion models.
+\newblock {\em arXiv preprint arXiv:2411.05007}, 2024.
+
+\bibitem{li2023loftq}
+Yixiao Li, Yifan Yu, Chen Liang, Pengcheng He, Nikos Karampatziakis, Weizhu
+  Chen, and Tuo Zhao.
+\newblock Loftq: Lora-fine-tuning-aware quantization for large language models.
+\newblock {\em arXiv preprint arXiv:2310.08659}, 2023.
+
+\bibitem{liao2024apiq}
+Baohao Liao, Christian Herold, Shahram Khadivi, and Christof Monz.
+\newblock Apiq: Finetuning of 2-bit quantized large language model.
+\newblock {\em arXiv preprint arXiv:2402.05147}, 2024.
+
+\bibitem{liu2024deepseek}
+Aixin Liu, Bei Feng, Bing Xue, Bingxuan Wang, Bochao Wu, Chengda Lu, Chenggang
+  Zhao, Chengqi Deng, Chenyu Zhang, Chong Ruan, et~al.
+\newblock Deepseek-v3 technical report.
+\newblock {\em arXiv preprint arXiv:2412.19437}, 2024.
+
+\bibitem{liu2023mitigating}
+Fuxiao Liu, Kevin Lin, Linjie Li, Jianfeng Wang, Yaser Yacoob, and Lijuan Wang.
+\newblock Mitigating hallucination in large multi-modal models via robust
+  instruction tuning.
+\newblock In {\em The Twelfth International Conference on Learning
+  Representations}, 2023.
+
+\bibitem{liu2022few}
+Haokun Liu, Derek Tam, Mohammed Muqeeth, Jay Mohta, Tenghao Huang, Mohit
+  Bansal, and Colin~A Raffel.
+\newblock Few-shot parameter-efficient fine-tuning is better and cheaper than
+  in-context learning.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:1950--1965, 2022.
+
+\bibitem{liu2022nonuniform}
+Zechun Liu, Kwang-Ting Cheng, Dong Huang, Eric~P Xing, and Zhiqiang Shen.
+\newblock Nonuniform-to-uniform quantization: Towards accurate quantization via
+  generalized straight-through estimation.
+\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
+  pattern recognition}, pages 4942--4952, 2022.
+
+\bibitem{lloyd1982least}
+Stuart Lloyd.
+\newblock Least squares quantization in pcm.
+\newblock {\em IEEE transactions on information theory}, 28(2):129--137, 1982.
+
+\bibitem{mao2021unipelt}
+Yuning Mao, Lambert Mathias, Rui Hou, Amjad Almahairi, Hao Ma, Jiawei Han,
+  Wen-tau Yih, and Madian Khabsa.
+\newblock Unipelt: A unified framework for parameter-efficient language model
+  tuning.
+\newblock {\em arXiv preprint arXiv:2110.07577}, 2021.
+
+\bibitem{max1960quantizing}
+Joel Max.
+\newblock Quantizing for minimum distortion.
+\newblock {\em IRE Transactions on Information Theory}, 6(1):7--12, 1960.
+
+\bibitem{meng2024pissa}
+Fanxu Meng, Zhaohui Wang, and Muhan Zhang.
+\newblock Pissa: Principal singular values and singular vectors adaptation of
+  large language models.
+\newblock {\em arXiv preprint arXiv:2404.02948}, 2024.
+
+\bibitem{merity2016pointer}
+Stephen Merity, Caiming Xiong, James Bradbury, and Richard Socher.
+\newblock Pointer sentinel mixture models.
+\newblock {\em arXiv preprint arXiv:1609.07843}, 2016.
+
+\bibitem{mitchell2011pulp}
+Stuart Mitchell, Michael OSullivan, and Iain Dunning.
+\newblock Pulp: a linear programming toolkit for python.
+\newblock {\em The University of Auckland, Auckland, New Zealand}, 65:25, 2011.
+
+\bibitem{narayan2018don}
+Shashi Narayan, Shay~B Cohen, and Mirella Lapata.
+\newblock Don't give me the details, just the summary! topic-aware
+  convolutional neural networks for extreme summarization.
+\newblock {\em arXiv preprint arXiv:1808.08745}, 2018.
+
+\bibitem{ostapenko2024towards}
+Oleksiy Ostapenko, Zhan Su, Edoardo~Maria Ponti, Laurent Charlin, Nicolas~Le
+  Roux, Matheus Pereira, Lucas Caccia, and Alessandro Sordoni.
+\newblock Towards modular llms by building and reusing a library of loras.
+\newblock {\em arXiv preprint arXiv:2405.11157}, 2024.
+
+\bibitem{qin2024accurate}
+Haotong Qin, Xudong Ma, Xingyu Zheng, Xiaoyang Li, Yang Zhang, Shouda Liu, Jie
+  Luo, Xianglong Liu, and Michele Magno.
+\newblock Accurate lora-finetuning quantization of llms via information
+  retention.
+\newblock {\em arXiv preprint arXiv:2402.05445}, 2024.
+
+\bibitem{saltzman2002coin}
+Matthew~J Saltzman.
+\newblock Coin-or: an open-source library for optimization.
+\newblock {\em Programming languages and systems in computational economics and
+  finance}, pages 3--32, 2002.
+
+\bibitem{savarese2022not}
+Pedro Savarese, Xin Yuan, Yanjing Li, and Michael Maire.
+\newblock Not all bits have equal value: Heterogeneous precisions via trainable
+  noise.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:35769--35782, 2022.
+
+\bibitem{shen2020q}
+Sheng Shen, Zhen Dong, Jiayu Ye, Linjian Ma, Zhewei Yao, Amir Gholami,
+  Michael~W Mahoney, and Kurt Keutzer.
+\newblock Q-bert: Hessian based ultra low precision quantization of bert.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~34, pages 8815--8821, 2020.
+
+\bibitem{shen2023agilequantactivationguidedquantizationfaster}
+Xuan Shen, Peiyan Dong, Lei Lu, Zhenglun Kong, Zhengang Li, Ming Lin, Chao Wu,
+  and Yanzhi Wang.
+\newblock Agile-quant: Activation-guided quantization for faster inference of
+  llms on the edge, 2023.
+
+\bibitem{sheng2024slora}
+Ying Sheng, Shiyi Cao, Dacheng Li, Coleman Hooper, Nicholas Lee, Shuo Yang,
+  Christopher Chou, Banghua Zhu, Lianmin Zheng, Kurt Keutzer, et~al.
+\newblock Slora: Scalable serving of thousands of lora adapters.
+\newblock {\em Proceedings of Machine Learning and Systems}, 6:296--311, 2024.
+
+\bibitem{tan2024mobilequantmobilefriendlyquantizationondevice}
+Fuwen Tan, Royson Lee, Łukasz Dudziak, Shell~Xu Hu, Sourav Bhattacharya,
+  Timothy Hospedales, Georgios Tzimiropoulos, and Brais Martinez.
+\newblock Mobilequant: Mobile-friendly quantization for on-device language
+  models, 2024.
+
+\bibitem{touvron2023llama}
+Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne
+  Lachaux, Timoth{\'e}e Lacroix, Baptiste Rozi{\`e}re, Naman Goyal, Eric
+  Hambro, Faisal Azhar, et~al.
+\newblock Llama: Open and efficient foundation language models.
+\newblock {\em arXiv preprint arXiv:2302.13971}, 2023.
+
+\bibitem{touvron2023llama2}
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine
+  Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale,
+  et~al.
+\newblock Llama 2: Open foundation and fine-tuned chat models.
+\newblock {\em arXiv preprint arXiv:2307.09288}, 2023.
+
+\bibitem{wang2024lora}
+Shaowen Wang, Linxi Yu, and Jian Li.
+\newblock Lora-ga: Low-rank adaptation with gradient approximation.
+\newblock {\em arXiv preprint arXiv:2407.05000}, 2024.
+
+\bibitem{wang2025bitstackanysizecompressionlarge}
+Xinghao Wang, Pengyu Wang, Bo~Wang, Dong Zhang, Yunhua Zhou, and Xipeng Qiu.
+\newblock Bitstack: Any-size compression of large language models in variable
+  memory environments, 2025.
+
+\bibitem{wang2022super}
+Yizhong Wang, Swaroop Mishra, Pegah Alipoormolabashi, Yeganeh Kordi, Amirreza
+  Mirzaei, Anjana Arunkumar, Arjun Ashok, Arut~Selvan Dhanasekaran, Atharva
+  Naik, David Stap, et~al.
+\newblock Super-naturalinstructions: Generalization via declarative
+  instructions on 1600+ nlp tasks.
+\newblock {\em arXiv preprint arXiv:2204.07705}, 2022.
+
+\bibitem{waswani2017attention}
+A~Waswani, N~Shazeer, N~Parmar, J~Uszkoreit, L~Jones, A~Gomez, L~Kaiser, and
+  I~Polosukhin.
+\newblock Attention is all you need.
+\newblock In {\em NIPS}, 2017.
+
+\bibitem{wei2021finetuned}
+Jason Wei, Maarten Bosma, Vincent~Y Zhao, Kelvin Guu, Adams~Wei Yu, Brian
+  Lester, Nan Du, Andrew~M Dai, and Quoc~V Le.
+\newblock Finetuned language models are zero-shot learners.
+\newblock {\em arXiv preprint arXiv:2109.01652}, 2021.
+
+\bibitem{yang2021bsq}
+Huanrui Yang, Lin Duan, Yiran Chen, and Hai Li.
+\newblock Bsq: Exploring bit-level sparsity for mixed-precision neural network
+  quantization.
+\newblock {\em arXiv preprint arXiv:2102.10462}, 2021.
+
+\bibitem{zaken2021bitfit}
+Elad~Ben Zaken, Shauli Ravfogel, and Yoav Goldberg.
+\newblock Bitfit: Simple parameter-efficient fine-tuning for transformer-based
+  masked language-models.
+\newblock {\em arXiv preprint arXiv:2106.10199}, 2021.
+
+\bibitem{zhao2024atom}
+Yilong Zhao, Chien-Yu Lin, Kan Zhu, Zihao Ye, Lequn Chen, Size Zheng, Luis
+  Ceze, Arvind Krishnamurthy, Tianqi Chen, and Baris Kasikci.
+\newblock Atom: Low-bit quantization for efficient and accurate llm serving.
+\newblock {\em Proceedings of Machine Learning and Systems}, 6:196--209, 2024.
+
+\bibitem{zhou2023sysmol}
+Cyrus Zhou, Vaughn Richard, Pedro Savarese, Zachary Hassman, Michael Maire,
+  Michael DiBrino, and Yanjing Li.
+\newblock Sysmol: A hardware-software co-design framework for ultra-low and
+  fine-grained mixed-precision neural networks.
+\newblock {\em arXiv preprint arXiv:2311.14114}, 2023.
+
+\bibitem{ziegler2019fine}
+Daniel~M Ziegler, Nisan Stiennon, Jeffrey Wu, Tom~B Brown, Alec Radford, Dario
+  Amodei, Paul Christiano, and Geoffrey Irving.
+\newblock Fine-tuning language models from human preferences.
+\newblock {\em arXiv preprint arXiv:1909.08593}, 2019.
+
+\end{thebibliography}

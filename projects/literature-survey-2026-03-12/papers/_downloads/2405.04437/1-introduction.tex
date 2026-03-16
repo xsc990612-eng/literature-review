@@ -1,0 +1,68 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\begin{table}[t!]
+\scalebox{0.95}{
+\begin{tabular}{p{8.5cm}}
+\textbf{System/library and issues related to \pa} \\ \toprule
+
+\textbf{\vllm~\cite{vllmsosp}:} Pioneered \pa. Despite being in an actively maintained code repository, \vllm's \pa kernel is up to $2.8\times$\ slower than \flashattention (\autoref{table:eval:decode-attn}). Furthermore, changing block size changes the execution time of the kernel by as much as $1.9\times$ (\autoref{fig:eval:vllm:blocksize}). \\ \hline
+
+\textbf{FlashAttention-2~\cite{flashattention2}:} PagedAttention-based prefill kernel is up to $37\%$ slower than the non-paged kernel (\autoref{fig:motivation:paged-vs-nonpaged}) while the decode kernel is up to $12\%$ slower. Initial attempts to add paging support failed unit tests~\cite{fa-paged-crash}. \\ \hline
+
+\textbf{FlashAttention-3~\cite{flash-attention-3} / SDPA in cuDNN-9~\cite{cudnn-9}:} State-of-the-art attention kernels for NVIDIA Hopper architecture did not support \pa when released. \\ \hline
+
+\textbf{TensorRT-LLM~\cite{trtllmgithub}:} Serving throughput dropped by more than $10\%$ in a Python front-end~\cite{tensorrt-perf-decay}. Recommends using the C++ front-end. Even with C++, we observe up to $5\%$ higher latency in some cases with \pa. \\ \hline
+
+\textbf{\flashinfer~\cite{flashinfer}:} PagedAttention-based prefill kernel is up to $42\%$ slower than the non-paged kernel (\autoref{fig:motivation:paged-vs-nonpaged}). \\ \bottomrule
+\end{tabular}}
+\caption{The \pa approach requires an application to explicitly manage dynamically allocated physical memory, including re-writing of attention kernels. These examples highlight the complexity, performance and maintenance challenges associated with this approach.}
+\label{table:intro:banner}
+\end{table}
+
+Large Language Models (LLMs) are being deployed in a wide range of applications e.g., chat bots, search engines and coding assistants~\cite{openai2022gpt4techreport,chowdhery2022Palm,bingai,bard,githubcopilot,amazoncodewhisperer,replitghostwriter}. Given the size and scale of modern LLM deployments, optimizing inference has become extremely important ~\cite{sarathi2023,splitfuse2024,patel2023splitwise,distserve2024,tetriinfer,vllmsosp,orca,pod-attn-2024}. %LLM inference happens in two phases: a compute-bound \textit{prefill} phase, followed by several iterations of memory-bound \textit{decode} phase.
+
+Batching is a powerful technique to boost LLM serving throughput~\cite{orca,vllmsosp,patel2023splitwise,sarathiserve2024}. However, achieving a large batch size requires careful allocation of GPU memory. For each request, the serving framework stores the activations of all the tokens processed so far in GPU memory and reuses them for generating subsequent tokens. This is called the \kvcache~\cite{orca,sarathi2023,patel2023splitwise} which accounts for a majority of GPU memory usage during inference. Efficiently allocating GPU memory for the \kvcache is challenging for two reasons. First, the per-request \kvcache grows slowly (one token per iteration), and second, a request's decode length (or its total \kvcache size) is not known ahead of time.
+
+  
+
+Prior systems like Orca~\cite{orca} and FasterTransformer~\cite{fastertransformer} allocate memory for each request based on the maximum context length supported by the model (e.g., \yimedium model supports context length of up to 200K~\cite{yi-34b-200k-hf}). However, the number of decode tokens generated are far less in practice, e.g., the average decode length for the chat-based sharegpt dataset is 415 tokens~\cite{sarathiserve2024}. Therefore, static memory allocation could create severe internal fragmentation, limiting batch size and serving throughput.
+
+
+Inspired by demand paging in OS-based virtual memory systems, \vllm introduced \pa~\cite{vllmsosp} that allocates small blocks of GPU memory on demand i.e., when previously allocated blocks are fully utilized and the model continues to generate more tokens. This approach provides a near-perfect solution for mitigating fragmentation and hence, \pa has become the de facto standard for dynamic memory allocation in LLM serving systems, e.g., TensorRT-LLM, HuggingFace TGI,  LightLLM~\cite{trtllmgithub, hftgi, lightllm:github} etc.
+
+
+
+
+However, we show that \pa faces a fundamental consequence of dynamic memory allocation: \textit{dynamically allocated objects are not guaranteed to be contiguous}. Note that user-level objects are allocated in virtual memory. Therefore, in trying to enable dynamic allocation of \textbf{physical} memory, \pa ends up changing the \textbf{virtual} memory layout of \kvcache from contiguous to non-contiguous. We argue that this approach has several pitfalls (\autoref{sec:motivation}). First, it requires rewriting attention kernels, i.e., to enable de-referencing all tokens of the non-contiguous \kvcache. Second, it forces developers to implement a memory manager in the serving framework, i.e., to stitch together dynamically allocated virtual memory blocks. Third, it adds runtime overhead in the critical path of both CPU and GPU execution. \autoref{table:intro:banner} provides empirical evidence and real-world experiences to support these arguments.
+
+
+
+%In this paper, we instead advocate for leveraging GPU virtual memory support for dynamic \kvcache memory management, and show that this approach alleviates all the aforementioned issues caused by \pa. To support our claims, we present \sysname (\autoref{sec:design}) --- a memory management approach that stores \kvcache in contiguous virtual memory without committing physical memory ahead-of-time. To achieve this, we decouple the allocation of virtual memory from physical memory using low-level CUDA virtual memory management (VMM) APIs~\cite{cudavirtualmemory}.
+
+% AJ text
+The fundamental issue with \pa and prior systems is that they rely on the reservation-based memory allocation method exposed by the GPU runtime. In this method (used by \cudamalloc), the runtime allocates both virtual and physical memory on the GPU meaning that \textit{physical memory is allocated even if the corresponding virtual memory is not accessed}. This is in stark contrast to OS-based demand paging~\cite{ingens,hawkeye}. We show that separating the allocation of virtual and physical memory allows for more effective \kvcache memory management. To support our claim, we introduce \sysname (\autoref{sec:design}) --- an approach that stores \kvcache in contiguous virtual memory without committing physical memory ahead-of-time. \sysname decouples the allocation of virtual and physical memory using the CUDA virtual memory management (VMM) APIs~\cite{cudavirtualmemory}.
+
+
+%The core of these issues is that \cudamalloc couples the allocation of virtual and physical memory on GPUs. Both \vllm and \pa inherited the \cudamalloc approach through the PyTorch caching allocator, leading to virtually non-contiguous \kvcache. In this paper, we demonstrate that decoupling the allocation of virtual and physical memory for \kvcache resolves these issues. To support our claims, we introduce \sysname (\autoref{sec:design}) --- a memory management approach that stores \kvcache in contiguous virtual memory without committing physical memory ahead-of-time. To do so, \sysname leverages CUDA virtual memory management (VMM) APIs.
+
+
+
+In building \sysname, we find that using CUDA VMM support for \kvcache management poses two key efficiency challenges for an LLM serving system (\autoref{sec:design:optimizations}). First, memory allocation using CUDA VMM APIs incurs high latency because each allocation involves a round-trip to the OS kernel. We tackle latency issues with several LLM-specific optimizations such as overlapping memory allocation with compute, opportunistically allocating pages ahead of time, and deferring memory reclamation. Second, CUDA supports memory allocation only at the granularity of large pages, i.e., in multiples of 2MB. Use of large pages can create significant fragmentation. We address this challenge by modifying the open-source CUDA unified virtual memory driver, adding support for smaller 64KB pages. Our evaluation shows that use of 64KB pages has no negative impact on the performance of attention kernels, i.e., we do not find any evidence of TLB thrashing. Together, these optimizations mitigate fragmentation while hiding the latency cost of on demand memory allocation, making  \sysname a simpler, portable and performant alternative to \pa. 
+
+
+Overall, we make the following contributions:
+\begin{itemize}
+\item We present \sysname{} -- a memory management approach that retains the virtual contiguity of \kvcache while enabling dynamic allocation of physical memory. Our implementation of \sysname in \vllm seamlessly adds dynamic memory allocation support to various unmodified attention kernels.
+
+% \item We implement \sysname in \vllm serving stack to show that it seamlessly adds dynamic memory management support to various unmodified attention kernels. % of \flashattention~\cite{fagithub} and \flashinfer~\cite{figithub}.
+
+\item We compare \sysname against \pa-based alternatives of \vllm, \flashattention and \flashinfer on \yismall, \llamasmall and \yimedium with 1-2 A100 GPUs. Using \flashattention's non-paged attention kernel, \sysname outperforms \vllm by up to $1.99\times$ in decode throughput. In long-context scenarios, it also improves the end-to-end LLM serving throughput by up to $1.18\times$ and $1.23\times$ over \pa based kernels of \flashattention and \flashinfer 
+
+\item We demonstrate the portability benefit of \sysname with the recently launched FlashAttention-3 kernel (FA3~\cite{flash-attention-3}). FA3 is optimized for the NVIDIA Hopper architecture and was not released with \pa support. \sysname supports FA3 out-of-the-box, leading to $1.26-1.5\times$ higher throughout over \pa based \flashattention.
+
+
+
+\end{itemize}
+
+

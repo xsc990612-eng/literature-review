@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2305.10010",
+  "title": "AD-KD: Attribution-Driven Knowledge Distillation for Language Model Compression",
+  "authors": ["Siyue Wu", "Hongzhan Chen", "Xiaojun Quan", "Qifan Wang", "Rui Wang"],
+  "abstract": "Knowledge distillation has attracted a great deal of interest recently to compress pre-trained language models. However, existing knowledge distillation methods suffer from two limitations: the student simply imitates the teacher's behavior while ignoring the underlying reasoning.",
+  "published": "2023-05-17",
+  "categories": ["cs.CL"],
+  "score": 4,
+  "source_term": "knowledge distillation language model compression",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "distillation"
+}

@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2405.00732",
+  "title": "LoRA Land: 310 Fine-tuned LLMs that Rival GPT-4, A Technical Report",
+  "authors": ["Justin Zhao", "Timothy Wang", "Wael Abid", "Geoffrey Angus", "Arnav Garg", "Jeffery Kinnison", "Alex Sherstinsky", "Piero Molino", "Travis Addair", "Devvret Rishi"],
+  "abstract": "Low Rank Adaptation (LoRA) has emerged as one of the most widely adopted methods for Parameter Efficient Fine-Tuning (PEFT) of Large Language Models. We aim to assess the capabilities of LoRA fine-tuned models at scale.",
+  "published": "2024-04-29",
+  "categories": ["cs.CL", "cs.AI", "cs.LG"],
+  "score": 4,
+  "source_term": "QLoRA 4-bit quantization fine-tuning",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "qlora"
+}

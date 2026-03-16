@@ -1,0 +1,52 @@
+% \begin{table}[t]
+%     \centering
+%     \small
+%     % 调整列间距，紧凑但不拥挤
+%     \setlength{\tabcolsep}{3pt}
+    
+%     \resizebox{\columnwidth}{!}{
+%         \begin{tabular}{lccccc}
+%             \toprule
+%             \multirow{2}{*}{\textbf{Method}} & \multicolumn{5}{c}{\textbf{Context Length}} \\
+%             \cmidrule(lr){2-6}
+%             & 8K & 16K & 32K & 64K & 128K \\
+%             \midrule
+%             FullKV & 1.1087 & 2.5576 & 6.5602 & 18.9097 & 61.2364 \\
+%             SnapKV & 1.1262 & 2.5891 & 6.6218 & 19.0281 & 61.4849 \\
+%             DapQ   & 1.1405 & 2.5925 & 6.6411 & 19.0432 & 61.4922 \\
+%             \bottomrule
+%         \end{tabular}
+%     }
+% \vspace{-8pt}
+% \caption{Comparison of Time-to-First-Token (TTFT(s)) with different context lengths.} 
+% \vspace{-18pt}
+% \label{tab:ttft_comparison}
+% \end{table}
+\begin{table}[t]
+    \centering
+    \small
+    % 调整列间距，紧凑但不拥挤
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{0.85}
+    \resizebox{\columnwidth}{!}{
+        \begin{tabular}{lccccc}
+            \toprule
+            \multirow{2}{*}{\textbf{Method}} & \multicolumn{5}{c}{\textbf{Context Length}} \\
+            \cmidrule(lr){2-6}
+            & 8K & 16K & 32K & 64K & 128K \\
+            \midrule
+            FullKV     & 1.1106 & 2.5607 & 6.5718 & 18.9441 & 60.8399 \\
+            LaCache    & 1.1283 & 2.5921 & 6.6356 & 19.0519 & 61.5180 \\
+            SLM        & 1.1236 & 2.5801 & 6.6008 & 18.9853 & 61.0339 \\
+            H2O        & 1.1348 & 2.6046 & 6.6352 & 19.0379 & 61.5029 \\
+            PyramidKV  & 1.1253 & 2.5958 & 6.6337 & 19.0462 & 61.5345 \\
+            SnapKV     & 1.1278 & 2.5909 & 6.6242 & 19.0318 & 61.5017 \\
+            DapQ       & 1.1298 & 2.5974 & 6.6289 & 19.0423 & 61.5097 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \vspace{-10pt}
+    \caption{Comparison of Time-to-First-Token (TTFT (s)) with different context lengths.}
+    \vspace{-22pt}
+    \label{tab:ttft_comparison}
+\end{table}

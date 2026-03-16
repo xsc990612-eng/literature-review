@@ -1,0 +1,168 @@
+%  ————————————————————————————————————————————————————————————————————————————————旧版数据
+% % \documentclass{article}
+% % \usepackage{graphicx}
+% % \usepackage{multirow}
+% % \usepackage{booktabs}
+% % \usepackage[table]{xcolor}
+% % \usepackage{rotating}
+% % \usepackage{adjustbox}
+
+% % \begin{document}
+
+% \begin{table*}[t]
+% % \caption{Main Results on LongBench: performance comparison of different KV cache compression methods across 13 datasets on three models (Llama3-8B-Instruct, Qwen2.5-7B-Instruct, Qwen3-8B) under cache sizes of 256, 128, and 64, with complete results available in Appendix \ref{Complete Experiment Results on LongBench}.}
+% \centering
+% \small
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{>{\bfseries}c >{\raggedright}p{1.2cm} *{14}{c}}
+% \toprule
+% &  & \multicolumn{2}{c}{\textbf{Single-Document QA}} & \multicolumn{2}{c}{\textbf{Multi-Document QA}} & \multicolumn{2}{c}{\textbf{Summarization}} & \multicolumn{3}{c}{\textbf{Few-shot Learning}} & \multicolumn{2}{c}{\textbf{Synthetic}} & \multicolumn{2}{c}{\textbf{Code}} &  \\
+% \cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-11}\cmidrule(lr){12-13}\cmidrule(lr){14-15}
+% & \textbf{Methods} & \rotatebox[origin=c]{30}{\textbf{Qasper}} & \rotatebox[origin=c]{30}{\textbf{MF-en}} & \rotatebox[origin=c]{30}{\textbf{HotpotQA}} & \rotatebox[origin=c]{30}{\textbf{2WikiMQA}} & \rotatebox[origin=c]{30}{\textbf{GovReport}} & \rotatebox[origin=c]{30}{\textbf{MultiNews}} & \rotatebox[origin=c]{30}{\textbf{TREC}} & \rotatebox[origin=c]{30}{\textbf{TriviaQA}} & \rotatebox[origin=c]{30}{\textbf{SAMSum}} & \rotatebox[origin=c]{30}{\textbf{PCount}} & \rotatebox[origin=c]{30}{\textbf{PRe}} & \rotatebox[origin=c]{30}{\textbf{Lcc}} & \rotatebox[origin=c]{30}{\textbf{RB-P}} & \textbf{Avg.} \\
+% \midrule
+% & FullKV & 37.68 & 40.56 & 50.14 & 34.93 & 30.99 & 25.62 & 70.00 & 89.85 & 40.50 & 13.28 & 83.67 & 56.44 & 50.97 & 48.05 \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 256}} \\
+% \multirow{13}{*}{\rotatebox{90}{Llama3-8B-Instruct}} & H2O & 28.11 & 36.63 & 48.62 & 31.50 & 21.87 & 21.44 & 45.67 & 89.49 & 38.28 & 12.11 & 83.67 & 61.49 & 53.36 & 44.02 \\
+% & PyramidKV & 30.88 & 38.11 & 50.20 & 33.88 & \textbf{22.54} & 21.84 & 60.00 & 89.26 & 37.07 & \textbf{12.78} & 83.67 & 61.34 & 52.51 & 45.70 \\
+% & SnapKV & 30.84 & \textbf{38.39} & 49.75 & 33.80 & 22.18 & 21.53 & 57.00 & 89.65 & 36.97 & 12.11 & \textbf{84.00} & 61.78 & 54.92 & 45.61 \\
+% & DapQ & \textbf{32.55} & 38.18 & \textbf{50.67} & \textbf{34.35} & 22.25 & \textbf{21.89} & \textbf{60.67} & \textbf{90.48} & \textbf{38.34} & 11.78 & 83.67 & \textbf{62.78} & \textbf{55.64} & \textbf{46.40} \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+% & H2O & 25.95 & 36.25 & 48.65 & 31.90 & \textbf{20.79} & 20.30 & 40.00 & 87.29 & 36.25 & 12.33 & \textbf{83.67} & 59.81 & 53.14 & 42.79 \\
+% & PyramidKV & 28.80 & \textbf{38.29} & 49.52 & 31.60 & 20.67 & 20.55 & 49.00 & 87.68 & 36.73 & \textbf{12.44} & 82.00 & 60.36 & 52.03 & 43.82 \\
+% & SnapKV & \textbf{29.52} & 37.80 & 49.36 & 32.40 & 19.87 & 20.08 & 47.67 & 87.82 & 35.63 & 11.44 & 82.33 & 61.49 & 52.40 & 43.68 \\
+% & DapQ & 28.76 & 37.24 & \textbf{50.04} & \textbf{33.59} & 20.47 & \textbf{20.63} & \textbf{50.00} & \textbf{90.06} & \textbf{36.87} & 12.11 & 81.67 & \textbf{61.81} & \textbf{53.92} & \textbf{44.40} \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+% & H2O & 24.02 & 30.83 & 48.27 & 31.70 & \textbf{19.37} & \textbf{19.14} & 37.33 & 86.27 & 35.18 & 7.72 & \textbf{82.33} & 59.20 & \textbf{51.10} & 40.96 \\
+% & PyramidKV & 22.04 & 31.80 & 47.01 & 31.54 & 15.70 & 16.34 & 39.00 & 76.80 & 32.31 & 10.33 & 79.67 & 55.19 & 47.90 & 38.90 \\
+% & SnapKV & 25.06 & 32.92 & 47.16 & 31.71 & 16.85 & 17.09 & \textbf{40.67} & 86.02 & 33.99 & 11.78 & 78.00 & 57.95 & 50.91 & 40.78 \\
+% & DapQ & \textbf{25.99} & \textbf{37.36} & \textbf{49.11} & \textbf{32.88} & 18.46 & 18.70 & 38.67 & \textbf{87.38} & \textbf{35.30} & \textbf{11.89} & 77.67 & \textbf{60.19} & 49.90 & \textbf{41.81} \\
+% \midrule
+% % & FullKV & 36.50 & 49.70 & 55.91 & 44.70 & 31.64 & 22.84 & 66.33 & 89.34 & 42.49 & 11.00 & 86.33 & 61.97 & 59.97 & 50.67 \\
+% % & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 256}} \\
+% % \multirow{12}{*}{\rotatebox{90}{Qwen2.5-7B-Instruct}} & H2O & 27.76 & 42.94 & 47.89 & 40.97 & 22.13 & 18.31 & 44.33 & 84.51 & 39.77 & 10.67 & 86.00 & 57.07 & 54.09 & 44.31 \\
+% % & PyramidKV & 29.65 & 46.37 & 49.89 & 40.77 & 20.42 & 16.80 & 53.00 & 87.89 & 39.61 & 10.67 & 86.00 & 52.61 & 49.49 & 44.82 \\
+% % & SnapKV & \textbf{31.12} & \textbf{47.87} & 51.76 & 40.78 & 22.25 & \textbf{18.41} & 53.33 & 87.66 & 39.34 & 10.67 & 86.00 & 56.87 & \textbf{54.36} & 46.19 \\
+% % & DapQ & 30.21 & 45.00 & \textbf{51.92} & \textbf{41.46} & \textbf{22.35} & 18.40 & \textbf{56.67} & \textbf{88.64} & \textbf{39.92} & \textbf{11.00} & \textbf{86.00} & \textbf{58.40} & 53.82 & \textbf{46.45} \\
+% % & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+% % & H2O & 26.83 & 37.80 & 45.14 & 39.77 & \textbf{20.13} & 16.64 & 40.67 & 81.43 & 38.56 & 10.67 & \textbf{85.67} & 53.97 & 51.52 & 42.22 \\
+% % & PyramidKV & 26.37 & 43.09 & 46.57 & 39.07 & 18.01 & 15.15 & 43.33 & 84.69 & 38.40 & 10.67 & 84.67 & 49.45 & 46.90 & 42.03 \\
+% % & SnapKV & \textbf{27.46} & 41.81 & 48.62 & 41.40 & 19.42 & 16.19 & 42.33 & 83.91 & \textbf{38.89} & 10.67 & 85.00 & 52.14 & 51.39 & 43.02 \\
+% % & DapQ & 26.81 & \textbf{43.12} & \textbf{49.62} & \textbf{41.36} & 19.89 & \textbf{16.68} & \textbf{47.00} & \textbf{84.92} & 38.07 & \textbf{11.00} & 85.00 & \textbf{54.46} & \textbf{51.70} & \textbf{43.82} \\
+% % & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+% % & H2O & 24.33 & 32.36 & 44.94 & 39.06 & \textbf{17.96} & \textbf{15.05} & 37.33 & 82.76 & 35.27 & 10.67 & \textbf{85.00} & \textbf{49.44} & 45.52 & 39.98 \\
+% % & PyramidKV & 22.36 & 35.19 & 43.51 & 38.08 & 14.04 & 11.10 & 37.33 & 84.81 & 35.58 & 10.67 & 80.33 & 44.67 & 42.22 & 38.45 \\
+% % & SnapKV & 22.90 & 40.66 & 45.56 & 40.28 & 15.42 & 12.03 & 37.67 & \textbf{85.11} & 36.92 & 10.67 & 82.00 & 46.16 & 45.75 & 40.09 \\
+% % & DapQ & \textbf{25.58} & \textbf{42.65} & \textbf{49.66} & \textbf{41.25} & 16.90 & 14.05 & \textbf{39.67} & 84.16 & \textbf{35.49} & \textbf{11.00} & 80.67 & 49.38 & \textbf{46.77} & \textbf{41.33} \\
+% % % \midrule
+% & FullKV & 36.87 & 53.67 & 57.67 & 44.73 & 33.39 & 23.69 & 71.67 & 91.79 & 42.07 & 11.98 & 86.67 & 70.64 & 59.26 & 52.60 \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 256}} \\
+% \multirow{12}{*}{\rotatebox{90}{Qwen3-8B}} & H2O & 27.80 & 44.92 & 51.37 & 40.50 & 22.38 & 18.26 & 46.33 & 90.04 & 38.98 & 12.33 & 86.67 & 66.11 & 53.93 & 46.12 \\
+% & PyramidKV & 30.41 & 47.81 & 51.00 & 41.37 & 22.36 & 17.41 & 61.67 & 90.96 & 37.65 & 13.00 & 86.33 & 67.01 & 50.11 & 47.47 \\
+% & SnapKV & \textbf{32.40} & 49.29 & 54.38 & 41.40 & 23.79 & 18.99 & \textbf{63.00} & 91.07 & 38.57 & \textbf{14.67} & 86.67 & \textbf{67.99} & 53.77 & 48.92 \\
+% & DapQ & 32.14 & \textbf{50.78} & \textbf{54.79} & \textbf{44.47} & \textbf{24.16} & \textbf{19.01} & 62.67 & \textbf{91.15} & \textbf{39.61} & 14.17 & \textbf{86.67} & 67.20 & \textbf{53.83} & \textbf{49.28} \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+% & H2O & 26.60 & 41.37 & 48.10 & 39.85 & 20.83 & 17.27 & 41.33 & 90.21 & 38.16 & \textbf{11.72} & \textbf{86.67} & 65.22 & 52.77 & 44.22 \\
+% & PyramidKV & 26.22 & 40.48 & 48.41 & 39.46 & 18.99 & 15.10 & 48.33 & 89.31 & 36.92 & 9.67 & 86.67 & 60.82 & 48.78 & 43.78 \\
+% & SnapKV & \textbf{29.41} & 46.43 & 51.20 & 41.66 & 20.37 & 16.64 & 51.33 & \textbf{91.07} & 37.37 & 11.00 & 86.67 & 65.36 & 51.65 & 46.17 \\
+% & DapQ & 29.10 & \textbf{47.15} & \textbf{53.84} & \textbf{43.00} & \textbf{21.11} & \textbf{17.27} & \textbf{54.00} & 90.45 & \textbf{38.50} & 11.67 & 86.00 & \textbf{66.29} & \textbf{52.03} & \textbf{46.95} \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+% & H2O & 25.55 & 38.94 & 46.66 & 39.27 & \textbf{18.55} & \textbf{15.23} & 39.00 & 88.13 & 35.98 & 9.67 & \textbf{86.67} & 59.48 & \textbf{48.95} & 42.47 \\
+% & PyramidKV & 25.32 & 40.44 & 46.61 & 39.20 & 16.25 & 12.93 & \textbf{44.67} & 88.27 & 34.63 & 11.33 & 83.67 & 59.73 & 46.48 & 42.27 \\
+% & SnapKV & 25.09 & 39.89 & 46.58 & 39.38 & 15.28 & 12.38 & 42.67 & 87.93 & 35.12 & 11.33 & 84.33 & 57.96 & 46.49 & 41.88 \\
+% & DapQ & \textbf{25.78} & \textbf{43.17} & \textbf{49.84} & \textbf{41.28} & 17.16 & 13.95 & 43.00 & \textbf{88.97} & \textbf{36.00} & \textbf{12.67} & 83.00 & \textbf{60.31} & 46.90 & \textbf{43.23} \\
+% \bottomrule
+% \end{tabular}
+% }
+% \vspace{-9pt}
+% \caption{Main Results on LongBench: performance comparison of different KV cache compression methods}
+% \vspace{-12pt}
+% \label{table:longbench}
+% \end{table*}
+
+% % \end{document}
+
+
+%  ————————————————————————————————————————————————————————————————————————————————更新的新版数据
+
+
+% \documentclass{article}
+% \usepackage{graphicx}
+% \usepackage{multirow}
+% \usepackage{booktabs}
+% \usepackage[table]{xcolor}
+% \usepackage{rotating}
+% \usepackage{adjustbox}
+
+% \begin{document}
+
+\begin{table*}[t]
+% \caption{Main Results on LongBench: performance comparison of different KV cache compression methods across 13 datasets on three models (Llama3-8B-Instruct, Qwen2.5-7B-Instruct, Qwen3-8B) under cache sizes of 256, 128, and 64, with complete results available in Appendix \ref{Complete Experiment Results on LongBench}.}
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{>{\bfseries}c >{\raggedright}p{1.2cm} *{14}{c}}
+\toprule
+&  & \multicolumn{2}{c}{\textbf{Single-Document QA}} & \multicolumn{2}{c}{\textbf{Multi-Document QA}} & \multicolumn{2}{c}{\textbf{Summarization}} & \multicolumn{3}{c}{\textbf{Few-shot Learning}} & \multicolumn{2}{c}{\textbf{Synthetic}} & \multicolumn{2}{c}{\textbf{Code}} &  \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-11}\cmidrule(lr){12-13}\cmidrule(lr){14-15}
+& \textbf{Methods} & \rotatebox[origin=c]{30}{\textbf{Qasper}} & \rotatebox[origin=c]{30}{\textbf{MF-en}} & \rotatebox[origin=c]{30}{\textbf{HotpotQA}} & \rotatebox[origin=c]{30}{\textbf{2WikiMQA}} & \rotatebox[origin=c]{30}{\textbf{GovReport}} & \rotatebox[origin=c]{30}{\textbf{MultiNews}} & \rotatebox[origin=c]{30}{\textbf{TREC}} & \rotatebox[origin=c]{30}{\textbf{TriviaQA}} & \rotatebox[origin=c]{30}{\textbf{SAMSum}} & \rotatebox[origin=c]{30}{\textbf{PCount}} & \rotatebox[origin=c]{30}{\textbf{PRe}} & \rotatebox[origin=c]{30}{\textbf{Lcc}} & \rotatebox[origin=c]{30}{\textbf{RB-P}} & \textbf{Avg.} \\
+\midrule
+& FullKV & 37.72 & 40.64 & 50.17 & 34.88 & 31.03 & 25.64 & 70.00 & 89.85 & 40.55 & 13.30 & 83.67 & 58.96 & 52.71 & 48.39 \\
+& \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 256}} \\
+\multirow{13}{*}{\rotatebox{90}{Llama3-8B-Instruct}} & H2O & 28.11 & 36.63 & 48.62 & 31.50 & 21.87 & 21.44 & 45.67 & 89.49 & 38.28 & 12.11 & 83.67 & 61.49 & 53.36 & 44.02 \\
+& PyramidKV & 30.88 & 38.11 & 50.20 & 33.88 & \textbf{22.54} & 21.84 & 60.00 & 89.26 & 37.07 & \textbf{12.78} & 83.67 & 61.34 & 52.51 & 45.70 \\
+& SnapKV & 30.84 & \textbf{38.39} & 49.75 & 33.80 & 22.18 & 21.53 & 57.00 & 89.65 & 36.97 & 12.11 & \textbf{84.00} & 61.78 & 54.92 & 45.61 \\
+& DapQ & \textbf{32.55} & 38.18 & \textbf{50.67} & \textbf{34.35} & 22.25 & \textbf{21.89} & \textbf{60.67} & \textbf{90.48} & \textbf{38.34} & 11.78 & 83.67 & \textbf{62.78} & \textbf{55.64} & \textbf{46.40} \\
+& \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+& H2O & 25.95 & 36.25 & 48.65 & 31.90 & \textbf{20.79} & 20.30 & 40.00 & 87.29 & 36.25 & 12.33 & \textbf{83.67} & 59.81 & 53.14 & 42.79 \\
+& PyramidKV & 28.80 & \textbf{38.29} & 49.52 & 31.60 & 20.67 & 20.55 & 49.00 & 87.68 & 36.73 & \textbf{12.44} & 82.00 & 60.36 & 52.03 & 43.82 \\
+& SnapKV & \textbf{29.52} & 37.80 & 49.36 & 32.40 & 19.87 & 20.08 & 47.67 & 87.82 & 35.63 & 11.44 & 82.33 & 61.49 & 52.40 & 43.68 \\
+& DapQ & 28.76 & 37.24 & \textbf{50.04} & \textbf{33.59} & 20.47 & \textbf{20.63} & \textbf{50.00} & \textbf{90.06} & \textbf{36.87} & 12.11 & 81.67 & \textbf{61.81} & \textbf{53.92} & \textbf{44.40} \\
+& \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+& H2O & 24.02 & 30.83 & 48.27 & 31.70 & \textbf{19.37} & \textbf{19.14} & 37.33 & 86.27 & 35.18 & 7.72 & \textbf{82.33} & 59.20 & \textbf{51.10} & 40.96 \\
+& PyramidKV & 22.04 & 31.80 & 47.01 & 31.54 & 15.70 & 16.34 & 39.00 & 76.80 & 32.31 & 10.33 & 79.67 & 55.19 & 47.90 & 38.90 \\
+& SnapKV & 25.06 & 32.92 & 47.16 & 31.71 & 16.85 & 17.09 & \textbf{40.67} & 86.02 & 33.99 & 11.78 & 78.00 & 57.95 & 50.91 & 40.78 \\
+& DapQ & \textbf{25.99} & \textbf{37.36} & \textbf{49.11} & \textbf{32.88} & 18.46 & 18.70 & 38.67 & \textbf{87.38} & \textbf{35.30} & \textbf{11.89} & 77.67 & \textbf{60.19} & 49.90 & \textbf{41.81} \\
+\midrule
+% & FullKV & 36.50 & 49.70 & 55.91 & 44.70 & 31.64 & 22.84 & 66.33 & 89.34 & 42.49 & 11.00 & 86.33 & 61.97 & 59.97 & 50.67 \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 256}} \\
+% \multirow{12}{*}{\rotatebox{90}{Qwen2.5-7B-Instruct}} & H2O & 27.76 & 42.94 & 47.89 & 40.97 & 22.13 & 18.31 & 44.33 & 84.51 & 39.77 & 10.67 & 86.00 & 57.07 & 54.09 & 44.31 \\
+% & PyramidKV & 29.65 & 46.37 & 49.89 & 40.77 & 20.42 & 16.80 & 53.00 & 87.89 & 39.61 & 10.67 & 86.00 & 52.61 & 49.49 & 44.82 \\
+% & SnapKV & \textbf{31.12} & \textbf{47.87} & 51.76 & 40.78 & 22.25 & \textbf{18.41} & 53.33 & 87.66 & 39.34 & 10.67 & 86.00 & 56.87 & \textbf{54.36} & 46.19 \\
+% & DapQ & 30.21 & 45.00 & \textbf{51.92} & \textbf{41.46} & \textbf{22.35} & 18.40 & \textbf{56.67} & \textbf{88.64} & \textbf{39.92} & \textbf{11.00} & \textbf{86.00} & \textbf{58.40} & 53.82 & \textbf{46.45} \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+% & H2O & 26.83 & 37.80 & 45.14 & 39.77 & \textbf{20.13} & 16.64 & 40.67 & 81.43 & 38.56 & 10.67 & \textbf{85.67} & 53.97 & 51.52 & 42.22 \\
+% & PyramidKV & 26.37 & 43.09 & 46.57 & 39.07 & 18.01 & 15.15 & 43.33 & 84.69 & 38.40 & 10.67 & 84.67 & 49.45 & 46.90 & 42.03 \\
+% & SnapKV & \textbf{27.46} & 41.81 & 48.62 & 41.40 & 19.42 & 16.19 & 42.33 & 83.91 & \textbf{38.89} & 10.67 & 85.00 & 52.14 & 51.39 & 43.02 \\
+% & DapQ & 26.81 & \textbf{43.12} & \textbf{49.62} & \textbf{41.36} & 19.89 & \textbf{16.68} & \textbf{47.00} & \textbf{84.92} & 38.07 & \textbf{11.00} & 85.00 & \textbf{54.46} & \textbf{51.70} & \textbf{43.82} \\
+% & \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+% & H2O & 24.33 & 32.36 & 44.94 & 39.06 & \textbf{17.96} & \textbf{15.05} & 37.33 & 82.76 & 35.27 & 10.67 & \textbf{85.00} & \textbf{49.44} & 45.52 & 39.98 \\
+% & PyramidKV & 22.36 & 35.19 & 43.51 & 38.08 & 14.04 & 11.10 & 37.33 & 84.81 & 35.58 & 10.67 & 80.33 & 44.67 & 42.22 & 38.45 \\
+% & SnapKV & 22.90 & 40.66 & 45.56 & 40.28 & 15.42 & 12.03 & 37.67 & \textbf{85.11} & 36.92 & 10.67 & 82.00 & 46.16 & 45.75 & 40.09 \\
+% & DapQ & \textbf{25.58} & \textbf{42.65} & \textbf{49.66} & \textbf{41.25} & 16.90 & 14.05 & \textbf{39.67} & 84.16 & \textbf{35.49} & \textbf{11.00} & 80.67 & 49.38 & \textbf{46.77} & \textbf{41.33} \\
+% % \midrule
+& FullKV & 36.87 & 53.67 & 57.67 & 44.73 & 33.39 & 23.69 & 71.67 & 91.79 & 42.07 & 11.98 & 86.67 & 70.64 & 59.26 & 52.60 \\
+& \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 256}} \\
+\multirow{12}{*}{\rotatebox{90}{Qwen3-8B}} & H2O & 27.80 & 44.92 & 51.37 & 40.50 & 22.38 & 18.26 & 46.33 & 90.04 & 38.98 & 12.33 & 86.67 & 66.11 & 53.93 & 46.12 \\
+& PyramidKV & 30.41 & 47.81 & 51.00 & 41.37 & 22.36 & 17.41 & 61.67 & 90.96 & 37.65 & 13.00 & 86.33 & 67.01 & 50.11 & 47.47 \\
+& SnapKV & \textbf{32.40} & 49.29 & 54.38 & 41.40 & 23.79 & 18.99 & \textbf{63.00} & 91.07 & 38.57 & \textbf{14.67} & 86.67 & \textbf{67.99} & 53.77 & 48.92 \\
+& DapQ & 32.14 & \textbf{50.78} & \textbf{54.79} & \textbf{44.47} & \textbf{24.16} & \textbf{19.01} & 62.67 & \textbf{91.15} & \textbf{39.61} & 14.17 & \textbf{86.67} & 67.20 & \textbf{53.83} & \textbf{49.28} \\
+& \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+& H2O & 26.60 & 41.37 & 48.10 & 39.85 & 20.83 & 17.27 & 41.33 & 90.21 & 38.16 & \textbf{11.72} & \textbf{86.67} & 65.22 & 52.77 & 44.22 \\
+& PyramidKV & 26.22 & 40.48 & 48.41 & 39.46 & 18.99 & 15.10 & 48.33 & 89.31 & 36.92 & 9.67 & 86.67 & 60.82 & 48.78 & 43.78 \\
+& SnapKV & \textbf{29.41} & 46.43 & 51.20 & 41.66 & 20.37 & 16.64 & 51.33 & \textbf{91.07} & 37.37 & 11.00 & 86.67 & 65.36 & 51.65 & 46.17 \\
+& DapQ & 29.10 & \textbf{47.15} & \textbf{53.84} & \textbf{43.00} & \textbf{21.11} & \textbf{17.27} & \textbf{54.00} & 90.45 & \textbf{38.50} & 11.67 & 86.00 & \textbf{66.29} & \textbf{52.03} & \textbf{46.95} \\
+& \multicolumn{15}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+& H2O & 25.55 & 38.94 & 46.66 & 39.27 & \textbf{18.55} & \textbf{15.23} & 39.00 & 88.13 & 35.98 & 9.67 & \textbf{86.67} & 59.48 & \textbf{48.95} & 42.47 \\
+& PyramidKV & 25.32 & 40.44 & 46.61 & 39.20 & 16.25 & 12.93 & \textbf{44.67} & 88.27 & 34.63 & 11.33 & 83.67 & 59.73 & 46.48 & 42.27 \\
+& SnapKV & 25.09 & 39.89 & 46.58 & 39.38 & 15.28 & 12.38 & 42.67 & 87.93 & 35.12 & 11.33 & 84.33 & 57.96 & 46.49 & 41.88 \\
+& DapQ & \textbf{25.78} & \textbf{43.17} & \textbf{49.84} & \textbf{41.28} & 17.16 & 13.95 & 43.00 & \textbf{88.97} & \textbf{36.00} & \textbf{12.67} & 83.00 & \textbf{60.31} & 46.90 & \textbf{43.23} \\
+\bottomrule
+\end{tabular}
+}
+\vspace{-9pt}
+\caption{Main Results on LongBench: performance comparison of different KV cache compression methods}
+\vspace{-12pt}
+\label{table:longbench}
+\end{table*}
+
+% \end{document}

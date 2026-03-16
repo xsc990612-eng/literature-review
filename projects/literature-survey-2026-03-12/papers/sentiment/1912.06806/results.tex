@@ -1,0 +1,181 @@
+
+The results for subtask A are shown in Tables \ref{tab:TaskATwitter} and \ref{tab:TaskASMS} for Twitter and for SMS messages, respectively;
+those for subtask B are shown in Table \ref{tab:TaskBTwitter} for Twitter and in Table \ref{tab:TaskBSMS} for SMS messages.
+%Moreover, Table \ref{tab:TaskATwitterFull} shows a detailed description of the characteristics of the systems that participated in subtask A, testing on Twitter data.
+Systems are ranked by their scores for the constrained runs;
+the ranking based on scores for unconstrained runs is shown as a subindex.
+
+%The most common features were $n$-grams, sentiment lexicons, POS tags, capitalized words, URLs, and emoticons.
+%Most systems performed normalization to clean up URLs and handle punctuation and @-mentions.
+%Common external resources and tools include Weka, Stanford CoreNLP, MPQA, SentiWordNet, WordNet, NLTK, and sentiment lexicons.
+
+For both subtasks, there were teams that only submitted results for the Twitter test set.
+Some teams submitted both a constrained and an unconstrained version (e.g., AVAYA and teragram).
+%and, overall, the unconstrained versions performed better.
+As one would expect,
+the results on the Twitter test set tended to be better than those on the SMS test set
+since the SMS data was out-of-domain with respect to the training (Twitter) data.
+
+Moreover, the results for subtask A were significantly better than those for subtask B, which shows that it is a much easier task,
+probably because there is less ambiguity at the phrase-level.
+%A summary of the results follows below.
+
+
+
+\begin{table}[t!]
+    \centering
+    \begin{small}
+    \begin{tabular}{l@{ }c@{ }c@{ }c@{ }c}
+    \bf Run & \bf Const- & \bf Unconst- & \bf Use & \bf Super-\\
+    & \bf rained & \bf rained & \bf Neut.? & \bf vised?\\
+    \hline
+    NRC-Canada & 69.02 &  & yes & yes\\
+    GU-MLT-LT & 65.27 &  & yes & yes\\
+    teragram & 64.86 & 64.86$_{(1)}$ & yes & yes\\
+    BOUNCE & 63.53 &  & yes & yes\\
+    KLUE & 63.06 &  & yes & yes\\
+    AMI\&ERIC & 62.55 & 61.17$_{(3)}$ & yes & yes/semi\\
+    FBM & 61.17 &  & yes & yes\\
+    AVAYA & 60.84 & 64.06$_{(2)}$ & yes & yes/semi\\
+    SAIL & 60.14 & 61.03$_{(4)}$ & yes & yes\\
+    UT-DB & 59.87 &  & yes & yes\\
+    FBK-irst & 59.76 &  & yes & yes\\
+    nlp.cs.aueb.gr & 58.91 &  & yes & yes\\
+    $^\diamond$UNITOR & 58.27 & 59.50$_{(5)}$ & yes & semi\\
+    LVIC-LIMSI & 57.14 &  & yes & yes\\
+    Umigon & 56.96 &  & yes & yes\\
+    NILC\_USP & 56.31 &  & yes & yes\\
+    DataMining & 55.52 &  & yes & semi\\
+    $^\diamond$ECNUCS & 55.05 & 58.42$_{(6)}$ & yes & yes\\
+    nlp.cs.aueb.gr & 54.73 &  & yes & yes\\
+    ASVUniOfLeipzig & 54.56 &  & yes & yes\\
+    SZTE-NLP & 54.33 & 53.10$_{(9)}$ & yes & yes\\
+    CodeX & 53.89 &  & yes & yes\\
+    Oasis & 53.84 &  & yes & yes\\
+    NTNU & 53.23 & 50.71$_{(10)}$ & yes & yes\\
+    UoM & 51.81 & 45.07$_{(15)}$ & yes & yes\\
+    SSA-UO & 50.17 &  & yes & no\\
+    SenselyticTeam & 50.10 &  & yes & yes\\
+    UMCC\_DLSI\_(SA) & 49.27 & 48.99$_{(12)}$ & yes & yes\\
+    bwbaugh & 48.83 & 54.37$_{(8)}$ & yes & yes/semi\\
+    senti.ue-en & 47.24 & 47.85$_{(13)}$ & yes & yes\\
+    SU-sentilab &  & 45.75$_{(14)}$ & yes & yes\\
+    OPTWIMA & 45.40 & 54.51$_{(7)}$ & yes & yes\\
+    REACTION & 45.01 &  & yes & yes\\
+    uottawa & 42.51 &  & yes & yes\\
+    IITB & 39.80 &  & yes & yes\\
+    IIRG & 34.44 &  & yes & yes\\
+    sinai & 16.28 & 49.26$_{(11)}$ & yes & yes\\
+       \hline
+    Majority Baseline & \multicolumn{2}{c}{29.19}  & N/A & N/A \\
+    \hline
+    \end{tabular}
+    \end{small}
+    \caption{\label{tab:TaskBTwitter}Results for subtask B on the Twitter dataset.
+             The $^\diamond$ indicates a system submitted as constrained but which used additional Tweets or additional sentiment-annotated text
+             to collect statistics that were then used as a feature.}
+  \end{table}
+
+
+\begin{table}[t!]
+    \centering
+    \begin{small}
+    \begin{tabular}{l@{ }c@{ }c@{ }c@{ }c}
+    \bf Run & \bf Const- & \bf Unconst- & \bf Use & \bf Super-\\
+    & \bf rained & \bf rained & \bf Neut.? & \bf vised?\\
+    \hline
+    NRC-Canada & 68.46 &  & yes & yes\\
+    GU-MLT-LT & 62.15 &  & yes & yes\\
+    KLUE & 62.03 &  & yes & yes\\
+    AVAYA & 60.00 & 59.47$_{(1)}$ & yes & yes/semi\\
+    teragram &  & 59.10$_{(2)}$ & yes & yes\\
+    NTNU & 57.97 & 54.55$_{(6)}$ & yes & yes\\
+    CodeX & 56.70 &  & yes & yes\\
+    FBK-irst & 54.87 &  & yes & yes\\
+    AMI\&ERIC & 53.63 & 52.62$_{(7)}$ & yes & yes/semi\\
+    $^\diamond$ECNUCS & 53.21 & 54.77$_{(5)}$ & yes & yes\\
+    UT-DB & 52.46 &  & yes & yes\\
+    SAIL & 51.84 & 51.98$_{(8)}$ & yes & yes\\
+    $^\diamond$UNITOR & 51.22 & 48.88$_{(10)}$ & yes & semi\\
+    SZTE-NLP & 51.08 & 55.46$_{(3)}$ & yes & yes\\
+    SenselyticTeam & 51.07 &  & yes & yes\\
+    NILC\_USP & 50.12 &  & yes & yes\\
+    REACTION & 50.11 &  & yes & yes\\
+    SU-sentilab &  & 49.57$_{(9)}$ & no & yes\\
+    nlp.cs.aueb.gr & 49.41 & 55.28$_{(4)}$ & yes & yes\\
+    LVIC-LIMSI & 49.17 &  & yes & yes\\
+    FBM & 47.40 &  & yes & yes\\
+    ASVUniOfLeipzig & 46.50 &  & yes & yes\\
+    senti.ue-en & 44.65 & 46.72$_{(12)}$ & yes & yes\\
+    SSA\_UO & 44.39 &  & yes & no\\
+    UMCC\_DLSI\_(SA) & 43.39 & 40.67$_{(14)}$ & yes & yes\\
+    UoM & 42.22 & 35.22$_{(15)}$ & yes & yes\\
+    OPTWIMA & 40.98 & 47.15$_{(11)}$ & yes & yes\\
+    uottawa & 40.51 &  & yes & yes\\
+    bwbaugh & 39.73 & 43.43$_{(13)}$ & yes & yes/semi\\
+    IIRG & 22.16 &  & yes & yes\\
+       \hline
+    Majority Baseline & \multicolumn{2}{c}{19.03}  & N/A & N/A \\
+    \hline
+    \end{tabular}
+    \end{small}
+    \caption{\label{tab:TaskBSMS}Results for subtask B on the SMS dataset.
+             The $^\diamond$ indicates a system submitted as constrained but which used additional Tweets or additional sentiment-annotated text
+             to collect statistics that were then used as a feature.}
+  \end{table}
+
+
+\subsection{Subtask A: Contextual Polarity}
+
+Table \ref{tab:TaskATwitter} shows that subtask A, Twitter,
+attracted 23 teams, who submitted 21 constrained and 7 unconstrained systems.
+Five teams submitted both a constrained and an unconstrained system,
+and two other teams submitted constrained systems that are on the boundary between being constrained and unconstrained.
+
+One system was semi-supervised, and the rest were supervised.
+The supervised systems used classifiers such as SVM (8 systems), Naive Bayes (7 systems), and Maximum Entropy (3 systems). Other approaches used include an ensemble of classifiers, manual rules, and a linear classifier. Two of the systems chose not to predict neutral as a possible classification label.
+
+%while the rest tried to predict all three labels: positive, negative, and neutral.
+
+The average F1-measure on the Twitter test set was 74.1\% for constrained systems and 60.5\% for unconstrained ones; this does not mean that using additional data does not help, it just shows that the best teams only participated with a constrained system.
+NRC-Canada had the best constrained system with an F1-measure of 88.9\%, and AVAYA had the best unconstrained one with F1=87.4\%.
+
+Table~\ref{tab:TaskASMS} shows the results for the SMS test set,
+where 20 teams submitted 19 constrained and 7 unconstrained systems
+(again, this included two teams that submitted boundary systems, marked accordingly).
+The average F-measure on this test set was 70.8\% for constrained systems and 65.7\% for unconstrained systems. The best constrained system was that of GU-MLT-LT with an F-measure of 88.4\%, and AVAYA had the best unconstrained system with an F1 of 85.8\%.
+
+\subsection{Subtask B: Message Polarity}
+
+Table \ref{tab:TaskBTwitter} shows that subtask B, Twitter,
+attracted 38 teams, who submitted 36 constrained and 15 unconstrained systems (and two boundary ones).
+
+The average F1-measure was 53.7\% for the constrained and 54.6\% for the unconstrained systems.
+
+These averages are much lower than those for subtask A,
+which indicates that subtask B is harder,
+probably because a message can contain parts expressing both positive and negative sentiment.
+
+Once again, NRC-Canada had the best constrained system with an F1-measure of 69\%, followed by teragram, which had the best unconstrained system with an F1-measure of 64.9\%.
+
+As Table \ref{tab:TaskBSMS} shows,
+the average F1-measure on the SMS test set was 50.2\% for constrained and 50.3\% for unconstrained systems.
+NRC-Canada had the best constrained system with an F1=68.5\%, and AVAYA had the best unconstrained one with F1-measure of 59.5\%.
+
+
+
+\subsection{Overall}
+
+Overall, the results achieved by the best teams were very strong, especially for the simpler subtask A:
+
+\begin{itemize}
+    \item F1=88.93, NRC-Canada on subtask A, Twitter;
+    \item F1=88.37, GU-MLT-LT on subtask A, SMS;
+    \item F1=69.02, NRC-Canada on subtask B, Twitter;
+    \item F1=68.46, NRC-Canada on subtask B, SMS.
+\end{itemize}
+
+We can see that the strongest team overall was that of NRC-Canada, which was ranked first on three of the four conditions;
+and it was second on subtask A, SMS.
+There were two other teams that were strong across both tasks and on both test sets: GU-MLT-LT and AVAYA.
+Three other teams, namely teragram, BOUNCE and KLUE, were ranked in the top-3 in at least one subtask and test set.

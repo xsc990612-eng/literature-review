@@ -1,0 +1,193 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2023
+\PassOptionsToPackage{numbers}{natbib}
+
+% ready for submission
+\usepackage[preprint]{neurips_2023}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+%     \usepackage[preprint]{neurips_2023}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2023}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2023}
+
+
+% \usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{footmisc}
+\usepackage{booktabs}
+\usepackage{hhline}
+\usepackage{multirow}
+\usepackage{arydshln}
+\usepackage{float}
+\usepackage{xltabular}
+\usepackage{lmodern}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{algpseudocode}
+\usepackage{longtable}
+\usepackage{framed}
+\usepackage{hyperref}
+\usepackage{enumitem}  
+\usepackage{adjustbox}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{placeins}
+
+
+\lstset{language=C,keywordstyle={\bfseries \color{blue}}}
+
+\tcbset{
+  aibox/.style={
+    width=\textwidth,
+    top=0pt, bottom=0pt, left=5pt, right=5pt,
+    colback=white,
+    colframe=black,
+    colbacktitle=black,
+    enhanced,
+    center,
+    attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
+    boxed title style={boxrule=0pt,colframe=white,},
+  }
+}
+\newtcolorbox{AIbox}[2][]{aibox,title=#2,#1}
+
+\usepackage[ruled,vlined]{algorithm2e}
+\newcommand{\squishlist}{
+   \begin{list}{$\bullet$}
+    { \setlength{\itemsep}{0pt}      \setlength{\parsep}{3pt}
+      \setlength{\topsep}{3pt}       \setlength{\partopsep}{0pt}
+      \setlength{\leftmargin}{1.5em} \setlength{\labelwidth}{1em}
+      \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishlisttwo}{
+   \begin{list}{$\bullet$}
+    { \setlength{\itemsep}{0pt}    \setlength{\parsep}{0pt}
+      \setlength{\topsep}{0pt}     \setlength{\partopsep}{0pt}
+      \setlength{\leftmargin}{2em} \setlength{\labelwidth}{1.5em}
+      \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishend}{
+    \end{list}  }
+
+\usepackage{blindtext}
+
+\newtcolorbox[list inside=mybox,auto counter,number within=section]{MyBox}{colbacktitle=yellow,coltitle=black,title={MyBox \thetcbcounter}}
+
+\newcommand{\sysname}{LoRA Land}
+
+\usepackage{tikz}
+
+\newcommand\crossmark[1][]{%
+  \tikz[scale=0.4,#1]{
+    \fill(0,0)--(0.1,0) .. controls (0.5,0.4) .. (1,0.7)--(0.9,0.7) ..  controls (0.5,0.5) ..(0,0.1) --cycle;
+    \fill(1,0.1)--(0.9,0.1) .. controls (0.5,0.3) .. (0,0.7)--(0.1,0.7) .. controls (0.5,0.4) ..(1,0.2) --cycle;
+  }%
+}
+
+\newcommand\checmark[1][]{%
+  \tikz[scale=0.4,#1]{\fill(0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}%
+}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+\newcommand{\noborderthanks}[1]{%  
+    \begingroup  
+    \hypersetup{pdfborder={0 0 0}}%  
+    \thanks{#1}%  
+    \endgroup  
+} 
+\newcommand{\noborderfootnotemarktwo}{%  
+    \begingroup  
+    \hypersetup{pdfborder={0 0 0}}%  
+    \footnotemark[2]
+    \endgroup  
+}
+
+\newcommand{\noborderfootnotemarkthree}{%  
+    \begingroup  
+    \hypersetup{pdfborder={0 0 0}}%  
+    \footnotemark[3]
+    \endgroup  
+}
+
+\title{%
+\raisebox{-0.3cm}{\includegraphics[width=1cm, height=1cm]{figures/roller-coaster.png}}\ {\sysname: 310 Fine-tuned LLMs that Rival GPT-4, A Technical Report}
+}
+
+\author{\textbf{Justin Zhao, Timothy Wang} \\
+\textbf{Wael Abid, Geoffrey Angus, Arnav Garg, Jeffery Kinnison, Alex Sherstinsky}, \\
+\textbf{Piero Molino, Travis Addair, Devvret Rishi} \\
+\AND Predibase\vspace{0em}}
+
+
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+
+Low Rank Adaptation (LoRA) has emerged as one of the most widely adopted methods for Parameter Efficient Fine-Tuning (PEFT) of Large Language Models (LLMs). LoRA reduces the number of trainable parameters and memory usage while achieving comparable performance to full fine-tuning. We aim to assess the viability of training and serving LLMs fine-tuned with LoRA in real-world applications. First, we measure the quality of LLMs fine-tuned with quantized low rank adapters across 10 base models and 31 tasks for a total of 310 models. We find that 4-bit LoRA fine-tuned models outperform base models by 34 points and GPT-4 by 10 points on average. Second, we investigate the most effective base models for fine-tuning and assess the correlative and predictive capacities of task complexity heuristics in forecasting the outcomes of fine-tuning. Finally, we evaluate the latency and concurrency capabilities of LoRAX, an open-source Multi-LoRA inference server that facilitates the deployment of multiple LoRA fine-tuned models on a single GPU using shared base model weights and dynamic adapter loading. LoRAX powers \href{https://predibase.com/lora-land}{LoRA Land}, a web application that hosts 25 LoRA fine-tuned Mistral-7B LLMs on a single NVIDIA A$100$ GPU with $80$GB memory. LoRA Land highlights the quality and cost-effectiveness of employing multiple specialized LLMs over a single, general-purpose LLM.
+
+
+\begin{figure}[ht]
+    \centering
+    \scalebox{0.9}{
+    \includegraphics[width=\textwidth]{figures/header_chart.pdf}
+    }
+    \caption{Average model performance for GPT-3.5, GPT-4, and 310 LLMs, before and after fine-tuning with LoRA, across 31 different tasks and 10 different base models. Zephyr-7b and Mistral-7b models exhibit the best performance after LoRA-based fine-tuning.}
+    \label{fig:orca2}
+\end{figure}
+
+
+\end{abstract}
+
+\input{1_introduction}
+\input{2_related_work}
+\input{3_methodology}
+\input{4_results}
+\input{5_discussion}
+\input{6_lorax_benchmarks}
+\input{7_limitations}
+\input{8_conclusion}
+\input{acknowledgements}
+
+\bibliographystyle{plainnat}
+{
+\small
+\bibliography{anthology}
+}
+\clearpage
+\appendix
+\input{appendix}
+\end{document}

@@ -1,0 +1,59 @@
+\begin{table}[t]
+\centering
+%\footnotesize
+\scriptsize
+\caption{\textbf{Evaluation of different methods on GSM8K and COQA.} The best result (excluding origin) in each column is highlighted in bold. Comp* refers to the theoretical time complexity for each method to select critical KV cache tokens, where $\mathcal{O}(1)$ denotes constant time complexity, and $T$ represents the theoretical computation time for a dense attention mechanism.}
+\label{tab:gsm_coqa}
+\begin{tabular}{l|l|cccccc}
+\toprule
+Model & Method & $\hat{\rho}$ & GSM8K $\uparrow$ & COQA $\uparrow$ & Comp* $\downarrow$ \\
+\midrule
+\multirow{12}{*}{\shortstack{LLaMA2\\-7b-chat}}
+& Original  & -  & 0.2297/0.2297 & 0.5997 & - \\
+& H2O \cite{zhang2023h2o}   & -        & 0.0986/0.0144 & 0.4952 & $\mathcal{O}(1)$ \\
+& Quest \cite{tang2406quest}  & -       & 0.0478/0.0462 & 0.5713 & 0.1250$T$ \\
+& DS \cite{yang2024post}  & -   & 0.1713/0.1706 & 0.5978 & 0.0625$T$ \\
+\cmidrule{2-6}
+& Hshare-1 \cite{wuhshare} & 0.281  & 0.1803/0.1703 & 0.5898 & 0.0180$T$ \\
+& Hshare-2 \cite{wuhshare} & 0.125   & 0.1524/0.1145 & 0.5672 & 0.0080$T$ \\
+\cmidrule{2-6}
+& \multirow{3}{*}{CIS (ours)}  & 0.164  & \textbf{0.1842}/\textbf{0.1827} & 0.6085 & 0.0104$T$ \\
+&  & 0.087   & 0.1804/0.1782 & 0.6072 & 0.0055$T$ \\
+&  & \textbf{0.062}   & 0.1759/0.1751 & 0.6068 & \textbf{0.0039}$T$ \\
+\cmidrule{2-6}
+& \multirow{3}{*}{CIS$^\ast$ (ours)}  & 0.161  & 0.1812/0.1804 & \textbf{0.6063} & 0.0103$T$ \\
+&  & 0.084   & 0.1789/0.1782 & 0.6063 & 0.0047$T$ \\
+&  & 0.063   & 0.1736/0.1729 & 0.6083 & 0.0040$T$ \\
+\midrule
+\multirow{10}{*}{\shortstack{LLaMA3\\-70b}} 
+& Original  & -   & 0.8067/0.8052 & 0.7085 & - \\
+& DS \cite{yang2024post}   & - & 0.7415/0.7392 & 0.7045 & 0.0625$T$ \\
+\cmidrule{2-6}
+& Hshare-1 \cite{wuhshare} & 0.281  & 0.7512/0.7437 & 0.7010 & 0.0180$T$ \\
+& Hshare-2 \cite{wuhshare} & 0.125   & 0.7415/0.7346 & 0.6960 & 0.0080$T$ \\
+\cmidrule{2-6}
+& \multirow{3}{*}{CIS (ours)}  & 0.183  & \textbf{0.7613/0.7592} & 0.7045 & 0.0117$T$ \\
+&  & 0.082   & 0.7553/0.7526 & 0.7021 & 0.0052$T$ \\
+&  & 0.064   & 0.7528/0.7511 & 0.7003 & 0.0041$T$ \\
+\cmidrule{2-6}
+& \multirow{3}{*}{CIS$^\ast$ (ours)}  & 0.179  & 0.7584/0.7556 & \textbf{0.7068} & 0.0114$T$ \\
+&  & 0.079   & 0.7542/0.7527 & 0.7003 & 0.0050$T$ \\
+&  & \textbf{0.061}   & 0.7536/0.7504 & 0.7001 & \textbf{0.0038}$T$ \\
+\midrule
+\multirow{10}{*}{\shortstack{Mistral\\-7b}} 
+& Original & -   & 0.3821/0.3813 & 0.6758 & - \\
+& DS \cite{yang2024post} & -  & 0.3262/0.3227 & 0.6693 & 0.0625$T$ \\
+\cmidrule{2-6}
+& Hshare-1 \cite{wuhshare} & 0.281   & 0.3199/0.3154 & 0.6560 & 0.0180$T$ \\
+& Hshare-2 \cite{wuhshare} & 0.125   & 0.2818/0.2684 & 0.6387 & 0.0080$T$ \\
+\cmidrule{2-6}
+& \multirow{3}{*}{CIS (ours)} & 0.194  & \textbf{0.3325/0.3302} & 0.6703 & 0.0124$T$ \\
+&  & 0.088   & 0.3281/0.3275 & 0.6684 & 0.0056$T$ \\
+&  & \textbf{0.065}   & 0.3233/0.3201 & 0.6710 & \textbf{0.0041}$T$ \\
+\cmidrule{2-6}
+& \multirow{3}{*}{CIS$^\ast$ (ours)} & 0.189  & 0.3292/0.3257 & 0.6691 & 0.0121$T$ \\
+&  & 0.091   & 0.3216/0.3204 & 0.6714 & 0.0058$T$ \\
+&  & 0.068   & 0.3204/0.3175 & \textbf{0.6754} & 0.0043$T$ \\
+\bottomrule
+\end{tabular}
+\end{table}

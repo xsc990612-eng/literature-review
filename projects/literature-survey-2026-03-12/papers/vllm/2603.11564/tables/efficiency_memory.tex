@@ -1,0 +1,30 @@
+\begin{table}[t]
+    \centering
+    % 调整字体大小
+    \small 
+    % 极度压缩列间距，以留出更多空间给文字
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{0.85}
+    % 使用 resizebox 确保表格宽度严格等于列宽
+    \resizebox{\columnwidth}{!}{
+        \begin{tabular}{lcccccc}
+            \toprule
+            \multirow{2}{*}{\textbf{Method}} & \multicolumn{6}{c}{\textbf{Batch Size}} \\
+            \cmidrule(lr){2-7}
+            & 1 & 10 & 20 & 30 & 40 & 50 \\
+            \midrule
+            FullKV     & 16.87 & 33.74 & 52.49 & 71.24 & OOM   & OOM   \\
+            LaCache    & 16.87 & 33.74 & 52.49 & 71.24 & OOM   & OOM   \\
+            SLM        & 16.01 & 25.17 & 35.36 & 45.55 & 55.73 & 65.92 \\
+            H2O        & 16.01 & 25.17 & 35.36 & 45.55 & 55.73 & 65.92 \\
+            PyramidKV  & 16.01 & 25.23 & 35.47 & 45.72 & 55.96 & 66.20 \\
+            SnapKV     & 16.01 & 25.17 & 35.36 & 45.55 & 55.73 & 65.92 \\
+            DapQ       & 16.01 & 25.21 & 35.43 & 45.65 & 55.87 & 66.02 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \vspace{-10pt}
+    \caption{Comparison of memory usage (GB) with different batch sizes.}
+    \vspace{-12pt}
+    \label{tab:memory_comparison}
+\end{table}

@@ -1,0 +1,72 @@
+
+% \begin{table}[htbp]
+% \centering
+% \caption{Query Similarity Comparison under Different Conditions}
+% \label{tab:query_similarity}
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{c >{\raggedright\arraybackslash}p{9cm} >{\raggedright\arraybackslash}p{6cm} c c}
+% \toprule
+% \textbf{Experiment} & \textbf{Content Similarity} & \textbf{Positional Similarity} & \textbf{Post ROPE} & \textbf{Re ROPE} \\
+% \midrule
+% SC \& SP 
+% & Same\textcolor{gray}{("The report discusses the Federal……Airport Improvement Program (AIP). The program")} 
+% & Same\textcolor{gray}{(4424,4425,4426……4453,4454,4455)} 
+% & \textcolor{green}{1.0000} & \textcolor{green}{1.0000} \\
+% \addlinespace
+% DC \& SP 
+% & Different\textcolor{gray}{("Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I")} 
+% & Same\textcolor{gray}{(4424,4425,4426……4453,4454,4455)} 
+% & \textcolor{green}{0.7238} & \textcolor{green}{0.7238} \\
+% \addlinespace
+% SC \& DP 
+% & Same\textcolor{gray}{("The report discusses the Federal……Airport Improvement Program (AIP). The program")} 
+% & Different\textcolor{gray}{(0,1,2……29,30,31)} 
+% & \textcolor{red}{0.3267} & \textcolor{green}{0.7913} \\
+% \addlinespace
+% DC \& DP 
+% & Different\textcolor{gray}{("Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I")} 
+% & Different\textcolor{gray}{(0,1,2……29,30,31)} 
+% & \textcolor{red}{0.3522} & \textcolor{green}{0.7434} \\
+% \bottomrule
+% \end{tabular}%
+% }
+% \end{table}
+
+\begin{table*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{6.5cm} c c}
+\toprule
+\textbf{Experiment} & \textbf{Content Similarity} & \textbf{Positional Similarity} & \textbf{Post ROPE} & \textbf{Pre ROPE} \\
+\midrule
+% 第一行：其他列跨2行合并
+\multirow{2}{*}{SC \& SP} 
+& Same\textcolor{gray}{(\enquote{The report discusses the Federal……Airport Improvement Program (AIP). The program})} 
+& \multirow{2}{*}{Same\textcolor{gray}{(4424,4425,4426……4453,4454,4455)}} 
+& \multirow{2}{*}{\textcolor{green}{1.0000}} & \multirow{2}{*}{\textcolor{green}{1.0000}} \\
+\addlinespace
+% 第二行：其他列跨2行合并
+\multirow{2}{*}{DC \& SP} 
+& Different\textcolor{gray}{(\enquote{Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I})} 
+& \multirow{2}{*}{Same\textcolor{gray}{(4424,4425,4426……4453,4454,4455)}} 
+& \multirow{2}{*}{\textcolor{green}{0.7238}} & \multirow{2}{*}{\textcolor{green}{0.7238}} \\
+\addlinespace
+% 第三行：其他列跨2行合并
+\multirow{2}{*}{SC \& DP} 
+& Same\textcolor{gray}{(\enquote{The report discusses the Federal……Airport Improvement Program (AIP). The program})} 
+& \multirow{2}{*}{Different\textcolor{gray}{(0,1,2……29,30,31)}} 
+& \multirow{2}{*}{\textcolor{red}{0.3522}} & \multirow{2}{*}{\textcolor{green}{0.7913}} \\
+\addlinespace
+% 第四行：其他列跨2行合并
+\multirow{2}{*}{DC \& DP} 
+& Different\textcolor{gray}{(\enquote{Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I})} 
+& \multirow{2}{*}{Different\textcolor{gray}{(0,1,2……29,30,31)}} 
+& \multirow{2}{*}{\textcolor{red}{0.3267}} & \multirow{2}{*}{\textcolor{green}{0.7434}} \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{-8pt}
+\caption{Query similarity comparison under different content and position conditions. Post ROPE denotes similarity after ROPE has been applied to query vectors. Pre ROPE indicates similarity measured before ROPE application.}
+\label{table:query_similarity}
+\vspace{-8pt}
+\end{table*}

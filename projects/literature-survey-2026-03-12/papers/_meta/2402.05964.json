@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2402.05964",
+  "title": "A Survey on Transformer Compression",
+  "authors": ["Yehui Tang", "Yunhe Wang", "Jianyuan Guo", "Zhijun Tu", "Kai Han", "Hailin Hu", "Dacheng Tao"],
+  "abstract": "Transformer plays a vital role in the realms of natural language processing (NLP) and computer vision. Model compression methods reduce the memory and computational cost of Transformer, which is a necessary step to deploy large models on resource-limited devices.",
+  "published": "2024-02-05",
+  "categories": ["cs.LG", "cs.CL", "cs.CV"],
+  "score": 4,
+  "source_term": "knowledge distillation language model compression",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "distillation"
+}

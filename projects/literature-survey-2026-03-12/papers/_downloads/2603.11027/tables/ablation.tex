@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{\textbf{Structural constraints drive the majority of evaluator agreement.} Ablation of inter-evaluator agreement across MERG variants. When evaluators generate rubrics independently (Original), agreement is near-random. Standardizing dimensions (5-Dim) accounts for $\sim$62\% of the total agreement.}
+\label{tab:ablation}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Method & C/G & C/GPT & G/GPT & Avg & $\Delta r$ \\
+\midrule
+\multicolumn{6}{l}{\textit{DeepSeek-R1}} \\
+\quad Original 4-Stage & 0.155 & 0.237 & 0.281 & 0.224 & {N/A} \\
+\quad 5-Dim Per-Dim & 0.526 & 0.514 & 0.588 & 0.543 & $+$0.319 \\
+\quad Shared Stages & {N/A} & {N/A} & 0.606 & 0.606 & $+$0.063 \\
+\quad Universal ($t{=}0.0$) & 0.678 & 0.668 & 0.420 & 0.589 & $-$0.017 \\
+\midrule
+\multicolumn{6}{l}{\textit{Qwen3-235B}} \\
+\quad Original 4-Stage & 0.308 & 0.267 & 0.189 & 0.254 & {N/A} \\
+\quad 5-Dim Per-Dim & 0.745 & 0.682 & 0.680 & 0.702 & $+$0.448 \\
+\quad Shared Stages & {N/A} & {N/A} & 0.649 & 0.649 & $-$0.053 \\
+\quad Universal ($t{=}0.0$) & 0.747 & 0.719 & 0.308 & 0.591 & $-$0.058 \\
+\bottomrule
+\end{tabular}
+\end{table}

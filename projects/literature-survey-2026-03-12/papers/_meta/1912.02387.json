@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "1912.02387",
+  "title": "SemEval-2015 Task 10: Sentiment Analysis in Twitter",
+  "authors": ["Sara Rosenthal", "Saif M Mohammad", "Preslav Nakov", "Alan Ritter", "Svetlana Kiritchenko", "Veselin Stoyanov"],
+  "abstract": "We describe the 2015 iteration of the SemEval shared task on Sentiment Analysis in Twitter. This was the most popular sentiment analysis shared task to date with more than 40 teams participating in each of the last three years.",
+  "score": 5,
+  "source_term": "sentiment analysis Twitter SemEval",
+  "direction": "sentiment-analysis",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2502.08141",
+  "title": "LowRA: Accurate and Efficient LoRA Fine-Tuning of LLMs under 2 Bits",
+  "authors": ["Zikai Zhou", "Qizheng Zhang", "Hermann Kumbong", "Kunle Olukotun"],
+  "abstract": "Fine-tuning large language models (LLMs) is increasingly costly as models scale to hundreds of billions of parameters. We introduce LowRA, the first framework to enable LoRA fine-tuning below 2 bits per parameter.",
+  "published": "2025-02-12",
+  "categories": ["cs.LG", "cs.AR", "cs.CL"],
+  "score": 5,
+  "source_term": "QLoRA 4-bit quantization fine-tuning",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "qlora"
+}

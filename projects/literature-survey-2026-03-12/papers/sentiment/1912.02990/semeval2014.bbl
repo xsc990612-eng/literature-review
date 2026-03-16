@@ -1,0 +1,155 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{Baccianella \bgroup et al.\egroup }2010]{swn}
+Stefano Baccianella, Andrea Esuli, and Fabrizio Sebastiani.
+\newblock 2010.
+\newblock {SentiWordNet} 3.0: An enhanced lexical resource for sentiment
+  analysis and opinion mining.
+\newblock In {\em Proceedings of the Seventh International Conference on
+  Language Resources and Evaluation}, LREC~'10, Valletta, Malta.
+
+\bibitem[\protect\citename{Barbosa and Feng}2010]{Barbosa10}
+Luciano Barbosa and Junlan Feng.
+\newblock 2010.
+\newblock Robust sentiment detection on {T}witter from biased and noisy data.
+\newblock In {\em Proceedings of the 23rd International Conference on
+  Computational Linguistics: Posters}, COLING '10, pages 36--44, Beijing,
+  China.
+
+\bibitem[\protect\citename{Bifet \bgroup et al.\egroup }2011]{Bifet11}
+Albert Bifet, Geoffrey Holmes, Bernhard Pfahringer, and Ricard Gavald{\`a}.
+\newblock 2011.
+\newblock Detecting sentiment change in {T}witter streaming data.
+\newblock {\em Journal of Machine Learning Research, Proceedings Track},
+  17:5--11.
+
+\bibitem[\protect\citename{Chen and Kan}2013]{SMScorpus}
+Tao Chen and Min-Yen Kan.
+\newblock 2013.
+\newblock Creating a live, public short message service corpus: the {NUS SMS}
+  corpus.
+\newblock {\em Language Resources and Evaluation}, 47(2):299--335.
+
+\bibitem[\protect\citename{Davidov \bgroup et al.\egroup }2010]{Davidov10}
+Dmitry Davidov, Oren Tsur, and Ari Rappoport.
+\newblock 2010.
+\newblock Semi-supervised recognition of sarcasm in {T}witter and {A}mazon.
+\newblock In {\em Proceedings of the Fourteenth Conference on Computational
+  Natural Language Learning}, CoNLL '10, pages 107--116, Uppsala, Sweden.
+
+\bibitem[\protect\citename{Gimpel \bgroup et al.\egroup }2011]{gimpel2011}
+Kevin Gimpel, Nathan Schneider, Brendan O'Connor, Dipanjan Das, Daniel Mills,
+  Jacob Eisenstein, Michael Heilman, Dani Yogatama, Jeffrey Flanigan, and
+  Noah~A. Smith.
+\newblock 2011.
+\newblock Part-of-speech tagging for {T}witter: Annotation, features, and
+  experiments.
+\newblock In {\em Proceedings of the 49th Annual Meeting of the Association for
+  Computational Linguistics: Human Language Technologies}, ACL-HLT '11, pages
+  42--47, Portland, Oregon, USA.
+
+\bibitem[\protect\citename{Gonz\'alez-Ib\'a\~nez \bgroup et al.\egroup
+  }2011]{conf/acl/Gonzalez-IbanezMW11}
+Roberto Gonz\'alez-Ib\'a\~nez, Smaranda Muresan, and Nina Wacholder.
+\newblock 2011.
+\newblock Identifying sarcasm in {T}witter: a closer look.
+\newblock In {\em Proceedings of the 49th Annual Meeting of the Association for
+  Computational Linguistics: Human Language Technologies - Short Papers},
+  ACL-HLT '11, pages 581--586, Portland, Oregon, USA.
+
+\bibitem[\protect\citename{Jansen \bgroup et al.\egroup }2009]{Jansen09}
+Bernard Jansen, Mimi Zhang, Kate Sobel, and Abdur Chowdury.
+\newblock 2009.
+\newblock Twitter power: Tweets as electronic word of mouth.
+\newblock {\em J. Am. Soc. Inf. Sci. Technol.}, 60(11):2169--2188.
+
+\bibitem[\protect\citename{Kouloumpis \bgroup et al.\egroup
+  }2011]{Kouloumpis11}
+Efthymios Kouloumpis, Theresa Wilson, and Johanna Moore.
+\newblock 2011.
+\newblock Twitter sentiment analysis: The good the bad and the {OMG}!
+\newblock In {\em Proceedings of the Fifth International Conference on Weblogs
+  and Social Media}, ICWSM '11, Barcelona, Catalonia, Spain.
+
+\bibitem[\protect\citename{Liebrecht \bgroup et al.\egroup
+  }2013]{liebrecht-kunneman-vandenbosch:2013:WASSA}
+Christine Liebrecht, Florian Kunneman, and Antal Van~den Bosch.
+\newblock 2013.
+\newblock The perfect solution for detecting sarcasm in tweets \#not.
+\newblock In {\em Proceedings of the 4th Workshop on Computational Approaches
+  to Subjectivity, Sentiment and Social Media Analysis}, pages 29--37, Atlanta,
+  Georgia, USA.
+
+\bibitem[\protect\citename{Mohammad \bgroup et al.\egroup
+  }2013]{MohammadKZ2013}
+Saif Mohammad, Svetlana Kiritchenko, and Xiaodan Zhu.
+\newblock 2013.
+\newblock {NRC-Canada}: Building the state-of-the-art in sentiment analysis of
+  tweets.
+\newblock In {\em Proceedings of the Seventh international workshop on Semantic
+  Evaluation Exercises}, SemEval-2013, pages 321--327, Atlanta, Georgia, USA.
+
+\bibitem[\protect\citename{Nakov \bgroup et al.\egroup }2013]{semeval2013}
+Preslav Nakov, Sara Rosenthal, Zornitsa Kozareva, Veselin Stoyanov, Alan
+  Ritter, and Theresa Wilson.
+\newblock 2013.
+\newblock {SemEval}-2013 task 2: Sentiment analysis in {T}witter.
+\newblock In {\em Second Joint Conference on Lexical and Computational
+  Semantics (*SEM), Volume 2: Proceedings of the Seventh International Workshop
+  on Semantic Evaluation}, SemEval '13, pages 312--320, Atlanta, Georgia, USA.
+
+\bibitem[\protect\citename{O'Connor \bgroup et al.\egroup }2010]{oconnor10}
+Brendan O'Connor, Ramnath Balasubramanyan, Bryan Routledge, and Noah Smith.
+\newblock 2010.
+\newblock From tweets to polls: Linking text sentiment to public opinion time
+  series.
+\newblock In {\em Proceedings of the Fourth International Conference on Weblogs
+  and Social Media}, ICWSM~'10, Washington, DC, USA.
+
+\bibitem[\protect\citename{Pak and Paroubek}2010]{Pak10}
+Alexander Pak and Patrick Paroubek.
+\newblock 2010.
+\newblock Twitter based system: Using {T}witter for disambiguating sentiment
+  ambiguous adjectives.
+\newblock In {\em Proceedings of the 5th International Workshop on Semantic
+  Evaluation}, SemEval '10, pages 436--439, Uppsala, Sweden.
+
+\bibitem[\protect\citename{Pang \bgroup et al.\egroup }2002]{Pang:2002:TUS}
+Bo~Pang, Lillian Lee, and Shivakumar Vaithyanathan.
+\newblock 2002.
+\newblock Thumbs up?: Sentiment classification using machine learning
+  techniques.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing - Volume 10}, EMNLP '02, pages 79--86.
+
+\bibitem[\protect\citename{Pontiki \bgroup et al.\egroup
+  }2014]{Semeval2014task4}
+Maria Pontiki, Harris Papageorgiou, Dimitrios Galanis, Ion Androutsopoulos,
+  John Pavlopoulos, and Suresh Manandhar.
+\newblock 2014.
+\newblock {SemEval}-2014 task 4: Aspect based sentiment analysis.
+\newblock In {\em Proceedings of the 8th International Workshop on Semantic
+  Evaluation}, SemEval '14, Dublin, Ireland.
+
+\bibitem[\protect\citename{Ritter \bgroup et al.\egroup }2011]{ner}
+Alan Ritter, Sam Clark, Mausam, and Oren Etzioni.
+\newblock 2011.
+\newblock Named entity recognition in tweets: An experimental study.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, EMNLP '11, pages 1524--1534, Edinburgh, Scotland, UK.
+
+\bibitem[\protect\citename{Tumasjan \bgroup et al.\egroup }2010]{Tumasjan10}
+Andranik Tumasjan, Timm Sprenger, Philipp Sandner, and Isabell Welpe.
+\newblock 2010.
+\newblock Predicting elections with {T}witter: What 140 characters reveal about
+  political sentiment.
+\newblock In {\em Proceedings of the Fourth International Conference on Weblogs
+  and Social Media}, ICWSM~'10, Washington, DC, USA.
+
+\bibitem[\protect\citename{Wiebe \bgroup et al.\egroup }2005]{Wiebe05}
+Janyce Wiebe, Theresa Wilson, and Claire Cardie.
+\newblock 2005.
+\newblock Annotating expressions of opinions and emotions in language.
+\newblock {\em Language Resources and Evaluation}, 39(2-3):165--210.
+
+\end{thebibliography}

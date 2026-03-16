@@ -1,0 +1,30 @@
+\section{Preliminary}
+\label{sec:background}
+
+\subsection{DeepSeek Sparse Attention}
+\label{sec:bg-dsa}
+
+DeepSeek Sparse Attention~(DSA)~\citep{deepseekv32} decomposes each attention layer into two stages: \emph{selection} and \emph{computation}.
+A lightweight \emph{lightning indexer} first scores all preceding tokens against the current query using a multi-head ReLU-gated dot product, then selects the top-$k$ highest-scoring positions.
+The main attention is computed only over this sparse subset, reducing per-layer core attention from~$O(L^2)$ to~$O(Lk)$ with~$k{=}2048 \ll L$, where~$L$ is the sequence length.
+The indexer is designed for efficiency: it uses few heads, low-rank projections, and FP8~arithmetic, making it an order of magnitude cheaper per-FLOP than the main Multi-head Latent Attention~(MLA)~\citep{deepseekv2}.
+
+DSA is instantiated under MLA and introduced through two-staged continue pre-training.
+First, a short \emph{dense warm-up} trains only the indexer via KL-divergence distillation against the aggregated full attention distribution at each layer, while all other parameters are frozen.
+Then, a longer \emph{sparse training} phase activates top-$k$ selection and jointly optimizes the entire model, with the indexer receiving distillation gradients on a detached computational graph.
+
+Despite these efficiency gains, the indexer itself still operates at~$O(L^2)$: at every layer, it must independently score all preceding tokens to determine its own top-$k$ set.
+Across a model with~$N$ layers, the total indexer cost is~$O(NL^2)$, and at long context lengths this becomes a significant fraction of the total attention budget.
+A natural question is whether all~$N$ per-layer indexer computations are truly necessary, and whether the redundancy across layers can be exploited.
+
+\subsection{Cross-Layer Stability of Token Selection}
+\label{sec:bg-stability}
+
+The answer comes from a broader empirical finding: the set of important tokens is remarkably stable across consecutive transformer layers.
+Both \citet{kascade} and \citet{hysparse} observe that adjacent layers share the vast majority of their top-$k$ attention mass, and exploit this by designating a few \emph{anchor layers} that compute full attention while letting intermediate layers reuse the anchor's top-$k$ indices.
+
+Crucially, both approaches depend on \emph{full attention} as the oracle for identifying important tokens.
+In DSA, full attention has been eliminated entirely---replaced by the lightweight indexer.
+This raises a question that, to our knowledge, has not been addressed: \emph{does the indexer's output also exhibit cross-layer stability?}
+If so, we can apply the same sharing principle to eliminate redundant indexer computations without requiring any full attention oracle at all.
+Furthermore, what is the maximum reuse ratio achievable before quality degrades, and can we adapt the model to close the performance gap introduced by aggressive index reuse? We present two novel complementary methods to achieve this in the following section.

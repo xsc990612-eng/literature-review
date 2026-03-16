@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "2603.11021",
+  "title": "Leech Lattice Vector Quantization for Efficient LLM Compression",
+  "authors": ["Tycho F. A. van der Ouderaa", "Mart van Baalen", "Paul Whatmough", "Markus Nagel"],
+  "abstract": "Scalar quantization of large language models (LLMs) is fundamentally limited by information-theoretic bounds. While vector quantization (VQ) overcomes these limits by encoding blocks of parameters jointly, practical implementations must avoid the need for expensive lookup mechanisms or other explicit decoding steps. We present Leech Lattice Vector Quantization (LLVQ), a method for quantizing LLMs using the 24-dimensional Leech lattice. The Leech lattice offers a unique combination of properties that enable 2-bit quantization with high accuracy: it is the densest sphere packing in 24 dimensions, has a simple decoding algorithm without explicit storage of the codebook, and its automorphism group enables fast nearest-neighbor encoding via a novel recursive projection algorithm. We evaluate LLVQ on language modeling tasks and show that it outperforms scalar quantization methods at 2-bit precision, achieving near-fp16 performance on Llama-2-7B.",
+  "score": 4,
+  "source_term": "QLoRA efficient fine-tuning quantization LLM",
+  "relevance": "LLM quantization, efficient inference, alternative to scalar quantization",
+  "downloaded_at": "2026-03-12T13:07:00Z"
+}

@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "2004.08116",
+  "title": "Triplet Loss for Knowledge Distillation",
+  "authors": ["Hideki Oki", "Motoshi Abe", "Junichi Miyao", "Takio Kurita"],
+  "abstract": "In recent years, deep learning has spread rapidly, and deeper, larger models have been proposed. However, the calculation cost becomes enormous as the size of the models becomes larger. Various techniques for compressing the size of the models have been proposed to improve performance while reducing calculation cost.",
+  "score": 4,
+  "source_term": "knowledge distillation Hinton neural networks",
+  "direction": "knowledge-distillation",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

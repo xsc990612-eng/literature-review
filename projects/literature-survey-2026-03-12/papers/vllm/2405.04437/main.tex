@@ -1,0 +1,198 @@
+% \documentclass[sigconf,screen]{acmart}
+
+\documentclass[sigplan,screen]{acmart}
+% \settopmatter{printfolios=true}
+\usepackage[]{hyperref}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{ifthen}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{cleveref}
+\usepackage{xparse}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{arydshln}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{fancyvrb}
+\usepackage{spverbatim}
+\usepackage{verbatim}
+
+\input{macros}
+\algrenewcommand\algorithmiccomment[1]{\hfill// \textnormal{#1}}
+
+\makeatletter
+\renewcommand{\sectionautorefname}{\S\@gobble}
+\renewcommand{\subsectionautorefname}{\S\@gobble}
+\renewcommand{\subsubsectionautorefname}{\S\@gobble}
+\makeatother
+
+\usepackage{ifthen}
+\newboolean{publicversion}
+\setboolean{publicversion}{true}
+%\setboolean{publicversion}{false}
+
+
+\ifthenelse{\boolean{publicversion}}{
+	\newcommand{\grumbler}[3]{}
+        \newcommand{\jm}[1]{}
+        \newcommand{\ap}[1]{}
+        \newcommand{\rp}[1]{}
+}
+{
+\newcommand{\grumbler}[3]{\xspace\textcolor{#3}{\bf #1: #2}}
+\newcommand{\nt}[1]{\textcolor{blue}{#1}}
+\newcommand{\jm}[1]{\grumbler{Jayashree}{#1}{magenta}}
+\newcommand{\ap}[1]{\grumbler{Ashish}{#1}{violet}}
+\newcommand{\rp}[1]{\grumbler{Ramya}{#1}{blue}}
+\newcommand{\todo}[1]{\grumbler{}{#1}{red}}
+}
+
+
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+
+\copyrightyear{2025}
+\acmYear{2025}
+%% \setcopyright{cc}
+%% \setcctype{CC-BY}
+\setcopyright{rightsretained}
+\acmConference[ASPLOS '25]{Proceedings of the 30th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 1}{March 30--April 3, 2025}{Rotterdam, Netherlands}
+%% not the 29th
+\acmBooktitle{Proceedings of the 30th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 1 (ASPLOS '25), March 30--April 3, 2025, Rotterdam, Netherlands}
+\acmDOI{10.1145/3669940.3707256}
+\acmISBN{979-8-4007-0698-1/25/03}
+
+%%
+%% AJ: added this after email from Alex
+\makeatletter
+
+%\gdef\@copyrightpermission{
+%  \begin{minipage}{0.3\columnwidth}
+%   \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[width=0.90\textwidth]{figures/4ACM-CC-by-%88x31.eps}}
+%  \end{minipage}\hfill
+%  \begin{minipage}{0.7\columnwidth}
+%   \href{https://creativecommons.org/licenses/by/4.0/}{This work is licensed under a Creative Commons Attribution International 4.0 License.}
+  %\end{minipage}
+  %\vspace{5pt}
+%}
+
+\gdef\@copyrightpermission{
+  \begin{minipage}{0.95\columnwidth}
+   \href{https://creativecommons.org/licenses/by/4.0/}{This work is licensed under a Creative Commons Attribution International 4.0 License.}
+  \end{minipage}
+  \vspace{12pt}
+}
+
+
+
+
+\makeatother
+\settopmatter{printacmref=true}
+\begin{document}
+
+
+\title[vAttention: Dynamic Memory Management for Serving LLMs]{\sysname: Dynamic Memory Management for \\ Serving LLMs without PagedAttention}
+
+
+\author{Ramya Prabhu}
+\affiliation{%
+  \institution{Microsoft Research}
+  \city{Bengaluru}
+  \country{India}
+}
+%\email{t-ramyaprabhu@microsoft.com}
+
+\author{Ajay Nayak}
+\authornote{Contributed to this work as an intern at Microsoft Research India.}
+\affiliation{%
+  \institution{Indian Institute of Science}
+  \city{Bengaluru}
+  \country{India}
+}
+%\email{ajaynayak@iisc.ac.in}
+
+\author{Jayashree Mohan}
+\affiliation{%
+  \institution{Microsoft Research}
+  \city{Bengaluru}
+  \country{India}
+}
+%\email{jamohan@microsoft.com}
+
+\author{Ramchandran Ramjee}
+\affiliation{%
+  \institution{Microsoft Research}
+  \city{Bengaluru}
+  \country{India}
+}
+%\email{ramjeeu@microsoft.com}
+
+\author{Ashish Panwar}
+\affiliation{%
+  \institution{Microsoft Research}
+  \city{Bengaluru}
+  \country{India}
+}
+%\email{ashishpanwar@microsoft.com}
+
+
+\renewcommand{\shortauthors}{Ramya Prabhu, Ajay Nayak, Jayashree Mohan, Ramchandran Ramjee, \& Ashish Panwar}
+
+
+\input{0-abstract}
+\input{ccsxml}
+
+
+\keywords{Large language models; KV cache; fragmentation; memory management}
+
+
+
+\maketitle
+\input{1-introduction}
+\input{2-background}
+\input{3-motivation}
+\input{4-analysis}
+\input{5-design}
+\input{6-optimizations}
+\input{7-evaluation}
+\input{8-Discussions}
+\input{9-relatedwork}
+\input{10-conclusion}
+
+
+
+\begin{acks}
+We thank our shepherd Sam Ainsworth, along with the anonymous ASPLOS reviewers, for their valuable feedback. We thank NVIDIA for useful discussions on CUDA VMM APIs and for sharing their experiences with \sysname. We also thank members of the open-source community (GitHub user names izhuhaoran and tongping) for trying to upstream the \sysname approach to \vllm~\cite{vattn-vllm-1,vattn-vllm-2}, and Zihao Ye for clarifying the role of register spilling in the runtime overhead of \pa.  Ajay Nayak is supported by the Prime Minister’s Fellowship Scheme for Doctoral Research, co-sponsored by the Confederation of Indian Industry, the Government of India, and Microsoft Research India.
+\end{acks}
+
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+%\clearpage
+\bibliographystyle{ACM-Reference-Format}
+\balance
+\bibliography{main}
+
+
+%%
+%% If your work has an appendix, this is the place to put it.
+%% AJ: add some appendix
+\clearpage
+\input{11-artifact}
+
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-sigconf.tex'.

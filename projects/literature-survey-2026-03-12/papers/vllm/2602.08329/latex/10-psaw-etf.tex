@@ -1,0 +1,184 @@
+\subsection{Exponential Recency Beyond Sink}
+\label{sec:exp-decay}
+We adopt RoPE positional embeddings~\cite{su2024roformer} and analyze their interaction with self-attention~\cite{vaswani2017attention}. Excluding sink tokens, the multi-frequency rotations in RoPE cause phase dispersion with distance: representations of far-apart tokens become increasingly orthogonal in the rotated space, sharply reducing similarity (a \emph{long-term decay} effect). Softmax attention amplifies this decay and translate it into exponentially smaller attention weights. Empirically, attention scores decrease roughly linearly or sublinearly with distance to the current token, while attention probabilities decay exponentially or faster, consistent with prior measurements~\cite{zhang2023h2o,xiao2023streamingllm}. Thus, we assume there exist layer-dependent constants $\lambda_\ell>0$ and a factor
+$\kappa_\ell\in(0,1]$ such that for all $i>C_{\text{sink}}$,
+\begin{equation}
+\label{eq:exp-decay}
+A^{(\ell)}_i(\bq^{(\ell)}_t)
+\ \le\
+\kappa_\ell\,(1-\rho_\ell)\,\rho_\ell^{\,t-i},
+\quad \rho_\ell \stackrel{\mathrm{def}}{=} e^{-\lambda_\ell}\in(0,1).
+\end{equation}
+Equivalently, the non-sink portion of $A^{(\ell)}$ is dominated pointwise by a geometric tail with ratio $\rho_\ell$ and mass $\kappa_\ell$. 
+
+In addition, the similarity of cross-layer hidden states (including keys and values) can exceed 95\% beyond certain layer depth (generally with $\ell{>}N/2$)~\cite{liu2405minicache}. We then assume: for the per-layer key update $\Delta\bk^{(\ell)}_i
+\stackrel{\mathrm{def}}{=}\bk^{(\ell)}_i-\bk^{(\ell-1)}_i$, there exist
+$B>0$ and $\mu>0$ such that for the prefix to be frozen at layer $\ell$,
+\begin{equation}
+\label{eq:cross-layer-update}
+\max_{1\le i\le E_\ell(t)} \big\|\Delta\bk^{(\ell)}_i\big\|
+\ \le\
+B\,e^{-\mu\,(\ell-\ell_s)}
+\end{equation}
+
+
+\begin{lemma}[Logit change under key perturbations]
+\label{lem:logitDelta}
+Let $a_i=\tfrac{1}{\sqrt d}(\bq^\top \bk_i)$ and
+$a'_i=\tfrac{1}{\sqrt d}(\bq^\top \bk'_i)$. Then
+\[
+\|a'-a\|_\infty
+\ \le\ \frac{\|\bq\|}{\sqrt d}\,\max_i\|\bk'_i-\bk_i\|.
+\]
+\emph{Proof.} Immediate from Cauchy--Schwarz. \qedhere
+\end{lemma}
+
+\subsection{PSAW Bounds on Dropped Mass}
+\label{sec:psaw-bound}
+
+Following the PSAW selector defined in Sec.~\ref{sec:psaw}, and dropped set $\mathcal{D}_\ell=\{C_{\text{sink}}+1,\dots,P_\ell(t)-1\}$.
+The dropped mass at layer $\ell$ is $\delta^{\mathrm{PSAW}}_\ell
+\stackrel{\mathrm{def}}{=}\sum_{i\in\mathcal{D}_\ell} A^{(\ell)}_i(\bq^{(\ell)}_t)$. Let the window-start distance $D_\ell\stackrel{\mathrm{def}}{=} t-P_\ell(t)+1$ and satisfies $D_\ell\ge \lfloor u_\ell t\rfloor$.
+
+\begin{theorem}[PSAW worst-case bound]
+\label{thm:PSAW}
+Under~\eqref{eq:exp-decay}, for every $\ell\ge\ell_s$,
+\[
+\delta^{\mathrm{PSAW}}_\ell
+\ \le\
+(1-\tau^{(\ell)}_{\mathrm{sink}})\,e^{-\lambda_\ell\,D_\ell}
+\ \le\
+e^{-\lambda_\ell\,D_\ell}.
+\]
+\emph{Proof.}
+Reindex non-sink positions by distance $d=t-i\in\{0,1,2,\dots\}$. Then $\mathcal{D}_\ell$ corresponds to $d\ge D_\ell$ and
+\begin{equation}
+\begin{aligned}
+\delta^{\mathrm{PSAW}}_\ell
+&=\sum_{i\in\mathcal{D}_\ell}A^{(\ell)}_i
+\ \le\
+\kappa_\ell\sum_{d\ge D_\ell}(1-\rho_\ell)\rho_\ell^{\,d} \\
+&=\kappa_\ell\,\rho_\ell^{\,D_\ell}
+=\kappa_\ell\,e^{-\lambda_\ell D_\ell}.
+\end{aligned}
+\end{equation}
+Since $\kappa_\ell\le 1-\tau^{(\ell)}_{\mathrm{sink}}\le 1$ the claim follows.
+\qedhere
+\end{theorem}
+
+For the top layer $\ell=N$, $u_N=\phi^\alpha$ and $D_N\ge \lfloor \phi^\alpha t\rfloor$, we then have
+\[
+\delta^{\mathrm{PSAW}}_N
+\ \le\
+(1-\tau^{(N)}_{\mathrm{sink}})\,e^{-\lambda_N\,\lfloor \phi^\alpha t\rfloor}
+\ \le\
+e^{-\lambda_N\,\phi^\alpha t}.
+\]
+Given a target budget $\beta^{\mathrm{PSAW}}\in(0,1)$, any $(\phi,\alpha)$ satisfying
+\[
+\phi^\alpha
+\ \ge\
+\frac{1}{\lambda_N t}\,\log\!\frac{1}{\beta^{\mathrm{PSAW}}/(1-\tau^{(N)}_{\mathrm{sink}})}
+\]
+ensures $\delta^{\mathrm{PSAW}}_N\le \beta^{\mathrm{PSAW}}$. Otherwise, if $\lambda_\ell \ge \underline{\lambda}>0$ almost surely and
+$\mathbb{E}[1-\tau^{(\ell)}_{\mathrm{sink}}]\le 1$, then
+\[
+\mathbb{E}\big[\delta^{\mathrm{PSAW}}_\ell\big]
+\ \le\
+\mathbb{E}\big[(1-\tau^{(\ell)}_{\mathrm{sink}})\big]\,e^{-\underline{\lambda}\,D_\ell}
+\ \le\
+e^{-\underline{\lambda}\,D_\ell}.
+\]
+
+\subsection{ETF Bounds on Additional Mass Gap}
+\label{sec:etf-bound}
+For ETF define in Sec.~\ref{sec:etf}, freezing means: for $i\le E_\ell(t)$, set
+$\bk^{(\ell)}_i\leftarrow \bk^{(\ell-1)}_i$ and $\bv^{(\ell)}_i\leftarrow \bv^{(\ell-1)}_i$; for $i> E_\ell(t)$, compute as usual. Let $A^{(\ell)}$ denote the full (unfrozen) attention distribution and
+$\widetilde A^{(\ell)}$ the distribution under ETF at layer $\ell$. Define the ETF-induced mass gap (a total-variation budget)
+\[
+\beta^{\mathrm{ETF}}_\ell(\bq^{(\ell)}_t)
+\ \stackrel{\mathrm{def}}{=}\ \frac12\big\|\,\widetilde A^{(\ell)}(\bq^{(\ell)}_t)-A^{(\ell)}(\bq^{(\ell)}_t)\big\|_1.
+\]
+
+\begin{theorem}[ETF: per-layer worst-case bound]
+\label{thm:ETF}
+Following~\eqref{eq:cross-layer-update} and $\|\bq^{(\ell)}_t\|\le Q_{\max}$. Then
+\[
+\beta^{\mathrm{ETF}}_\ell(\bq^{(\ell)}_t)
+\ \le\
+\frac{Q_{\max}}{\sqrt d}\,B\,e^{-\mu\,(\ell-\ell_s)}.
+\]
+\emph{Proof.}
+Let $a_i=\frac{1}{\sqrt d}(\bq^{(\ell)}_t)^\top \bk^{(\ell)}_i$
+and $\tilde a_i=\frac{1}{\sqrt d}(\bq^{(\ell)}_t)^\top \tilde \bk^{(\ell)}_i$, where
+$\tilde \bk^{(\ell)}_i=\bk^{(\ell-1)}_i$ if $i\le E_\ell(t)$ and
+$\tilde \bk^{(\ell)}_i=\bk^{(\ell)}_i$ otherwise. Then $\Delta a_i=\tilde a_i-a_i=-\frac{1}{\sqrt d}(\bq^{(\ell)}_t)^\top \Delta\bk^{(\ell)}_i$
+for $i\le E_\ell(t)$ and $0$ otherwise.
+By Lemma~\ref{lem:logitDelta} and~\eqref{eq:cross-layer-update},
+\begin{equation}
+\begin{aligned}
+\|\tilde a-a\|_\infty
+{\le}
+\frac{\|\bq^{(\ell)}_t\|}{\sqrt d}
+\max_{1\le i \le E_\ell(t)} \|\Delta\bk^{(\ell)}_i\|
+{\le}
+\frac{Q_{\max}}{\sqrt d}\,B\,e^{-\mu(\ell-\ell_s)}
+\end{aligned}
+\end{equation}
+By Lemma~\ref{lem:softmaxLip},
+$\|\widetilde A^{(\ell)}-A^{(\ell)}\|_1 \le 2 \|\tilde a-a\|_\infty$,
+hence
+$\|\widetilde A^{(\ell)}-A^{(\ell)}\|_1
+\le 2 \frac{Q_{\max}}{\sqrt d}\,B\,e^{-\mu(\ell-\ell_s)}$.
+Divide by $2$ to obtain the claim.
+\qedhere
+\end{theorem}
+
+On the other hand, if $\mathbb{E}\|\bq^{(\ell)}_t\|\le \bar Q$, then
+\[
+\mathbb{E}\big[\beta^{\mathrm{ETF}}_\ell\big]
+\ \le\
+\frac{\bar Q}{\sqrt d}\,B\,e^{-\mu(\ell-\ell_s)}.
+\]
+
+\subsection{Joint pre-hoc retained-mass certificate and tuning}
+
+At layer $\ell$, the overall pre-hoc mass budget from PSAW and ETF satisfies
+\begin{equation}
+\begin{aligned}
+\delta^{\mathrm{(PSAW+ETF)}}_\ell
+& \le
+\underbrace{\delta^{\mathrm{PSAW}}_\ell}_{\text{masking}}
++
+\underbrace{\beta^{\mathrm{ETF}}_\ell}_{\text{freezing perturbation}} \\
+& \le
+(1-\tau^{(\ell)}_{\mathrm{sink}})e^{-\lambda_\ell D_\ell} +
+\frac{Q}{\sqrt d}\,B\,e^{-\mu(\ell-\ell_s)},  
+\end{aligned}
+\end{equation}
+where $Q\in\{Q_{\max},\bar Q\}$ depending on worst/average case. And at the top layer $\ell=N$,
+$\delta^{\mathrm{PSAW+ETF}}_N
+\ \le\
+(1-\tau^{(N)}_{\mathrm{sink}})\,e^{-\lambda_N \lfloor \phi^\alpha t\rfloor}
+\ +\
+\frac{Q}{\sqrt d}\,B\,e^{-\mu(N-\ell_s)}.$
+
+In practice, given targets $\beta^{\mathrm{PSAW}},\beta^{\mathrm{ETF}}\in(0,1)$, it suffices to choose
+$(\phi,\alpha)$ and $(\psi,\gamma)$ under average case such that
+\[
+(1-\tau^{(N)}_{\mathrm{sink}})\,e^{-\underline{\lambda}_N \lfloor \phi^\alpha t\rfloor}
+\le \beta^{\mathrm{PSAW}},
+\,\,
+\frac{\bar Q}{\sqrt d}\,B\,e^{-\mu(N-\ell_s)}
+\le \beta^{\mathrm{ETF}}.
+\]
+Equivalently,
+\[
+\phi^\alpha
+\ge
+\frac{1}{\underline{\lambda}_N t}\,\log\!\frac{1-\tau^{(N)}_{\mathrm{sink}}}{\beta^{\mathrm{PSAW}}},
+\quad
+N-\ell_s
+\ge
+\frac{1}{\mu}\,\log\!\frac{\bar Q B}{\beta^{\mathrm{ETF}}\sqrt d}.
+\]

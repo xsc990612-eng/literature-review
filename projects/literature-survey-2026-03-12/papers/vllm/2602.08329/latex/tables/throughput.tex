@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\caption{Throughput ($\uparrow$) of different methods across various batch sizes and sequence lengths. HShare-0 corresponds to HShare(3/4-3/4-1/2), and HShare-1 to HShare(1/2-1/2-1/2). The number following each of our methods indicates the block size $s$ used in CIS.}
+\label{tab:throughput}
+\begin{tabular}{cccccccc|cccc}
+\toprule
+BS & Seqlen & GPT-Fast & H2O \cite{zhang2023h2o} & Quest \cite{tang2406quest} & DS \cite{yang2024post} & HShare-0 \cite{wuhshare} & HShare-1 \cite{wuhshare} & CIS-8 & CIS-16 & CPE-8 & CPE-16 \\
+\midrule
+\multirow{3}{*}{8}
+  & 1k & 228 & 240 & 228 & 228 & 231 & 235 & 233 & 236  & 238 & \textbf{244} \\
+  & 2k & 188 & \textbf{234} & 206 & 213 & 222 & 226 & 216 & 224  & 225 & 233 \\
+  & 4k & 118 & \textbf{228} & 152 & 201 & 214 & 217 & 216 & 220  & 219 & 227 \\
+\midrule
+\multirow{3}{*}{16}
+  & 1k & 374 & 441 & 410 & 423 & 430 & 439 & 433 & 443 & 441 & \textbf{449} \\
+  & 2k & 233 & 416 & 287 & 360 & 398 & 411 & 402 & 415 & 412 & \textbf{421} \\
+  & 4k & 136 & \textbf{396} & 175 & 286 & 350 & 365 & 352 & 364 & 362 & 384 \\
+\bottomrule
+\end{tabular}
+\end{table*}

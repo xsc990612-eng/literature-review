@@ -1,0 +1,60 @@
+\begin{algorithm}[t]
+%\setlength{\abovecaptionskip}{-0.002cm}
+\setlength{\belowcaptionskip}{-0.10cm}
+%\begin{small}
+\SetAlFnt{\scriptsize}
+%%\setlength{\abovecaptionskip}{-0.002cm}
+%\setlength{\belowcaptionskip}{-1.5cm}
+\DontPrintSemicolon
+\KwData{Document vector $\vec{d}$, Maximum number of clusters $K_{max}$, Real number of clusters $K_{real}$.}
+\KwResult{cluster assignments of each document $\vec{z}$.}
+\Begin{
+    //Adaptive Clustering Initialization\;
+    Obtain the initial cluster assignments for documents by Algorithm \ref{Algo:ACI}.\;
+    //Collapsed Gibbs Sampling with Entropy\;
+    \For{$i \in [1,I]$}{
+        \For{each document $d\in [1,D]$}{
+            Record the current cluster of $d$: $z=z_d$\;
+            $m_z \leftarrow m_z-1 $ and $ n_z \leftarrow n_z-N_d$\;
+            \For{each word $w \in d$}{
+                $n_z^w \leftarrow n_z^w- N_d^w$\;
+            }
+            \If{$n_z == 0$}{
+                //Remove the empty cluster\;
+                $K \leftarrow K-1$\;
+                Re-arrange cluster indices so that $1,...,K$ are active (i.e., non-empty);\;
+            }
+            \If{d \% 15 == 0}{
+                Update the word entropy values.\;
+            }
+            Compute the probability of document $d$ and choose a new $z$ from each of the $K$ existing clusters with Equation \eqref{DMM-Entropy}.\;
+            $z_d \leftarrow z$\;
+            $m_z \leftarrow m_z+1 $ and $ n_z \leftarrow n_z+N_d$\;
+            \For{each word $w \in d$}{
+                $n_z^w \leftarrow n_z^w+ N_d^w$\;
+            }
+        }
+    }
+    //Granularity Adjustment with Cluster Merging\;
+    \If{$K > K_{\text{real}}$}{
+        Compute the TF-ICF word distributions of clusters by Equation \eqref{idf} and Equation \eqref{tfidf}.\;
+        Build a priority queue $Q$ of cluster pairs.\;
+        \While{$K > K_{\text{real}}$}{
+            //Highest-similarity pair\;
+            $(c_p, c_q) \leftarrow \text{PopMax}(Q)$\;
+            $m_{c_m} \leftarrow m_{c_p} + m_{c_q}$\;
+            $n_{c_m} \leftarrow n_{c_p} + n_{c_q}$\;
+            \For{each word $w$}{
+                $n_{c_m}^w \leftarrow n_{c_p}^w + n_{c_q}^w$\;
+            }
+            $K \leftarrow K - 1$\;
+            \For{each active cluster $c_a$}{
+                Compute the cosine similarity of $(c_m, c_a)$ and insert it into $Q$.\;
+            }
+        }
+    }
+}
+\caption{\sysname{}}
+\label{Algo:VEMC}
+%\end{small}
+\end{algorithm}

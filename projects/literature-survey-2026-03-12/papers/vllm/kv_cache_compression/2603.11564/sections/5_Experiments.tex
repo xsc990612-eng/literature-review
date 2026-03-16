@@ -1,0 +1,74 @@
+\section{Experiments}
+
+\input{tables/LongBench}
+% \begin{figure*}[t]
+% \centering
+% \begin{subfigure}[b]{0.32\textwidth}
+%     \includegraphics[width=\textwidth]{images/throughput.pdf}
+% \end{subfigure}
+% \begin{subfigure}[b]{0.32\textwidth}
+%     \includegraphics[width=\textwidth]{images/memory.pdf}
+% \end{subfigure}
+% \begin{subfigure}[b]{0.32\textwidth}
+%     \includegraphics[width=\textwidth]{images/ttft.pdf}
+% \end{subfigure}
+% \caption{Performance comparison of LongFlow against baselines.}
+% \vspace{-18pt}
+% \label{fig:memory_and_speed}
+% \end{figure*}
+\input{tables/efficiency_speed}
+\input{tables/efficiency_ttft}
+
+\subsection{Settings}
+\textbf{Models and Benchmarks.}
+To evaluate the applicability and generalization of DapQ in various models, we conduct experiments on LLaMA-3-8B-Instruct, LLaMA-3.1-8B-Instruct \citep{llama3}, Qwen2.5-7B-Instruct \citep{qwen2}, and Qwen3-8B \citep{qwen3}. To ensure a more comprehensive and robust assessment, we use five benchmarks: LongBench \citep{longbench}, LongBenchV2 \citep{longbenchv2}, Ruler \citep{ruler}, HELMET \citep{helmet}, and Needle-in-a-Haystack \citep{needle}, each designed to assess distinct aspects of long-context inference, thereby forming a solid foundation for validating DapQ's performance across diverse scenarios. Due to space limitations, complete experiment results and details are presented in Appendix \ref{Complete Experiment Results}.
+
+
+
+\textbf{Baselines.}
+To comprehensively validate the performance of DapQ, we select six representative KV cache compression methods as baselines: \textbf{FullKV} caches all keys and values for every token, which is the standard approach for KV Cache in transformer-based models; \textbf{SnapKV} \citep{snapkv} captures attention signals from an observation window and uses pooling-based clustering to select important KV pairs for compression; \textbf{PyramidKV} \citep{pyramidkv} leverages cross-layer attention distribution characteristics to dynamically allocate different KV cache budgets and selects important KV pairs for compression; \textbf{H2O} \citep{h2o} identifies Heavy Hitter (H2) tokens based on cumulative attention scores and dynamically balances the retention of recent and H2 tokens to compress KV cache; \textbf{StreamingLLM (SLM)} \citep{streamingllm} identifies the attention sink and dynamically balances the retention of recent and initial tokens to compress KV cache; \textbf{LaCache} \citep{lacache} adopts a ladder-shaped pattern in the prefilling stage to retain KV of early tokens in shallow layers and gradually shift to later tokens in deeper layers. \textbf{Note:} To ensure rigor and consistency, compression is performed solely during the prefill stage.
+
+
+
+\textbf{Implementation Details.}
+% All experiments are conducted on NVIDIA GeForce RTX 3090 GPUs. We set the maximum input length to 8192 for LLaMA-3-8B-Instruct and to 16384 for the others. consecutive span
+For all methods, we set the observation window size to 32 unless otherwise specified (e.g., LaCache use its default settings). In DapQ, pseudo queries are constructed by concatenating a small number of tokens from the beginning and the end of the input sequence(e.g., the first 4 and last 28 tokens, the first 2 and last 30 tokens). This design is motivated by two key considerations: the beginning tokens, often high-frequency special tokens (e.g.,\texttt{<|begin\_of\_text|>}), possess stable and generalizable embeddings due to their extensive exposure during training; the ending tokens carry the most recent context, making their semantic state highly relevant to the imminent decoding step. This finding is further supported by \citet{prefix_suffix}. We also validate it through experiments in Figure \ref{fig:query_quality}, where concatenating prefix and suffix tokens consistently yields superior performance compared to using random or intermediate consecutive tokens from the input as query contents.
+
+% \input{tables/LongBench}
+% \input{images/ruler}
+% \input{images/needle}
+
+\subsection{Improvement on Accuracy}
+Consistent accuracy gains across benchmarks:
+\textbf{LongBench Results.} As shown in Table \ref{table:longbench}, DapQ consistently outperforms all baselines across different models and cache budgets. The advantage is particularly pronounced under aggressive compression (e.g., budget=64), where DapQ shows a robust ability to retain critical information (e.g., preserving the long-range contextual dependencies especially on complex information integration tasks like HotpotQA and 2WikiMQA) and mitigate high-compression performance degradation. 
+\textbf{LongBenchV2 Results.}
+Under a 64 cache budget, DapQ achieves 29.26\% accuracy in the category of \enquote{Hard}, marking a +6.75\% absolute improvement over SnapKV (22.51\%) on LLaMA3-8B-Instruct.
+\textbf{Ruler Results.}
+Table \ref{table:ruler_llama3} shows that DapQ attains a notable 59.6\% accuracy on the challenging S-NIAH-3 task with a cache budget of 512, substantially outperforming SnapKV (1.4\%) and H2O (2.4\%). 
+\textbf{HELMET Results.}
+As reported in Table \ref{table:helmet}, DapQ achieves an average score of 48.10 on Qwen2.5-7B-Instruct with a low cache budget of 512, surpassing strong baselines SnapKV (43.74), H2O (40.36), and PyramidKV (42.49). 
+\textbf{Needle-in-a-Haystack Results.}
+As shown in Figure \ref{fig:needle} and Table \ref{table:needle}, a striking example is on LLaMA3-8B with a cache size of 256: DapQ achieves 99.5\% accuracy, closely approaching full-cache performance. This exceptional performance shows DapQ effectively simulates the decoding-stage positional context via prospectively encoded pseudo queries, enabling precise identification and retention of the key “needles” amidst a vast “haystack” of tokens.
+
+
+Across diverse benchmarks, DapQ demonstrates the highest average score across nearly all budget settings on different models and especially delivers strong performance gains under strict cache constraints. These results underscores its effectiveness, robustness and generalizability in identifying and preserving critical contextual information. 
+
+
+
+
+% \textbf{Ruler Results.} We further evaluate DapQ's reasoning capabilities under extreme memory constraints using the RULER benchmark, which tests models on synthetic long-context tasks including multi-hop tracing, retrieval, aggregation, and question answering. Under strict memory constraints, DaqQ exhibits a significant advantage. For instance, Table \ref{table:ruler_llama3} shows that on the Llama3-8B model with a cache budget of 512, DapQ achieves a notable 59.6\% accuracy in the challenging S-NIAH-3 task, substantially outperforming SnapKV (1.4\%) and H2O (2.4\%). This highlights its superior capability in preserving essential information necessary for complex tasks. Furthermore, DapQ consistently demonstrates the highest overall average score across nearly all budget settings on different models, underscoring its robustness and generalizability.
+
+
+% \textbf{Needle-in-a-Haystack Result.} As shown in Figure \ref{fig:needle} and Table \ref{table:needle}, DapQ demonstrates universally superior performance compared to all baselines, confirming its consistent effectiveness. A striking example is on LLaMA3-8B with a cache size of 256: DapQ achieves 99.5\% accuracy, closely approaching full-cache performance. This exceptional performance shows its ability to maintain key contextual dependencies within constrained memory capacity. DapQ effectively simulates the decoding-stage positional context via prospectively encoded pseudo-queries, enabling precise identification and retention of the key “needles” amidst a vast “haystack” of tokens.
+
+\subsection{Analysis on Efficiency}
+We conduct a comprehensive efficiency evaluation of DapQ using Llama-3.1-8B-Instruct. We first focus on memory usage and throughput across different batch sizes (Input 8k, Output 150 tokens, Budget=256). As shown in Table \ref{tab:throughput_comparison} and Table \ref{tab:memory_comparison}, DapQ maintains robust performance, exhibiting memory and throughput highly on par with other compression methods. Furthermore, to assess the algorithmic overhead introduced during the prefill stage, we measure the Time-to-First-Token (TTFT) across varying sequence lengths from 8K to 128K. Table \ref{tab:ttft_comparison} indicates that the latency of DapQ is nearly identical to that of SnapKV. The results confirms that the additional prefill-stage overhead is almost negligible. Overall, DapQ achieves a balanced performance between long-context understanding capability and inference efficiency, ensuring its practicality for real-world long-context applications.
+
+
+
+
+
+
+
+
+

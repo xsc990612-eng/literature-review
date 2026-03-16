@@ -1,0 +1,1656 @@
+\begin{thebibliography}{100}
+
+\bibitem{touvron2023llama}
+H.~Touvron et~al.
+\newblock Llama: Open and efficient foundation language models.
+\newblock {\em arXiv preprint arXiv:2302.13971}, 2023.
+
+\bibitem{gpt4}
+OpenAI.
+\newblock Gpt-4 technical report.
+\newblock {\em arXiv preprint arXiv:2303.08774}, 2023.
+
+\bibitem{Radford2019LanguageMA}
+A.~Radford et~al.
+\newblock Language models are unsupervised multitask learners.
+\newblock 2019.
+
+\bibitem{brown2020language}
+T.~Brown et~al.
+\newblock Language models are few-shot learners.
+\newblock {\em Advances in neural information processing systems}, 2020.
+
+\bibitem{zeng2021pangu}
+W.~Zeng et~al.
+\newblock Pangu-$\alpha$: Large-scale autoregressive pretrained chinese
+  language models with auto-parallel computation.
+\newblock {\em arXiv preprint arXiv:2104.12369}, 2021.
+
+\bibitem{ren2023pangu}
+X.~Ren et~al.
+\newblock Pangu-$\sigma$: Towards trillion parameter language model with sparse
+  heterogeneous computing.
+\newblock {\em arXiv preprint arXiv:2303.10845}, 2023.
+
+\bibitem{jiang2023lion}
+Y.~Jiang et~al.
+\newblock Lion: Adversarial distillation of closed-source large language model.
+\newblock {\em arXiv preprint arXiv:2305.12870}, 2023.
+
+\bibitem{li2022explanations}
+S.~Li et~al.
+\newblock Explanations from large language models make small reasoners better.
+\newblock {\em arXiv preprint arXiv:2210.06726}, 2022.
+
+\bibitem{han2015deep}
+S.~Han et~al.
+\newblock Deep compression: Compressing deep neural networks with pruning,
+  trained quantization and huffman coding.
+\newblock {\em arXiv preprint arXiv:1510.00149}, 2015.
+
+\bibitem{simonyan2014very}
+K.~Simonyan and A.~Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock {\em arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem{vaswani2017attention}
+A.~Vaswani et~al.
+\newblock Attention is all you need.
+\newblock {\em Advances in neural information processing systems}, 2017.
+
+\bibitem{Dosovitskiy2020AnII}
+A.~Dosovitskiy et~al.
+\newblock An image is worth 16x16 words: Transformers for image recognition at
+  scale.
+\newblock {\em ArXiv}, abs/2010.11929, 2020.
+
+\bibitem{chen2021pre}
+H.~Chen et~al.
+\newblock Pre-trained image processing transformer.
+\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
+  pattern recognition}, pp. 12299--12310, 2021.
+
+\bibitem{bai2023sequential}
+Y.~Bai et~al.
+\newblock Sequential modeling enables scalable learning for large vision
+  models, 2023.
+
+\bibitem{radford2021learning}
+A.~Radford et~al.
+\newblock Learning transferable visual models from natural language
+  supervision.
+\newblock In {\em International conference on machine learning}, 2021.
+
+\bibitem{li2022blip}
+J.~Li et~al.
+\newblock Blip: Bootstrapping language-image pre-training for unified
+  vision-language understanding and generation.
+\newblock In {\em International Conference on Machine Learning}, pp.
+  12888--12900. PMLR, 2022.
+
+\bibitem{liu2023visual}
+H.~Liu et~al.
+\newblock Visual instruction tuning.
+\newblock {\em arXiv preprint arXiv:2304.08485}, 2023.
+
+\bibitem{xiao2023smoothquant}
+G.~Xiao et~al.
+\newblock Smoothquant: Accurate and efficient post-training quantization for
+  large language models.
+\newblock In {\em International Conference on Machine Learning}, pp.
+  38087--38099. PMLR, 2023.
+
+\bibitem{shao2023omniquant}
+W.~Shao et~al.
+\newblock Omniquant: Omnidirectionally calibrated quantization for large
+  language models.
+\newblock {\em arXiv preprint arXiv:2308.13137}, 2023.
+
+\bibitem{dettmers2023qlora}
+T.~Dettmers et~al.
+\newblock Qlora: Efficient finetuning of quantized llms.
+\newblock {\em arXiv preprint arXiv:2305.14314}, 2023.
+
+\bibitem{liu2021post}
+Z.~Liu et~al.
+\newblock Post-training quantization for vision transformer.
+\newblock {\em Advances in Neural Information Processing Systems},
+  34:28092--28103, 2021.
+
+\bibitem{lin2021fq}
+Y.~Lin et~al.
+\newblock Fq-vit: Post-training quantization for fully quantized vision
+  transformer.
+\newblock {\em arXiv preprint arXiv:2111.13824}, 2021.
+
+\bibitem{liu2023oscillation}
+S.-Y. Liu et~al.
+\newblock Oscillation-free quantization for low-bit vision transformers.
+\newblock {\em arXiv preprint arXiv:2302.02210}, 2023.
+
+\bibitem{sanh2019distilbert}
+V.~Sanh et~al.
+\newblock Distilbert, a distilled version of bert: smaller, faster, cheaper and
+  lighter.
+\newblock {\em arXiv preprint arXiv:1910.01108}, 2019.
+
+\bibitem{wang2020minilm}
+W.~Wang et~al.
+\newblock Minilm: Deep self-attention distillation for task-agnostic
+  compression of pre-trained transformers.
+\newblock {\em Advances in Neural Information Processing Systems}, 2020.
+
+\bibitem{Touvron2020TrainingDI}
+H.~Touvron et~al.
+\newblock Training data-efficient image transformers \& distillation through
+  attention.
+\newblock In {\em International Conference on Machine Learning}, 2020.
+
+\bibitem{wu2022tinyvit}
+K.~Wu et~al.
+\newblock Tinyvit: Fast pretraining distillation for small vision transformers.
+\newblock In {\em European Conference on Computer Vision}, 2022.
+
+\bibitem{hao2022learning}
+Z.~Hao et~al.
+\newblock Learning efficient vision transformers via fine-grained manifold
+  distillation.
+\newblock {\em Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem{Ma2023LLMPrunerOT}
+X.~Ma et~al.
+\newblock Llm-pruner: On the structural pruning of large language models.
+\newblock {\em ArXiv}, abs/2305.11627, 2023.
+
+\bibitem{Xia2023ShearedLA}
+M.~Xia et~al.
+\newblock Sheared llama: Accelerating language model pre-training via
+  structured pruning.
+\newblock {\em ArXiv}, abs/2310.06694, 2023.
+
+\bibitem{Anagnostidis2023DynamicCP}
+S.~Anagnostidis et~al.
+\newblock Dynamic context pruning for efficient and interpretable
+  autoregressive transformers.
+\newblock {\em ArXiv}, abs/2305.15805, 2023.
+
+\bibitem{Chavan2022VisionTS}
+A.~Chavan et~al.
+\newblock Vision transformer slimming: Multi-dimension searching in continuous
+  optimization space.
+\newblock {\em 2022 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pp. 4921--4931, 2022.
+
+\bibitem{Tang2021PatchSF}
+Y.~Tang et~al.
+\newblock Patch slimming for efficient vision transformers.
+\newblock {\em 2022 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pp. 12155--12164, 2021.
+
+\bibitem{Yu2023XPrunerEP}
+L.~Yu and W.~Xiang.
+\newblock X-pruner: explainable pruning for vision transformers.
+\newblock {\em 2023 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pp. 24355--24363, 2023.
+
+\bibitem{chowdhery2022palm}
+A.~Chowdhery et~al.
+\newblock Palm: Scaling language modeling with pathways.
+\newblock {\em arXiv preprint arXiv:2204.02311}, 2022.
+
+\bibitem{sun2023retentive}
+Y.~Sun et~al.
+\newblock Retentive network: A successor to transformer for large language
+  models.
+\newblock {\em arXiv preprint arXiv:2307.08621}, 2023.
+
+\bibitem{kitaev2020reformer}
+N.~Kitaev et~al.
+\newblock Reformer: The efficient transformer.
+\newblock {\em arXiv preprint arXiv:2001.04451}, 2020.
+
+\bibitem{liu2021swin}
+Z.~Liu et~al.
+\newblock Swin transformer: Hierarchical vision transformer using shifted
+  windows.
+\newblock In {\em Proceedings of the IEEE/CVF international conference on
+  computer vision}, 2021.
+
+\bibitem{yu2022metaformer}
+W.~Yu et~al.
+\newblock Metaformer is actually what you need for vision.
+\newblock In {\em Proceedings of the IEEE/CVF conference on computer vision and
+  pattern recognition}, 2022.
+
+\bibitem{tolstikhin2021mlp}
+I.~O. Tolstikhin et~al.
+\newblock Mlp-mixer: An all-mlp architecture for vision.
+\newblock {\em Advances in neural information processing systems}, 2021.
+
+\bibitem{yuan2022ptq4vit}
+Z.~Yuan et~al.
+\newblock Ptq4vit: Post-training quantization for vision transformers with twin
+  uniform quantization.
+\newblock In {\em European Conference on Computer Vision}, pp. 191--207.
+  Springer, 2022.
+
+\bibitem{ding2022towards}
+Y.~Ding et~al.
+\newblock Towards accurate post-training quantization for vision transformer.
+\newblock In {\em Proceedings of the 30th ACM International Conference on
+  Multimedia}, pp. 5380--5388, 2022.
+
+\bibitem{lit2022auto}
+Z.~Lit et~al.
+\newblock Auto-vit-acc: An fpga-aware automatic acceleration framework for
+  vision transformer with mixed-scheme quantization.
+\newblock In {\em 2022 32nd International Conference on Field-Programmable
+  Logic and Applications (FPL)}, pp. 109--116. IEEE, 2022.
+
+\bibitem{liu2023noisyquant}
+Y.~Liu et~al.
+\newblock Noisyquant: Noisy bias-enhanced post-training activation quantization
+  for vision transformers.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pp. 20321--20330, 2023.
+
+\bibitem{li2023repq}
+Z.~Li et~al.
+\newblock Repq-vit: Scale reparameterization for post-training quantization of
+  vision transformers.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pp. 17227--17236, 2023.
+
+\bibitem{wang2022quantformer}
+Z.~Wang et~al.
+\newblock Quantformer: Learning extremely low-precision vision transformers.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  2022.
+
+\bibitem{li2022q}
+Y.~Li et~al.
+\newblock Q-vit: Accurate and fully quantized low-bit vision transformer.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:34451--34463, 2022.
+
+\bibitem{li2022q_diff}
+Z.~Li et~al.
+\newblock Q-vit: Fully differentiable quantization for vision transformer.
+\newblock {\em arXiv preprint arXiv:2201.07703}, 2022.
+
+\bibitem{chen2023data}
+J.~Chen et~al.
+\newblock Data-free quantization via mixed-precision compensation without
+  fine-tuning.
+\newblock {\em Pattern Recognition}, pp. 109780, 2023.
+
+\bibitem{li2023vit}
+Z.~Li and Q.~Gu.
+\newblock I-vit: Integer-only quantization for efficient vision transformer
+  inference.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pp. 17065--17075, 2023.
+
+\bibitem{frumkin2023jumping}
+N.~Frumkin et~al.
+\newblock Jumping through local minima: Quantization in the loss landscape of
+  vision transformers.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pp. 16978--16988, 2023.
+
+\bibitem{xiao2023patch}
+J.~Xiao et~al.
+\newblock Patch-wise mixed-precision quantization of vision transformer.
+\newblock {\em arXiv preprint arXiv:2305.06559}, 2023.
+
+\bibitem{li2022patch}
+Z.~Li et~al.
+\newblock Patch similarity aware data-free quantization for vision
+  transformers.
+\newblock In {\em European Conference on Computer Vision}, pp. 154--170.
+  Springer, 2022.
+
+\bibitem{li2023psaq}
+Z.~Li et~al.
+\newblock Psaq-vit v2: Toward accurate and general data-free quantization for
+  vision transformers.
+\newblock {\em IEEE Transactions on Neural Networks and Learning Systems},
+  2023.
+
+\bibitem{xu2023q}
+S.~Xu et~al.
+\newblock Q-detr: An efficient low-bit quantized detection transformer.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pp. 3842--3851, 2023.
+
+\bibitem{huang2023variation}
+X.~Huang et~al.
+\newblock Variation-aware vision transformer quantization.
+\newblock {\em arXiv preprint arXiv:2307.00331}, 2023.
+
+\bibitem{shen2020q}
+S.~Shen et~al.
+\newblock Q-bert: Hessian based ultra low precision quantization of bert.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~34, pp. 8815--8821, 2020.
+
+\bibitem{bondarenko2021understanding}
+Y.~Bondarenko et~al.
+\newblock Understanding and overcoming the challenges of efficient transformer
+  quantization.
+\newblock {\em arXiv preprint arXiv:2109.12948}, 2021.
+
+\bibitem{bai2022towards}
+H.~Bai et~al.
+\newblock Towards efficient post-training quantization of pre-trained language
+  models.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:1405--1418, 2022.
+
+\bibitem{zafrir2019q8bert}
+O.~Zafrir et~al.
+\newblock Q8bert: Quantized 8bit bert.
+\newblock In {\em 2019 Fifth Workshop on Energy Efficient Machine Learning and
+  Cognitive Computing-NeurIPS Edition (EMC2-NIPS)}, pp. 36--39. IEEE, 2019.
+
+\bibitem{tang2022mkq}
+H.~Tang et~al.
+\newblock Mkq-bert: Quantized bert with 4-bits weights and activations.
+\newblock {\em arXiv preprint arXiv:2203.13483}, 2022.
+
+\bibitem{kim2021bert}
+S.~Kim et~al.
+\newblock I-bert: Integer-only bert quantization.
+\newblock In {\em International conference on machine learning}, pp.
+  5506--5518. PMLR, 2021.
+
+\bibitem{bai2020binarybert}
+H.~Bai et~al.
+\newblock Binarybert: Pushing the limit of bert quantization.
+\newblock {\em arXiv preprint arXiv:2012.15701}, 2020.
+
+\bibitem{qin2022bibert}
+H.~Qin et~al.
+\newblock Bibert: Accurate fully binarized bert.
+\newblock {\em arXiv preprint arXiv:2203.06390}, 2022.
+
+\bibitem{zhang2020ternarybert}
+W.~Zhang et~al.
+\newblock Ternarybert: Distillation-aware ultra-low bit bert.
+\newblock {\em arXiv preprint arXiv:2009.12812}, 2020.
+
+\bibitem{zhao2021automatic}
+C.~Zhao et~al.
+\newblock Automatic mixed-precision quantization search of bert.
+\newblock {\em arXiv preprint arXiv:2112.14938}, 2021.
+
+\bibitem{ouyang2022training}
+L.~Ouyang et~al.
+\newblock Training language models to follow instructions with human feedback.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:27730--27744, 2022.
+
+\bibitem{dettmers2022llm}
+T.~Dettmers et~al.
+\newblock Llm. int8 (): 8-bit matrix multiplication for transformers at scale.
+\newblock {\em arXiv preprint arXiv:2208.07339}, 2022.
+
+\bibitem{park2022nuqmm}
+G.~Park et~al.
+\newblock nuqmm: Quantized matmul for efficient inference of large-scale
+  generative language models.
+\newblock {\em arXiv preprint arXiv:2206.09557}, 2022.
+
+\bibitem{yao2022zeroquant}
+Z.~Yao et~al.
+\newblock Zeroquant: Efficient and affordable post-training quantization for
+  large-scale transformers.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:27168--27183, 2022.
+
+\bibitem{wei2022outlier}
+X.~Wei et~al.
+\newblock Outlier suppression: Pushing the limit of low-bit transformer
+  language models.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:17402--17414, 2022.
+
+\bibitem{frantar2022gptq}
+E.~Frantar et~al.
+\newblock Gptq: Accurate post-training quantization for generative pre-trained
+  transformers.
+\newblock {\em arXiv preprint arXiv:2210.17323}, 2022.
+
+\bibitem{lin2023awq}
+J.~Lin et~al.
+\newblock Awq: Activation-aware weight quantization for llm compression and
+  acceleration.
+\newblock {\em arXiv preprint arXiv:2306.00978}, 2023.
+
+\bibitem{wei2023outlier}
+X.~Wei et~al.
+\newblock Outlier suppression+: Accurate quantization of large language models
+  by equivalent and optimal shifting and scaling.
+\newblock {\em arXiv preprint arXiv:2304.09145}, 2023.
+
+\bibitem{liu2023qllm}
+J.~Liu et~al.
+\newblock Qllm: Accurate and efficient low-bitwidth quantization for large
+  language models.
+\newblock {\em arXiv preprint arXiv:2310.08041}, 2023.
+
+\bibitem{yuan2023rptq}
+Z.~Yuan et~al.
+\newblock Rptq: Reorder-based post-training quantization for large language
+  models.
+\newblock {\em arXiv preprint arXiv:2304.01089}, 2023.
+
+\bibitem{ding2023cbq}
+X.~Ding et~al.
+\newblock Cbq: Cross-block quantization for large language models.
+\newblock {\em arXiv preprint arXiv:2312.07950}, 2023.
+
+\bibitem{kim2023squeezellm}
+S.~Kim et~al.
+\newblock Squeezellm: Dense-and-sparse quantization.
+\newblock {\em arXiv preprint arXiv:2306.07629}, 2023.
+
+\bibitem{cheng2023optimize}
+W.~Cheng et~al.
+\newblock Optimize weight rounding via signed gradient descent for the
+  quantization of llms.
+\newblock {\em arXiv preprint arXiv:2309.05516}, 2023.
+
+\bibitem{liu2023llm}
+Z.~Liu et~al.
+\newblock Llm-qat: Data-free quantization aware training for large language
+  models.
+\newblock {\em arXiv preprint arXiv:2305.17888}, 2023.
+
+\bibitem{kim2023memory}
+J.~Kim et~al.
+\newblock Memory-efficient fine-tuning of compressed large language models via
+  sub-4-bit integer quantization.
+\newblock {\em arXiv preprint arXiv:2305.14152}, 2023.
+
+\bibitem{dong2019hawq}
+Z.~Dong et~al.
+\newblock Hawq: Hessian aware quantization of neural networks with
+  mixed-precision.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pp. 293--302, 2019.
+
+\bibitem{ba2014deep}
+J.~Ba and R.~Caruana.
+\newblock Do deep nets really need to be deep?
+\newblock {\em Advances in neural information processing systems}, 2014.
+
+\bibitem{bucilua2006model}
+C.~Bucilua et~al.
+\newblock Model compression.
+\newblock In {\em Proceedings of the 12th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, 2006.
+
+\bibitem{wu2023weight}
+T.~Wu et~al.
+\newblock Weight-inherited distillation for task-agnostic bert compression.
+\newblock {\em arXiv preprint arXiv:2305.09098}, 2023.
+
+\bibitem{hinton2015distilling}
+G.~Hinton et~al.
+\newblock Distilling the knowledge in a neural network.
+\newblock {\em arXiv preprint arXiv:1503.02531}, 2015.
+
+\bibitem{wu2024rethinking}
+T.~Wu et~al.
+\newblock Rethinking kullback-leibler divergence in knowledge distillation for
+  large language models.
+\newblock {\em arXiv preprint arXiv:2404.02657}, 2024.
+
+\bibitem{tang2019distilling}
+R.~Tang et~al.
+\newblock Distilling task-specific knowledge from bert into simple neural
+  networks.
+\newblock {\em arXiv preprint arXiv:1903.12136}, 2019.
+
+\bibitem{ko2024distillm}
+J.~Ko et~al.
+\newblock Distillm: Towards streamlined distillation for large language models.
+\newblock {\em arXiv preprint arXiv:2402.03898}, 2024.
+
+\bibitem{romero2014fitnets}
+A.~Romero et~al.
+\newblock Fitnets: Hints for thin deep nets.
+\newblock {\em arXiv preprint arXiv:1412.6550}, 2014.
+
+\bibitem{devlin2018bert}
+J.~Devlin et~al.
+\newblock Bert: Pre-training of deep bidirectional transformers for language
+  understanding.
+\newblock {\em arXiv preprint arXiv:1810.04805}, 2018.
+
+\bibitem{hochreiter1997long}
+S.~Hochreiter and J.~Schmidhuber.
+\newblock Long short-term memory.
+\newblock {\em Neural computation}, 1997.
+
+\bibitem{peters1802deep}
+M.~E. Peters et~al.
+\newblock Deep contextualized word representations.
+\newblock {\em arXiv preprint arXiv:1802.05365}, 2018.
+
+\bibitem{kim2016sequence}
+Y.~Kim and A.~M. Rush.
+\newblock Sequence-level knowledge distillation.
+\newblock {\em arXiv preprint arXiv:1606.07947}, 2016.
+
+\bibitem{liang2020mixkd}
+K.~J. Liang et~al.
+\newblock Mixkd: Towards efficient distillation of large-scale language models.
+\newblock {\em arXiv preprint arXiv:2011.00593}, 2020.
+
+\bibitem{zhang2017mixup}
+H.~Zhang et~al.
+\newblock mixup: Beyond empirical risk minimization.
+\newblock {\em arXiv preprint arXiv:1710.09412}, 2017.
+
+\bibitem{turc2019well}
+I.~Turc et~al.
+\newblock Well-read students learn better: The impact of student initialization
+  on knowledge distillation.
+\newblock {\em arXiv preprint arXiv:1908.08962}, 2019.
+
+\bibitem{gu2023knowledge}
+Y.~Gu et~al.
+\newblock Knowledge distillation of large language models.
+\newblock {\em arXiv preprint arXiv:2306.08543}, 2023.
+
+\bibitem{agarwal2023gkd}
+R.~Agarwal et~al.
+\newblock Gkd: Generalized knowledge distillation for auto-regressive sequence
+  models.
+\newblock {\em arXiv preprint arXiv:2306.13649}, 2023.
+
+\bibitem{huang2022context}
+Y.~Huang et~al.
+\newblock In-context learning distillation: Transferring few-shot learning
+  ability of pre-trained language models.
+\newblock {\em arXiv preprint arXiv:2212.10670}, 2022.
+
+\bibitem{sun2019patient}
+S.~Sun et~al.
+\newblock Patient knowledge distillation for bert model compression.
+\newblock {\em arXiv preprint arXiv:1908.09355}, 2019.
+
+\bibitem{bae2023fast}
+S.~Bae et~al.
+\newblock Fast and robust early-exiting framework for autoregressive language
+  models with synchronized parallel decoding.
+\newblock {\em arXiv preprint arXiv:2310.05424}, 2023.
+
+\bibitem{sun2020mobilebert}
+Z.~Sun et~al.
+\newblock Mobilebert: a compact task-agnostic bert for resource-limited
+  devices.
+\newblock {\em arXiv preprint arXiv:2004.02984}, 2020.
+
+\bibitem{jiao2019tinybert}
+X.~Jiao et~al.
+\newblock Tinybert: Distilling bert for natural language understanding.
+\newblock {\em arXiv preprint arXiv:1909.10351}, 2019.
+
+\bibitem{li2019hint}
+Z.~Li et~al.
+\newblock Hint-based training for non-autoregressive machine translation.
+\newblock {\em arXiv preprint arXiv:1909.06708}, 2019.
+
+\bibitem{mukherjee2020xtremedistil}
+S.~Mukherjee and A.~Awadallah.
+\newblock Xtremedistil: Multi-stage distillation for massive multilingual
+  models.
+\newblock {\em arXiv preprint arXiv:2004.05686}, 2020.
+
+\bibitem{tsai2019small}
+H.~Tsai et~al.
+\newblock Small and practical bert models for sequence labeling.
+\newblock {\em arXiv preprint arXiv:1909.00100}, 2019.
+
+\bibitem{wei2022emergent}
+J.~Wei et~al.
+\newblock Emergent abilities of large language models.
+\newblock {\em arXiv preprint arXiv:2206.07682}, 2022.
+
+\bibitem{schaeffer2023emergent}
+R.~Schaeffer et~al.
+\newblock Are emergent abilities of large language models a mirage?
+\newblock {\em arXiv preprint arXiv:2304.15004}, 2023.
+
+\bibitem{ho2022large}
+N.~Ho et~al.
+\newblock Large language models are reasoning teachers.
+\newblock {\em arXiv preprint arXiv:2212.10071}, 2022.
+
+\bibitem{hsieh2023distilling}
+C.-Y. Hsieh et~al.
+\newblock Distilling step-by-step! outperforming larger language models with
+  less training data and smaller model sizes.
+\newblock {\em arXiv preprint arXiv:2305.02301}, 2023.
+
+\bibitem{magister2022teaching}
+L.~C. Magister et~al.
+\newblock Teaching small language models to reason.
+\newblock {\em arXiv preprint arXiv:2212.08410}, 2022.
+
+\bibitem{wang2023scott}
+P.~Wang et~al.
+\newblock Scott: Self-consistent chain-of-thought distillation.
+\newblock {\em arXiv preprint arXiv:2305.01879}, 2023.
+
+\bibitem{saha2023can}
+S.~Saha et~al.
+\newblock Can language models teach weaker agents? teacher explanations improve
+  students via theory of mind.
+\newblock {\em arXiv preprint arXiv:2306.09299}, 2023.
+
+\bibitem{wu2023lamini}
+M.~Wu et~al.
+\newblock Lamini-lm: A diverse herd of distilled models from large-scale
+  instructions.
+\newblock {\em arXiv preprint arXiv:2304.14402}, 2023.
+
+\bibitem{west2021symbolic}
+P.~West et~al.
+\newblock Symbolic knowledge distillation: from general language models to
+  commonsense models.
+\newblock {\em arXiv preprint arXiv:2110.07178}, 2021.
+
+\bibitem{wei2022chain}
+J.~Wei et~al.
+\newblock Chain-of-thought prompting elicits reasoning in large language
+  models.
+\newblock {\em Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem{zhu2023pad}
+X.~Zhu et~al.
+\newblock Pad: Program-aided distillation specializes large models in
+  reasoning.
+\newblock {\em arXiv preprint arXiv:2305.13888}, 2023.
+
+\bibitem{shridhar2023distilling}
+K.~Shridhar et~al.
+\newblock Distilling reasoning capabilities into smaller language models.
+\newblock In {\em Findings of the Association for Computational Linguistics:
+  ACL 2023}, 2023.
+
+\bibitem{fu2023specializing}
+Y.~Fu et~al.
+\newblock Specializing smaller language models towards multi-step reasoning.
+\newblock {\em arXiv preprint arXiv:2301.12726}, 2023.
+
+\bibitem{xu2020bert}
+C.~Xu et~al.
+\newblock Bert-of-theseus: Compressing bert by progressive module replacing.
+\newblock {\em arXiv preprint arXiv:2002.02925}, 2020.
+
+\bibitem{jha2023large}
+A.~H. Jha et~al.
+\newblock Large language model distillation doesn't need a teacher.
+\newblock {\em arXiv preprint arXiv:2305.14864}, 2023.
+
+\bibitem{li2021short}
+T.~Li et~al.
+\newblock A short study on compressing decoder-based language models.
+\newblock {\em arXiv preprint arXiv:2110.08460}, 2021.
+
+\bibitem{qiu2020pre}
+X.~Qiu et~al.
+\newblock Pre-trained models for natural language processing: A survey.
+\newblock {\em Science China Technological Sciences}, 2020.
+
+\bibitem{yu2022unified}
+S.~Yu et~al.
+\newblock Unified visual transformer compression.
+\newblock {\em arXiv preprint arXiv:2203.08243}, 2022.
+
+\bibitem{hao2023vanillakd}
+Z.~Hao et~al.
+\newblock Vanillakd: Revisit the power of vanilla knowledge distillation from
+  small scale to large scale.
+\newblock {\em arXiv preprint arXiv:2305.15781}, 2023.
+
+\bibitem{touvron2021training}
+H.~Touvron et~al.
+\newblock Training data-efficient image transformers \& distillation through
+  attention.
+\newblock In {\em International conference on machine learning}, 2021.
+
+\bibitem{dosovitskiy2020image}
+A.~Dosovitskiy et~al.
+\newblock An image is worth 16x16 words: Transformers for image recognition at
+  scale.
+\newblock {\em arXiv preprint arXiv:2010.11929}, 2020.
+
+\bibitem{ren2022co}
+S.~Ren et~al.
+\newblock Co-advise: Cross inductive bias distillation.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on computer vision and
+  pattern recognition}, 2022.
+
+\bibitem{zhao2023cumulative}
+B.~Zhao et~al.
+\newblock Cumulative spatial knowledge distillation for vision transformers.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, 2023.
+
+\bibitem{chen2022dearkd}
+X.~Chen et~al.
+\newblock Dearkd: data-efficient early knowledge distillation for vision
+  transformers.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, 2022.
+
+\bibitem{yang2022vitkd}
+Z.~Yang et~al.
+\newblock Vitkd: Practical guidelines for vit feature knowledge distillation.
+\newblock {\em arXiv preprint arXiv:2209.02432}, 2022.
+
+\bibitem{raffel2020exploring}
+C.~Raffel et~al.
+\newblock Exploring the limits of transfer learning with a unified text-to-text
+  transformer.
+\newblock {\em The Journal of Machine Learning Research}, 2020.
+
+\bibitem{Cheng2023ASO}
+H.~Cheng et~al.
+\newblock A survey on deep neural network pruning-taxonomy, comparison,
+  analysis, and recommendations.
+\newblock {\em ArXiv}, abs/2308.06767, 2023.
+
+\bibitem{Devlin2019BERTPO}
+J.~Devlin et~al.
+\newblock Bert: Pre-training of deep bidirectional transformers for language
+  understanding.
+\newblock In {\em North American Chapter of the Association for Computational
+  Linguistics}, 2019.
+
+\bibitem{Liu2021SwinTH}
+Z.~Liu et~al.
+\newblock Swin transformer: Hierarchical vision transformer using shifted
+  windows.
+\newblock {\em 2021 IEEE/CVF International Conference on Computer Vision
+  (ICCV)}, pp. 9992--10002, 2021.
+
+\bibitem{Renda2020ComparingRA}
+A.~Renda et~al.
+\newblock Comparing rewinding and fine-tuning in neural network pruning.
+\newblock {\em ArXiv}, abs/2003.02389, 2020.
+
+\bibitem{Lee2018SNIPSN}
+N.~Lee et~al.
+\newblock Snip: Single-shot network pruning based on connection sensitivity.
+\newblock {\em ArXiv}, abs/1810.02340, 2018.
+
+\bibitem{Zhang2018ASD}
+T.~Zhang et~al.
+\newblock A systematic dnn weight pruning framework using alternating direction
+  method of multipliers.
+\newblock In {\em European Conference on Computer Vision}, 2018.
+
+\bibitem{You2019GateDG}
+Z.~You et~al.
+\newblock Gate decorator: Global filter pruning method for accelerating deep
+  convolutional neural networks.
+\newblock In {\em Neural Information Processing Systems}, 2019.
+
+\bibitem{Zhou2021LearningNM}
+A.~Zhou et~al.
+\newblock Learning n: M fine-grained structured sparse neural networks from
+  scratch.
+\newblock {\em ArXiv}, abs/2102.04010, 2021.
+
+\bibitem{Goyal2020PoWERBERTAB}
+S.~Goyal et~al.
+\newblock Power-bert: Accelerating bert inference via progressive word-vector
+  elimination.
+\newblock In {\em International Conference on Machine Learning}, 2020.
+
+\bibitem{Frantar2023SparseGPTML}
+E.~Frantar and D.~Alistarh.
+\newblock Sparsegpt: Massive language models can be accurately pruned in
+  one-shot.
+\newblock {\em ArXiv}, abs/2301.00774, 2023.
+
+\bibitem{Sun2023ASA}
+M.~Sun et~al.
+\newblock A simple and effective pruning approach for large language models.
+\newblock {\em ArXiv}, abs/2306.11695, 2023.
+
+\bibitem{Syed2023PruneAT}
+A.~Syed et~al.
+\newblock Prune and tune: Improving efficient pruning techniques for massive
+  language models.
+\newblock In {\em Tiny Papers @ ICLR}, 2023.
+
+\bibitem{Zhang2022OPTOP}
+S.~Zhang et~al.
+\newblock Opt: Open pre-trained transformer language models.
+\newblock {\em ArXiv}, abs/2205.01068, 2022.
+
+\bibitem{scao2022bloom}
+T.~L. Scao et~al.
+\newblock Bloom: A 176b-parameter open-access multilingual language model.
+\newblock {\em arXiv preprint arXiv:2211.05100}, 2022.
+
+\bibitem{Michel2019AreSH}
+P.~Michel et~al.
+\newblock Are sixteen heads really better than one?
+\newblock In {\em Neural Information Processing Systems}, 2019.
+
+\bibitem{Fan2019ReducingTD}
+A.~Fan et~al.
+\newblock Reducing transformer depth on demand with structured dropout.
+\newblock {\em ArXiv}, abs/1909.11556, 2019.
+
+\bibitem{Santacroce2023WhatMI}
+M.~Santacroce et~al.
+\newblock What matters in the structured pruning of generative language models?
+\newblock {\em ArXiv}, abs/2302.03773, 2023.
+
+\bibitem{lagunas-etal-2021-block}
+F.~Lagunas et~al.
+\newblock Block pruning for faster transformers.
+\newblock In M.-F. Moens et~al., editors, {\em Proceedings of the 2021
+  Conference on Empirical Methods in Natural Language Processing}, pp.
+  10619--10629, Online and Punta Cana, Dominican Republic, November 2021.
+  Association for Computational Linguistics.
+
+\bibitem{Xia2022StructuredPL}
+M.~Xia et~al.
+\newblock Structured pruning learns compact and accurate models.
+\newblock In {\em Annual Meeting of the Association for Computational
+  Linguistics}, 2022.
+
+\bibitem{Frantar2022OptimalBC}
+E.~Frantar and D.~Alistarh.
+\newblock Optimal brain compression: A framework for accurate post-training
+  quantization and pruning.
+\newblock {\em ArXiv}, abs/2208.11580, 2022.
+
+\bibitem{Zhu2017ToPO}
+M.~Zhu and S.~Gupta.
+\newblock To prune, or not to prune: exploring the efficacy of pruning for
+  model compression.
+\newblock {\em ArXiv}, abs/1710.01878, 2017.
+
+\bibitem{Hubara2021AcceleratedSN}
+I.~Hubara et~al.
+\newblock Accelerated sparse neural training: A provable and efficient method
+  to find n: M transposable masks.
+\newblock {\em ArXiv}, abs/2102.08124, 2021.
+
+\bibitem{He2017ChannelPF}
+Y.~He et~al.
+\newblock Channel pruning for accelerating very deep neural networks.
+\newblock {\em 2017 IEEE International Conference on Computer Vision (ICCV)},
+  pp. 1398--1406, 2017.
+
+\bibitem{Voita2019AnalyzingMS}
+E.~Voita et~al.
+\newblock Analyzing multi-head self-attention: Specialized heads do the heavy
+  lifting, the rest can be pruned.
+\newblock {\em ArXiv}, abs/1905.09418, 2019.
+
+\bibitem{Tao2023StructuredPF}
+C.~Tao et~al.
+\newblock Structured pruning for efficient generative pre-trained language
+  models.
+\newblock In {\em Annual Meeting of the Association for Computational
+  Linguistics}, 2023.
+
+\bibitem{Hu2021LoRALA}
+J.~E. Hu et~al.
+\newblock Lora: Low-rank adaptation of large language models.
+\newblock {\em ArXiv}, abs/2106.09685, 2021.
+
+\bibitem{Kim2021LearnedTP}
+S.~Kim et~al.
+\newblock Learned token pruning for transformers.
+\newblock {\em Proceedings of the 28th ACM SIGKDD Conference on Knowledge
+  Discovery and Data Mining}, 2021.
+
+\bibitem{Child2019GeneratingLS}
+R.~Child et~al.
+\newblock Generating long sequences with sparse transformers.
+\newblock {\em ArXiv}, abs/1904.10509, 2019.
+
+\bibitem{Zaheer2020BigBT}
+M.~Zaheer et~al.
+\newblock Big bird: Transformers for longer sequences.
+\newblock {\em ArXiv}, abs/2007.14062, 2020.
+
+\bibitem{Roy2020EfficientCS}
+A.~Roy et~al.
+\newblock Efficient content-based sparse attention with routing transformers.
+\newblock {\em Transactions of the Association for Computational Linguistics},
+  9:53--68, 2020.
+
+\bibitem{Guo2019StarTransformer}
+Q.~Guo et~al.
+\newblock Star-transformer.
+\newblock {\em ArXiv}, abs/1902.09113, 2019.
+
+\bibitem{Lee2023SparseTT}
+H.~Lee et~al.
+\newblock Sparse token transformer with attention back tracking.
+\newblock In {\em International Conference on Learning Representations}, 2023.
+
+\bibitem{Rao2021DynamicViTEV}
+Y.~Rao et~al.
+\newblock Dynamicvit: Efficient vision transformers with dynamic token
+  sparsification.
+\newblock {\em ArXiv}, abs/2106.02034, 2021.
+
+\bibitem{Chen2021ChasingSI}
+T.~Chen et~al.
+\newblock Chasing sparsity in vision transformers: An end-to-end exploration.
+\newblock In {\em Neural Information Processing Systems}, 2021.
+
+\bibitem{Zheng2022SAViTSV}
+C.~Zheng et~al.
+\newblock Savit: Structure-aware vision transformer pruning via collaborative
+  optimization.
+\newblock In {\em Neural Information Processing Systems}, 2022.
+
+\bibitem{Yu2022WidthD}
+F.~Yu et~al.
+\newblock Width \& depth pruning for vision transformers.
+\newblock In {\em AAAI Conference on Artificial Intelligence}, 2022.
+
+\bibitem{Papa2023ASO}
+L.~Papa et~al.
+\newblock A survey on efficient vision transformers: algorithms, techniques,
+  and performance benchmarking.
+\newblock {\em ArXiv}, abs/2309.02031, 2023.
+
+\bibitem{Zhu2021VisionTP}
+M.~Zhu et~al.
+\newblock Vision transformer pruning.
+\newblock 2021.
+
+\bibitem{Wang2021NotAI}
+Y.~Wang et~al.
+\newblock Not all images are worth 16x16 words: Dynamic transformers for
+  efficient image recognition.
+\newblock In {\em Neural Information Processing Systems}, 2021.
+
+\bibitem{Liang2022NotAP}
+Y.~Liang et~al.
+\newblock Not all patches are what you need: Expediting vision transformers via
+  token reorganizations.
+\newblock {\em ArXiv}, abs/2202.07800, 2022.
+
+\bibitem{Carion2020EndtoEndOD}
+N.~Carion et~al.
+\newblock End-to-end object detection with transformers.
+\newblock {\em ArXiv}, abs/2005.12872, 2020.
+
+\bibitem{Roh2021SparseDE}
+B.~Roh et~al.
+\newblock Sparse detr: Efficient end-to-end object detection with learnable
+  sparsity.
+\newblock {\em ArXiv}, abs/2111.14330, 2021.
+
+\bibitem{Zheng2023LessIM}
+D.~Zheng et~al.
+\newblock Less is more: Focus attention for efficient detr.
+\newblock {\em ArXiv}, abs/2307.12612, 2023.
+
+\bibitem{Yang2021GlobalVT}
+H.~Yang et~al.
+\newblock Global vision transformer pruning with hessian-aware saliency.
+\newblock {\em 2023 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pp. 18547--18557, 2021.
+
+\bibitem{gu2023mamba}
+A.~Gu and T.~Dao.
+\newblock Mamba: Linear-time sequence modeling with selective state spaces.
+\newblock {\em arXiv preprint arXiv:2312.00752}, 2023.
+
+\bibitem{rae2021scaling}
+J.~W. Rae et~al.
+\newblock Scaling language models: Methods, analysis \& insights from training
+  gopher.
+\newblock {\em arXiv preprint arXiv:2112.11446}, 2021.
+
+\bibitem{penedo2023refinedweb}
+G.~Penedo et~al.
+\newblock The refinedweb dataset for falcon llm: outperforming curated corpora
+  with web data, and web data only.
+\newblock {\em arXiv preprint arXiv:2306.01116}, 2023.
+
+\bibitem{peng2021random}
+H.~Peng et~al.
+\newblock Random feature attention.
+\newblock {\em arXiv preprint arXiv:2103.02143}, 2021.
+
+\bibitem{zaheer2020big}
+M.~Zaheer et~al.
+\newblock Big bird: Transformers for longer sequences.
+\newblock {\em Advances in neural information processing systems}, 2020.
+
+\bibitem{child2019generating}
+R.~Child et~al.
+\newblock Generating long sequences with sparse transformers.
+\newblock {\em arXiv preprint arXiv:1904.10509}, 2019.
+
+\bibitem{roy2021efficient}
+A.~Roy et~al.
+\newblock Efficient content-based sparse attention with routing transformers.
+\newblock {\em Transactions of the Association for Computational Linguistics},
+  2021.
+
+\bibitem{rae2019compressive}
+J.~W. Rae et~al.
+\newblock Compressive transformers for long-range sequence modelling.
+\newblock {\em arXiv preprint arXiv:1911.05507}, 2019.
+
+\bibitem{xiao2023efficient}
+G.~Xiao et~al.
+\newblock Efficient streaming language models with attention sinks.
+\newblock {\em arXiv preprint arXiv:2309.17453}, 2023.
+
+\bibitem{khandelwal2019generalization}
+U.~Khandelwal et~al.
+\newblock Generalization through memorization: Nearest neighbor language
+  models.
+\newblock {\em arXiv preprint arXiv:1911.00172}, 2019.
+
+\bibitem{beltagy2020longformer}
+I.~Beltagy et~al.
+\newblock Longformer: The long-document transformer.
+\newblock {\em arXiv preprint arXiv:2004.05150}, 2020.
+
+\bibitem{chelba2020faster}
+C.~Chelba et~al.
+\newblock Faster transformer decoding: N-gram masked self-attention.
+\newblock {\em arXiv preprint arXiv:2001.04589}, 2020.
+
+\bibitem{choromanski2020rethinking}
+K.~Choromanski et~al.
+\newblock Rethinking attention with performers.
+\newblock {\em arXiv preprint arXiv:2009.14794}, 2020.
+
+\bibitem{katharopoulos2020Transformers}
+A.~Katharopoulos et~al.
+\newblock Transformers are rnns: Fast autoregressive transformers with linear
+  attention.
+\newblock In {\em International conference on machine learning}, 2020.
+
+\bibitem{li2023starcoder}
+R.~Li et~al.
+\newblock Starcoder: may the source be with you!
+\newblock {\em arXiv preprint arXiv:2305.06161}, 2023.
+
+\bibitem{shazeer2019fast}
+N.~Shazeer.
+\newblock Fast transformer decoding: One write-head is all you need.
+\newblock {\em arXiv preprint arXiv:1911.02150}, 2019.
+
+\bibitem{ainslie2023gqa}
+J.~Ainslie et~al.
+\newblock Gqa: Training generalized multi-query transformer models from
+  multi-head checkpoints.
+\newblock {\em arXiv preprint arXiv:2305.13245}, 2023.
+
+\bibitem{zeng2022glm}
+A.~Zeng et~al.
+\newblock Glm-130b: An open bilingual pre-trained model.
+\newblock {\em arXiv preprint arXiv:2210.02414}, 2022.
+
+\bibitem{hoffmann2022training}
+J.~Hoffmann et~al.
+\newblock Training compute-optimal large language models.
+\newblock {\em arXiv preprint arXiv:2203.15556}, 2022.
+
+\bibitem{han2021Transformer}
+K.~Han et~al.
+\newblock Transformer in transformer.
+\newblock {\em Advances in Neural Information Processing Systems}, 2021.
+
+\bibitem{wang2021pyramid}
+W.~Wang et~al.
+\newblock Pyramid vision transformer: A versatile backbone for dense prediction
+  without convolutions.
+\newblock In {\em Proceedings of the IEEE/CVF international conference on
+  computer vision}, 2021.
+
+\bibitem{guo2022cmt}
+J.~Guo et~al.
+\newblock Cmt: Convolutional neural networks meet vision transformers.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, 2022.
+
+\bibitem{dao2022flashattention}
+T.~Dao et~al.
+\newblock Flashattention: Fast and memory-efficient exact attention with
+  io-awareness.
+\newblock {\em Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem{rasley2020deepspeed}
+J.~Rasley et~al.
+\newblock Deepspeed: System optimizations enable training deep learning models
+  with over 100 billion parameters.
+\newblock In {\em Proceedings of the 26th ACM SIGKDD International Conference
+  on Knowledge Discovery \& Data Mining}, 2020.
+
+\bibitem{shoeybi2019megatron}
+M.~Shoeybi et~al.
+\newblock Megatron-lm: Training multi-billion parameter language models using
+  model parallelism.
+\newblock {\em arXiv preprint arXiv:1909.08053}, 2019.
+
+\bibitem{paszke2019pytorch}
+A.~Paszke et~al.
+\newblock Pytorch: An imperative style, high-performance deep learning library.
+\newblock {\em Advances in neural information processing systems}, 2019.
+
+\bibitem{li2023colossal}
+S.~Li et~al.
+\newblock Colossal-ai: A unified deep learning system for large-scale parallel
+  training.
+\newblock In {\em Proceedings of the 52nd International Conference on Parallel
+  Processing}, 2023.
+
+\bibitem{wolf2019huggingface}
+T.~Wolf et~al.
+\newblock Huggingface's transformers: State-of-the-art natural language
+  processing.
+\newblock {\em arXiv preprint arXiv:1910.03771}, 2019.
+
+\bibitem{gu2021efficiently}
+A.~Gu et~al.
+\newblock Efficiently modeling long sequences with structured state spaces.
+\newblock {\em arXiv preprint arXiv:2111.00396}, 2021.
+
+\bibitem{mehta2022long}
+H.~Mehta et~al.
+\newblock Long range language modeling via gated state spaces.
+\newblock {\em arXiv preprint arXiv:2206.13947}, 2022.
+
+\bibitem{dao2022hungry}
+T.~Dao et~al.
+\newblock Hungry hungry hippos: Towards language modeling with state space
+  models.
+\newblock {\em arXiv preprint arXiv:2212.14052}, 2022.
+
+\bibitem{gupta2022diagonal}
+A.~Gupta et~al.
+\newblock Diagonal state spaces are as effective as structured state spaces.
+\newblock {\em Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem{poli2023hyena}
+M.~Poli et~al.
+\newblock Hyena hierarchy: Towards larger convolutional language models.
+\newblock {\em arXiv preprint arXiv:2302.10866}, 2023.
+
+\bibitem{dai2019Transformer}
+Z.~Dai et~al.
+\newblock Transformer-xl: Attentive language models beyond a fixed-length
+  context.
+\newblock {\em arXiv preprint arXiv:1901.02860}, 2019.
+
+\bibitem{martins2021infty}
+P.~H. Martins et~al.
+\newblock $\infty$-former: Infinite memory transformer.
+\newblock {\em arXiv preprint arXiv:2109.00301}, 2021.
+
+\bibitem{ma2022mega}
+X.~Ma et~al.
+\newblock Mega: moving average equipped gated attention.
+\newblock {\em arXiv preprint arXiv:2209.10655}, 2022.
+
+\bibitem{chen1984linear}
+C.-T. Chen.
+\newblock {\em Linear system theory and design}.
+\newblock Saunders college publishing, 1984.
+
+\bibitem{gu2020hippo}
+A.~Gu et~al.
+\newblock Hippo: Recurrent memory with optimal polynomial projections.
+\newblock {\em Advances in neural information processing systems}, 2020.
+
+\bibitem{pan2017fast}
+V.~Pan.
+\newblock Fast approximate computations with cauchy matrices and polynomials.
+\newblock {\em Mathematics of Computation}, 2017.
+
+\bibitem{peng2023rwkv}
+B.~Peng et~al.
+\newblock Rwkv: Reinventing rnns for the transformer era.
+\newblock {\em arXiv preprint arXiv:2305.13048}, 2023.
+
+\bibitem{pioro2024moe}
+M.~Pi{\'o}ro et~al.
+\newblock Moe-mamba: Efficient selective state space models with mixture of
+  experts.
+\newblock {\em arXiv preprint arXiv:2401.04081}, 2024.
+
+\bibitem{he2024densemamba}
+W.~He et~al.
+\newblock Densemamba: State space models with dense hidden connection for
+  efficient large language models.
+\newblock {\em arXiv preprint arXiv:2403.00818}, 2024.
+
+\bibitem{du2022glam}
+N.~Du et~al.
+\newblock Glam: Efficient scaling of language models with mixture-of-experts.
+\newblock In {\em International Conference on Machine Learning}, 2022.
+
+\bibitem{lepikhin2020gshard}
+D.~Lepikhin et~al.
+\newblock Gshard: Scaling giant models with conditional computation and
+  automatic sharding.
+\newblock {\em arXiv preprint arXiv:2006.16668}, 2020.
+
+\bibitem{fedus2022switch}
+W.~Fedus et~al.
+\newblock Switch transformers: Scaling to trillion parameter models with simple
+  and efficient sparsity.
+\newblock {\em The Journal of Machine Learning Research}, 2022.
+
+\bibitem{roller2021hash}
+S.~Roller et~al.
+\newblock Hash layers for large sparse models.
+\newblock {\em Advances in Neural Information Processing Systems}, 2021.
+
+\bibitem{chi2022representation}
+Z.~Chi et~al.
+\newblock On the representation collapse of sparse mixture of experts.
+\newblock {\em Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem{lewis2021base}
+M.~Lewis et~al.
+\newblock Base layers: Simplifying training of large, sparse models.
+\newblock In {\em International Conference on Machine Learning}, 2021.
+
+\bibitem{liu2023towards}
+L.~Z. Liu et~al.
+\newblock Towards a unified view of sparse feed-forward network in pretraining
+  large language model.
+\newblock {\em arXiv preprint arXiv:2305.13999}, 2023.
+
+\bibitem{romero2021ckconv}
+D.~W. Romero et~al.
+\newblock Ckconv: Continuous kernel convolution for sequential data.
+\newblock {\em arXiv preprint arXiv:2102.02611}, 2021.
+
+\bibitem{shazeer2020glu}
+N.~Shazeer.
+\newblock Glu variants improve transformer.
+\newblock {\em arXiv preprint arXiv:2002.05202}, 2020.
+
+\bibitem{rumelhart1986learning}
+D.~E. Rumelhart et~al.
+\newblock Learning representations by back-propagating errors.
+\newblock {\em nature}, 1986.
+
+\bibitem{heo2021rethinking}
+B.~Heo et~al.
+\newblock Rethinking spatial dimensions of vision transformers.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, 2021.
+
+\bibitem{yang2021focal}
+J.~Yang et~al.
+\newblock Focal self-attention for local-global interactions in vision
+  transformers.
+\newblock {\em arXiv preprint arXiv:2107.00641}, 2021.
+
+\bibitem{tang2022quadtree}
+S.~Tang et~al.
+\newblock Quadtree attention for vision transformers.
+\newblock {\em arXiv preprint arXiv:2201.02767}, 2022.
+
+\bibitem{pan2021scalable}
+Z.~Pan et~al.
+\newblock Scalable vision transformers with hierarchical pooling.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, 2021.
+
+\bibitem{chen2021crossvit}
+C.-F.~R. Chen et~al.
+\newblock Crossvit: Cross-attention multi-scale vision transformer for image
+  classification.
+\newblock In {\em Proceedings of the IEEE/CVF international conference on
+  computer vision}, 2021.
+
+\bibitem{xu2021co}
+W.~Xu et~al.
+\newblock Co-scale conv-attentional image transformers.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, 2021.
+
+\bibitem{parmar2018image}
+N.~Parmar et~al.
+\newblock Image transformer.
+\newblock In {\em International conference on machine learning}, 2018.
+
+\bibitem{hatamizadeh2023fastervit}
+A.~Hatamizadeh et~al.
+\newblock Fastervit: Fast vision transformers with hierarchical attention.
+\newblock {\em arXiv preprint arXiv:2306.06189}, 2023.
+
+\bibitem{liu2023efficientvit}
+X.~Liu et~al.
+\newblock Efficientvit: Memory efficient vision transformer with cascaded group
+  attention.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, 2023.
+
+\bibitem{you2022castling}
+H.~You et~al.
+\newblock Castling-vit: Compressing self-attention via switching towards
+  linear-angular attention during vision transformer inference.
+\newblock {\em arXiv preprint arXiv:2211.10526}, 2022.
+
+\bibitem{xiong2021nystromformer}
+Y.~Xiong et~al.
+\newblock Nystr{\"o}mformer: A nystr{\"o}m-based algorithm for approximating
+  self-attention.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial
+  Intelligence}, 2021.
+
+\bibitem{guo2022beyond}
+M.-H. Guo et~al.
+\newblock Beyond self-attention: External attention using two linear layers for
+  visual tasks.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  2022.
+
+\bibitem{wang2023riformer}
+J.~Wang et~al.
+\newblock Riformer: Keep your vision backbone effective but removing token
+  mixer.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, 2023.
+
+\bibitem{lian2021mlp}
+D.~Lian et~al.
+\newblock As-mlp: An axial shifted mlp architecture for vision.
+\newblock {\em arXiv preprint arXiv:2107.08391}, 2021.
+
+\bibitem{chen2021cyclemlp}
+S.~Chen et~al.
+\newblock Cyclemlp: A mlp-like architecture for dense prediction.
+\newblock {\em arXiv preprint arXiv:2107.10224}, 2021.
+
+\bibitem{yuan2021tokens}
+L.~Yuan et~al.
+\newblock Tokens-to-token vit: Training vision transformers from scratch on
+  imagenet.
+\newblock In {\em Proceedings of the IEEE/CVF international conference on
+  computer vision}, 2021.
+
+\bibitem{graham2021levit}
+B.~Graham et~al.
+\newblock Levit: a vision transformer in convnet's clothing for faster
+  inference.
+\newblock In {\em Proceedings of the IEEE/CVF international conference on
+  computer vision}, 2021.
+
+\bibitem{mehta2021mobilevit}
+S.~Mehta and M.~Rastegari.
+\newblock Mobilevit: light-weight, general-purpose, and mobile-friendly vision
+  transformer.
+\newblock {\em arXiv preprint arXiv:2110.02178}, 2021.
+
+\bibitem{chu2021twins}
+X.~Chu et~al.
+\newblock Twins: Revisiting the design of spatial attention in vision
+  transformers.
+\newblock {\em Advances in Neural Information Processing Systems}, 2021.
+
+\bibitem{chen2021regionvit}
+C.-F. Chen et~al.
+\newblock Regionvit: Regional-to-local attention for vision transformers.
+\newblock {\em arXiv preprint arXiv:2106.02689}, 2021.
+
+\bibitem{wang2022kvt}
+P.~Wang et~al.
+\newblock Kvt: k-nn attention for boosting vision transformers.
+\newblock In {\em European conference on computer vision}, 2022.
+
+\bibitem{pan2022fast}
+Z.~Pan et~al.
+\newblock Fast vision transformers with hilo attention.
+\newblock {\em Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem{dong2022cswin}
+X.~Dong et~al.
+\newblock Cswin transformer: A general vision transformer backbone with
+  cross-shaped windows.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, 2022.
+
+\bibitem{huang2021shuffle}
+Z.~Huang et~al.
+\newblock Shuffle transformer: Rethinking spatial shuffle for vision
+  transformer.
+\newblock {\em arXiv preprint arXiv:2106.03650}, 2021.
+
+\bibitem{fang2022msg}
+J.~Fang et~al.
+\newblock Msg-transformer: Exchanging local spatial information by manipulating
+  messenger tokens.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, 2022.
+
+\bibitem{han2023flatten}
+D.~Han et~al.
+\newblock Flatten transformer: Vision transformer using focused linear
+  attention.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, 2023.
+
+\bibitem{zhai2021attention}
+S.~Zhai et~al.
+\newblock An attention free transformer.
+\newblock {\em arXiv preprint arXiv:2105.14103}, 2021.
+
+\bibitem{rao2021global}
+Y.~Rao et~al.
+\newblock Global filter networks for image classification.
+\newblock {\em Advances in neural information processing systems}, 2021.
+
+\bibitem{touvron2022resmlp}
+H.~Touvron et~al.
+\newblock Resmlp: Feedforward networks for image classification with
+  data-efficient training.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  2022.
+
+\bibitem{guo2022hire}
+J.~Guo et~al.
+\newblock Hire-mlp: Vision mlp via hierarchical rearrangement.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pp. 826--836, 2022.
+
+\bibitem{tang2022image}
+Y.~Tang et~al.
+\newblock An image patch is a wave: Phase-aware vision mlp.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pp. 10935--10944, 2022.
+
+\bibitem{zhu2024vision}
+L.~Zhu et~al.
+\newblock Vision mamba: Efficient visual representation learning with
+  bidirectional state space model.
+\newblock {\em arXiv preprint arXiv:2401.09417}, 2024.
+
+\bibitem{liu2024vmamba}
+Y.~Liu et~al.
+\newblock Vmamba: Visual state space model.
+\newblock {\em arXiv preprint arXiv:2401.10166}, 2024.
+
+\bibitem{zhai2022scaling}
+X.~Zhai et~al.
+\newblock Scaling vision transformers.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, 2022.
+
+\bibitem{su2022vitas}
+X.~Su et~al.
+\newblock Vitas: Vision transformer architecture search.
+\newblock In {\em European Conference on Computer Vision}, 2022.
+
+\bibitem{chen2021autoformer}
+M.~Chen et~al.
+\newblock Autoformer: Searching transformers for visual recognition.
+\newblock In {\em Proceedings of the IEEE/CVF international conference on
+  computer vision}, 2021.
+
+\bibitem{chen2021glit}
+B.~Chen et~al.
+\newblock Glit: Neural architecture search for global and local image
+  transformer.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, 2021.
+
+\bibitem{chen2023vanillanet}
+H.~Chen et~al.
+\newblock Vanillanet: the power of minimalism in deep learning.
+\newblock {\em arXiv preprint arXiv:2305.12972}, 2023.
+
+\bibitem{denil2013predicting}
+M.~Denil et~al.
+\newblock Predicting parameters in deep learning.
+\newblock {\em Advances in neural information processing systems}, 26, 2013.
+
+\bibitem{jaderberg2014speeding}
+M.~Jaderberg et~al.
+\newblock Speeding up convolutional neural networks with low rank expansions.
+\newblock In {\em BMVC 2014-Proceedings of the British Machine Vision
+  Conference 2014}. British Machine Vision Association, 2014.
+
+\bibitem{edalati2022kronecker}
+A.~Edalati et~al.
+\newblock Kronecker decomposition for gpt compression.
+\newblock In {\em Proceedings of the 60th Annual Meeting of the Association for
+  Computational Linguistics (Volume 2: Short Papers)}, pp. 219--226, 2022.
+
+\bibitem{kaushal2023lord}
+A.~Kaushal et~al.
+\newblock Lord: Low rank decomposition of monolingual code llms for one-shot
+  compression.
+\newblock {\em arXiv preprint arXiv:2309.14021}, 2023.
+
+\bibitem{chen2023ternary}
+B.~Chen et~al.
+\newblock Ternary singular value decomposition as a better parameterized form
+  in linear mapping.
+\newblock {\em arXiv preprint arXiv:2308.07641}, 2023.
+
+\bibitem{xu2023tensorgpt}
+M.~Xu et~al.
+\newblock Tensorgpt: Efficient compression of the embedding layer in llms based
+  on the tensor-train decomposition.
+\newblock {\em arXiv preprint arXiv:2307.00526}, 2023.
+
+\bibitem{cambazoglu2010early}
+B.~B. Cambazoglu et~al.
+\newblock Early exit optimizations for additive machine learned ranking
+  systems.
+\newblock In {\em Proceedings of the third ACM international conference on Web
+  search and data mining}, pp. 411--420, 2010.
+
+\bibitem{teerapittayanon2016branchynet}
+S.~Teerapittayanon et~al.
+\newblock Branchynet: Fast inference via early exiting from deep neural
+  networks.
+\newblock In {\em 2016 23rd international conference on pattern recognition
+  (ICPR)}, pp. 2464--2469. IEEE, 2016.
+
+\bibitem{stickland2019bert}
+A.~C. Stickland and I.~Murray.
+\newblock Bert and pals: Projected attention layers for efficient adaptation in
+  multi-task learning.
+\newblock In {\em International Conference on Machine Learning}, pp.
+  5986--5995. PMLR, 2019.
+
+\bibitem{schwartz2020right}
+R.~Schwartz et~al.
+\newblock The right tool for the job: Matching model and instance complexities.
+\newblock In {\em Proceedings of the 58th Annual Meeting of the Association for
+  Computational Linguistics}, pp. 6640--6651, 2020.
+
+\bibitem{liu2020fastbert}
+W.~Liu et~al.
+\newblock Fastbert: a self-distilling bert with adaptive inference time.
+\newblock In {\em Proceedings of the 58th Annual Meeting of the Association for
+  Computational Linguistics}, pp. 6035--6044, 2020.
+
+\bibitem{hou2020dynabert}
+L.~Hou et~al.
+\newblock Dynabert: Dynamic bert with adaptive width and depth.
+\newblock {\em Advances in Neural Information Processing Systems},
+  33:9782--9793, 2020.
+
+\bibitem{liu2021faster}
+Y.~Liu et~al.
+\newblock Faster depth-adaptive transformers.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~35, pp. 13424--13432, 2021.
+
+\bibitem{schuster2021consistent}
+T.~Schuster et~al.
+\newblock Consistent accelerated inference via confident adaptive transformers.
+\newblock In {\em Proceedings of the 2021 Conference on Empirical Methods in
+  Natural Language Processing}, pp. 4962--4979, 2021.
+
+\bibitem{elbayad2020depth}
+M.~Elbayad et~al.
+\newblock Depth-adaptive transformer.
+\newblock In {\em ICLR}, pp. 1--14, 2020.
+
+\bibitem{schuster2022confident}
+T.~Schuster et~al.
+\newblock Confident adaptive language modeling.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:17456--17472, 2022.
+
+\bibitem{del2023skipdecode}
+L.~Del~Corro et~al.
+\newblock Skipdecode: Autoregressive skip decoding with batching and caching
+  for efficient llm inference.
+\newblock {\em arXiv preprint arXiv:2307.02628}, 2023.
+
+\bibitem{leviathan2023fast}
+Y.~Leviathan et~al.
+\newblock Fast inference from transformers via speculative decoding.
+\newblock In {\em International Conference on Machine Learning}, pp.
+  19274--19286. PMLR, 2023.
+
+\bibitem{chen2023accelerating}
+C.~Chen et~al.
+\newblock Accelerating large language model decoding with speculative sampling.
+\newblock {\em arXiv preprint arXiv:2302.01318}, 2023.
+
+\bibitem{yang2023inference}
+N.~Yang et~al.
+\newblock Inference with reference: Lossless acceleration of large language
+  models.
+\newblock {\em arXiv preprint arXiv:2304.04487}, 2023.
+
+\bibitem{xu2023llmcad}
+D.~Xu et~al.
+\newblock Llmcad: Fast and scalable on-device large language model inference.
+\newblock {\em arXiv preprint arXiv:2309.04255}, 2023.
+
+\bibitem{wang2020apq}
+T.~Wang et~al.
+\newblock Apq: Joint search for network architecture, pruning and quantization
+  policy.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pp. 2078--2087, 2020.
+
+\end{thebibliography}

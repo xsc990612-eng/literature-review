@@ -1,0 +1,51 @@
+\begin{table*}[!t]
+    \centering
+    \small
+    \caption{\textbf{Evaluation results.} Average Rouge-L (R-L) and GPT-4o (mini) feedback scores across 5 random seeds across $\{10,20,30,40,50\}$. The best scores of each model size are \textbf{boldfaced} and the second best are \underline{underlined}. }
+    \begin{tabular}{lrl|cc|cc|cc|c|c||c}
+    \toprule
+    \multirow{2}{*}{\textbf{Model}} & \multirow{2}{*}{\textbf{\#Params}} & \multirow{2}{*}{\textbf{Method}}
+    & \multicolumn{2}{c|}{\textbf{Dolly}} & \multicolumn{2}{c|}{\textbf{SelfInst}}  & \multicolumn{2}{c|}{\textbf{Vicuna}} & \textbf{S-NI} & \textbf{UnNI} & \textbf{Avg}\\
+    \cmidrule{4-12}
+      & &  &  R-L & GPT-4o & R-L & GPT-4o & R-L & GPT-4o & R-L & R-L & R-L    \\ 
+     \midrule
+     \multirow{20}{*}{GPT-2}
+      & 1.5B & Teacher &  27.6 & 23.9 & 14.3 & 12.5 & 16.3 & 16.0 & 27.6 & 31.8 & 23.52    \\ 
+      \cmidrule{2-12}
+
+     & \multirow{8}{*}{120M}
+        & SFT &  23.3 & 13.4 & 10.0 & 4.9 & 14.7 & 6.7 & 16.3 & 18.5 & 16.56 \\
+     &  & KD (FKL) &  23.5 & 14.3 & 10.3 & 5.7 & 14.7 & 6.7 & 16.6 & 20.9  & 17.20  \\
+     &  & SeqKD &  22.7 & 13.9 & 10.1 & 4.8 & 14.3 & 6.8 & 16.4 & 18.8 & 16.64 \\
+     & & RKL & 23.2 & 14.4 & \underline{10.6} & 5.9 & 14.7 & 6.8 & \underline{17.9} & \underline{21.4} & 17.56 \\
+     & & FKL + RKL & 23.5 & 14.5 & 10.4 & 6.1 & 15.0 & \textbf{7.4} & 17.6 & 21.0 & 17.50 \\
+     & & JSD & 23.4 & 14.6 & 10.4 & 6.2 & 14.5 & 7.0 & 17.1 & 20.6 & 17.20 \\
+     & & AKL & \underline{23.7} & 14.3 & 10.4 & \underline{6.4} & \underline{15.3} & 6.9 & 17.6 &  21.2 & \underline{17.64} \\
+     & & \textsc{DistillLens} & \textbf{25.2} & \textbf{15.0} & \textbf{12.4} & \textbf{7.0} & \textbf{15.8} & \underline{7.3} & \textbf{24.3} & \textbf{27.9} & \textbf{21.12} \\
+     \cmidrule{2-12}
+     & \multirow{8}{*}{340M}
+        & SFT & 25.3 & \underline{19.8} & 12.3 & 9.2 & 16.0 & 12.5 & 22.7 & 26.6 & 20.58 \\
+     &  & KD (FKL)  & \underline{25.5} & 19.6 & 12.1 & 8.5 & 16.1 & 12.3 & 21.9 & 26.5 & 20.42 \\
+     &  & SeqKD & 25.2 & 19.6 & 12.1 & 8.9 & \underline{16.2} & 12.6 & \underline{23.9} & \underline{27.8} & \underline{21.04} \\
+     & & RKL & 24.9 & 19.5 & \underline{13.3} & 9.4 & 16.0 & 12.4 & 23.4 & 27.5 & 21.02\\
+     & & FKL + RKL & 24.9 & 19.6 & 12.9 & \underline{10.0} & 16.1 & \underline{12.8} & 23.2 & 27.0 & 20.82 \\
+     & & JSD & 25.1 & 19.6 & 12.0 & 9.3 & 15.8 & 11.7 & 23.2 & 27.0 & 20.62 \\
+     & & AKL & 24.8 & 19.3 & 12.7 & 9.1 & 15.2 & 12.7 & 23.2 &  27.3 & 20.64 \\
+     & & \textsc{DistillLens} & \textbf{26.4} & \textbf{20.1} & \textbf{14.6} & \textbf{10.3} & \textbf{16.5} & \textbf{13.0} & \textbf{28.1} & \textbf{33.0} & \textbf{23.72} \\
+    \midrule
+    \multirow{9}{*}{Llama}
+      & 6.7B & Teacher &  26.3 & 33.1 & 20.8 & 25.1 & 17.5 & 26.1 & 32.4 & 35.8 & 26.56    \\ 
+      \cmidrule{2-12}
+     & \multirow{8}{*}{1.1B}
+        & SFT & 25.5 & 23.1 & 17.1 & 15.7 & 16.9 & 16.1 & 29.5 & 31.8 & 24.16  \\
+     &  & KD (FKL) &  25.3 & 22.9 & 17.0 & 16.8 & 16.9 & 16.4 & 28.8 & 31.1  & 23.82  \\
+     &  & SeqKD &  24.9 & 22.3 & 16.2 & 14.8 & 16.5 & 15.6 & 27.7 & 30.6 & 23.18   \\
+     & & RKL & \underline{25.6} & 23.3 & 16.3 & 16.0 & \underline{17.7} & \underline{17.8} & 28.4 & 32.0 & 24.00 \\
+     & & FKL + RKL & 25.5 & 23.0 & \underline{17.5} & \underline{17.2} & 17.1 & 17.3 & 29.9 & \underline{32.8} & \underline{24.56} \\
+     & & JSD & 25.4 & \underline{23.7} & 16.9 & 16.9 & 17.4 & 16.3 & \underline{30.0} & 32.5 & 24.44   \\
+     & & AKL & 25.3 & \underline{23.7} & 17.4 & 16.9 & 17.3 & 17.3 & 29.5 & 32.1 & 24.32 \\
+     & & \textsc{DistillLens} & \textbf{25.9} & \textbf{24.5} & \textbf{18.2} & \textbf{19.0} & \textbf{18.2} & \textbf{20.8} & \textbf{30.8} & \textbf{34.3} & \textbf{25.48} \\
+     \bottomrule
+    \end{tabular}
+    \label{tab:main_results}
+\end{table*}

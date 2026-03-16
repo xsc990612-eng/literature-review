@@ -1,0 +1,73 @@
+\section{Introduction}
+
+% Popularity of LLM and LLM fine-tuning. Fine-tuning can be used to further improve general model capacity or customize model to specific domains.
+
+% \yuanchun{please slightly adjust the logic according to the abstract. (adapters are useful --> dynamic adapters can effectively increase the adapter capacity --> dynamic adapters lead to unexpected latency overhead)}
+
+% \kongrui{split first paragraph two parts: 1.say adapters usually use 2.say dynamic adapters usually use}
+% \noindent\textbf{Adapters for Efficient LLM Customization.}
+Large language models (LLMs) have demonstrated remarkable capabilities in language understanding and generation, enabling significant progress in a wide range of tasks, including conversational AI~\cite{li2025towards,chen2025multi,li2023coltr,li2025fultr,wei2025igniting}, code generation~\cite{xiong2024search,wang2024enhancing}, search~\cite{li2025m,liao2023mcrle,li2025rankexpert,li2025s,li2025rankelectra}, and recommendation~\cite{li2023mhrr,li2023ltrgcn,lu2025dmmd4sr,cui2025multi,cui2025diffusion,liu2025mdn,mo2025one}. To customize the pretrained models to vertical domains or further enhance their capabilities, various adapter techniques such as Low-Rank Adapters (LoRA)~\cite{Hu2021LoRALA}, LLaMA-Adapter~\cite{zhang2023llama}, and Prompt Tuning~\cite{lester2021power,li2023s2phere,tong2025dapt,liao2024tpo} have been employed with great success. These methods are known for improving the performance of LLMs on downstream tasks without requiring extensive retraining, thereby enabling efficient model adaptation and customization.
+
+% \noindent\textbf{Dynamic Adapters for Enhanced Model Capacity.} 
+Among these approaches, dynamic adapters~\cite{feng2024mixtureofloras,gou2024mixture,luo2024moelora} represent an even more potent strategy to augment the capacity of adapters. Unlike static adapters that apply the same transformation to all inputs, dynamic adapters conditionally activate different sets of lightweight modules based on input characteristics, enabling more sophisticated and context-aware model behavior.
+By integrating conditionally computed lightweight adapters into the pretrained model, dynamic adapters allow for selective fine-tuning of adapter parameters.
+This technique not only maintains the original strengths of the model but also substantially increases its adaptability and capacity across diverse tasks and domains. The flexibility to adapt different model components for different inputs theoretically provides superior performance compared to static approaches, making dynamic adapters particularly attractive for multi-task and multi-domain scenarios.
+% For instance, PESC~\cite{wu2024parameterefficient} has been shown to significantly enhance the model's general abilities through the incorporation of dynamic adapters, while MoLA~\cite{gao2024higher} utilizes them to tailor models to specific domains effectively.
+
+% \noindent\textbf{The Unseen Cost of Dynamic Adapters: Latency.} 
+However, we found that despite the relatively minor impact of dynamic adapters on parameter size and computing complexity (typically adding only 1-5\% of the origin model), they may introduce significant latency overhead. 
+For instance, the dynamic adapters that we studied all increase decoding inference latency by 250-950\%. 
+The seemingly modest computational complexity of the low-rank matrices employed results in substantial extra CUDA kernel execution latency, surpassing that of models without dynamic adapters. 
+This dramatic increase in latency is primarily attributed to the prolonged execution time of context operations during CUDA kernel runs, which considerably exceeds the actual computation time. 
+The fundamental issue lies in the mismatch between the algorithmic design of dynamic adapters and the underlying GPU architecture, where frequent kernel launches and memory access patterns create substantial overhead that outweighs the computational benefits.
+% Specifically, 
+Dynamic adapters often require four or more additional CUDA kernel calls for each layer, in stark contrast to just a single call needed for the forward computation of the original backbone matrix. 
+This excessive number of context operations substantially amplifies the latency overhead, leading to a severe escalation of inference latency.
+
+% This is primarily due to that dynamic adapters incur more CUDA GEMM context operations, which results in disproportionately high latency overheads.
+% the prolonged context operation time of the CUDA GEMM kernel compared to the adapter computation time, which results in disproportionately high latency overheads.
+% (How much overhead? Why?)
+
+% demonstrate the method of MoE, and its limitations
+% 我们要说明降低latency是个很难的事情，首先，为了降低inference latency, 
+
+% \noindent\textbf{Challenges in Mitigating Latency Overhead.} 
+Reducing the inference latency overhead of dynamic adapters is challenging. Existing dynamic adapters~\cite{dou2024loramoe,feng2024mixtureofloras,gao2024higher,gou2024mixture,li2024mixlora,liu2023moelora,luo2024moelora,wu2024parameterefficient,yang2024moral} adopt block-wise or layer-wise routing structures. This architectural choice inherently requires routing decisions to be made sequentially at each block or layer, preventing the efficient pre-merging of adapters into the backbone weights—a technique successfully used by static LoRA~\cite{Hu2021LoRALA}. The need to dynamically select and compute adapters at different stages of the model introduces a fundamental trade-off: the increased model expressiveness comes at the cost of fragmented, high-latency computations that are difficult to optimize with current system approaches. This makes it prohibitively costly to reduce the inference latency without altering the core design of dynamic routing.
+
+% Reducing the inference latency overhead of dynamic adapters presents a significant challenge. Existing dynamic adapters~\cite{li2024mixlora,yang2024moral,wu2024parameterefficient,dou2024loramoe,gao2024higher,luo2024moelora,gou2024mixture,liu2023moelora,feng2024mixtureofloras} adaopt block-wise or layer-wise gating structures, where activated LoRA adapters must be computed separately. 
+% If we were to pre-merge activated LoRA adapters into the backbone weights for forward computation,
+% % \fengqingtian{We then propose that pre-merging activated LoRA adapters into the backbone weights for forward computation}
+% similar to LoRA~\cite{Hu2021LoRALA}, it would fundamentally reduce the number of CUDA kernel calls. 
+% However, 
+% merge后的LLM model参数就被改变了，对于next input来说，就会激活和current input不同的adapters，因此我们推理完当前input，就需要把activated adapters从当前merge后的LLM model中unmerge。
+% the routing dynamicity involved in such merging processes becomes prohibitively costly. For example, the most widely adopted dynamic adapters structure, the Mixture of Experts (MoE), determines the activated adapters based on the output of the last layer. Each layer of dynamic adapters must wait for its router to compute the gating scores before proceeding to merge the activated LoRA adapters.
+% % \fengqingtian{the description is a little weird here. I think we don't need to mention unmerge here, the straightforward method is to use extra memory to recover data and then mention unmerge operation}. 
+% This fragmented operational approach can inadvertently introduce even greater overhead costs.
+
+% Reducing the latency overhead while maintaining the accuracy improvement is challenging due to the dilemmatic tradeoffs.
+% On one hand, the accuracy improvement owes to the improved capacity brought by dynamically-activated adapters.
+% On the other hand, the dynamic adapters inevitably lead to fragmented computation. Because each adapter needs to be computed separately and block the backbone layers. 
+% Although certain types of adapters (\eg LoRA) can be merged/fused into the backbone for efficient inference, the routing dynamicity makes the merging/fusing costly.
+% For instance, the most widely-adopted dynamic adapter structure, mixture of experts (MoE), determines the activated experts based on the last-layer output, making it impossible to pre-compute or pre-merge the adapters.
+% we may need to explain this description further: what is pre-computing and pre-merging?
+
+% Our approach to tackling this challenge involves a holistic system-algorithm co-design. Specifically, we have developed a pre-gated MoE-based structure for dynamic adapters that facilitates token-level adapter routing. In this design, each token is associated with $k$ weighted paths through LoRA adapters, selected prior to each token decoding. This architecture allows the model to incorporate dynamic structures while maintaining a relatively static inference process for each token, due to the pre-determined adapters. If we manage to pre-merge the activated LoRA adapters into the pretrained model's backbone before token decoding, the inference latency of our model could match that of the original LLM model. This integration promises significant reductions in decoding latency, aligning the dynamic adapter's performance closely with the native model's operational efficiency.
+\noindent\textbf{Our Approach: A System-Algorithm Co-Design.} Our approach to addressing the challenge is based on a holistic system-algorithm co-design. Specifically, we have developed a MoE-based dynamic adapters structure that facilitates token-wise adapter routing. Each token is associated with $k$ weighted paths of LoRA adapters, activated prior to the decoding of the token. 
+This setup ensures that, although the model is enhanced with dynamic structures, the inference process for each token remains relatively static due to the pre-determined adapters.
+To further enhance the efficiency, we pre-merge the activated LoRA adapters into the pretrained model's backbone before each token's decoding. 
+This strategy fundamentally reduces the CUDA kernel execution overhead, thereby significantly lowering latency. 
+With this innovative setup, we have re-engineered the inference process to seamlessly switch and merge adapters for each token, aligning the process closely with the original pretrained LLM's token decoding. 
+Another pivotal component of our system is the development of a fused CUDA kernel, named SGMM, which efficiently manages the activated and inactivated adapters. 
+This engineering solution ensures a smooth integration of dynamic adapters, optimizing both performance and efficiency.
+% 
+% We evaluate our approach on various benchmarks in comparison with multiple state-of-the-art dynamic adapter structures. The results have shown that our adapter design can lead to comprehensive performance improvements that are comparable with the strong baselines. While the running overhead of our approach is much smaller than other dynamic adapter alternatives, with 2.4 times speedup in end-to-end response latency on average.
+% 
+% \noindent\textbf{Contributions.}
+We evaluate our \sys design across a range of benchmarks, comparing it against multiple state-of-the-art dynamic adapter baselines. The experiment results demonstrate that our approach are comparable with well-established strong baselines. Notably, our method significantly reduces the running overhead associated with other dynamic adapter alternatives, achieving an average speedup of 2.4 times in decoding latency.
+% 
+In summary, our contributions are as follows:
+\begin{itemize}
+\item We uncover the high latency overhead introduced by dynamic adapters, which is a practical issue usually neglected by existing approaches. We analyze the fundamental reasons behind such high overhead, providing insights on the computational bottlenecks.
+\item We introduce a novel architecture for dynamic adapters, named \sys. This design enhances the capacity of LLM adapters while minimizing the latency overhead, thereby offering an optimal balance between performance and efficiency.
+\item Through extensive experiments, we demonstrate that \sys not only achieves accuracy on par with existing dynamic adapters across a variety of general and domain-specific tasks, but it also cuts down decoding inference latency by more than 2.4 times.
+\end{itemize}

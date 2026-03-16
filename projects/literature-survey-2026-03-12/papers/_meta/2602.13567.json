@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "2602.13567",
+  "title": "DistillLens: Symmetric Knowledge Distillation Through Logit Lens",
+  "authors": ["Manish Dhakal", "Uthman Jinadu", "Anjila Budathoki", "Rajshekhar Sunderraman", "Yi Ding"],
+  "abstract": "Standard Knowledge Distillation (KD) compresses Large Language Models (LLMs) by optimizing final outputs, yet it typically treats the teacher's intermediate layer's thought process as a black box. We introduce symmetric distillation through Logit Lens.",
+  "score": 5,
+  "source_term": "knowledge distillation Hinton neural networks",
+  "direction": "knowledge-distillation",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

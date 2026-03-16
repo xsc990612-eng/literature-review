@@ -1,0 +1,99 @@
+\section{Methodology}
+
+\subsection{Task selection}
+
+In selecting datasets and tasks for our study, we prioritize those that are widely accessible via Kaggle\footnote{https://www.kaggle.com} and HuggingFace\footnote{https://huggingface.co} and those that are commonly used for benchmarking such as those on the Open LLM Leaderboard~\cite{34open-llm-leaderboard}.
+
+Our selection includes datasets like MMLU~\cite{28hendrycks2020mmlu} for broad domain knowledge, Jigsaw~\cite{jigsaw-unintended-bias-in-toxicity-classification} for content moderation, WikiSQL~\cite{zhongSeq2SQL2017} for SQL generation, and GLUE benchmarks~\cite{58wang2018glue}. We categorize the tasks encompassed by these datasets into 5 types:
+
+\begin{itemize}
+    \item \textbf{Classic NLP:} Tasks derived from common NLP datasets published between 2018 and 2022 covering tasks like named entity recognition, data-to-text, and headline generation.
+    \item \textbf{Coding:} SQL query generation, and Python programming questions, which are mostly centered on algorithms and object-oriented design.
+    \item \textbf{Knowledge:} Knowledge-based multiple choice questions.
+    \item \textbf{Reasoning:} Reasoning-based multiple choice questions.
+    \item \textbf{Math:} Numerical, math-based word problems.
+\end{itemize}
+
+
+\include{tables/datasets_table}
+
+\subsection{Prompt selection}
+
+\begin{figure}[ht]
+    \centering
+    % \includegraphics[width=\textwidth]{figures/prompt_design.pdf}
+    \includegraphics[width=\textwidth]{figures/prompt_design.pdf}
+    \caption{Examples of different styles of prompting. To maintain using the same prompts when comparing models and to ensure the highest likelihood of success amongst all types of models (fine-tuned, auto-complete, or instruction-tuned), all of our prompts adhere to completion style.}
+    \label{fig:promptdesign}
+\end{figure}
+
+Previous studies have demonstrated the potential of leveraging prompt engineering techniques, such as the use of majority voting [48], the inclusion of multiple in-context examples (n-shot)~\cite{37song2022evalsurvey}, MedPrompt~\cite{33nori2023generalistvsfinetuned}, chain-of-thought prompting~\cite{36wei2022cot}, etc., to enhance model performance on specific tasks. 
+
+In our evaluations, we consciously choose \textbf{not} to employ additional prompt engineering or tuning strategies for any specific dataset, task, or model. Although using more in-context examples or a more selective approach in n-shot prompting might yield better results, we prioritize reproducibility and the minimization of biases that could arise from customized in-context learning. Instead, we opt to use simple zero or single-shot completion-style prompts for all tasks. Our prompts are written in the completion style, described in Figure \ref{fig:promptdesign}, to provide a fair comparison across fine-tuned, instruction-tuned, and auto-complete models. For classification tasks, the prompt includes all possible classes to inform the model's responses. For more specialized tasks, where describing the expected output format is challenging, we use a single in-context example -- the first example from the published training split -- to guide the model. 
+
+
+\begin{table}[ht]
+
+    \centering
+    \includegraphics[width=\textwidth]{figures/prompt_template_design_examples.pdf}
+    \caption{Examples of prompts that are used in this study, all written in completion style. For more specialized tasks, where describing the expected output format is challenging (e.g. \textit{bc5cdr}), we use a single in-context example — the first example from the published training split — to guide the model.}
+
+\end{table}
+
+Finally, we follow prescribed prompt tagging conventions for each model, as outlined in the respective model's documentation on HuggingFace, to ensure proper querying of pre-trained and instruction-tuned base models. This includes using \textbf{"<s>[INST] ... [/INST]"} for prompts intended for Mistral Instruct, and \textbf{"<bos><start\_of\_turn>user ... <end\_of\_turn><start\_of\_turn><model>"} for Gemma's instruction-tuned models.
+For detailed information on the exact prompt templates applied to each task and model, please see Appendix \ref{sec:appendixprompts}.
+
+\subsection{Base models}
+
+All base models are listed in Table \ref{table:basemodels}. We use GPT-4 (gpt-4-0613) and GPT-3.5-Turbo (gpt-3.5-turbo-0125) as two strong LLM baselines. Our selection of these ten base models was guided by several key considerations, including their widespread adoption within the AI community, availability with permissive licenses, and availability of technical reports. We specifically choose base models with $\leq 8$ billion parameters to ensure that each model can be efficiently trained within the resource limits of a single A10G GPU. 
+
+\begin{table*}[ht]
+\centering  
+\footnotesize % Smaller font size to fit the table within the page width
+\begin{tabular}{llll}
+\textbf{Model Name}      & \textbf{Creator} & \textbf{\# of Parameters} & \textbf{Date Released} \\
+\midrule
+Llama-2-7b               & Meta             & 7B                        & July 18, 2023          \\
+Llama-2-7b-chat          & Meta             & 7B                        & July 18, 2023          \\
+Mistral-7b-v0.1          & Mistral AI       & 7.24B                     & September 20, 2023     \\
+Mistral-7b-Instruct-v0.1 & Mistral AI       & 7.24B                     & September 27, 2023     \\
+Zephyr-7b                & Hugging Face     & 7.24B                     & October 26, 2023       \\
+Phi-2b                   & Microsoft        & 2.78B                     & December 13, 2023      \\
+Gemma-2b                 & Google           & 2.51B                     & February 21, 2024      \\
+Gemma-2b-it              & Google           & 2.51B                     & February 21, 2024      \\
+Gemma-7b                 & Google           & 8.54B                     & February 21, 2024      \\
+Gemma-7b-it              & Google           & 8.54B                     & February 21, 2024     
+\end{tabular}
+
+\caption{Base models used in LoRA-based fine-tuning experiments. To train all models on A10G hardware, all chosen base models are ~7B parameters or smaller.}
+\label{table:basemodels}
+\end{table*}
+
+\subsection{Training parameters}
+
+Each model is trained with published train splits\footnote{\textit{customer\_support} and \textit{legal} are the only two tasks in our list without official splits. The exact splits for these datasets are published on <\href{github.com/predibase/lora-bakeoff}{github.com/predibase/lora-bakeoff}>.}. Each model is trained for $40000$ training steps with batch size 1, 4-bit quantization using bitsandbytes and a LoRA rank of $8$. We use the paged adam optimizer\cite{11dettmers2023qlora}, a learning rate of $0.002$, and a cosine learning rate scheduler with a $0.03$ warm-up fraction ($1200$ training steps). Gradients are applied over $16$ accumulation steps for an effective batch size of $16$.
+
+These training parameters, combined with gradient checkpointing, allow each LLM to be fine-tuned on a single A10 GPU with 24 GB of memory. For tasks where training on the full sequence lengths would still produce a GPU Out-Of-Memory (OOM) error, we first truncate example inputs to a maximum sequence length set as the 95th percentile of all task inputs.
+
+To guarantee a consistent and straightforward basis of comparison across models, no additional hyperparameter tuning is applied to any specific dataset, task, or base model.
+
+Training recipes for each model are provided as Ludwig~\cite{62Molino2019} configurations for each of the fine-tuned LLMs and can be found at \href{https://huggingface.co/predibase}{https://huggingface.co/predibase}. Figure \ref{fig:sampleconfig} shows an example of a config.
+
+\begin{figure}[ht]
+    \centering
+    \scalebox{0.5}{
+    \includegraphics[width=\textwidth]{figures/ludwig_config.png}
+    }
+    \caption{Example LLM model training configuration for LoRA-based fine-tuning. Based on Ludwig \protect\cite{62Molino2019}.}
+    \label{fig:sampleconfig}
+\end{figure}
+
+\subsection{Evaluation}
+
+As specified in Table \ref{table:datasets}, models are evaluated on the test split if it exists and is labeled, or the validation set otherwise\footnote{MMLU has a published test set with labels, however, we use validation split to be consistent with the HELM benchmark~\cite{liang2023helm}}. We employ a tailored set of evaluation metrics to accurately assess the performance across all of the tasks. We use accuracy for classification tasks, (1 - mean absolute error) for regression tasks\footnote{Mean absolute error (MAE) is used because the range of target values are integer-like and small.}, and rouge-L\footnote{Text generation tasks are complicated to evaluate automatically~\cite{53kocmi2021nmteval}. ROUGE-L is a widely adopted proxy metric that focuses on the longest common subsequence between the generated text and the reference text, which captures the semantic similarity between the generated and reference texts rather than relying solely on exact word matches. ROUGE-L may not fully capture aspects like fluency, coherence and should be used in conjunction with other metrics and human evaluations to provide a fuller assessment of text generation quality.} for generation tasks. The WikiSQL dataset has its own \href{https://github.com/salesforce/WikiSQL/tree/master}{evaluation suite}, however due to challenges integrating the WikiSQL evaluation suite, we have adopted the ROUGE metric as a proxy for assessing query quality\footnote{Although ROUGE is not tailored for SQL queries, it offers a viable alternative for gauging the alignment between generated and target queries.}. For coding, we use HumanEval~\cite{59chen2021codex}. For GSM8K~\cite{gsm8k}, a regex-based heuristic~\cite{47eval-harness} is used to extract the mathematical answer to be consistent with the Open LLM Leaderboard~\cite{34open-llm-leaderboard}. All metrics are on a 0 to 1 scale, where 0 is the worst possible score, and 1 the best possible score.
+
+Non-fine-tuned models often generate more varied outputs, including unintended artifacts such as additional words or explanations not specified in the prompt. For classification tasks, sometimes these models will generate the actual class string like "Yes/No", "positive/negative" or "True/False" spelled out, instead of the true "1/0" label in the dataset even when instructed. To minimize metric deductions due to response parsing strictness, we first use a regex-based extraction step to map the model’s response to the ground truth vocabulary. If there are multiple matches in the generated text, the first valid match is used. The code for regex-based pre-metric response extractions are available at \href{https://www.github.com/predibase/lora-bakeoff}{github.com/predibase/lora-bakeoff}.
+
+Financial constraints associated with LLM APIs are not trivial. For example, using GPT-4 to assess the complete WikiSQL test set of 15,878 examples would cost approximately \$400, considering the average input (805) and output (16) token counts per example. Such costs can be prohibitive, especially for organizations or researchers operating on limited budgets.
+
+To manage costs while maintaining rigor, we restrict evaluations to the \textbf{first} 1000 examples for datasets with evaluation splits larger than 1000 examples. We acknowledge that this method may introduce selection bias and affect the generalizability of our findings. We recommend that future research considers more expansive evaluations as resources permit.

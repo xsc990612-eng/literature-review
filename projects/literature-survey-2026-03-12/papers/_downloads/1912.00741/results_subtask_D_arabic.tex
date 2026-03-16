@@ -1,0 +1,23 @@
+\begin{table}[tbh]
+\centering
+\begin{small}
+\renewcommand{\arraystretch}{1.0}% Tighter
+\setlength{\tabcolsep}{3.3pt}
+\begin{tabular}{|c|l|l|l|l|}
+\hline
+      \bf \# & \bf System & \multicolumn{1}{c|}{$KLD$} & \multicolumn{1}{c|}{$AE$} &\multicolumn{1}{c|}{$RAE$} \\
+\hline
+\bf 1 & NileTMRG & \bf 0.127$_{1}$ & 0.170$_{1}$ & 2.462$_{1}$ \\
+\bf 2 & OMAM & \bf 0.202$_{2}$ & 0.238$_{2}$ & 4.835$_{2}$ \\
+\bf 3 & ELiRF-UPV & \bf 1.183$_{3}$ & 0.537$_{3}$ & 11.434$_{3}$ \\
+\hline
+%& baseline (1 0) & 1.638 & 0.479 & 4.657\\
+B1 & (0 1) & 1.518 & 0.422 & \bf 2.645\\
+B2 & macro-avg on train-2017 & 0.296 & 0.322 & 6.600\\
+B3 & micro-avg on train-2017 & \bf 0.295 & \bf 0.321 & 6.692\\
+\hline
+\end{tabular}
+\caption{\textbf{Results for Subtask D ``Tweet quantification according to a two-point scale'', Arabic.} The systems are ordered by their $KLD$ score (lower is better). B$x$ indicates a baseline.}
+\label{table:ResultsSubtaskD:Arabic}
+\end{small}
+\end{table}

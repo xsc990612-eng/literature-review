@@ -1,0 +1,79 @@
+\begin{table}[t]
+\centering
+% 使用 columnwidth 适配单栏宽度，表格内容根据文字自适应(c c c c c)
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Experiment} & \textbf{Content Sim.} & \textbf{Positional Sim.} & \textbf{Post ROPE} & \textbf{Pre ROPE} \\
+\midrule
+% Row 1: SC & SP
+\multirow{1}{*}{SC \& SP} 
+& Same
+& \multirow{1}{*}{Same} 
+& \multirow{1}{*}{\textcolor{green}{1.0000}} & \multirow{1}{*}{\textcolor{green}{1.0000}} \\
+\addlinespace
+% Row 2: DC & SP
+\multirow{1}{*}{DC \& SP} 
+& Different
+& \multirow{1}{*}{Same} 
+& \multirow{1}{*}{\textcolor{green}{0.7142}} & \multirow{1}{*}{\textcolor{green}{0.7142}} \\
+\addlinespace
+% Row 3: SC & DP
+\multirow{1}{*}{SC \& DP} 
+& Same
+& \multirow{1}{*}{Different} 
+& \multirow{1}{*}{\textcolor{red}{0.4270}} & \multirow{1}{*}{\textcolor{green}{0.7341}} \\
+\addlinespace
+% Row 4: DC & DP
+\multirow{1}{*}{DC \& DP} 
+& Different
+& \multirow{1}{*}{Different} 
+& \multirow{1}{*}{\textcolor{red}{0.4113}} & \multirow{1}{*}{\textcolor{green}{0.7224}} \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{-8pt}
+\caption{Query cosine similarity comparison on the LCC dataset using Qwen2.5-7B-Instruct.}
+\label{table:query_similarity_qwen_lcc}
+\vspace{-8pt}
+\end{table}
+
+\begin{table}[t]
+\centering
+% 使用 columnwidth 适配单栏宽度
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Experiment} & \textbf{Content Sim.} & \textbf{Positional Sim.} & \textbf{Post ROPE} & \textbf{Pre ROPE} \\
+\midrule
+% Row 1: SC & SP
+\multirow{1}{*}{SC \& SP} 
+& Same
+& \multirow{1}{*}{Same} 
+& \multirow{1}{*}{\textcolor{green}{1.0000}} & \multirow{1}{*}{\textcolor{green}{1.0000}} \\
+\addlinespace
+% Row 2: DC & SP
+\multirow{1}{*}{DC \& SP} 
+& Different
+& \multirow{1}{*}{Same} 
+& \multirow{1}{*}{\textcolor{green}{0.7236}} & \multirow{1}{*}{\textcolor{green}{0.7236}} \\
+\addlinespace
+% Row 3: SC & DP
+\multirow{1}{*}{SC \& DP} 
+& Same
+& \multirow{1}{*}{Different} 
+& \multirow{1}{*}{\textcolor{red}{0.4671}} & \multirow{1}{*}{\textcolor{green}{0.7359}} \\
+\addlinespace
+% Row 4: DC & DP
+\multirow{1}{*}{DC \& DP} 
+& Different
+& \multirow{1}{*}{Different} 
+& \multirow{1}{*}{\textcolor{red}{0.4428}} & \multirow{1}{*}{\textcolor{green}{0.7192}} \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{-8pt}
+\caption{Query cosine similarity comparison on the 2WikiMQA dataset using Qwen2.5-7B-Instruct.}
+\label{table:query_similarity_qwen_wiki}
+\vspace{-12pt}
+\end{table}

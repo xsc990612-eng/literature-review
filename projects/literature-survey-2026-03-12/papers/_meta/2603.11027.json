@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "2603.11027",
+  "title": "Beyond the Illusion of Consensus: From Surface Heuristics to Knowledge-Grounded Evaluation in LLM-as-a-Judge",
+  "authors": ["Mingyang Song", "Mao Zheng", "Chenning Xu"],
+  "abstract": "The paradigm of LLM-as-a-judge relies on a critical assumption, namely that high inter-evaluator agreement indicates reliable and objective evaluation. We present two complementary findings that challenge this assumption. First, we demonstrate that this consensus is frequently illusory. We identify and formalize Evaluation Illusion, a phenomenon where LLM judges generate sophisticated critiques yet anchor scores on shared surface heuristics rather than substantive quality. Through a large-scale study of 105,600 evaluation instances (32 LLMs x 3 frontier judges x 100 tasks x 11 temperatures), we show that model-level agreement masks fragile sample-level agreement. Second, we demonstrate that dynamically generating evaluation rubrics grounded in domain knowledge produces more meaningful assessment. We introduce MERG (Metacognitive Enhanced Rubric Generation), a knowledge-driven rubric generation framework.",
+  "score": 4,
+  "source_term": "sentiment analysis stance detection evaluation",
+  "relevance": "Evaluation methodology, LLM-as-a-judge, domain knowledge grounding",
+  "downloaded_at": "2026-03-12T13:07:00Z"
+}

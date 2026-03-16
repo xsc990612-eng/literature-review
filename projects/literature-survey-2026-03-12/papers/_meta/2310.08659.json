@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2310.08659",
+  "title": "LoftQ: LoRA-Fine-Tuning-Aware Quantization for Large Language Models",
+  "authors": ["Yixiao Li", "Yifan Yu", "Chen Liang", "Pengcheng He", "Nikos Karampatziakis", "Weizhu Chen", "Tuo Zhao"],
+  "abstract": "Quantization is an indispensable technique for serving Large Language Models (LLMs) and has recently found its way into LoRA fine-tuning. In this work we focus on the scenario where quantization and LoRA fine-tuning are applied together on a pre-trained model.",
+  "published": "2023-10-12",
+  "categories": ["cs.CL", "cs.AI", "cs.LG"],
+  "score": 5,
+  "source_term": "QLoRA 4-bit quantization fine-tuning",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "qlora"
+}

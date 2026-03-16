@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "2603.08743",
+  "title": "Zipage: Maintain High Request Concurrency for LLM Reasoning through Compressed PagedAttention",
+  "authors": ["Mengqi Liao", "Lu Wang", "Chaoyun Zhang", "Bo Qiao", "Si Qin", "Qingwei Lin", "Saravan Rajmohan", "Dongmei Zhang", "Huaiyu Wan"],
+  "abstract": "With reasoning becoming the generative paradigm for large language models (LLMs), the memory bottleneck caused by KV cache during the decoding phase has become a critical factor limiting high-concurrency service.",
+  "score": 5,
+  "source_term": "vLLM PagedAttention efficient inference serving",
+  "direction": "vllm-inference-optimization",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

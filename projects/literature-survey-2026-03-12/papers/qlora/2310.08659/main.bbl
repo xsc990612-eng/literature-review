@@ -1,0 +1,211 @@
+\begin{thebibliography}{41}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{}\fi
+
+\bibitem[{Bai et~al.(2022)Bai, Hou, Shang, Jiang, King and Lyu}]{bai2022towards}
+\textsc{Bai, H.}, \textsc{Hou, L.}, \textsc{Shang, L.}, \textsc{Jiang, X.}, \textsc{King, I.} and \textsc{Lyu, M.~R.} (2022).
+\newblock Towards efficient post-training quantization of pre-trained language models.
+\newblock \textit{Advances in Neural Information Processing Systems}, \textbf{35} 1405--1418.
+
+\bibitem[{Bai et~al.(2020)Bai, Zhang, Hou, Shang, Jin, Jiang, Liu, Lyu and King}]{bai2020binarybert}
+\textsc{Bai, H.}, \textsc{Zhang, W.}, \textsc{Hou, L.}, \textsc{Shang, L.}, \textsc{Jin, J.}, \textsc{Jiang, X.}, \textsc{Liu, Q.}, \textsc{Lyu, M.} and \textsc{King, I.} (2020).
+\newblock Binarybert: Pushing the limit of bert quantization.
+\newblock \textit{arXiv preprint arXiv:2012.15701}.
+
+\bibitem[{Bar-Haim et~al.(2006)Bar-Haim, Dagan, Dolan, Ferro, Giampiccolo, Magnini and Szpektor}]{BarHaim2006TheSP}
+\textsc{Bar-Haim, R.}, \textsc{Dagan, I.}, \textsc{Dolan, B.}, \textsc{Ferro, L.}, \textsc{Giampiccolo, D.}, \textsc{Magnini, B.} and \textsc{Szpektor, I.} (2006).
+\newblock The second pascal recognising textual entailment challenge.
+
+\bibitem[{Bentivogli et~al.(2009)Bentivogli, Clark, Dagan and Giampiccolo}]{bentivogli2009fifth}
+\textsc{Bentivogli, L.}, \textsc{Clark, P.}, \textsc{Dagan, I.} and \textsc{Giampiccolo, D.} (2009).
+\newblock The fifth pascal recognizing textual entailment challenge.
+\newblock In \textit{TAC}.
+
+\bibitem[{Cer et~al.(2017)Cer, Diab, Agirre, Lopez-Gazpio and Specia}]{cer-etal-2017-semeval}
+\textsc{Cer, D.}, \textsc{Diab, M.}, \textsc{Agirre, E.}, \textsc{Lopez-Gazpio, I.} and \textsc{Specia, L.} (2017).
+\newblock {S}em{E}val-2017 task 1: Semantic textual similarity multilingual and crosslingual focused evaluation.
+\newblock In \textit{Proceedings of the 11th International Workshop on Semantic Evaluation ({S}em{E}val-2017)}. Association for Computational Linguistics, Vancouver, Canada.
+
+\bibitem[{Cobbe et~al.(2021)Cobbe, Kosaraju, Bavarian, Chen, Jun, Kaiser, Plappert, Tworek, Hilton, Nakano et~al.}]{cobbe2021training}
+\textsc{Cobbe, K.}, \textsc{Kosaraju, V.}, \textsc{Bavarian, M.}, \textsc{Chen, M.}, \textsc{Jun, H.}, \textsc{Kaiser, L.}, \textsc{Plappert, M.}, \textsc{Tworek, J.}, \textsc{Hilton, J.}, \textsc{Nakano, R.} \textsc{et~al.} (2021).
+\newblock Training verifiers to solve math word problems.
+\newblock \textit{arXiv preprint arXiv:2110.14168}.
+
+\bibitem[{Dagan et~al.(2007)Dagan, Glickman and Magnini}]{Dagan2007ThePR}
+\textsc{Dagan, I.}, \textsc{Glickman, O.} and \textsc{Magnini, B.} (2007).
+\newblock The pascal recognising textual entailment challenge.
+\newblock In \textit{Machine Learning Challenges Workshop}.
+
+\bibitem[{Dettmers et~al.(2022)Dettmers, Lewis, Belkada and Zettlemoyer}]{dettmers2022llm}
+\textsc{Dettmers, T.}, \textsc{Lewis, M.}, \textsc{Belkada, Y.} and \textsc{Zettlemoyer, L.} (2022).
+\newblock Llm. int8 (): 8-bit matrix multiplication for transformers at scale.
+\newblock \textit{arXiv preprint arXiv:2208.07339}.
+
+\bibitem[{Dettmers et~al.(2023)Dettmers, Pagnoni, Holtzman and Zettlemoyer}]{dettmers2023qlora}
+\textsc{Dettmers, T.}, \textsc{Pagnoni, A.}, \textsc{Holtzman, A.} and \textsc{Zettlemoyer, L.} (2023).
+\newblock Qlora: Efficient finetuning of quantized llms.
+\newblock \textit{arXiv preprint arXiv:2305.14314}.
+
+\bibitem[{Diao et~al.(2023)Diao, Pan, Dong, Shum, Zhang, Xiong and Zhang}]{diao2023lmflow}
+\textsc{Diao, S.}, \textsc{Pan, R.}, \textsc{Dong, H.}, \textsc{Shum, K.~S.}, \textsc{Zhang, J.}, \textsc{Xiong, W.} and \textsc{Zhang, T.} (2023).
+\newblock Lmflow: An extensible toolkit for finetuning and inference of large foundation models.
+\newblock \textit{arXiv preprint arXiv:2306.12420}.
+
+\bibitem[{Dolan and Brockett(2005)}]{dolan-brockett-2005-automatically}
+\textsc{Dolan, W.~B.} and \textsc{Brockett, C.} (2005).
+\newblock Automatically constructing a corpus of sentential paraphrases.
+\newblock In \textit{Proceedings of the Third International Workshop on Paraphrasing ({IWP}2005)}.
+
+\bibitem[{Frantar et~al.(2022)Frantar, Ashkboos, Hoefler and Alistarh}]{frantar2022gptq}
+\textsc{Frantar, E.}, \textsc{Ashkboos, S.}, \textsc{Hoefler, T.} and \textsc{Alistarh, D.} (2022).
+\newblock Gptq: Accurate post-training quantization for generative pre-trained transformers.
+\newblock \textit{arXiv preprint arXiv:2210.17323}.
+
+\bibitem[{Giampiccolo et~al.(2007)Giampiccolo, Magnini, Dagan and Dolan}]{giampiccolo-etal-2007-third}
+\textsc{Giampiccolo, D.}, \textsc{Magnini, B.}, \textsc{Dagan, I.} and \textsc{Dolan, B.} (2007).
+\newblock The third {PASCAL} recognizing textual entailment challenge.
+\newblock In \textit{Proceedings of the {ACL}-{PASCAL} Workshop on Textual Entailment and Paraphrasing}. Association for Computational Linguistics, Prague.
+
+\bibitem[{He et~al.(2021{\natexlab{a}})He, Zhou, Ma, Berg-Kirkpatrick and Neubig}]{he2021towards}
+\textsc{He, J.}, \textsc{Zhou, C.}, \textsc{Ma, X.}, \textsc{Berg-Kirkpatrick, T.} and \textsc{Neubig, G.} (2021{\natexlab{a}}).
+\newblock Towards a unified view of parameter-efficient transfer learning.
+\newblock \textit{arXiv preprint arXiv:2110.04366}.
+
+\bibitem[{He et~al.(2021{\natexlab{b}})He, Gao and Chen}]{he2021debertav3}
+\textsc{He, P.}, \textsc{Gao, J.} and \textsc{Chen, W.} (2021{\natexlab{b}}).
+\newblock Debertav3: Improving deberta using electra-style pre-training with gradient-disentangled embedding sharing.
+\newblock \textit{arXiv preprint arXiv:2111.09543}.
+
+\bibitem[{Hermann et~al.(2015)Hermann, Kocisky, Grefenstette, Espeholt, Kay, Suleyman and Blunsom}]{hermann2015teaching}
+\textsc{Hermann, K.~M.}, \textsc{Kocisky, T.}, \textsc{Grefenstette, E.}, \textsc{Espeholt, L.}, \textsc{Kay, W.}, \textsc{Suleyman, M.} and \textsc{Blunsom, P.} (2015).
+\newblock Teaching machines to read and comprehend.
+\newblock \textit{Advances in neural information processing systems}, \textbf{28}.
+
+\bibitem[{Hu et~al.(2021)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang and Chen}]{hu2021lora}
+\textsc{Hu, E.~J.}, \textsc{Shen, Y.}, \textsc{Wallis, P.}, \textsc{Allen-Zhu, Z.}, \textsc{Li, Y.}, \textsc{Wang, S.}, \textsc{Wang, L.} and \textsc{Chen, W.} (2021).
+\newblock Lora: Low-rank adaptation of large language models.
+\newblock \textit{arXiv preprint arXiv:2106.09685}.
+
+\bibitem[{Levesque et~al.(2012)Levesque, Davis and Morgenstern}]{levesque2012winograd}
+\textsc{Levesque, H.}, \textsc{Davis, E.} and \textsc{Morgenstern, L.} (2012).
+\newblock The winograd schema challenge.
+\newblock In \textit{Thirteenth international conference on the principles of knowledge representation and reasoning}.
+
+\bibitem[{Lewis et~al.(2019)Lewis, Liu, Goyal, Ghazvininejad, Mohamed, Levy, Stoyanov and Zettlemoyer}]{lewis2019bart}
+\textsc{Lewis, M.}, \textsc{Liu, Y.}, \textsc{Goyal, N.}, \textsc{Ghazvininejad, M.}, \textsc{Mohamed, A.}, \textsc{Levy, O.}, \textsc{Stoyanov, V.} and \textsc{Zettlemoyer, L.} (2019).
+\newblock Bart: Denoising sequence-to-sequence pre-training for natural language generation, translation, and comprehension.
+\newblock \textit{arXiv preprint arXiv:1910.13461}.
+
+\bibitem[{Lewis et~al.(2020)Lewis, Liu, Goyal, Ghazvininejad, Mohamed, Levy, Stoyanov and Zettlemoyer}]{lewis-etal-2020-bart}
+\textsc{Lewis, M.}, \textsc{Liu, Y.}, \textsc{Goyal, N.}, \textsc{Ghazvininejad, M.}, \textsc{Mohamed, A.}, \textsc{Levy, O.}, \textsc{Stoyanov, V.} and \textsc{Zettlemoyer, L.} (2020).
+\newblock {BART}: Denoising sequence-to-sequence pre-training for natural language generation, translation, and comprehension.
+\newblock In \textit{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics}. Association for Computational Linguistics, Online.
+
+\bibitem[{Li et~al.(2023)Li, Yu, Zhang, Liang, He, Chen and Zhao}]{li2023losparse}
+\textsc{Li, Y.}, \textsc{Yu, Y.}, \textsc{Zhang, Q.}, \textsc{Liang, C.}, \textsc{He, P.}, \textsc{Chen, W.} and \textsc{Zhao, T.} (2023).
+\newblock Losparse: Structured compression of large language models based on low-rank and sparse approximation.
+\newblock \textit{arXiv preprint arXiv:2306.11222}.
+
+\bibitem[{Lin(2004)}]{lin-2004-rouge}
+\textsc{Lin, C.-Y.} (2004).
+\newblock {ROUGE}: A package for automatic evaluation of summaries.
+\newblock In \textit{Text Summarization Branches Out}. Association for Computational Linguistics, Barcelona, Spain.
+
+\bibitem[{Liu et~al.(2023)Liu, Oguz, Zhao, Chang, Stock, Mehdad, Shi, Krishnamoorthi and Chandra}]{liu2023llm}
+\textsc{Liu, Z.}, \textsc{Oguz, B.}, \textsc{Zhao, C.}, \textsc{Chang, E.}, \textsc{Stock, P.}, \textsc{Mehdad, Y.}, \textsc{Shi, Y.}, \textsc{Krishnamoorthi, R.} and \textsc{Chandra, V.} (2023).
+\newblock Llm-qat: Data-free quantization aware training for large language models.
+\newblock \textit{arXiv preprint arXiv:2305.17888}.
+
+\bibitem[{Loshchilov and Hutter(2017)}]{loshchilov2017decoupled}
+\textsc{Loshchilov, I.} and \textsc{Hutter, F.} (2017).
+\newblock Decoupled weight decay regularization.
+\newblock \textit{arXiv preprint arXiv:1711.05101}.
+
+\bibitem[{Merity et~al.(2016)Merity, Xiong, Bradbury and Socher}]{merity2016pointer}
+\textsc{Merity, S.}, \textsc{Xiong, C.}, \textsc{Bradbury, J.} and \textsc{Socher, R.} (2016).
+\newblock Pointer sentinel mixture models.
+
+\bibitem[{Narayan et~al.(2018)Narayan, Cohen and Lapata}]{Narayan2018xsum}
+\textsc{Narayan, S.}, \textsc{Cohen, S.~B.} and \textsc{Lapata, M.} (2018).
+\newblock Don't give me the details, just the summary! topic-aware convolutional neural networks for extreme summarization.
+\newblock \textit{ArXiv}, \textbf{abs/1808.08745}.
+
+\bibitem[{Nie et~al.(2019)Nie, Williams, Dinan, Bansal, Weston and Kiela}]{Nie2019AdversarialNA}
+\textsc{Nie, Y.}, \textsc{Williams, A.}, \textsc{Dinan, E.}, \textsc{Bansal, M.}, \textsc{Weston, J.} and \textsc{Kiela, D.} (2019).
+\newblock Adversarial nli: A new benchmark for natural language understanding.
+\newblock \textit{ArXiv}, \textbf{abs/1910.14599}.
+\newline\urlprefix\url{https://api.semanticscholar.org/CorpusID:207756753}
+
+\bibitem[{Paszke et~al.(2019)Paszke, Gross, Massa, Lerer, Bradbury, Chanan, Killeen, Lin, Gimelshein, Antiga, Desmaison, Kopf, Yang, DeVito, Raison, Tejani, Chilamkurthy, Steiner, Fang, Bai and Chintala}]{NEURIPS2019_9015}
+\textsc{Paszke, A.}, \textsc{Gross, S.}, \textsc{Massa, F.}, \textsc{Lerer, A.}, \textsc{Bradbury, J.}, \textsc{Chanan, G.}, \textsc{Killeen, T.}, \textsc{Lin, Z.}, \textsc{Gimelshein, N.}, \textsc{Antiga, L.}, \textsc{Desmaison, A.}, \textsc{Kopf, A.}, \textsc{Yang, E.}, \textsc{DeVito, Z.}, \textsc{Raison, M.}, \textsc{Tejani, A.}, \textsc{Chilamkurthy, S.}, \textsc{Steiner, B.}, \textsc{Fang, L.}, \textsc{Bai, J.} and \textsc{Chintala, S.} (2019).
+\newblock Pytorch: An imperative style, high-performance deep learning library.
+\newblock In \textit{Advances in Neural Information Processing Systems 32}. Curran Associates, Inc., 8024--8035.
+
+\bibitem[{Peri et~al.(2020)Peri, Patel and Park}]{peri2020deploying}
+\textsc{Peri, D.}, \textsc{Patel, J.} and \textsc{Park, J.} (2020).
+\newblock Deploying quantization-aware trained networks using tensorrt.
+\newblock In \textit{GPU Technology Conference}.
+
+\bibitem[{Rajpurkar et~al.(2016)Rajpurkar, Zhang, Lopyrev and Liang}]{rajpurkar-etal-2016-squad}
+\textsc{Rajpurkar, P.}, \textsc{Zhang, J.}, \textsc{Lopyrev, K.} and \textsc{Liang, P.} (2016).
+\newblock {SQ}u{AD}: 100,000+ questions for machine comprehension of text.
+\newblock In \textit{Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing}. Association for Computational Linguistics, Austin, Texas.
+
+\bibitem[{Shen et~al.(2020)Shen, Dong, Ye, Ma, Yao, Gholami, Mahoney and Keutzer}]{shen2020q}
+\textsc{Shen, S.}, \textsc{Dong, Z.}, \textsc{Ye, J.}, \textsc{Ma, L.}, \textsc{Yao, Z.}, \textsc{Gholami, A.}, \textsc{Mahoney, M.~W.} and \textsc{Keutzer, K.} (2020).
+\newblock Q-bert: Hessian based ultra low precision quantization of bert.
+\newblock In \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, vol.~34.
+
+\bibitem[{Socher et~al.(2013)Socher, Perelygin, Wu, Chuang, Manning, Ng and Potts}]{socher-etal-2013-recursive}
+\textsc{Socher, R.}, \textsc{Perelygin, A.}, \textsc{Wu, J.}, \textsc{Chuang, J.}, \textsc{Manning, C.~D.}, \textsc{Ng, A.} and \textsc{Potts, C.} (2013).
+\newblock Recursive deep models for semantic compositionality over a sentiment treebank.
+\newblock In \textit{Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing}. Association for Computational Linguistics, Seattle, Washington, USA.
+
+\bibitem[{Touvron et~al.(2023)Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov, Batra, Bhargava, Bhosale et~al.}]{touvron2023llama}
+\textsc{Touvron, H.}, \textsc{Martin, L.}, \textsc{Stone, K.}, \textsc{Albert, P.}, \textsc{Almahairi, A.}, \textsc{Babaei, Y.}, \textsc{Bashlykov, N.}, \textsc{Batra, S.}, \textsc{Bhargava, P.}, \textsc{Bhosale, S.} \textsc{et~al.} (2023).
+\newblock Llama 2: Open foundation and fine-tuned chat models.
+\newblock \textit{arXiv preprint arXiv:2307.09288}.
+
+\bibitem[{Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser and Polosukhin}]{vaswani2017attention}
+\textsc{Vaswani, A.}, \textsc{Shazeer, N.}, \textsc{Parmar, N.}, \textsc{Uszkoreit, J.}, \textsc{Jones, L.}, \textsc{Gomez, A.~N.}, \textsc{Kaiser, {\L}.} and \textsc{Polosukhin, I.} (2017).
+\newblock Attention is all you need.
+\newblock \textit{Advances in neural information processing systems}, \textbf{30}.
+
+\bibitem[{Wang et~al.(2019)Wang, Singh, Michael, Hill, Levy and Bowman}]{wang2018glue}
+\textsc{Wang, A.}, \textsc{Singh, A.}, \textsc{Michael, J.}, \textsc{Hill, F.}, \textsc{Levy, O.} and \textsc{Bowman, S.~R.} (2019).
+\newblock {GLUE}: A multi-task benchmark and analysis platform for natural language understanding.
+\newblock In \textit{International Conference on Learning Representations}.
+
+\bibitem[{Warstadt et~al.(2019)Warstadt, Singh and Bowman}]{warstadt-etal-2019-neural}
+\textsc{Warstadt, A.}, \textsc{Singh, A.} and \textsc{Bowman, S.~R.} (2019).
+\newblock Neural network acceptability judgments.
+\newblock \textit{Transactions of the Association for Computational Linguistics}, \textbf{7} 625--641.
+
+\bibitem[{Williams et~al.(2018)Williams, Nangia and Bowman}]{williams-etal-2018-broad}
+\textsc{Williams, A.}, \textsc{Nangia, N.} and \textsc{Bowman, S.} (2018).
+\newblock A broad-coverage challenge corpus for sentence understanding through inference.
+\newblock In \textit{Proceedings of the 2018 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long Papers)}. Association for Computational Linguistics, New Orleans, Louisiana.
+
+\bibitem[{Xiao et~al.(2023)Xiao, Lin, Seznec, Wu, Demouth and Han}]{xiao2023smoothquant}
+\textsc{Xiao, G.}, \textsc{Lin, J.}, \textsc{Seznec, M.}, \textsc{Wu, H.}, \textsc{Demouth, J.} and \textsc{Han, S.} (2023).
+\newblock Smoothquant: Accurate and efficient post-training quantization for large language models.
+\newblock In \textit{International Conference on Machine Learning}. PMLR.
+
+\bibitem[{Zafrir et~al.(2019)Zafrir, Boudoukh, Izsak and Wasserblat}]{zafrir2019q8bert}
+\textsc{Zafrir, O.}, \textsc{Boudoukh, G.}, \textsc{Izsak, P.} and \textsc{Wasserblat, M.} (2019).
+\newblock Q8bert: Quantized 8bit bert.
+\newblock In \textit{2019 Fifth Workshop on Energy Efficient Machine Learning and Cognitive Computing-NeurIPS Edition (EMC2-NIPS)}. IEEE.
+
+\bibitem[{Zhang et~al.(2019)Zhang, Dauphin and Ma}]{zhang2019fixup}
+\textsc{Zhang, H.}, \textsc{Dauphin, Y.~N.} and \textsc{Ma, T.} (2019).
+\newblock Fixup initialization: Residual learning without normalization.
+\newblock \textit{arXiv preprint arXiv:1901.09321}.
+
+\bibitem[{Zhang et~al.(2023)Zhang, Chen, Bukharin, He, Cheng, Chen and Zhao}]{zhang2023adaptive}
+\textsc{Zhang, Q.}, \textsc{Chen, M.}, \textsc{Bukharin, A.}, \textsc{He, P.}, \textsc{Cheng, Y.}, \textsc{Chen, W.} and \textsc{Zhao, T.} (2023).
+\newblock Adaptive budget allocation for parameter-efficient fine-tuning.
+\newblock \textit{arXiv preprint arXiv:2303.10512}.
+
+\end{thebibliography}

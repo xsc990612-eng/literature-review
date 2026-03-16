@@ -1,0 +1,11 @@
+{
+  "arxiv_id": "2603.12201",
+  "title": "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse",
+  "authors": ["Tsinghua University Team"],
+  "abstract": "This paper proposes IndexCache, a method for accelerating sparse attention mechanisms by reusing cross-layer index information. The approach reduces memory overhead and computation costs in transformer inference...",
+  "score": 4,
+  "source_term": "sparse attention acceleration",
+  "downloaded_at": "2026-03-13T08:07:00Z",
+  "category": "vLLM",
+  "direction": "sparse_attention"
+}

@@ -1,0 +1,26 @@
+\subsection{Running Time Analysis}
+
+\begin{table}[htbp]
+\caption{Comparison of running time(s) on the Tweet and News-TS datasets.}
+    \centering
+    \renewcommand{\arraystretch}{1.2} % 调整行间距
+    \setlength{\tabcolsep}{9pt} % 调整列间距为12pt（默认是6pt）
+    \label{runing_time}
+    \begin{tabular}{ccc}
+    \toprule
+    \textbf{Method} & \textbf{Tweet} & \textbf{News-TS} \\
+    \midrule
+    GSDMM  & 40     & 606 \\
+    GSDMM (w/o Entropy)  & 106     & 1341 \\
+    \sysname{}  & 158     & 1392 \\
+    MVC  & 447     & 3076 \\
+    SCCL  & 1125    & 1622 \\
+    DACL  & 2000+    & 3000+ \\
+    RSTC  & 3300+    & 4500+ \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+In this section, we analyze the running time of our methods on Tweet and News-TS datasets. All experiments are conducted on a single NVIDIA A100 GPU. For all models, we present the average execution time over ten runs. To ensure a fair comparison, the parameters of all models are set according to their original papers. 
+
+Table~\ref{runing_time} presents the experimental results, leading to the following observations: 1) The proposed GSDMM exhibits exceptional computational efficiency across datasets of varying scales. 2) We focus on entropy-based word weighting, which plays a crucial role in extracting the semantic information of words. Comparing the running time of \sysname{} with and without entropy, we find that entropy-based word weighting significantly improves performance with minimal additional computational cost. This further demonstrates its efficiency and effectiveness. 3) Comparing the running time of \sysname{} with the competitive models, we observe that SCCL is less efficient on the Tweet dataset, while MVC is less efficient on the News-TS dataset. DACL and RSTC require too much time to converge, resulting in very low efficiency. In contrast, our model achieves the highest efficiency across both datasets while maintaining strong clustering performance. These results further highlight the superiority of our approach.
+

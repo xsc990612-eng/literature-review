@@ -1,0 +1,6 @@
+model;bs;cl;2MB;64KB
+llama-3-8B;1;32K;1;1.00
+llama-3-8B;2;32K;1;1.00
+llama-3-8B;4;32K;1;1.02
+llama-3-8B;8;32K;1;1.02
+llama-3-8B;16;32K;1;1.00

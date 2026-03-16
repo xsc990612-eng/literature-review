@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "1912.02990",
+  "title": "SemEval-2014 Task 9: Sentiment Analysis in Twitter",
+  "authors": ["Sara Rosenthal", "Preslav Nakov", "Alan Ritter", "Veselin Stoyanov"],
+  "abstract": "We describe the Sentiment Analysis in Twitter task, ran as part of SemEval-2014. It is a continuation of the last year's task that ran successfully as part of SemEval-2013.",
+  "score": 5,
+  "source_term": "sentiment analysis Twitter SemEval",
+  "direction": "sentiment-analysis",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

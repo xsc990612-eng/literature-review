@@ -1,0 +1,47 @@
+
+In the past decade, new forms of communication, such as microblogging and text messaging have emerged and become ubiquitous.  Twitter messages (tweets) and cell phone messages (SMS) are often used to share opinions and sentiments about the surrounding world, and the availability of social content generated on sites such as Twitter creates new opportunities to automatically study public opinion.
+
+Working with these informal text genres presents new challenges for natural language processing
+beyond those encountered when working with more traditional text genres such as newswire.
+
+Tweets and SMS messages are short in length: a sentence or a headline rather than a document.  The language they use is very informal, with creative spelling and punctuation, misspellings, slang, new words, URLs, and genre-specific terminology and abbreviations, e.g., RT for re-tweet and \#hashtags.\footnote{Hashtags are a type of tagging for Twitter messages.}  How to handle such challenges so as to automatically mine and understand the opinions and sentiments that people are communicating has only very recently been the subject of research \cite{Jansen09,Barbosa10,Bifet11,Davidov10,oconnor10,Pak10,Tumasjan10,Kouloumpis11}.
+
+%Ves: I'm not sure if this paragraph makes a lot of sense given our task..
+% Sara: I agee with Ves. Making some changes here
+%Another aspect of social media data, such as Twitter messages, is that they include rich structured information about the individuals involved in the communication. For example, Twitter maintains information about who follows whom. Re-tweets (re-shares of a tweet) and tags inside of tweets provide discourse information. Modeling such structured information is important because: (i)~it can lead to more accurate tools for extracting semantic information, and (ii)~because it provides means for empirically studying social interactions, e.g., we can study the properties of persuasive language or those associated with influential users.
+
+Another aspect of social media data, such as Twitter messages, is that they include rich structured information about the individuals involved in the communication. For example, Twitter maintains information about who follows whom. Re-tweets (re-shares of a tweet) and tags inside of tweets provide discourse information. Modeling such structured information is important because it provides means for empirically studying social interactions where opinion is conveyed, e.g., we can study the properties of persuasive language or those associated with influential users.
+
+ \begin{table*}[t]
+\small
+\begin{tabular}{|l|p{14cm}|}
+\hline
+\bf Twitter & RT @tash\_jade: That's really sad, Charlie RT ``Until tonight I never realised how fucked up I was" - Charlie Sheen \#sheenroast  \\
+\hline
+\bf SMS & Glad to hear you are coping fine in uni... So, wat interview did you go to? How did it go?\\
+ \hline
+ \end{tabular}
+\caption{Examples of sentences from each corpus that contain subjective phrases.}
+\label{T:Sentences}
+\end{table*}
+
+Several corpora with detailed opinion and sentiment annotation have been made freely available, e.g., the MPQA corpus \cite{Wiebe05} of newswire text.
+These corpora have proved very valuable as resources for learning about the language of sentiment in general,
+but they did not focus on social media.
+
+While some Twitter sentiment datasets have already been created,
+they were either small and proprietary, such as the i-sieve corpus \cite{Kouloumpis11}, or they were created only for Spanish
+like the TASS corpus\footnote{http://www.daedalus.es/TASS/corpus.php} \cite{TASS},
+or they relied on noisy labels obtained from emoticons and hashtags.
+They further focused on message-level sentiment,
+and no Twitter or SMS corpus with expression-level sentiment annotations has been made available so far.
+
+Thus, the primary goal of our SemEval-2013 task 2 has been to promote research
+that will lead to a better understanding of how sentiment is conveyed in Tweets and SMS messages.
+Toward that goal, we created the SemEval Tweet corpus,
+which contains Tweets (for both training and testing) and SMS messages (for testing only) with sentiment expressions
+annotated with contextual phrase-level polarity as well as an overall message-level polarity.
+We used this corpus as a testbed for the system evaluation at SemEval-2013 Task 2.
+
+In the remainder of this paper, we first describe the task, the dataset creation process, and the evaluation methodology.
+We then summarize the characteristics of the approaches taken by the participating systems and we discuss their scores.

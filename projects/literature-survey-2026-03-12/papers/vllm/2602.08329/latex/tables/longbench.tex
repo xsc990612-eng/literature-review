@@ -1,0 +1,39 @@
+\begin{table*}[t]
+
+\footnotesize
+\centering
+\caption{\textbf{Evaluation of different methods on sixteen English datasets in Longbench} and the best result in each row (excluding the original) is highlighted in bold. Here, the retrieval complexity of H2O, Quest, DS, and HShare is just the same with Table~\ref{tab:gsm_coqa}.}
+\label{tab:longbench}
+\begin{tabular}{lcccc|cc|cc|cc|cc}
+\toprule
+\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Dataset}}} & \multicolumn{12}{c}{\textbf{Method}} \\
+\cmidrule(lr){2-13}
+ & Original & H2O \cite{zhang2023h2o} & Quest \cite{tang2406quest} & DS \cite{yang2024post} & \multicolumn{2}{c|}{HShare \cite{wuhshare}}  & \multicolumn{2}{c|}{CIS (ours)} & \multicolumn{2}{c|}{CIS$^\ast$ (ours)} & \multicolumn{2}{c}{CPE (ours)}\\
+\midrule
+
+$\hat{\rho}$ & - & - & - & - & 0.281 & 0.125 & 0.177 & 0.083 & 0.164 & 0.085 & 0.174 & 0.079\\
+
+\midrule
+
+MultiNews   & 26.22 & 24.88 & \textbf{26.49} & 26.30 & 26.05 & 25.22 & 26.47 & 25.98 & 26.18 & 26.40 & 26.11 & 26.02\\
+Musique            & 8.65  & 6.24  & 4.62 & 8.72  & 8.42  & 8.09 & 8.47 & 6.98 & 8.74 & 8.68 & 8.69 & 7.50\\
+HotpotQA  & 27.72 & 27.58 & 21.94 & 27.44 & 27.32 & \textbf{29.13} & 27.54 & 28.64 & 26.72 & 27.60 & 27.39 & 27.10\\
+Qasper & 21.88 & 17.32 & 16.96 & 20.98 & 20.12 & 19.60 & 21.24 & 21.18 & 20.87 & 20.79 & 20.94 & \textbf{21.63}\\
+2WikiMQA  & 31.18 & 31.38 & 29.42 & 32.01 & 31.46 & 31.43 & \textbf{32.51} & 30.78 & 30.05 & 30.70 & 29.06 & 31.15\\
+Repo-P & 52.14 & \textbf{51.81} & 50.24 & 48.44 & 50.79 & 51.63 & 50.99 & 50.03 & 50.65 & 50.88 & 51.64 & 51.12\\
+TriviaQA  & 83.09 & 81.90 & 82.42 & 83.23 & \textbf{83.91} & 82.16 & 79.57 & 81.46 & 81.04 & 79.76 & 79.78 & 81.35\\
+Trec   & 64.5  & 62.5  & 64.0 & 61.05 & 60.5  & 58.5 & 62.5 & 63.5 & 64.5 & 62.5 & \textbf{65.0} & 62.0\\
+Qmsum   & 20.91 & 20.74 & \textbf{21.36} & 20.75 & 20.59 & 20.74 & 20.53 & 20.93 & 20.98 & 20.92 & 20.78 & 20.66\\
+NarrativeQA  & 18.83 & 17.01 & \textbf{18.21} & 17.54 & 17.31 & 17.31 & 17.90 & 17.05 & 17.65 & 16.30 & 16.55 & 17.96\\
+GovReport   & 26.55 & 23.45 & 25.46 & \textbf{27.04} & 25.85 & 25.85 & 26.63 & 26.39 & 26.07 & 26.39 & 25.63 & 25.78\\
+LCC    & 58.26 & 56.55 & \textbf{56.74} & 54.87 & 56.23 & 56.11 & 55.35 & 54.43 & 54.89 & 55.10 & 55.62 & 54.22\\
+PC      & 2.77  & 1.87  & 2.33 & 3.15 & 2.30  & 2.30 & 2.69 & 3.12 & 2.38 & \textbf{3.34} & 3.27 & 1.93\\
+
+Samsum  & 41.01 & 40.18 & 40.91 & \textbf{41.30} & 39.77 & 40.02 & 40.96 & 40.52 & 39.04 & 39.68 & 40.11 & 40.19\\
+PR-EN & 6.5 & 5.0   & 6.5  & 6.0  & 6.0   & 6.0 & 8.5 & 7.0 & 6.0 & \textbf{9.5} & 6.0 & 6.0\\
+MQA-EN    & 36.15 & 33.64 & 31.99 & 35.83 & 34.08 & 32.37 & 36.64 & 36.54 & 37.29 & 37.06 & 37.47 & \textbf{37.96}\\
+\midrule
+Average   & 32.90 & 31.38 & 31.35 & 32.11 & 31.97 & 31.49 & \textbf{32.40} & 32.15 & 32.06 & 32.22 & 32.11 & 32.02\\
+\bottomrule
+\end{tabular}
+\end{table*}

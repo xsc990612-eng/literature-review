@@ -1,0 +1,103 @@
+\appendix
+\section{Artifact Appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Abstract}
+
+\sysname is a simpler, portable and performant alternative to \pa for dynamic memory management in LLM serving systems. This artifact contains instructions to install \sysname and scripts to reproduce key results of our paper (Figures 2, 3, 4, 6, 7, 8, 9, 11). The scripts are configured to run three large language models: \yismall, \llamasmall and \yimedium. %A copy of this artifact is available on Zenodo at the url: \textcolor{blue}{\url{https://doi.org/10.5281/zenodo.14048692}}.
+
+\subsection{Artifact check-list (meta-information)}
+
+{\small
+\begin{itemize}
+  \item {\bf Algorithm: } Dynamic memory management for serving LLMs.
+  \item {\bf Run-time environment: } CUDA 12.1, Python 3.10, PyTorch 2.3.0.
+  \item {\bf Hardware: } Two NVLink connected NVIDIA A100 GPUs with 80GB memory each.
+  \item {\bf Disk space required: } 200GB.
+  \item {\bf Time needed to prepare workflow: } 1 hour.
+  \item {\bf Time needed to complete experiments: } 1-2 days.
+  \item {\bf Publicly available?: } Yes
+  \item {\bf Archived  DOI?: } https://doi.org/10.5281/zenodo.14048692
+\end{itemize}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Description}
+
+\subsubsection{How to access}
+
+Clone the artifact as follows:
+
+\begin{Verbatim}[frame=single,rulecolor=\color{black},fontfamily=zi4,fontsize=\small]
+$ git clone https://github.com/microsoft/vattention
+\end{Verbatim}
+
+
+
+\subsubsection{Hardware dependencies}
+Running \yismall requires one NVIDIA A100 GPU with 80GB memory while the other two models require two NVLink-connected A100 GPUs with 80GB memory each.
+
+\subsubsection{Software dependencies}
+Requires PyTorch 2.3.0 and CUDA 12.1 (later CUDA versions may or may not work).
+
+\subsubsection{Expected runtime} Figures 2, 3, and 11 should take a few minutes each. Figures 4, 7 should take about 1 hour each. Figure 6 requires approximately 3 hours. Figures 8 and 9 may consume more than 12 hours each.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Installation}
+
+Move to the directory containing artifact scripts, create and activate a conda environment, then install the artifact as follows:
+\begin{Verbatim}[frame=single,rulecolor=\color{black},fontfamily=zi4,fontsize=\small]
+$ cd vattention/scripts/artifact_asplos25/
+$ conda create -n vattn python=3.10
+$ conda activate vattn
+$ (vattn) ./install.sh
+\end{Verbatim}
+
+ \verb|vattention/scripts/artifact_asplos25/README.md| file provides detailed installation instructions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Alternate Setup: Docker Image}
+
+We also provide a docker image for \sysname with all its dependencies pre-installed. To access the docker image, you need to have \href{https://docs.docker.com/engine/installation/}{Docker} and \href{https://github.com/NVIDIA/nvidia-docker/}{NVIDIA Docker} installed on your system. You can then launch the docker container and navigate to the folder containing \sysname artifact, as follows:
+\begin{Verbatim}[frame=single,rulecolor=\color{black},fontfamily=zi4,fontsize=\small,xrightmargin=-5mm]
+$ docker run --gpus all -it \
+  -p 8181:8181 --rm --ipc=host --cap-add=SYS_ADMIN \
+  rnp1910/vattention:asplos_25_pytorch_run
+$ cd /workspace/vattention/scripts/artifact_asplos25  
+\end{Verbatim}
+
+
+
+Then follow the experiment workflow detailed in \ref{workflow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Accessing \llamasmall}
+
+Accessing \llamasmall requires logging into huggingface with the user's private token (\verb|HF_TOKEN| below). Login as follows before any experiment:
+% $ (vattn) pip install -U "huggingface_hub[cli]"
+\begin{Verbatim}[frame=single,rulecolor=\color{black},fontfamily=zi4,fontsize=\small]
+$ (vattn) huggingface-cli login --token HF_TOKEN
+\end{Verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Experiment workflow} \label{workflow}
+You can launch all experiments at once or individually as:
+
+\begin{Verbatim}[frame=single,rulecolor=\color{black},fontfamily=zi4,fontsize=\small]
+$ (vattn) ./run_all.sh
+          OR
+$ (vattn) ./run_figure_2.sh
+$ (vattn) ./run_figure_3.sh 
+\end{Verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Evaluation and expected results}
+The raw output logs and the final plots will be redirected to \verb|./logs|.  and \verb|./plots/| subdirectories within the main artifact directory \verb|vattention/scripts/artifact_asplos25/|. The plots are in the same format as the paper and can be compared directly. The expected result is that non-paged or \sysname based configurations would perform better than the \pa counterparts, especially at longer context lengths. However, the exact numbers may differ from the paper depending on GPUs and software libraries installed on the experiment system. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Experiment customization}
+Reproducing Figures 8 and 9 of the paper requires running a large number of requests and hence these experiments can take more than 24 hours to complete. To reduce the experimental time, we have configured their scripts to run with a smaller number of requests (100 each) by default. If you want to run the full trace, execute these scripts with the \verb|--full| argument, i.e., \verb|./run_figure_8.sh --full| and \verb|./run_figure_9.sh --full|. If two NVLink connected GPUs aren't available, update run scripts to avoid running \llamasmall and \yimedium. You can also configure \llamasmall to run on a single GPU by setting \verb|--model_tensor_parallel_degree| to 1 in the \verb|./helpers/common.sh| file. Note that such changes would likely impact the absolute performance numbers considerably but \sysname is still expected to perform better than \pa.
+
+

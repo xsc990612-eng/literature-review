@@ -1,0 +1,26 @@
+\begin{table}[t]
+\caption{Summary of key variables and notation.}
+\label{tab:notation}
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\columnwidth}{lX|lX}
+\toprule
+$\bx$ & Input token embedding 
+& $\bq,\,\bk,\,\bv$ & Query, key, value \\
+$L$ & Input length
+& $d$ & Per-head dimension \\
+$H$ & Number of heads
+& $A(\cdot)$ & Attention weight \\
+$\bK, \bV$ & KV cache matrices
+& $t$ & Step count\\
+$\mathcal S$ & Selector returning a subset of indices
+& $S_t$ & Selected KV index set at step $t$ \\
+$N$ & KV budget (sparsity: $N/t$)
+& $\tau(\cdot)$ & Retained attention mass \\
+$\delta(\cdot)$ & Dropped attention mass
+& $I_{\mathrm{full}}, I_{\mathcal S}$ & MI under full attention vs.\ TSA \\
+$g(\cdot)$ & MI-loss bound function
+& $\delta^*(\cdot)$ & Oracle (top-$k$) dropped mass \\
+\bottomrule
+\end{tabularx}
+\end{table}

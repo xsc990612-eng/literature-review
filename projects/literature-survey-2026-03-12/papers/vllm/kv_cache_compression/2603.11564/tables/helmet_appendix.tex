@@ -1,0 +1,98 @@
+% \documentclass{article}
+% \usepackage{graphicx}
+% \usepackage{multirow}
+% \usepackage{booktabs}
+% \usepackage[table]{xcolor}
+% \usepackage{rotating}
+% \usepackage{adjustbox}
+% \usepackage{caption}    % 表格标题控制
+% \usepackage{array}      % 支持自定义列格式（用于居中+固定宽度）
+
+% 调整 booktabs 线条的上下空白
+% \setlength{\aboverulesep}{2pt}   
+% \setlength{\belowrulesep}{2pt}   
+
+% \begin{document}
+
+
+
+
+\begin{table*}[!htbp]
+\caption{Performance comparison of different methods across various LLMs on sub-task categories of the HELMET benchmark.}
+\centering
+\large
+% \small % 可以根据需要注释掉或取消注释，与 \footnotesize 配合使用
+% \footnotesize  
+\renewcommand{\arraystretch}{1.2} % 增加行间距，使表格看起来更宽松
+% \renewcommand{\arraystretch}{0.9}  
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l l *{12}{c}}
+\toprule
+% --- Main Category Headers ---
+& & \multicolumn{5}{c}{\textbf{ICL}} & \multicolumn{2}{c}{\textbf{LONGQA}} & \multicolumn{4}{c}{\textbf{RAG}} & \\
+% --- Metric Sub-headers ---
+& & \multicolumn{5}{c}{\textit{exact\_match}} & \textit{f1} & \textit{rougeL\_f1} & \multicolumn{4}{c}{\textit{substring\_exact\_match}} & \\
+\cmidrule(lr){3-7} \cmidrule(lr){8-9} \cmidrule(lr){10-13}
+% --- Rotated Column Titles ---
+& \textbf{Methods} & \rotatebox[origin=c]{30}{\textbf{icl\_banking77}} & \rotatebox[origin=c]{30}{\textbf{icl\_clinic150}} & \rotatebox[origin=c]{30}{\textbf{icl\_nlu}} & \rotatebox[origin=c]{30}{\textbf{icl\_trec\_coarse}} & \rotatebox[origin=c]{30}{\textbf{icl\_trec\_fine}} & \rotatebox[origin=c]{30}{\textbf{narrativeqa}} & \rotatebox[origin=c]{30}{\textbf{infbench\_qa\_eng}} & \rotatebox[origin=c]{30}{\textbf{kilt\_hotpotqa}} & \rotatebox[origin=c]{30}{\textbf{kilt\_nq}} & \rotatebox[origin=c]{30}{\textbf{kilt\_popqa\_3}} & \rotatebox[origin=c]{30}{\textbf{kilt\_triviaqa}} & \textbf{Avg.} \\
+\midrule
+% --- Llama3-8B-Instruct Data ---
+\multirow{24}{*}{\rotatebox{90}{\textbf{Llama3-8B-Instruct}}} & FullKV & 38.60 & 73.60 & 76.20 & 39.40 & 25.00 & 12.00 & 16.56 & 52.00 & 42.17 & 47.67 & 80.00 & 45.75 \\
+\cmidrule{2-14}
+& \multicolumn{13}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 1024}} \\
+& H2O & \textbf{32.00} & 64.00 & 70.60 & 36.00 & \textbf{21.20} & 11.30 & 15.28 & 47.67 & 44.17 & 47.67 & 81.50 & 42.85 \\
+& PyramidKV & 24.80 & 55.40 & 68.60 & 29.60 & 16.00 & 11.61 & 16.00 & 52.33 & 44.17 & 48.17 & 81.33 & 40.73 \\
+& SnapKV & 23.00 & 54.40 & 70.60 & 29.00 & 18.20 & 11.04 & 17.07 & \textbf{52.67} & 43.83 & 48.33 & 81.67 & 40.89 \\
+& DapQ & 26.80 & \textbf{64.40} & \textbf{72.60} & \textbf{39.80} & 15.40 & \textbf{11.81} & \textbf{16.67} & 50.00 & \textbf{45.00} & \textbf{48.33} & \textbf{81.83} & \textbf{42.97} \\
+\cmidrule{2-14}
+& \multicolumn{13}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 512}} \\
+& H2O & 18.00 & 51.80 & 63.00 & 28.80 & 18.00 & 10.65 & 14.45 & 48.33 & 44.17 & 48.00 & 82.00 & 38.84 \\
+& PyramidKV & 17.40 & 39.80 & 56.00 & 22.20 & 12.20 & \textbf{11.69} & 15.87 & 50.67 & 44.17 & 48.00 & 82.17 & 36.38 \\
+& SnapKV & 17.60 & 41.40 & 63.60 & 22.20 & 14.20 & 11.34 & 16.67 & \textbf{50.67} & 44.50 & 47.17 & 82.83 & 37.47 \\
+& DapQ & \textbf{21.60} & \textbf{52.80} & \textbf{64.00} & \textbf{39.20} & \textbf{15.40} & 11.18 & \textbf{16.89} & 49.00 & \textbf{46.00} & \textbf{48.17} & \textbf{82.17} & \textbf{40.58} \\
+\cmidrule{2-14}
+& \multicolumn{13}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 256}} \\
+& H2O & 11.60 & 35.40 & \textbf{54.20} & 23.40 & 11.20 & 11.21 & 12.82 & 46.67 & 42.33 & 47.00 & 80.67 & 34.23 \\
+& PyramidKV & 14.00 & 27.40 & 36.20 & 17.00 & 10.00 & 11.36 & 14.94 & \textbf{52.00} & 42.83 & 48.00 & 81.17 & 32.26 \\
+& SnapKV & 16.80 & 27.80 & 47.60 & 17.80 & 9.00 & 11.52 & 14.76 & 50.67 & 42.67 & 46.83 & 81.67 & 33.37 \\
+& DapQ & \textbf{17.00} & \textbf{37.40} & 47.00 & \textbf{38.40} & \textbf{13.80} & \textbf{11.66} & \textbf{15.70} & 48.67 & \textbf{44.00} & \textbf{48.17} & \textbf{81.83} & \textbf{36.69} \\
+\cmidrule{2-14}
+& \multicolumn{13}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+& H2O & 6.80 & 20.00 & \textbf{32.80} & 18.00 & 6.20 & 10.76 & 12.52 & 45.33 & 41.00 & 46.00 & 81.33 & 29.16 \\
+& PyramidKV & 11.20 & 21.80 & 19.60 & 14.80 & 8.20 & 10.70 & 14.03 & 48.00 & 39.33 & 46.50 & 83.50 & 28.88 \\
+& SnapKV & 13.80 & 19.60 & 21.40 & 14.60 & 8.80 & 10.92 & 13.66 & 46.00 & 38.83 & 47.07 & 84.33 & 29.00 \\
+& DapQ & \textbf{16.40} & \textbf{23.40} & 25.60 & \textbf{31.00} & \textbf{13.20} & \textbf{10.99} & \textbf{15.14} & \textbf{49.33} & \textbf{41.50} & \textbf{47.33} & \textbf{84.67} & \textbf{32.60} \\
+\midrule
+% --- Qwen2.5-7B-Instruct Data ---
+\multirow{24}{*}{\rotatebox{90}{\textbf{Qwen2.5-7B-Instruct}}} & FullKV & 74.00 & 71.00 & 53.80 & 75.60 & 31.80 & 20.53 & 30.33 & 56.00 & 49.83 & 57.67 & 86.67 & 55.20 \\
+\cmidrule{2-14}
+& \multicolumn{13}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 2048}} \\
+& H2O & 63.20 & 54.00 & 51.00 & \textbf{79.40} & 31.40 & \textbf{20.37} & 28.74 & 52.00 & \textbf{49.33} & 58.17 & 87.00 & 52.24 \\
+& PyramidKV & 68.40 & 61.40 & 53.20 & 77.40 & 33.20 & 19.46 & 28.52 & 53.67 & 48.00 & \textbf{60.83} & 85.33 & 53.58 \\
+& SnapKV & 68.40 & 62.00 & 51.40 & 78.00 & 33.20 & 20.35 & 29.41 & 55.67 & 47.83 & 58.33 & 86.67 & 53.75 \\
+& DapQ & \textbf{71.00} & \textbf{67.80} & \textbf{55.00} & 76.00 & \textbf{33.60} & 19.05 & \textbf{29.46} & \textbf{56.33} & 48.83 & 58.50 & \textbf{87.00} & \textbf{54.78} \\
+\cmidrule{2-14}
+& \multicolumn{13}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 1024}} \\
+& H2O & 44.60 & 33.20 & 28.00 & \textbf{79.40} & 25.40 & 19.52 & 27.24 & 50.67 & \textbf{48.50} & 57.00 & 85.50 & 45.37 \\
+& PyramidKV & 58.40 & 40.60 & 39.00 & 78.20 & 29.20 & 20.30 & 28.11 & 50.67 & 44.50 & \textbf{61.00} & 84.50 & 48.59 \\
+& SnapKV & 56.80 & 42.10 & 38.00 & 75.00 & 30.80 & \textbf{20.53} & 28.05 & 56.00 & 48.00 & 58.33 & 85.37 & 49.00 \\
+& DapQ & \textbf{66.00} & \textbf{56.40} & \textbf{49.80} & 76.20 & \textbf{31.20} & 20.20 & \textbf{28.76} & \textbf{54.33} & 46.67 & 57.50 & \textbf{85.67} & \textbf{52.07} \\
+\cmidrule{2-14}
+& \multicolumn{13}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 512}} \\
+& H2O & 28.60 & 19.40 & 17.00 & \textbf{76.20} & 17.80 & 18.51 & 26.88 & 51.27 & 45.33 & 57.67 & 85.33 & 40.36 \\
+& PyramidKV & 45.00 & 20.00 & 22.80 & 70.60 & 25.80 & \textbf{21.91} & 26.60 & 48.67 & 43.50 & \textbf{59.67} & 82.83 & 42.49 \\
+& SnapKV & 44.60 & 23.60 & 22.20 & 71.80 & 26.80 & 20.17 & 27.85 & 53.00 & \textbf{47.17} & 58.17 & 85.83 & 43.74 \\
+& DapQ & \textbf{52.00} & \textbf{43.20} & \textbf{40.80} & 72.20 & \textbf{28.40} & 20.54 & \textbf{29.50} & \textbf{54.00} & 45.33 & 57.33 & \textbf{85.83} & \textbf{48.10} \\
+\cmidrule{2-14}
+& \multicolumn{13}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 256}} \\
+& H2O & 21.20 & 12.00 & 9.20 & \textbf{74.40} & 14.40 & 18.26 & 26.12 & 48.67 & 43.00 & 58.67 & 83.33 & 37.20 \\
+& PyramidKV & 34.80 & 14.00 & 13.20 & 50.80 & 15.00 & 17.36 & 25.93 & 45.00 & 40.00 & 59.17 & 75.17 & 35.49 \\
+& SnapKV & 38.40 & 15.20 & 18.80 & 60.00 & 19.80 & \textbf{19.90} & 26.55 & 51.00 & \textbf{45.33} & \textbf{59.83} & 82.17 & 39.73 \\
+& DapQ & \textbf{41.40} & \textbf{25.40} & \textbf{27.60} & 67.40 & \textbf{21.00} & 17.64 & \textbf{26.55} & \textbf{51.33} & 47.00 & 59.00 & \textbf{85.17} & \textbf{42.68} \\
+\bottomrule
+\end{tabular}
+}
+\label{table:helmet}
+\end{table*}
+
+% \end{document}

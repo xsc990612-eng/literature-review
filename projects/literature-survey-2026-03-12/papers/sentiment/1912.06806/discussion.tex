@@ -1,0 +1,44 @@
+
+%Table~\ref{tab:TaskATwitterFull} gives a short description of the systems that participated in subtask A, testing on the Twitter dataset;
+%we believe this gives a good idea about the approaches, features, lexicons, etc. that the participants used.
+%The approaches used for subtask B and for the SMS dataset were similar, and the participating teams also overlapped.
+%Thus, here we are taking the opportunity to discuss the characteristics of the systems submitted to subtask A for testing on Twitter data;
+%these findings should generalize to subtask B and the SMS dataset.
+
+We have seen that most participants restricted themselves to the provided data and submitted constrained systems.
+Indeed, the best systems for each of the two subtasks and for each of the two testing datasets were constrained systems;
+of course, this does not mean that additional data would not be useful.
+Curiously, in some cases where a team submitted a constrained and unconstrained run,
+the unconstrained run actually performed worse.
+
+Not surprisingly, most systems were supervised;
+there were only five semi-supervised systems, and there was only one unsupervised system.
+One additional team declared their system as unsupervised
+since it was not making use of the training data;
+we still classified it as supervised though since it did use supervision -- in the form of manual rules.
+
+Most participants predicted all three labels (positive, negative and neutral),
+even though some participants opted for not predicting neutral, which made some sense since the final F1-score
+was averaged over the positive and the negative predictions only.
+
+The most popular classifiers included SVM, MaxEnt, linear classifier, Naive Bayes;
+in some cases, manual rules or ensembles of classifiers were used.
+
+A variety of features were used, including
+word-related (e.g., words, stems, $n$-grams, word clusters),
+word-shape (e.g., punctuation, capitalization),
+syntactic (e.g., POS tags, dependency relations),
+Twitter-specific (e.g., repeated characters, emoticons, URLs, hashtags, slang, abbreviations),
+and sentiment-related (e.g., negation);
+one team also used discourse relations.
+Almost all participants relied heavily of various sentiment lexicons,
+the most popular ones being MPQA and SentiWordNet,
+as well as AFINN and Bing Liu's Opinion Lexicon;
+some participants used their own lexicons -- preexisting or built from the provided data.
+
+Given that Twitter messages are noisy, most participants did some preprocessing, including
+tokenization,
+stemming, lemmatization,
+stopword removal,
+normalization/removal of URLs, hashtags, users, slang, emoticons, repeated vowels, punctuation;
+some even did pronoun resolution.

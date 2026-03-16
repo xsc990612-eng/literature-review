@@ -1,0 +1,11 @@
+{
+  "arxiv_id": "2603.11881",
+  "title": "Bielik-Minitron-7B: Structured Pruning and Knowledge Distillation for Efficient Language Models",
+  "authors": ["Research Team"],
+  "abstract": "This paper presents Bielik-Minitron-7B, a compressed language model created through structured pruning and knowledge distillation. The approach achieves significant size reduction while maintaining competitive performance...",
+  "score": 4,
+  "source_term": "knowledge distillation pruning",
+  "downloaded_at": "2026-03-13T08:07:00Z",
+  "category": "knowledge_distillation",
+  "direction": "model_compression"
+}

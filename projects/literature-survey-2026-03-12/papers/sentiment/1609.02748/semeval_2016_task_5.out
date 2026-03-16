@@ -1,0 +1,12 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related work}{}% 2
+\BOOKMARK [1][-]{section.3}{Model}{}% 3
+\BOOKMARK [1][-]{section.4}{Methodology}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Preprocessing}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Hyperparameters}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Aspect Category Detection}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{Sentiment Polarity}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{Evaluation}{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{Aspect Category Detection}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.2}{Sentiment Polarity}{section.5}% 11
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 12

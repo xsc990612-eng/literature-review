@@ -1,0 +1,457 @@
+\documentclass[11pt]{article}
+
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[preprint]{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+%Including images in your LaTeX document requires adding
+%additional package(s)
+\usepackage{graphicx}
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+\input{math_commands}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% \usepackage{geometry}
+\usepackage{array}
+\usepackage{lipsum}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{soul}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{graphicx}    % 支持rotatebox旋转文本
+\usepackage{xcolor}      % 支持arrayrulecolor颜色设置
+\usepackage[table]{xcolor}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{caption}    % 表格标题控制
+\usepackage{amsmath, amssymb, amsfonts} % 常用数学宏包
+\usepackage[utf8]{inputenc}
+\usepackage{threeparttable}
+\usepackage{makecell}
+\usepackage{csquotes}
+
+\title{Where Matters More Than What: Decoding-aligned KV Cache Compression via Position-aware Pseudo Queries}
+
+% Author information can be set in various styles:
+% For several authors from the same institution:
+% \author{Author 1 \and ... \and Author n \\
+%         Address line \\ ... \\ Address line}
+% if the names do not fit well on one line use
+%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
+% For authors from different institutions:
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \And  ... \And
+%         Author n \\ Address line \\ ... \\ Address line}
+% To start a separate ``row'' of authors use \AND, as in
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \AND
+%         Author 2 \\ Address line \\ ... \\ Address line \And
+%         Author 3 \\ Address line \\ ... \\ Address line}
+
+% \author{First Author \\
+%   Affiliation / Address line 1 \\
+%   Affiliation / Address line 2 \\
+%   Affiliation / Address line 3 \\
+%   \texttt{email@domain} \\\And
+%   Second Author \\
+%   Affiliation / Address line 1 \\
+%   Affiliation / Address line 2 \\
+%   Affiliation / Address line 3 \\
+%   \texttt{email@domain} \\}
+
+%\author{
+%  \textbf{First Author\textsuperscript{1}},
+%  \textbf{Second Author\textsuperscript{1,2}},
+%  \textbf{Third T. Author\textsuperscript{1}},
+%  \textbf{Fourth Author\textsuperscript{1}},
+%\\
+%  \textbf{Fifth Author\textsuperscript{1,2}},
+%  \textbf{Sixth Author\textsuperscript{1}},
+%  \textbf{Seventh Author\textsuperscript{1}},
+%  \textbf{Eighth Author \textsuperscript{1,2,3,4}},
+%\\
+%  \textbf{Ninth Author\textsuperscript{1}},
+%  \textbf{Tenth Author\textsuperscript{1}},
+%  \textbf{Eleventh E. Author\textsuperscript{1,2,3,4,5}},
+%  \textbf{Twelfth Author\textsuperscript{1}},
+%\\
+%  \textbf{Thirteenth Author\textsuperscript{3}},
+%  \textbf{Fourteenth F. Author\textsuperscript{2,4}},
+%  \textbf{Fifteenth Author\textsuperscript{1}},
+%  \textbf{Sixteenth Author\textsuperscript{1}},
+%\\
+%  \textbf{Seventeenth S. Author\textsuperscript{4,5}},
+%  \textbf{Eighteenth Author\textsuperscript{3,4}},
+%  \textbf{Nineteenth N. Author\textsuperscript{2,5}},
+%  \textbf{Twentieth Author\textsuperscript{1}}
+%\\
+%\\
+%  \textsuperscript{1}Affiliation 1,
+%  \textsuperscript{2}Affiliation 2,
+%  \textsuperscript{3}Affiliation 3,
+%  \textsuperscript{4}Affiliation 4,
+%  \textsuperscript{5}Affiliation 5
+%\\
+%  \small{
+%    \textbf{Correspondence:} \href{mailto:email@domain}{email@domain}
+%  }
+%}
+
+\author{Zhenxu Tian$^{1}$\thanks{\; Equal Contribution.}, Yi Su$^1$\footnotemark[1], Juntao Li$^{1}$\thanks{\; Corresponding author.}, Min Zhang$^{1}$ \\  
+ $^{1}$School of Computer Science and Technology, Soochow University, China \\
+ \texttt{zhenxut@163.com}
+ }
+
+
+
+\begin{document}
+\maketitle
+\begin{abstract}
+% 背景
+The Key-Value (KV) cache is crucial for efficient Large Language Models (LLMs) inference, but excessively long contexts drastically increase KV cache memory footprint.
+% 现有方法的问题
+Existing KV cache compression methods typically rely on input-side attention patterns within a prompt observation window to estimate token importance during the prefill stage. They fail to preserve critical tokens for future generation since these assessments are not derived from the decoding process.
+% 发现了什么
+Intuitively, an effective observation window should mirror the decoding-stage queries to accurately reflect which tokens the generation process will attend to. However, ground-truth decoding queries are inherently unavailable during inference. For constructing pseudo queries to approximate them, we find that positional information plays a more critical role than semantic content. 
+% 提出了什么
+Motivated by this insight, we propose decoding-aligned KV cache compression via position-aware pseudo queries (\textbf{DapQ}), a novel and lightweight eviction framework that leverages position-aware pseudo queries to simulate the output tokens, thereby establishing an effective observation window for importance assessment. It aligns closely with the actual generation context and enables precise token eviction.
+% 效果
+Extensive evaluations across multiple benchmarks and LLMs demonstrate that DapQ achieves superior performance, particularly under strict memory constraints (e.g., up to nearly lossless performance 99.5\% on NIAH with 3\% KV cache budgets). 
+% Our anonymous code is available at \href{https://anonymous.4open.science/r/CASD}{https://anonymous.4open.science/r/CASD}.
+% Our anonymous code is available at \href{https://anonymous.4open.science/r/Anonymous-DapQ}{https://anonymous.4open.science/r/Anonymous-DapQ}.
+% Extensive evaluation across multiple benchmarks and LLMs demonstrates that DapQ consistently outperforms existing baselines, particularly under strict memory constraints (e.g., up to 99.5\% on NIAH even with 3\% KV cache budgets).
+\end{abstract}
+
+\input{sections/1_Introduction}
+\input{sections/2_Related_Work}
+\input{sections/3_Observation}
+\input{sections/4_Method}
+\input{sections/5_Experiments}
+\input{sections/6_Analysis}
+\input{sections/7_Conclusion}
+% \input{sections/8_Limitation}
+
+
+\section*{Limitations}
+Although DapQ achieves excellent results, there are still some limitations.
+
+While preliminary experiments indicate that positional information dominates query approximation, semantic content still plays a non-negligible role (as shown in Table \ref{table:query_similarity}: similarity drops to 0.3267 when content is the same but positions differ, whereas it remains at 0.7238 when positions are correct but content is irrelevant). This suggests that further optimizing the semantic content of \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} to better mirror actual decoding could lead to additional performance gains and enhanced robustness. Future work may explore how to intelligently construct or select semantically more meaningful \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} content without introducing significant computational overhead, thereby approaching near-lossless performance even under extreme compression scenarios.
+
+The sensitivity of \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} to positional and semantic information may vary across layers, which could lead to suboptimal compression in certain layers. Future work could explore layer-wise or adaptively-aware \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} approximation mechanisms to better align with the attention distribution of each layer, thereby further improving overall compression efficiency and generation quality.
+
+
+
+% \section*{Acknowledgments}
+
+\bibliography{custom}
+
+\clearpage
+\appendix
+\section{Preliminary Experiment Details}
+\label{Preliminary Experiment Details}
+\subsection{Query similarity comparison under different content and position conditions.}
+We conduct the query similarity analysis using a representative example from the GovReport dataset, which is designed for document summarization tasks. The input sequence consists of 4424 tokens. The ground-truth decoding queries are obtained by extracting the first 32 output tokens generated by LLaMA-3-8B-Instruct for this input. The semantic content of these output tokens is: \textcolor{gray}{\enquote{The report discusses the Federal Aviation Administration's (FAA) state block grant pilot program, which is part of its Airport Improvement Program (AIP). The program}}, and they are assigned the positional indices 4424-4455. We then construct a \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} of length 32 with the repetitive content: \textcolor{gray}{\enquote{Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I don't know. Sorry, I}}. Notably, the positional IDs for the \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} can be flexibly configured to emulate various decoding scenarios.
+
+\subsubsection{Experimental Details of Query Similarity Comparison}
+In Table \ref{table:query_similarity}, we evaluate \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} by varying two key attributes relative to the ground-truth decoding queries: semantic content and positional assignment. The content is either \textbf{consistent with} the true output (i.e., the actual beginning of the model's summary, \textcolor{gray}{\enquote{The report discusses...}}) or \textbf{different from} it (e.g., a fixed and nonsensical sequence, \textcolor{gray}{\enquote{Sorry, I don't know...}}). Similarly, the positional indices are either \textbf{aligned with} the true future decoding positions (i.e., 4424-4455) or \textbf{deviated from} them (e.g., assigned to a random consecutive span 0-31). The cosine similarity between each set of \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} and the ground-truth queries is reported under two measurement conditions: \textit{Post ROPE}, which captures the final query representation after the application of Rotary Position Embedding (ROPE), and \textit{Pre ROPE}, which reflects the similarity before the positional encoding is applied.
+
+\subsubsection{Experimental Details of Query Similarity Distribution Analysis}
+To quantitatively assess the impact of positional and content variations on query representation, we conduct a large-scale statistical analysis as depicted in Figure \ref{fig:query_similarity_boxplot}. Each box is aggregated from 100 independent trials, providing a stable estimate of the similarity distribution. The \textbf{Different Content (DC)} condition is implemented by randomly sampling 32 tokens from the model's full vocabulary, effectively removing any meaningful semantic correlation with the true output. The \textbf{Different Position (DP)} condition is implemented by assigning a consecutive span of 32 positions randomly sampled from two distinct ranges to introduce positional deviation: a general deviation range (0-4000), which represents a random mismatch within the context window, and an extreme deviation range (0-100), which is specifically chosen to maximize the absolute offset from the correct positions  (i.e., 4424-4455), thereby rigorously testing the hypothesis that positional accuracy is dominant.
+
+\subsection{Experimental Details of Positional Offset Sensitivity}
+To systematically quantify the sensitivity of query representations to positional miscalibration, we conduct the analysis presented in Figure \ref{fig:query_similarity_curve}. The experiment investigates how the similarity between \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} and the true decoding decays based on the absolute offset between their assigned positional indices and the correct future positions. For this purpose, we select input examples of varying context lengths (2k, 4k, 6k, and 8k tokens) from the GovReport dataset. For each context length, we construct \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} with fixed semantic content (aligned with the true output) but systematically vary their assigned starting position. The x-axis represents this starting position assigned to \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} (e.g., an x-axis value of 3500 indicates that the 32 \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} are assigned the consecutive position IDs from 3500 to 3531). The y-axis measures the resulting cosine similarity between the \texorpdfstring{\(Q_{\text{pseudo}}\)}{Q\_pseudo} and the ground-truth decoding queries. This approach allows us to observe the monotonic decay in similarity with increasing positional offset.
+
+
+\subsection{Generalization Analysis of Positional Dominance}
+To further validate the universality of the "Positional Dominance" phenomenon and address potential concerns regarding model-specific or dataset-specific biases, we extended our experimental analysis beyond the Llama-3-8B model and the GovReport dataset. We conducted supplementary experiments using the Qwen2.5-7B-Instruct model across two distinct task domains: Multi-Document QA (using the 2WikiMQA dataset) and Code Completion (using the LCC dataset). Strictly adhering to the experimental configuration outlined in Table \ref{table:query_similarity}, we randomly sampled 100 examples from each dataset to compute the average cosine similarities.  
+As shown in Table \ref{table:query_similarity_qwen_lcc} and Table \ref{table:query_similarity_qwen_wiki}, the quantitative results and experimental phenomena for the LCC and 2WikiMQA dataset are consistent with our observations on Llama. This evidence strongly supports the generalization of our central insight.
+\input{tables/rope_cos_table_qwen}
+\input{tables/efficiency_memory}
+
+\section{Complete Main Experiment Results and Details}
+\label{Complete Experiment Results}
+
+\subsection{Results and Details on LongBench}
+\label{Complete Experiment Results on LongBench}
+We comprehensively evaluate the performance of DapQ and baselines on LongBench benchmark shown in Table \ref{table:longbench_all}, with the following setup:
+\begin{itemize}[leftmargin=*, nosep] % 添加 nosep 选项
+    \item \textbf{Models:} LLaMA-3-8B-Instruct, Qwen2.5-7B-Instruct, Qwen3-8B(Reasoning OFF);
+    \item \textbf{KV Cache Budgets:} 256, 128, 64 tokens.
+    % \item \textbf{Performance of DapQ:} As shown in Table \ref{table:longbench}, DapQ outperforms all baselines across every model and cache budget on the LongBench benchmark. The advantage is particularly pronounced under aggressive compression (e.g., budget=64), where DapQ shows a robust ability to retain critical information and mitigate high-compression performance degradation. This superiority is notable on complex reasoning and information integration tasks like HotpotQA and 2WikiMQA, underscoring DapQ's ability in preserving the long-range contextual dependencies and factual knowledge.The consistent performance advantage across different model architectures shows the strong generalizability and effectiveness of DapQ.
+\end{itemize}
+
+\subsection{Results and Details on LongBenchV2}
+We comprehensively evaluate the performance of DapQ and baselines on LongBenchV2 benchmark shown in Table \ref{table:longbenchv2}, with the following setup:
+\begin{itemize}[leftmargin=*, nosep] % 添加 nosep 选项
+    \item \textbf{Models:} LLaMA-3-8B-Instruct, LLaMA-3.1-8B-Instruct, Qwen2.5-7B-Instruct, Qwen3-8B(Reasoning OFF);
+    \item \textbf{KV Cache Budgets:} 128, 64 tokens.
+    % \item \textbf{Performance of DapQ:} The more challenging LongBenchV2 benchmark emphasizes deep reasoning over diverse real-world scenarios beyond the mere length of contexts. Under a 64 cache budget, DapQ attains 29.26\% accuracy in the category of \enquote{Hard}, marking a +6.75\% absolute improvement over SnapKV (22.51\%) on LLaMA3-8B. This strongly confirms that DapQ effectively identifies and retains the critical contextual elements across long contexts by accurately simulating the decoding-stage positional context. The consistent performance advantage across different model architectures shows the strong generalizability and effectiveness of DapQ.
+\end{itemize}
+
+
+
+\subsection{Results and Details on Ruler}
+We comprehensively evaluate the performance of DapQ and baselines on Ruler benchmark shown in Table \ref{table:ruler_llama3}, Table \ref{table:ruler_qwen25}, Table \ref{table:ruler_qwen3}, with the following setup:
+\begin{itemize}[leftmargin=*, nosep] % 添加 nosep 选项
+    \item \textbf{Models:} LLaMA-3-8B-Instruct, Qwen2.5-7B-Instruct, Qwen3-8B(Reasoning OFF);
+    \item \textbf{KV Cache Budgets:} 4096, 2048, 1024, 512, 256, 128, 64 tokens.
+    % \item \textbf{Performance of DapQ:} We further evaluate DapQ's reasoning capabilities under extreme memory constraints using the RULER benchmark, which tests models on synthetic long-context tasks including multi-hop tracing, retrieval, aggregation, and question answering. Under strict memory constraints, DaqQ exhibits a significant advantage. For instance, Table \ref{table:ruler_llama3} shows that on the Llama3-8B model with a cache budget of 512, DapQ achieves a notable 59.6\% accuracy in the challenging S-NIAH-3 task, substantially outperforming SnapKV (1.4\%) and H2O (2.4\%). This highlights its superior capability in preserving essential information necessary for complex tasks. Furthermore, DapQ consistently demonstrates the highest overall average score across nearly all budget settings on different models, underscoring its robustness and generalizability.
+\end{itemize}
+
+
+\subsection{Results and Details on HELMET}
+We comprehensively evaluate the performance of DapQ and baselines on HELMET benchmark shown in Table \ref{table:helmet}, with the following setup:
+\begin{itemize}[leftmargin=*, nosep] % 添加 nosep 选项
+    \item \textbf{Models:} LLaMA-3-8B-Instruct, Qwen2.5-7B-Instruct;
+    \item \textbf{KV Cache Budgets:} 2048, 1024, 512, 256, 128 tokens.
+    % \item \textbf{Performance of DapQ:} Unlike benchmarks focused on synthetic or narrow-domain tasks, HELMET provides a comprehensive, application-centric evaluation across diverse real-world scenarios like retrieval-augmented generation (RAG) and many-shot in-context learning (ICL). On this challenging benchmark, DapQ also demonstrates consistent and superior performance. Table \ref{table:helmet} shows that on the Qwen2.5-7B-Instruct with a low cache budget of 512, DapQ achieves an average score of 48.10, outperforming strong baselines SnapKV (43.74), H2O (40.36), and PyramidKV (42.49). Overall, above results further underscore the practical effectiveness and robustness of DapQ in diverse and demanding application scenarios.
+\end{itemize}
+
+
+\subsection{Results and Details on NIAH}
+We comprehensively evaluate the performance of DapQ and baselines on Needle-in-a-Haystack(NIAH) benchmark shown in Table \ref{table:needle}, with the following setup:
+\begin{itemize}[leftmargin=*, nosep] % 添加 nosep 选项
+    \item \textbf{Models:} LLaMA-3-8B-Instruct, LLaMA-3.1-8B-Instruct, Qwen2.5-7B-Instruct, Qwen3-8B(Reasoning OFF);
+    \item \textbf{KV Cache Budgets:} 256, 128, 64 tokens.
+    % \item \textbf{Performance of DapQ:} As shown in Figure \ref{fig:needle} and Table \ref{table:needle}, DapQ demonstrates universally superior performance compared to all baselines, confirming its consistent effectiveness. A striking example is on LLaMA3-8B with a cache size of 256: DapQ achieves 99.5\% accuracy, closely approaching full-cache performance. This exceptional performance shows its ability to maintain key contextual dependencies within constrained memory capacity. DapQ effectively simulates the decoding-stage positional context via prospectively encoded pseudo-queries, enabling precise identification and retention of the key “needles” amidst a vast “haystack” of tokens.
+\end{itemize}
+
+
+\subsection{Efficiency Evaluation Setup}
+We conduct a comprehensive efficiency evaluation of DapQ, focusing on memory usage (Table \ref{tab:memory_comparison}), throughput (Table \ref{tab:throughput_comparison}), and Time-to-First-Token (Table \ref{tab:ttft_comparison}). The specific experimental environment and configurations are detailed as follows:
+
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{Hardware \& Environment:} All efficiency experiments are conducted on a single H20 96G GPU. The environment consists of Python 3.10, PyTorch 2.6.0, and Transformers 4.53.0.
+    \item \textbf{Attention Kernel:} Utilize Flash-Attention (version 2.7.4) to accelerate attention computation.
+    \item \textbf{Inference Framework:} Adopt the native Hugging Face transformers implementation rather than vLLM.
+\end{itemize}
+
+
+
+\section{Theoretical and Empirical Evidence for Query-Attention Alignment}
+
+\subsection{Theoretical Analysis}
+
+To rigorously verify that position-Based queries enable more accurate token eviction, we derive a formal theorem to establish that the similarity of query vectors directly constrains both the upper bound of the attention score error and the lower bound of the attention distribution similarity. This provides a principled justification that high query similarity necessarily leads to high attention distribution.
+
+\paragraph{(1) Theorem:}
+Given a fixed KV set $\{K, V\}$ with $K \in \mathbb{R}^{n \times d_k}$ and $V \in \mathbb{R}^{n \times d_v}$, let two unit query vectors $q, q' \in \mathbb{R}^{1 \times d_k}$ have cosine similarity defined as $\text{sim}(q, q') = q \cdot q'$.
+The difference between their corresponding attention scores satisfies:
+
+\begin{equation}
+\resizebox{\columnwidth}{!}{$
+\lVert \text{Attention}(q, K) - \text{Attention}(q', K) \rVert_1
+\le
+\frac{
+K_{\text{max}} \cdot \sqrt{2(1 - \text{sim}(q, q'))}
+}{
+\sqrt{d_k}
+}
+\tag{1}
+$}
+\end{equation}
+
+\begin{equation}
+\resizebox{\columnwidth}{!}{$
+\text{sim}(\text{Attention}(q, K), \text{Attention}(q', K)) \ge 1 - \frac{
+K_{\text{max}} \cdot \sqrt{2(1 - \text{sim}(q, q'))}
+}{
+2 \sqrt{d_k}
+}
+\tag{2}
+$}
+\end{equation}
+where:
+\begin{itemize}
+    \item $d_k$ is the key-vector dimension;
+    \item $K_{\text{max}} = \max_j \|k_j\|$, with $k_j$ the $j$-th key vector;
+    \item $\text{Attention}(q, K) = \text{softmax}\left(\frac{qK^T}{\sqrt{d_k}}\right) $
+\end{itemize}
+and these quantities (i.e., $d_k$ and $K_{\text{max}}$) are constants under the fixed KV set.
+
+
+
+\paragraph{(2) Core conclusion:}
+\textbf{Inequality (1)} directly establishes a positive correlation between the \textit{cosine similarity of queries} and the \textit{similarity of their attention scores}. Specifically, as $\text{sim}(q, q') \to 1$, the upper bound on the scores difference approaches $0$, meaning that the attention scores produced by $q$ and $q'$ become almost identical. \textbf{Inequality (2)} further quantifies the lower bound constraint that query similarity imposes on attention score similarity — the higher the query similarity, the higher the lower bound on attention score similarity.
+
+\paragraph{(3) Detailed Derivation:} \mbox{} \\
+
+
+\textbf{Step 1: Define key variables and similarity measures}
+
+\begin{itemize}
+    \item \textbf{Cosine similarity of queries.} In modern LLMs, query vectors typically originate from normalization layers (e.g., LayerNorm), ensuring their norms remain a stable constant (i.e., $\|q\| \approx \|q'\| \approx C$). Without loss of generality, we assume unitary magnitude ($C=1$) to simplify the notation. Consequently, their cosine similarity reduces to:
+    $$
+    \text{sim}(q,q')=\frac{q\cdot q'}{\|q\|\cdot \|q'\|}=q\cdot q'.
+    $$
+    
+    \item \textbf{Pre-softmax scores.} The raw matching score between the query and each key is
+    $$
+    \small
+    s_j=\frac{q\cdot k_j}{\sqrt{d_k}},\quad 
+    s'_j=\frac{q'\cdot k_j}{\sqrt{d_k}},\quad (j=1,2,\ldots).
+    $$
+    
+    \item \textbf{Attention weights.} After softmax normalization, the attention weights are
+    $$
+    \alpha=\text{softmax}(s),\qquad \alpha'=\text{softmax}(s'),
+    $$
+    where $\alpha_j\ge 0$ and $\sum_j \alpha_j=1$.
+\end{itemize}
+
+\textbf{Step 2: Upper bound the difference of pre-softmax scores}
+
+Using the Cauchy–Schwarz inequality $|x\cdot y|\le \|x\| \cdot \|y\|$,
+the score difference induced by two queries satisfies
+\begin{equation}
+\begin{aligned}
+|s_j - s'_j|
+&= \left|\frac{q\cdot k_j}{\sqrt{d_k}} - \frac{q'\cdot k_j}{\sqrt{d_k}}\right| \\
+&= \frac{1}{\sqrt{d_k}}|(q-q')\cdot k_j| \\
+&\le \frac{1}{\sqrt{d_k}}\|q-q'\| \cdot \|k_j\|.
+\end{aligned}
+\tag{3}
+\end{equation}
+
+Next, for unit vectors $q$ and $q'$ we have the standard identity
+$$
+\small
+\|q-q'\|^2
+= \|q\|^2 + \|q'\|^2 - 2q\cdot q'
+= 2\bigl(1-\text{sim}(q,q')\bigr),
+$$
+hence
+$$
+\|q-q'\| = \sqrt{2\bigl(1-\text{sim}(q,q')\bigr)}.
+$$
+
+Substituting this into the score bound Inequality (3) and taking the maximum key norm
+$K_{\text{max}}=\max_j \|k_j\|,$
+we obtain
+\begin{equation}
+\max_j \left| s_j - s'_j \right|
+\le
+\frac{ K_{\text{max}} \cdot \sqrt{2\bigl(1-\text{sim}(q,q')\bigr)}}{\sqrt{d_k}}
+\tag{4}
+\end{equation}
+
+\textbf{Step 3: Upper bound the difference of attention weights}
+
+The softmax function is Lipschitz continuous: for any score vectors $s, s'$, we have  
+$$
+\lVert \text{softmax}(s) - \text{softmax}(s') \rVert_1
+\le
+\lVert s - s' \rVert_\infty .
+$$
+
+We note that this bound corresponds to a global worst-case Lipschitz constant of the softmax function; while tighter, input-dependent bounds can be derived via the Jacobian, the above inequality suffices for establishing a conservative and general theoretical guarantee.
+
+
+Here, the infinity norm is defined as  
+$\lVert s - s' \rVert_\infty = \max_j |s_j - s'_j|$,  
+and the $L_1$ norm of the attention-weight difference is  
+$\lVert \alpha - \alpha' \rVert_1 = \sum_j |\alpha_j - \alpha'_j|$.
+
+Combining this with Inequality (4), we obtain  
+\begin{equation}
+\lVert \alpha - \alpha' \rVert_1
+\le
+\frac{K_{\max} \cdot \sqrt{2\bigl(1-\mathrm{sim}(q,q')\bigr)}}{\sqrt{d_k}}
+\tag{5}
+\end{equation}
+
+\textbf{Step 4: Lower bound the difference of attention weights}
+
+We adopt a standard similarity measure for attention scores based on the Total Variation Distance:  
+$$
+\text{sim}(\alpha, \alpha') = 1 - \frac{1}{2} \| \alpha - \alpha' \|_1
+$$  
+where $\| \alpha - \alpha' \|_1$ takes values in $[0, 2]$. 
+
+First, we scale the L1 difference $[0, 2]$ to $[0, 1]$: $\frac{1}{2} \|\alpha - \alpha'\|_1$. 
+
+Then, by subtracting this scaled value from 1, we convert the "difference" into "similarity":  
+\begin{itemize}
+    \item Smaller difference $\to$ smaller scaled value $\to$ similarity closer to 1;
+    \item Larger difference $\to$ larger scaled value $\to$ similarity closer to 0.
+\end{itemize}
+
+The above definition is a standard measure of similarity in the field of probability distributions. Substituting Inequality (5) into this definition yields the final lower bound:  
+\begin{equation}
+\text{sim}(\alpha, \alpha') \ge 1 - \frac{
+K_{\text{max}} \cdot \sqrt{2(1 - \text{sim}(q, q'))}
+}{
+2 \sqrt{d_k}
+} \tag{6}
+\end{equation}
+
+\subsection{Empirical Evaluation}
+
+We evaluate the cosine similarity, between Snapkv, DapQ’s observation window attention weights for the input context and ground-truth decoding query’s attention weights for the input context under different window sizes. As shown in the Table \ref{table:query-attention}, across all window sizes, DapQ consistently achieves substantially higher attention-weight similarity compared to SnapKV. This directly demonstrates that better query approximation indeed translates into more accurate attention distributions.
+
+\begin{table*}[h]
+\centering
+\caption{Cosine similarity of softmax-normalized attention weights for DapQ vs. SnapKV.}
+\label{tab:attention_comparison}
+    \begin{tabular}{lcccccccc}
+    \toprule
+    Window Size & 128 & 64 & 32 & 16 & 8 & 4 & 2 & 1 \\
+    \midrule
+    DapQ        & 0.9785 & 0.9747 & 0.9726 & 0.9713 & 0.9705 & 0.9644 & 0.9615 & 0.8768 \\
+    SnapKV      & 0.9463 & 0.9429 & 0.9508 & 0.9466 & 0.9416 & 0.9385 & 0.9332 & 0.8426 \\
+    \bottomrule
+    \end{tabular}%
+\label{table:query-attention}
+\end{table*}
+
+
+
+
+
+\newpage
+\input{tables/longbench_appendix}
+
+\input{tables/longbenv2_table}
+
+\input{tables/ruler}
+
+\input{tables/helmet_appendix}
+
+\input{tables/needle_appendix}
+
+\input{images/needle}
+
+\end{document}
+

@@ -1,0 +1,9 @@
+
+\section{Conclusion}
+
+This paper addresses the critical inference latency overhead (250-950\%) in dynamic LLM adapters, which we identify as a consequence of fragmented CUDA kernel calls, not computational load. We propose \sys, a system-algorithm co-design featuring a token-wise pre-gated architecture. \sys uses a single router at the first layer to determine expert activations for all subsequent layers, a strategy that eliminates the overhead of traditional layer-wise routing.
+% 
+To realize this design, we developed the SGMM CUDA kernel to perform fused adapter switching, which merges activated adapters into the backbone in a single efficient operation. Rigorous experiments validate our approach: \sys achieves competitive accuracy (60.12\% general, 83.58\% domain-specific) while delivering a 2.4× decoding speedup over the fastest dynamic adapters. This reduces the latency overhead from a typical 250-950\% to just 29\% over the backbone model.
+% 
+Ablation studies confirm that both the pre-gated architecture and our SGMM kernel are essential to this performance. Ultimately, \sys establishes a new benchmark for efficient LLM tuning, providing a practical solution that maintains model adaptability while achieving near-native inference speeds and contributing new design principles for future dynamic adapter architectures.
+

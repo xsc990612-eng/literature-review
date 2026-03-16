@@ -1,0 +1,62 @@
+% \begin{table}[t]
+%     \centering
+%     % 调整字体大小
+%     \small 
+%     % 极度压缩列间距，以留出更多空间给文字
+%     \setlength{\tabcolsep}{3pt}
+    
+%     % 使用 resizebox 确保表格宽度严格等于列宽
+%     \resizebox{\columnwidth}{!}{
+%         \begin{tabular}{lcccccc}
+%             \toprule
+%             \multirow{2}{*}{\textbf{Method}} & \multicolumn{6}{c}{\textbf{Batch Size}} \\
+%             \cmidrule(lr){2-7}
+%             & 1 & 10 & 20 & 30 & 40 & 50 \\
+%             \midrule
+%             FullKV    & 11.59 & 26.43 & 25.60 & 26.59 & OOM & OOM \\
+%             Lacache   & 11.44 & 35.77 & 40.64 & 42.49 & OOM & OOM \\
+%             SLM       & 10.81 & 34.49 & 38.21 & 39.25 & 39.98 & 40.46 \\
+%             PyramidKV & 10.54 & 34.12 & 38.00 & 39.03 & 39.86 & 40.11 \\
+%             SnapKV    & 10.77 & 34.22 & 38.09 & 39.10 & 39.77 & 40.23 \\
+%             DapQ      & 10.68 & 34.16 & 37.99 & 38.97 & 39.73 & 40.12 \\
+%             \bottomrule
+%         \end{tabular}
+%     }
+%     \vspace{-10pt}
+%     \caption{Comparison of throughput (tokens/s) with different batch sizes.}
+%     \vspace{-12pt}
+% \label{tab:throughput_comparison}
+% \end{table}
+\begin{table}[t]
+    \centering
+    % 调整字体大小
+    \small 
+    % 极度压缩列间距，以留出更多空间给文字
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{0.85}
+    % 使用 resizebox 确保表格宽度严格等于列宽
+    \resizebox{\columnwidth}{!}{
+        \begin{tabular}{lcccccc}
+            \toprule
+            \multirow{2}{*}{\textbf{Method}} & \multicolumn{6}{c}{\textbf{Batch Size}} \\
+            \cmidrule(lr){2-7}
+            & 1 & 10 & 20 & 30 & 40 & 50 \\
+            \midrule
+            FullKV     & 11.59 & 26.43 & 25.60 & 26.59 & OOM   & OOM   \\
+            LaCache    & 11.44 & 35.77 & 40.64 & 42.49 & OOM   & OOM   \\
+            SLM        & 10.81 & 34.49 & 38.21 & 39.25 & 39.98 & 40.46 \\
+            H2O        & 10.56 & 34.34 & 37.71 & 39.02 & 39.62 & 40.01 \\
+            PyramidKV  & 10.54 & 34.12 & 38.00 & 39.03 & 39.86 & 40.11 \\
+            SnapKV     & 10.77 & 34.22 & 38.09 & 39.10 & 39.77 & 40.23 \\
+            DapQ       & 10.68 & 34.16 & 37.99 & 38.97 & 39.73 & 40.12 \\
+            \bottomrule
+        \end{tabular}
+    }
+    \vspace{-10pt}
+    \caption{Comparison of throughput (tokens/s) with different batch sizes.}
+    \vspace{-12pt}
+    \label{tab:throughput_comparison}
+\end{table}
+
+
+

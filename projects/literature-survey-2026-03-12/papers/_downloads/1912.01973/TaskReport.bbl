@@ -1,0 +1,554 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{Abdelwahab and
+  Elmaghraby}2016]{SemEval:2016:task4:UofL}
+Omar Abdelwahab and Adel Elmaghraby.
+\newblock 2016.
+\newblock {UofL at SemEval-2016 Task 4: Multi} domain word2vec for {Twitter}
+  sentiment classification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Astudillo and
+  Amir}2016]{SemEval:2016:task4:INESC-ID}
+Ramón Astudillo and Silvio Amir.
+\newblock 2016.
+\newblock {INESC-ID at SemEval-2016 Task 4: Reducing} the problem of
+  out-of-embedding words.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Attardi and Sartiano}2016]{SemEval:2016:task4:UniPI}
+Giuseppe Attardi and Daniele Sartiano.
+\newblock 2016.
+\newblock {UniPI at SemEval-2016 Task 4: Convolutional} neural networks for
+  sentiment classification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Baccianella \bgroup et al.\egroup
+  }2009]{Baccianella:2009qd}
+Stefano Baccianella, Andrea Esuli, and Fabrizio Sebastiani.
+\newblock 2009.
+\newblock Evaluation measures for ordinal regression.
+\newblock In {\em Proceedings of the 9th IEEE International Conference on
+  Intelligent Systems Design and Applications (ISDA 2009)}, pages 283--287,
+  Pisa, IT.
+
+\bibitem[\protect\citename{Baccianella \bgroup et al.\egroup
+  }2010]{Baccianella:2010fk}
+Stefano Baccianella, Andrea Esuli, and Fabrizio Sebastiani.
+\newblock 2010.
+\newblock {SentiWordNet 3.0: A}n enhanced lexical resource for sentiment
+  analysis and opinion mining.
+\newblock In {\em Proceedings of the 7th Conference on Language Resources and
+  Evaluation (LREC 2010)}, Valletta, MT.
+
+\bibitem[\protect\citename{Balahur}2016]{SemEval:2016:task4:OPAL}
+Alexandra Balahur.
+\newblock 2016.
+\newblock {OPAL at SemEval-2016 Task 4: the Challenge of Porting a Sentiment
+  Analysis System to the "Real" World}.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Balikas and Amini}2016]{SemEval:2016:task4:TwiSE}
+Georgios Balikas and Massih-Reza Amini.
+\newblock 2016.
+\newblock {TwiSE at SemEval-2016 Task 4: Twitter} sentiment classification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Bollen \bgroup et al.\egroup }2011]{Bollen:2011bf}
+Johan Bollen, Huina Mao, and Xiao-Jun Zeng.
+\newblock 2011.
+\newblock Twitter mood predicts the stock market.
+\newblock {\em Journal of Computational Science}, 2(1):1--8.
+
+\bibitem[\protect\citename{Borge-Holthoefer \bgroup et al.\egroup
+  }2015]{Borge-Holthoefer:2015dz}
+Javier Borge-Holthoefer, Walid Magdy, Kareem Darwish, and Ingmar Weber.
+\newblock 2015.
+\newblock Content and network dynamics behind {Egyptian} political polarization
+  on {Twitter}.
+\newblock In {\em Proceedings of the 18th ACM Conference on Computer Supported
+  Cooperative Work and Social Computing (CSCW 2015)}, pages 700--711,
+  Vancouver, {CA}.
+
+\bibitem[\protect\citename{Briones and
+  Amarasinghe}2016]{SemEval:2016:task4:VCU-TSA}
+Gerard Briones and Kasun Amarasinghe.
+\newblock 2016.
+\newblock {VCU-TSA at SemEval-2016 Task 4: Sentiment} analysis in {Twitter}.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Burton and Soboleva}2011]{Burton:2011sh}
+S.~Burton and A.~Soboleva.
+\newblock 2011.
+\newblock Interactive or reactive? {Marketing} with {Twitter}.
+\newblock {\em Journal of Consumer Marketing}, 28(7):491--499.
+
+\bibitem[\protect\citename{Castillo \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:UDLAP}
+Esteban Castillo, Ofelia Cervantes, Darnes Vilari{\~n}o, and David B{\'a}ez.
+\newblock 2016.
+\newblock {UDLAP at SemEval-2016 Task 4: Sentiment} quantification using a
+  graph based representation.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Ciubotariu \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:Minions}
+Calin-Cristian Ciubotariu, Marius-Valentin Hrisca, Mihail Gliga, Diana
+  Darabana, Diana Trandabat, and Adrian Iftene.
+\newblock 2016.
+\newblock {Minions at SemEval-2016 Task 4: Or} how to boost a student’s self
+  esteem.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Cozza and Petrocchi}2016]{SemEval:2016:task4:mib}
+Vittoria Cozza and Marinella Petrocchi.
+\newblock 2016.
+\newblock {mib at SemEval-2016 Task 4: Exploiting} lexicon based features for
+  sentiment analysis in {Twitter}.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{{Da San Martino} \bgroup et al.\egroup
+  }2016]{DaSanMartino:2016ty}
+Giovanni {Da San Martino}, Wei Gao, and Fabrizio Sebastiani.
+\newblock 2016.
+\newblock {QCRI at SemEval-2016 Task 4: P}robabilistic methods for binary and
+  ordinal quantification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+\newblock Forthcoming.
+
+\bibitem[\protect\citename{Deriu \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:SwissCheese}
+Jan Deriu, Maurice Gonzenbach, Fatih Uzdilli, Aurelien Lucchi, Valeria {De
+  Luca}, and Martin Jaggi.
+\newblock 2016.
+\newblock {SwissCheese at SemEval-2016 Task 4: Sentiment} classification using
+  an ensemble of convolutional neural networks with distant supervision.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Dodds \bgroup et al.\egroup }2011]{Dodds:2011uq}
+Peter~S. Dodds, Kameron~D. Harris, Isabel~M. Kloumann, Catherine~A. Bliss, and
+  Christopher~M. Danforth.
+\newblock 2011.
+\newblock Temporal patterns of happiness and information in a global social
+  network: {H}edonometrics and {Twitter}.
+\newblock {\em {PLoS ONE}}, 6(12).
+
+\bibitem[\protect\citename{Du and Zhang}2016]{SemEval:2016:task4:Aicyber}
+Steven Du and Xi~Zhang.
+\newblock 2016.
+\newblock {Aicyber at SemEval-2016 Task 4}: i-vector based sentence
+  representation.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Esuli and Sebastiani}2010]{Esuli:2010fk}
+Andrea Esuli and Fabrizio Sebastiani.
+\newblock 2010.
+\newblock Sentiment quantification.
+\newblock {\em IEEE Intelligent Systems}, 25(4):72--75.
+
+\bibitem[\protect\citename{Esuli and Sebastiani}2015]{Esuli:2015gh}
+Andrea Esuli and Fabrizio Sebastiani.
+\newblock 2015.
+\newblock Optimizing text quantifiers for multivariate loss functions.
+\newblock {\em ACM Transactions on Knowledge Discovery and Data}, 9(4):Article
+  27.
+
+\bibitem[\protect\citename{Esuli}2016]{SemEval:2016:task4:ISTI-CNR}
+Andrea Esuli.
+\newblock 2016.
+\newblock {ISTI-CNR at SemEval-2016 Task 4: Quantification} on an ordinal
+  scale.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Florean \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:SentimentalITists}
+Cosmin Florean, Oana Bejenaru, Eduard Apostol, Octavian Ciobanu, Adrian Iftene,
+  and Diana Trandabat.
+\newblock 2016.
+\newblock {SentimentalITists at SemEval-2016 Task 4: Building a Twitter}
+  sentiment analyzer in your backyard.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Forman}2005]{Forman:2005fk}
+George Forman.
+\newblock 2005.
+\newblock Counting positives accurately despite inaccurate classification.
+\newblock In {\em Proceedings of the 16th European Conference on Machine
+  Learning (ECML 2005)}, pages 564--575, Porto, {PT}.
+
+\bibitem[\protect\citename{Forman}2008]{Forman:2008kx}
+George Forman.
+\newblock 2008.
+\newblock Quantifying counts and costs via classification.
+\newblock {\em Data Mining and Knowledge Discovery}, 17(2):164--206.
+
+\bibitem[\protect\citename{Friedrichs}2016]{SemEval:2016:task4:IIP}
+Jasper Friedrichs.
+\newblock 2016.
+\newblock {IIP at SemEval-2016 Task 4: Prioritizing} classes in ensemble
+  classification for sentiment analysis of tweets.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Gao and Oates}2016]{SemEval:2016:task4:MDSENT}
+Hang Gao and Tim Oates.
+\newblock 2016.
+\newblock {MDSENT at SemEval-2016 Task 4: Supervised} system for message
+  polarity classification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Giorgis \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:aueb.twitter.sentiment}
+Stavros Giorgis, Apostolos Rousas, John Pavlopoulos, Prodromos Malakasiotis,
+  and Ion Androutsopoulos.
+\newblock 2016.
+\newblock {aueb.twitter.sentiment at SemEval-2016 Task 4}: A weighted ensemble
+  of {SVMs} for {Twitter} sentiment analysis.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Gomez \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:CICBUAPnlp}
+Helena Gomez, Darnes Vilari{\~n}o, Grigori Sidorov, and David~Pinto
+  Avenda{\~n}o.
+\newblock 2016.
+\newblock {CICBUAPnlp at SemEval-2016 Task 4: Discovering Twitter} polarity
+  using enhanced embeddings.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Hamdan}2016]{SemEval:2016:task4:SentiSys}
+Hussam Hamdan.
+\newblock 2016.
+\newblock {SentiSys at SemEval-2016 Task 4: Feature}-based system for sentiment
+  analysis in {Twitter}.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{He \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:YZU-NLP}
+Yunchao He, Liang-Chih Yu, Chin-Sheng Yang, K.~Robert Lai, and Weiyi Liu.
+\newblock 2016.
+\newblock {YZU-NLP at SemEval-2016 Task 4: Ordinal} sentiment classification
+  using a recurrent convolutional network.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Jahren \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:NTNUSentEval}
+Brage~Ekroll Jahren, Valerij Fredriksen, Bj{\"o}rn Gamb{\"a}ck, and Lars
+  Bungum.
+\newblock 2016.
+\newblock {NTNUSentEval at SemEval-2016 Task 4: Combining} general classifiers
+  for fast {Twitter} sentiment analysis.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Juncal-Mart{\'\i}nez \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:GTI}
+Jonathan Juncal-Mart{\'\i}nez, Tamara {\'A}lvarez-L{\'o}pez, Milagros
+  Fern{\'a}ndez-Gavilanes, Enrique Costa-Montenegro, and Francisco~Javier
+  Gonz{\'a}lez-Casta{\~n}o.
+\newblock 2016.
+\newblock {GTI at SemEval-2016 Task 4: Training} a naive {Bayes} classifier
+  using features of an unsupervised system.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Karpov \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:NRU-HSE}
+Nikolay Karpov, Alexander Porshnev, and Kirill Rudakov.
+\newblock 2016.
+\newblock {NRU-HSE at SemEval-2016 Task 4: The} open quantification library
+  with two iterative methods.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Kaya \bgroup et al.\egroup }2013]{Kaya:2013ca}
+Mesut Kaya, Guven Fidan, and Ismail~Hakki Toroslu.
+\newblock 2013.
+\newblock Transfer learning using {Twitter} data for improving sentiment
+  classification of {T}urkish political news.
+\newblock In {\em Proceedings of the 28th International Symposium on Computer
+  and Information Sciences (ISCIS 2013)}, pages 139--148, Paris, {FR}.
+
+\bibitem[\protect\citename{Lango \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:PUT}
+Mateusz Lango, Dariusz Brzezinski, and Jerzy Stefanowski.
+\newblock 2016.
+\newblock {PUT at SemEval-2016 Task 4: The ABC of Twitter} sentiment analysis.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Marchetti-Bowick and
+  Chambers}2012]{marchettibowick-chambers:2012:EACL2012}
+Micol Marchetti-Bowick and Nathanael Chambers.
+\newblock 2012.
+\newblock Learning for microblogs with distant supervision: {P}olitical
+  forecasting with {T}witter.
+\newblock In {\em Proceedings of the 13th Conference of the European Chapter of
+  the Association for Computational Linguistics (EACL 2012)}, pages 603--612,
+  Avignon, {FR}.
+
+\bibitem[\protect\citename{Mart{\'\i}nez-C{\'a}mara \bgroup et al.\egroup
+  }2014]{Martinez-Camara:2014qd}
+Eugenio Mart{\'\i}nez-C{\'a}mara, Maria~Teresa Mart{\'\i}n-Valdivia, Luis
+  Alfonso~Ure{\~n}a L{\'o}pez, and Arturo~Montejo R{\'a}ez.
+\newblock 2014.
+\newblock Sentiment analysis in {T}witter.
+\newblock {\em Natural Language Engineering}, 20(1):1--28.
+
+\bibitem[\protect\citename{Mejova \bgroup et al.\egroup }2015]{Mejova:2015th}
+Yelena Mejova, Ingmar Weber, and Michael~W. Macy, editors.
+\newblock 2015.
+\newblock {\em Twitter: {A} Digital Socioscope}.
+\newblock Cambridge University Press, Cambridge, UK.
+
+\bibitem[\protect\citename{Mikolov \bgroup et al.\egroup }2013]{Mikolov:2013}
+Tomas Mikolov, Wen-Tau Yih, and Geoffrey Zweig.
+\newblock 2013.
+\newblock {Linguistic Regularities in Continuous Space Word Representations}.
+\newblock In {\em {Proceedings of the 2013 Conference of the North American
+  Chapter of the Association for Computational Linguistics (NAACL 2013)}},
+  pages 746--751, {Atlanta, US}.
+
+\bibitem[\protect\citename{Morant \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:DSIC-ELIRF}
+Victor~Martinez Morant, Llu{\'\i}s-F. Hurtado, and Ferran Pla.
+\newblock 2016.
+\newblock {DSIC-ELIRF at SemEval-2016 Task 4: M}essage polarity classification
+  in {Twitter} using a support vector machine approach.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Nabil \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:CUFE}
+Mahmoud Nabil, Amir Atyia, and Mohamed Aly.
+\newblock 2016.
+\newblock {CUFE at SemEval-2016 Task 4: A} gated recurrent model for sentiment
+  classification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Nakov \bgroup et al.\egroup }2013]{Nakov:2013ty}
+Preslav Nakov, Sara Rosenthal, Zornitsa Kozareva, Veselin Stoyanov, Alan
+  Ritter, and Theresa Wilson.
+\newblock 2013.
+\newblock {SemEval-2013 Task 2: Sentiment} analysis in {Twitter}.
+\newblock In {\em Proceedings of the 7th International Workshop on Semantic
+  Evaluation (SemEval 2013)}, pages 312--320, Atlanta, {US}.
+
+\bibitem[\protect\citename{Nakov \bgroup et al.\egroup }2016a]{Nakov:2016kl}
+Preslav Nakov, Alan Ritter, Sara Rosenthal, Fabrizio Sebastiani, and Veselin
+  Stoyanov.
+\newblock 2016a.
+\newblock Evaluation measures for the {SemEval-2016 Task 4 ``Sentiment}
+  analysis in {Twitter''}.
+\newblock Available from http://alt.qcri.org/semeval2016/task4/.
+
+\bibitem[\protect\citename{Nakov \bgroup et al.\egroup }2016b]{Nakov:2016rm}
+Preslav Nakov, Sara Rosenthal, Svetlana Kiritchenko, Saif~M. Mohammad, Zornitsa
+  Kozareva, Alan Ritter, Veselin Stoyanov, and Xiaodan Zhu.
+\newblock 2016b.
+\newblock Developing a successful {SemEval} task in sentiment analysis of
+  {Twitter} and other social media texts.
+\newblock {\em Language Resources and Evaluation}, 50(1):35--65.
+
+\bibitem[\protect\citename{O'Connor \bgroup et al.\egroup
+  }2010]{OConnor:2010fk}
+Brendan O'Connor, Ramnath Balasubramanyan, Bryan~R. Routledge, and Noah~A.
+  Smith.
+\newblock 2010.
+\newblock From tweets to polls: Linking text sentiment to public opinion time
+  series.
+\newblock In {\em Proceedings of the 4th AAAI Conference on Weblogs and Social
+  Media (ICWSM 2010)}, Washington, {US}.
+
+\bibitem[\protect\citename{Palogiannidi \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:Tweester}
+Elisavet Palogiannidi, Athanasia Kolovou, Fenia Christopoulou, Filippos
+  Kokkinos, Elias Iosif, Nikolaos Malandrakis, Haris Papageorgiou, Shrikanth
+  Narayanan, and Alexandros Potamianos.
+\newblock 2016.
+\newblock {Tweester at SemEval-2016 Task 4: Sentiment analysis} in {Twitter}
+  using semantic-affective model adaptation.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Pennington \bgroup et al.\egroup
+  }2014]{pennington2014glove}
+Jeffrey Pennington, Richard Socher, and Christopher~D. Manning.
+\newblock 2014.
+\newblock {GloVe: Global} vectors for word representation.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing (EMNLP 2014)}, pages 1532--1543, Doha, QA.
+
+\bibitem[\protect\citename{Qureshi \bgroup et al.\egroup }2013]{Qureshi:2013fb}
+Muhammad~A. Qureshi, Colm O'Riordan, and Gabriella Pasi.
+\newblock 2013.
+\newblock Clustering with error estimation for monitoring reputation of
+  companies on {Twitter}.
+\newblock In {\em Proceedings of the 9th Asia Information Retrieval Societies
+  Conference (AIRS 2013)}, pages 170--180, Singapore, {SN}.
+
+\bibitem[\protect\citename{R{\"a}biger \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:SteM}
+Stefan R{\"a}biger, Mishal Kazmi, Y{\"u}cel Saygın, Peter Sch{\"u}ller, and
+  Myra Spiliopoulou.
+\newblock 2016.
+\newblock {SteM at SemEval-2016 Task 4: Applying} active learning to improve
+  sentiment classification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Ritter \bgroup et al.\egroup }2011]{ner}
+Alan Ritter, Sam Clark, and Oren Etzioni.
+\newblock 2011.
+\newblock Named entity recognition in tweets: {A}n experimental study.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing (EMNLP 2011)}, pages 1524--1534, Edinburgh, UK.
+
+\bibitem[\protect\citename{Rosenthal \bgroup et al.\egroup
+  }2014]{Rosenthal:2014ty}
+Sara Rosenthal, Alan Ritter, Preslav Nakov, and Veselin Stoyanov.
+\newblock 2014.
+\newblock {SemEval-2014 Task 9: Sentiment} analysis in {Twitter}.
+\newblock In {\em Proceedings of the 8th International Workshop on Semantic
+  Evaluation (SemEval 2014)}, pages 73--80, Dublin, {IE}.
+
+\bibitem[\protect\citename{Rosenthal \bgroup et al.\egroup
+  }2015]{Rosenthal:2015ty}
+Sara Rosenthal, Preslav Nakov, Svetlana Kiritchenko, Saif Mohammad, Alan
+  Ritter, and Veselin Stoyanov.
+\newblock 2015.
+\newblock {SemEval-2015 Task 10: Sentiment} analysis in {Twitter}.
+\newblock In {\em Proceedings of the 9th International Workshop on Semantic
+  Evaluation (SemEval 2015)}, pages 451--463, Denver, {US}.
+
+\bibitem[\protect\citename{Rouvier and
+  Favre}2016]{SemEval:2016:task4:SENSEI-LIF}
+Mickael Rouvier and Benoit Favre.
+\newblock 2016.
+\newblock {SENSEI-LIF at SemEval-2016 Task 4: Polarity} embedding fusion for
+  robust sentiment analysis.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Rubner \bgroup et al.\egroup }2000]{Rubner:2000fk}
+Yossi Rubner, Carlo Tomasi, and Leonidas~J. Guibas.
+\newblock 2000.
+\newblock The {Earth Mover's Distance} as a metric for image retrieval.
+\newblock {\em International Journal of Computer Vision}, 40(2):99--121.
+
+\bibitem[\protect\citename{Ruder \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:INSIGHT-1}
+Sebastian Ruder, Parsa Ghaffari, and John~G. Breslin.
+\newblock 2016.
+\newblock {INSIGHT-1 at SemEval-2016 Task 4: Convolutional Neural Networks for
+  Sentiment Classification and Quantification}.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{R{\"u}schendorf}2001]{Ruschendorf:2001mz}
+Ludger R{\"u}schendorf.
+\newblock 2001.
+\newblock Wasserstein metric.
+\newblock In Michiel Hazewinkel, editor, {\em Encyclopaedia of Mathematics}.
+  Kluwer Academic Publishers, Dordrecht, NL.
+
+\bibitem[\protect\citename{Sarker}2016]{SemEval:2016:task4:DIEGOLab16}
+Abeed Sarker.
+\newblock 2016.
+\newblock {DIEGOLab16 at SemEval-2016 Task 4: Sentiment} analysis in {Twitter}
+  using centroids, clusters, and sentiment lexicons.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Sebastiani}2015]{Sebastiani:2015zl}
+Fabrizio Sebastiani.
+\newblock 2015.
+\newblock An axiomatically derived measure for the evaluation of classification
+  algorithms.
+\newblock In {\em Proceedings of the 5th ACM International Conference on the
+  Theory of Information Retrieval (ICTIR 2015)}, pages 11--20, Northampton, US.
+
+\bibitem[\protect\citename{Sidarenka}2016]{SemEval:2016:task4:PotTS}
+Uladzimir Sidarenka.
+\newblock 2016.
+\newblock {PotTS at SemEval-2016 Task 4: Sentiment} analysis of {Twitter} using
+  character-level convolutional neural networks.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Stojanovski \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:Finki}
+Dario Stojanovski, Gjorgji Strezoski, Gjorgji Madjarov, and Ivica Dimitrovski.
+\newblock 2016.
+\newblock {Finki at SemEval-2016 Task 4: Deep} learning architecture for
+  {Twitter} sentiment analysis.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Vilares \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:LYS}
+David Vilares, Yerai Doval, Miguel~A. Alonso, and Carlos
+  G{\'o}mez-Rodr{\'\i}guez.
+\newblock 2016.
+\newblock {LYS at SemEval-2016 Task 4: Exploiting} neural activation values for
+  {Twitter} sentiment classification and quantification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Xu \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:UNIMELB}
+Steven Xu, HuiZhi Liang, and Tim Baldwin.
+\newblock 2016.
+\newblock {UNIMELB at SemEval-2016 Task 4: An} ensemble of neural networks and
+  a word2vec based model for sentiment classification.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Yadav}2016]{SemEval:2016:task4:thecerealkiller}
+Vikrant Yadav.
+\newblock 2016.
+\newblock {thecerealkiller at SemEval-2016 Task 4: Deep} learning based system
+  for classifying sentiment of tweets on two point scale.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Zhang \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:I2RNTU}
+Zhengchen Zhang, Chen Zhang, Dongyan Huang, Wu~Fuxiang, Weisi Lin, and Minghui
+  Dong.
+\newblock 2016.
+\newblock {I2RNTU at SemEval-2016 Task 4: Classifier} fusion for polarity
+  classification in {Twitter}.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\bibitem[\protect\citename{Zhou \bgroup et al.\egroup
+  }2016]{SemEval:2016:task4:ECNU}
+Yunxiao Zhou, Zhihua Zhang, and Man Lan.
+\newblock 2016.
+\newblock {ECNU at SemEval-2016 Task 4: An} empirical investigation of
+  traditional {NLP} features and word embedding features for sentence-level and
+  topic-level sentiment analysis in {Twitter}.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation (SemEval 2016)}, San Diego, US.
+
+\end{thebibliography}

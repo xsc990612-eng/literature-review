@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "1912.00741",
+  "title": "SemEval-2017 Task 4: Sentiment Analysis in Twitter",
+  "authors": ["Sara Rosenthal", "Noura Farra", "Preslav Nakov"],
+  "abstract": "This paper describes the fifth year of the Sentiment Analysis in Twitter task. SemEval-2017 Task 4 continues with a rerun of the subtasks of SemEval-2016 Task 4.",
+  "score": 5,
+  "source_term": "sentiment analysis Twitter SemEval",
+  "direction": "sentiment-analysis",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

@@ -1,0 +1,86 @@
+\subsection{Experiment Setup}
+\subsubsection{Dataset}
+For the clustering task, we assess the performance of the proposed model on benchmark datasets for short text clustering. Table~\ref{tab:text_stats} summarizes the statistical details of these datasets.
+% These datasets are highly imbalanced. To investigate the model's performance on balanced datasets, we used ChatGPT to process and expand the Tweet and News-TS datasets, transforming them into balanced datasets. Additionally, we conducted experiments on the real-world balanced dataset, AgNews. 
+The three News datasets are derived from Google News\footnote{\url{https://news.google.com}}, with each instance including a title and a snippet. In the Google News, the news articles are grouped into clusters (stories) automatically. Specifically, the News-T dataset contains only titles, the News-S dataset includes only snippets, and the News-TS dataset combines titles and snippets. We manually examine this dataset, and find that it is with really good quality (Almost all articles in the same cluster are about the same event, and articles in different clusters are about different events). The Tweet dataset originates from the Text Retrieval Conference\footnote{\url{https://trec.nist.gov/data/microblog.html}}. 
+
+All datasets undergo the following preprocessing steps: (1) Convert letters into lowercase; (2) Remove non-latin characters and stop words; (3) Perform stemming for words with the WordNet Lemmatizer of NLTK\footnote{\url{http://www.nltk.org}}; (4) Remove words whose length are smaller than 2 or larger than 15; (5) Remove words with document frequency less than 2.
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.2} % 调整行间距
+\caption{Statistics of the short text datasets}
+\label{tab:text_stats}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Dataset} & \boldmath$K$ & \boldmath$D$ & \textbf{Len} & \boldmath$V$ \\ \hline
+Tweet   & 89  & 2472  & 8.55/20   & 5098   \\
+News-T  & 152 & 11109 & 6.23/14   & 8110   \\
+News-S  & 152 & 11109 & 21.81/33  & 18325  \\
+News-TS & 152 & 11109 & 27.95/43  & 19508  \\ \hline
+% TweetGPT & 152 & 11109 & 27.95/43  & 19508  \\ 
+% NewsGPT-TS & 152 & 11109 & 27.95/43  & 19508  \\ 
+% AgNews & 152 & 11109 & 27.95/43  & 19508  \\ \hline
+\end{tabular}
+\end{table}
+
+% \begin{itemize}
+%     \item \textbf{Tweet} consists of 2,472 tweets with 89 categories \cite{yin2016model}.
+    
+%     \item \textbf{GoogleNews} contains titles and snippets of 11,109 news articles related to 152 events \cite{yin2016model}. Specifically, the News-T dataset contains only titles, the News-S dataset includes only snippets, and the News-TS dataset combines both titles and snippets.
+
+%     % \item \textbf{TweetGPT} is generated through a series of processing steps applied to the original datasets to ensure class balance:
+%     %     \begin{enumerate}
+%     %         \item Categories with fewer than five samples are removed.
+%     %         \item For categories with more than 50 samples, exactly 50 samples are randomly selected.
+%     %         \item For the remaining categories, additional short text samples are generated using a fine-tuned version of ChatGPT (details of the prompt are provided in the appendix) until each category contained exactly 50 samples.
+%     %         \item The resulting datasets are further preprocessed following the method described in \cite{yin2014dirichlet} and details of the preprocess are provided in the appendix.
+%     %     \end{enumerate}
+%     % As a result, a balanced dataset containing 71 categories, each with 50 samples, was obtained, totaling 3,550 tweets.
+
+%     % \item \textbf{NewsGPT-TS} is generated using a systematic process similar to that of TweetGPT, tailored to the News-TS dataset. A balanced dataset containing 71 categories, each with 50 samples, was obtained, totaling 3,550 tweets.
+
+%     % \item \textbf{AgNews} is a subset of news titles \cite{zhang2015text}, which contains 4 topics selected by \cite{rakib2020enhancement}.
+% \end{itemize}
+
+% \begin{table}[h]
+% \centering
+% \caption{Parameter settings of models in STTM.}
+% \renewcommand{\arraystretch}{1.2} % 增加表格行距
+% \begin{tabular}{lcccc}
+% \hline
+% \textbf{}       & \boldmath$\alpha$ & \boldmath$\beta$ & \boldmath$K$ \textbf{ of four datasets} & \textbf{iterNum} \\ \hline
+% LDA             & 0.05             & 0.01             & [89, 152, 152, 152]                   & 2000             \\
+% GSDMM           & 0.1              & 0.1              & [300, 300, 300, 300]                  & 2000             \\
+% BTM             & $\frac{50}{K}$   & 0.01             & [89, 152, 152, 152]                   & 2000             \\
+% WNTM            & 0.1              & 0.1              & [89, 152, 152, 152]                   & 1000             \\
+% PTM             & 0.1              & 0.01             & [89, 152, 152, 152]                   & 2000             \\
+% GPU-DMM         & $\frac{50}{K}$   & 0.01             & [89, 152, 152, 152]                   & 2000             \\
+% GPU-PDMM        & $\frac{50}{K}$   & 0.01             & [89, 152, 152, 152]                   & 2000             \\
+% LFDMM           & 0.1              & 0.01             & [89, 152, 152, 152]                   & 2000             \\ \hline
+% \end{tabular}
+% \label{tab:parameter_settings}
+% \end{table}
+
+\subsubsection{Implementation Detail}
+We implement the GSDMM and \sysname{} using PyTorch, and all experiments are conducted on a single NVIDIA A100 GPU. In GSDMM, $\alpha$ and $\beta$ are set to 0.1. The parameters for \sysname{} are set as $\alpha$ = 0.1 and $\beta$ = 0.01. The predefined number of clusters, $K_{max}$, is set to 500 for all datasets, while $K_{real}$ corresponds to each dataset's known number of categories. To ensure model efficiency, we set the entropy calculation frequency to 15, meaning that entropy is computed once every $D/15$ iteration, where $D$ represents the number of documents in the corpus. The number of iterations is set to 20, and we conduct 10 independent experiments for each dataset.
+
+\subsubsection{Compared Baseline} We compare GSDMM and \sysname{} with the following state-of-the-art methods.
+\begin{itemize}
+    \item K-means is a conventional text clustering method that takes feature vectors of texts as input and outputs $K$ clusters. We employ two types of feature vectors: TF-IDF and text embeddings derived from SimCSE \cite{gao2021simcse}, referred to as K-means (TF-IDF) and K-means (Embedding), respectively.
+    \item HieClu is another traditional clustering method. Similar to K-means, we also use two feature vectors, denoted as HieClu(TF-IDF) and HieClu(Embedding).
+    \item LDA~\cite{blei2003latent} is a widely used topic modeling technique that assumes each text is generated from multiple topics.
+    \item BTM~\cite{yan2013biterm} learns topics by directly modeling the generation of biterms in the dataset.
+    \item WNTM~\cite{zuo2016word} constructs a word network to infer the topic distribution for each word.
+    \item PTM~\cite{zuo2016topic} introduces the concept of pseudo-documents to aggregate short texts implicitly.
+    % \item GPU-DMM \cite{li2016topic} introduced a GPU strategy on GSDMM that modifies the collapsed Gibbs Sampling process of GSDMM.
+    % \item GPU-PDMM \cite{li2017enhancing} introduced a GPU strategy on PDMM that modifies the collapsed Gibbs Sampling process of PDMM, where PDMM assumes a limited number of topics generates each document.
+    % \item LFDMM \cite{nguyen2015improving} combines pretrained word embeddings with GSDMM.
+    \item LCTM~\cite{hu2016latent} models each topic as a distribution over latent concepts, with each latent concept being a localized Gaussian distribution in the word embedding space.
+    \item SCCL~\cite{SCCL} uses the Sentence-BERT model and fine-tunes it using the contrastive loss and the clustering loss.
+    \item DACL~\cite{li2022clustering} improves SCCL from the perspective of pseudo-label.
+    \item RSTC~\cite{zheng2023robust} proposes self-adaptive optimal transport and introduces both class-wise and instance-wise contrastive learning.
+    \item MVC~\cite{lu2024multi} models the bag-of-words view using the DMM model and the document embedding view using the GMM.
+    % \item GSDMM \cite{yin2014dirichlet} assumes that a document is generated with only one topic to address the sparsity of short texts.
+\end{itemize}
+% We used the open-source STTM code from the \cite{qiang2020short} to reproduce most models above. Table \ref{tab:parameter_settings} shows each model's parameter settings in STTM.

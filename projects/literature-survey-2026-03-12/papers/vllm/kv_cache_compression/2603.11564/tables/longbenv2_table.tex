@@ -1,0 +1,83 @@
+% \documentclass{article}
+% \usepackage{graphicx}
+% \usepackage{multirow}
+% \usepackage{booktabs}
+% \usepackage[table]{xcolor}
+% \usepackage{rotating} % Still included in case it's used elsewhere or for future rotations, though not for these specific headers now.
+% \usepackage{adjustbox}
+% \usepackage{threeparttable}
+% \usepackage{makecell} % Added for \makecell
+
+% \begin{document}
+
+\begin{table*}[t]
+\caption{Performance comparison of different methods across various LLMs on LongBenchv2. For DapQ, the pseudo queries are constructed via prefix-suffix concatenation: using the first 8 and last 24 tokens for LLaMA series models, and the first 2 and last 30 tokens for Qwen models. Notably, several compressed methods surpass the FullKV baseline. We attribute this phenomenon to the noise reduction mechanism of cache eviction. By selectively retaining critical tokens, these methods effectively reduce noise and sparsify the context, potentially leading to more focused and effective model reasoning. This effect is particularly pronounced in long-context benchmarks.}
+\centering
+\small
+\scriptsize % 使用更小的字体
+% \renewcommand{\arraystretch}{0.8} % 进一步减小行间距
+% \setlength{\tabcolsep}{1pt} % 进一步减小列之间的间距
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{>{\bfseries}c l *{6}{c}} % Changed *{8}{c} to *{6}{c} for accurate data column count
+\toprule
+& & \multicolumn{2}{c}{\textbf{Difficulty}} & \multicolumn{3}{c}{\textbf{Length}} & \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-7}
+\multirow{1}{*}{\textbf{LLMs}} & \multirow{1}{*}{\textbf{Methods}} & \textbf{Easy} & \textbf{Hard} & \textbf{Short} & \textbf{Medium} & \textbf{Long} & \multirow{1}{*}{\textbf{Overall}} \\ % Removed \rotatebox for these headers
+\midrule
+\multirow{11}{*}{\makecell[c]{Llama3-8B\\Instruct}} & FullKV & 28.65 & 26.37 & 32.22 & 24.19 & 25.00 & 27.24 \\
+& \multicolumn{7}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+& H2O & \textbf{32.29} & 25.40 & 32.22 & 26.98 & 23.15 & 28.03 \\
+& PyramidKV & 30.21 & 24.44 & 31.67 & 26.05 & 19.44 & 26.64 \\
+& SnapKV & 30.73 & 25.72 & 32.22 & 26.05 & 23.15 & 27.63 \\
+& DapQ & 30.73 & \textbf{27.65} & \textbf{33.33} & \textbf{27.91} & \textbf{23.15} & \textbf{28.83} \\
+% \cmidrule(lr){2-8}
+& \multicolumn{7}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+& H2O & 30.73 & 24.76 & 28.89 & 26.51 & 25.00 & 27.04 \\
+& PyramidKV & 27.08 & 23.47 & 24.44 & 27.44 & 20.37 & 24.85 \\
+& SnapKV & \textbf{31.25} & 22.51 & 23.89 & 26.98 & 26.85 & 25.84 \\
+& DapQ & 30.73 & \textbf{29.26} & \textbf{31.11} & \textbf{28.84} & \textbf{29.63} & \textbf{29.82} \\
+\midrule
+\multirow{11}{*}{\makecell[c]{Llama3.1-8B\\Instruct}} & FullKV & 25.00 & 28.62 & 31.67 & 25.58 & 23.15 & 27.24 \\
+& \multicolumn{7}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+& H2O & 26.56 & 29.58 & 34.44 & 25.58 & 24.07 & 28.43 \\
+& PyramidKV & \textbf{29.17} & 28.94 & 32.22 & 27.44 & 26.85 & 29.03 \\
+& SnapKV & 27.08 & 29.90 & 33.89 & 26.05 & 25.93 & 28.83 \\
+& DapQ & 27.08 & \textbf{30.55} & \textbf{34.44} & \textbf{27.44} & \textbf{24.07} & \textbf{29.22} \\
+% \cmidrule(lr){2-8}
+& \multicolumn{7}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+& H2O & 23.44 & 27.01 & 30.56 & 23.72 & 21.30 & 25.65 \\
+& PyramidKV & 28.12 & 28.62 & 33.89 & 24.19 & \textbf{27.78} & 28.43 \\
+& SnapKV & 25.00 & 26.69 & 29.44 & 24.65 & 23.15 & 26.04 \\
+& DapQ & \textbf{29.17} & \textbf{28.94} & \textbf{33.89} & \textbf{26.98} & 25.00 & \textbf{29.03} \\
+\midrule
+\multirow{11}{*}{\makecell[c]{Qwen2.5-7B\\Instruct}} & FullKV & 28.65 & 27.33 & 30.56 & 27.44 & 24.07 & 27.83 \\
+& \multicolumn{7}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+& H2O & 28.65 & \textbf{27.65} & 30.56 & 27.91 & \textbf{24.07} & 28.03 \\
+& PyramidKV & 29.17 & 25.40 & 29.44 & 26.51 & 23.15 & 26.84 \\
+& SnapKV & \textbf{29.69} & 26.37 & 30.56 & 27.91 & 22.22 & 27.63 \\
+& DapQ & 29.17 & 27.33 & \textbf{30.56} & \textbf{28.37} & 23.15 & \textbf{28.03} \\
+% \cmidrule(lr){2-8}
+& \multicolumn{7}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+& H2O & 28.65 & 26.37 & 31.11 & 26.51 & 22.22 & 27.24 \\
+& PyramidKV & \textbf{31.25} & 27.97 & 32.22 & 28.37 & 25.93 & 29.22 \\
+& SnapKV & 30.73 & 27.33 & \textbf{32.78} & 27.44 & 24.07 & 28.63 \\
+& DapQ & 30.73 & \textbf{28.30} & 31.67 & \textbf{28.37} & \textbf{26.85} & \textbf{29.22} \\
+\midrule
+\multirow{11}{*}{\makecell[c]{Qwen3-8B}} & FullKV & 31.25 & 28.30 & 33.33 & 25.58 & 30.56 & 29.42 \\
+& \multicolumn{7}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 128}} \\
+& H2O & 34.38 & 27.97 & 35.56 & 25.58 & \textbf{31.48} & 30.42 \\
+& PyramidKV & 34.38 & 27.33 & \textbf{36.11} & 26.05 & 27.78 & 30.02 \\
+& SnapKV & \textbf{34.90} & 27.33 & 34.44 & 26.05 & 31.48 & 30.22 \\
+& DapQ & 33.85 & \textbf{28.30} & 33.89 & \textbf{27.44} & 30.56 & \textbf{30.42} \\
+% \cmidrule(lr){2-8}
+& \multicolumn{7}{c}{\cellcolor{gray!20}\textbf{KV Cache Size = 64}} \\
+& H2O & 35.42 & 27.65 & 34.44 & 28.84 & 27.78 & 30.62 \\
+& PyramidKV & \textbf{38.02} & 26.69 & 34.44 & 28.37 & 30.56 & 31.01 \\
+& SnapKV & 36.46 & 27.33 & 33.33 & \textbf{29.30} & 29.63 & 30.82 \\
+& DapQ & 35.94 & \textbf{28.62} & \textbf{36.67} & 26.51 & \textbf{32.41} & \textbf{31.41} \\
+\bottomrule
+\end{tabular}
+% }
+\label{table:longbenchv2}
+\end{table*}
+

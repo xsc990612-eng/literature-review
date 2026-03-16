@@ -1,0 +1,62 @@
+\section{Background}
+\subsection{Transformer Models}
+A transformer model contains a sequence of layers, where each layer consists of two sub-layers: a multi-head self-attention (MHA) and a fully connected feed forward network (FFN) \citep{vaswani2017attention}. 
+ % Given an input $X \in \RR^{d_1}$, the output $Y \in \RR^{d_2}$ for each layer is computed as
+Given the input $X \in \RR^{n\times d}$, where $n$ is the sequence length and $d$ is the hidden dimension of the model, MHA computes the $h$ attention heads in parallel: 
+\begin{align*}
+    & \mathrm{MHA}(X) = \mathrm{Concat}(\mathrm{head}_1, ..., \mathrm{head}_h) W_o,\\
+    \text{where}~~~ \mathrm{head}_i = &\mathrm{Softmax}({XW_{q_i} (XW_{k_i})^\top}/{\sqrt{d_h}}) XW_{v_i} ~~\text{for}~~~~i = 1, ..., h,
+\end{align*}
+where $W_{q_i}, W_{k_i}, W_{v_i} \in \RR^{d \times d_h}$ are query, key, and value matrices, $W_o \in \RR^{d\times d}$ is the output matrix, and $d_h = d/h$. FFN comprises two linear transformations and an activation function, and is defined as $ \mathrm{FFN}(X) = \sigma(X W_{f_1} + b_1) W_{f_2} + b_2, $
+where $W_{f_1} \in \RR^{d \times d_m} $, $ W_{f_2} \in \RR^{d_m \times d}$, and $\sigma(\cdot)$ is the activation function. A residual connection is used and followed by layer normalization.     
+
+\subsection{Quantization}
+{\bf Quantization.} Given a high-precision number, e.g., such as 32-bit floating point number, $X^{\text{HP}} \in \RR$, $N$-bit quantization encodes it to an integer $X^{\text{INT}} \in \{0, 1, ..., 2^{N}-1\}$. This process can be expressed as
+\begin{align}
+\label{eq:quant}
+    X^{\text{INT}} = \round\left((2^{N} - 1) F\left( X^{\text{HP}} \right) \right),
+\end{align}
+where $F(\cdot) \colon \RR \mapsto [0, 1]$ is a normalization function. Uniform quantization assumes $F(X) = (X - X_{\min}) /  (X_{\max} - X_{\min})$. \citet{dettmers2023qlora} proposes 4-bit NormalFloat Quantization (NF4). It assumes $X \sim \cN(0, \sigma^2)$ and hence $F(X) = \Phi(X/\sigma)$, where $\Phi(\cdot)$ is the cumulative distribution function of the standard normal distribution. 
+
+\noindent {\bf Dequantization.} A lookup table $\cT$, where
+\begin{align}
+\label{eq:lookup_table}
+    \cT[i] = F^{-1}\left( \frac{i}{2^N - 1} \right), i = 0, 1, ..., 2^{N}-1,
+\end{align}
+is used to decode the integer $X^{\text{INT}}$ to its simulated high-precision counterpart $X^{\text{D}} \in \RR$.
+Therefore, the dequantization can be expressed as 
+\begin{align}
+\label{eq:dequant}
+    X^{\text{D}} = \cT[X^{\text{INT}}].
+\end{align}
+
+\noindent {\bf Simulated Quantization for Matrices.} While it is possible to perform multiplication directly between quantized representations, it is common to apply simulated quantization for matrices \citep{bai2020binarybert, shen2020q}.
+There, quantized weight matrices are stored as encoded integers in memory, and are temporarily dequantized to simulated high-precision matrices by the lookup table when engaged in multiplication operations.
+In simulated quantization, it is only necessary to analyze the map from a high-precision matrix to a simulated high-precision matrix. We denote this end-to-end process by $q_N(\cdot) \colon \RR^{m \times n} \mapsto \RR_{N}^{m \times n}$, where $\RR_{N}: \{\cT[i] \in \RR | 0 \leq i < 2^N \}$. 
+% that maps a high-precision matrix $W^{\text{HP}}$ to a simulated high-precision matrix $W^{\text{D}}$. 
+
+% While it is possible to perform multiplication directly between quantized representations, we focus on simulated quantization.
+% There, quantized numbers are stored using a low-precision format in memory, and are dequantized to a high-precision format only when engaged in multiplication operations. 
+% Specifically, dequantization maps $X^{\text{LP}}$, an integer, back to a simulated value $X^{\text{D}} \in \RR$ to approximate $X^{\text{HP}}$ by
+% \begin{align}
+%     X^{\text{D}} &= F^{-1}\left( \frac{X^{\text{LP}}}{2^N - 1} \right) \\
+%     &= a[X^{\text{LP}}],
+% \end{align}
+% where $a \in \RR^{2^N}$ is a lookup table that stores the high-precision counterparts of low-precision values, and $X^{\text{D}}$ is the $X^{\text{LP}}$-th component in $a$.
+
+\subsection{Low-Rank Adaptation}
+\label{sec:background_lora}
+LoRA \citep{hu2021lora} updates two small weight matrices $A$ and $B$ that are attached to a frozen pre-trained weight matrix $W$. Hence, a linear transformation, $Y = XW$, is reformulated as
+\begin{align}
+\label{eq:lora}
+    Y = XW + XAB^{\top},
+\end{align}
+where $X \in \RR^{n \times d_1}, W \in \RR^{d_1 \times d_2}, A \in \RR^{d_1 \times r}, B \in \RR^{d_2 \times r}$, and $r \ll \min\{d_1, d_2\}$. Initially, 
+\begin{align}
+\label{eq:lora_init}
+    A \sim \cN (0, \sigma^2), ~ B = 0,
+\end{align}
+so as to align to the pre-trained weights. During the fine-tuning, $W$ is fixed while $A$ and $B$ are updated by some SGD-type optimization method.
+
+It is worth noting that if low-rank adapters $A$ and $B$ are attached to a quantized backbone $Q=q_N(W)$ and are initialized by \eqref{eq:lora_init}, the starting weight $Q + AB^{\top}$ is no longer equal to the pre-trained weight $W$ due to the discrepancy introduced by the quantization. 
+% \citet{Liao2023MakeYP} have shown that too much deviation from the original pre-trained weights causes performance degradation on downstream fine-tuning tasks.

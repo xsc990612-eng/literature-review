@@ -1,0 +1,355 @@
+% Minitron and NVIDIA references
+@misc{sreenivas2024llm,
+  title={{LLM Pruning and Distillation in Practice: The Minitron Approach}}, 
+      author={Sharath Turuvekere Sreenivas and Saurav Muralidharan and Raviraj Joshi and Marcin Chochowski and Ameya Sunil Mahabaleshwarkar and Gerald Shen and Jiaqi Zeng and Zijia Chen and Yoshi Suhara and Shizhe Diao and Chenhan Yu and Wei-Chun Chen and Hayley Ross and Oluwatobi Olabiyi and Ashwath Aithal and Oleksii Kuchaiev and Daniel Korzekwa and Pavlo Molchanov and Mostofa Patwary and Mohammad Shoeybi and Jan Kautz and Bryan Catanzaro},
+      year={2024},
+      eprint={2408.11796},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2408.11796}, 
+}
+
+
+@misc{muralidharan2024compact,
+  title={{Compact Language Models via Pruning and Knowledge Distillation}}, 
+      author={Saurav Muralidharan and Sharath Turuvekere Sreenivas and Raviraj Joshi and Marcin Chochowski and Mostofa Patwary and Mohammad Shoeybi and Bryan Catanzaro and Jan Kautz and Pavlo Molchanov},
+      year={2024},
+      eprint={2407.14679},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2407.14679}, 
+}
+
+@misc{nvidia2024nemotron,
+  title={{Nemotron-4 Technical Report}},
+  author={{NVIDIA}},
+  year={2024},
+  howpublished={\url{https://developer.nvidia.com/blog/nemotron-4-nvidia-open-sources-high-quality-llm-family/}}
+}
+
+@misc{nvidia-developer-blogpost,
+  title={{How to Prune and Distill Llama-3.1 8B to an NVIDIA Llama-3.1-Minitron 4B Model}},
+  author={{NVIDIA}},
+  year={2024},
+  howpublished={\url{https://developer.nvidia.com/blog/how-to-prune-and-distill-llama-3-1-8b-to-an-nvidia-llama-3-1-minitron-4b-model/}}
+}
+
+@misc{nvidia_nemo,
+  title={{NVIDIA NeMo Framework}},
+  author={{NVIDIA}},
+  year={2024},
+  howpublished={\url{https://github.com/NVIDIA/NeMo}}
+}
+
+% Magnitude-based pruning
+@inproceedings{han2015learning,
+  title     = {{Learning both Weights and Connections for Efficient Neural Networks}},
+  author    = {Han, Song and Pool, Jeff and Tran, John and Dally, William J.},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {28},
+  pages     = {1135--1143},
+  year      = {2015},
+  url       = {https://papers.nips.cc/paper/5784-learning-both-weights-and-connections-for-efficient-neural-network}
+}
+
+% SparseGPT
+@inproceedings{frantar2023sparsegpt,
+  title     = {{SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot}},
+  author    = {Frantar, Elias and Alistarh, Dan},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {202/frantar23a},
+  pages     = {10323--10337},
+  year      = {2023},
+  publisher = {PMLR},
+  url       = {https://proceedings.mlr.press/v202/frantar23a.html}
+}
+
+% Wanda
+@inproceedings{sun2024wanda,
+  title     = {{A Simple and Effective Pruning Approach for Large Language Models}},
+  author    = {Sun, Mingjie and Liu, Zhuang and Bair, Anna and Kolter, J. Zico},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  url       = {https://openreview.net/forum?id=PxoFut3dWW}
+}
+
+% ShortGPT
+@inproceedings{men2024shortgpt,
+  title     = {{ShortGPT: Layers in Large Language Models are More Redundant Than You Expect}},
+  author    = {Men, Xin and Xu, Mingyu and Zhang, Qingyu and Wang, Bingning and Lin, Hongyu and Lu, Yaojie and Han, Xianpei and Chen, Weipeng},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2025},
+  year      = {2025},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2025.findings-acl.1035}
+}
+
+% LLM-Pruner
+@inproceedings{ma2024llmpruner,
+     author = {Ma, Xinyin and Fang, Gongfan and Wang, Xinchao},
+     booktitle = {Advances in Neural Information Processing Systems},
+     editor = {A. Oh and T. Naumann and A. Globerson and K. Saenko and M. Hardt and S. Levine},
+     pages = {21702--21720},
+     publisher = {Curran Associates, Inc.},
+     title = {LLM-Pruner: On the Structural Pruning of Large Language Models},
+     url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/44956951349095f74492a5471128a7e0-Paper-Conference.pdf},
+     volume = {36},
+     year = {2023}
+}
+
+% Sheared LLaMA
+@misc{xia2024sheared,
+      title={{Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning}}, 
+      author={Mengzhou Xia and Tianyu Gao and Zhiyuan Zeng and Danqi Chen},
+      year={2024},
+      eprint={2310.06694},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2310.06694}, 
+}
+
+% LoRA
+@inproceedings{hu2022lora,
+title     = {{LoRA: Low-Rank Adaptation of Large Language Models}},
+  author    = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022},
+  url       = {https://openreview.net/forum?id=nZeVKeeFYf9}
+}
+
+% DPO
+@inproceedings{rafailov2024direct,
+title     = {{Direct Preference Optimization: Your Language Model is Secretly a Reward Model}},
+  author    = {Rafailov, Rafael and Sharma, Archit and Mitchell, Eric and Ermon, Stefano and Manning, Christopher D. and Finn, Chelsea},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {36},
+  pages     = {53728--53741},
+  year      = {2023},
+  publisher = {Curran Associates, Inc.},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html}
+}
+
+% DPO-P
+@article{pal2024smaugfixingfailuremodes,
+title         = {{Smaug: Fixing Failure Modes of Preference Optimisation with DPO-Positive}},
+  author        = {Pal, Arka and Karkhanis, Deep and Dooley, Samuel and Roberts, Manley and Naidu, Siddartha and White, Colin},
+  journal       = {arXiv preprint arXiv:2402.13228},
+  year          = {2024},
+  eprint        = {2402.13228},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2402.13228}
+}
+
+% GRPO
+@article{shao2024deepseek,
+title         = {{DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models}},
+  author        = {Shao, Zhihong and Wang, Peiyi and Zhu, Qihao and Xu, Runxin and Song, Junxiao and Zhang, Xiao and Zhang, Yanwei and Li, Yu and Wu, Y. and Guo, Daya},
+  journal       = {arXiv preprint arXiv:2402.03300},
+  year          = {2024},
+  eprint        = {2402.03300},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2402.03300}
+}
+
+% Bielik references
+@misc{Bielik11Bv3i,
+  title        = {{Bielik 11B v3 Instruct: A Polish Language Model}},
+  author       = {{Bielik.AI}},
+  year         = {2024},
+  howpublished = {\url{https://huggingface.co/speakleash/Bielik-11B-v3-Instruct}},
+  note         = {Hugging Face Model Repository}
+}
+
+@article{Ociepa_Flis_Wrobel_Gwozdziej_Kinas_2025,
+title   = {{BIELIK 7B V0.1: Polish Language Model -- Development, Insights, and Evaluation}},
+  author  = {Ociepa, Krzysztof and Flis, {\L}ukasz and Wr{\'o}bel, Krzysztof and Gwo{\'z}dziej, Adrian and Kinas, Remigiusz},
+  journal = {Computer Science},
+  volume  = {26},
+  number  = {4},
+  year    = {2025},
+  month   = {Dec},
+  doi     = {10.7494/csci.2025.26.4.7689},
+  url     = {https://journals.agh.edu.pl/csci/article/view/7689}
+}
+
+
+@misc{ociepa2025bielik11bv2technical,
+title         = {{Bielik 11B v2 Technical Report}}, 
+  author        = {Krzysztof Ociepa and {\L}ukasz Flis and Krzysztof Wr{\'o}bel and Adrian Gwo{\'z}dziej and Remigiusz Kinas},
+  year          = {2025},
+  eprint        = {2505.02410},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2505.02410}
+}
+
+@misc{ociepa2025bielik11bv3multilingual,
+title         = {{Bielik 11B v3: Multilingual Large Language Model for European Languages}}, 
+  author        = {Krzysztof Ociepa and {\L}ukasz Flis and Remigiusz Kinas and Krzysztof Wr{\'o}bel and Adrian Gwo{\'z}dziej},
+  year          = {2025},
+  eprint        = {2601.11579},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2601.11579}
+}
+
+% LLM Pruning Collection repository
+@misc{llmpruningcollection2024,
+title        = {{{LLM} Pruning Collection: A Unified Framework for {LLM} Compression}},
+  author       = {{Princeton Z-Lab}},
+  year         = {2024},
+  howpublished = {\url{https://github.com/zlab-princeton/llm-pruning-collection}},
+  note         = {GitHub Repository}
+}
+
+% Qwen 3 distilled family of models
+@article{yang2025qwen3,
+  title         = {{Qwen3 Technical Report}},
+  author        = {Yang, An and Li, Anfeng and Yang, Baosong and Zhang, Beichen and Hui, Binyuan and Zheng, Bo and Yu, Bowen and Gao, Chang and Huang, Chengen and Lv, Chenxu and others},
+  journal       = {arXiv preprint arXiv:2505.09388},
+  year          = {2025},
+  eprint        = {2505.09388},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2505.09388}
+}
+
+% NVIDIA nano 9B distilled from 12B
+@article{basant2025nvidia,
+  title         = {{Nvidia Nemotron Nano 2: An Accurate and Efficient Hybrid Mamba-Transformer Reasoning Model}},
+  author        = {Basant, Aarti and Khairnar, Abhijit and Paithankar, Abhijit and Khattar, Abhinav and Renduchintala, Adithya and Malte, Aditya and Bercovich, Akhiad and Hazare, Akshay and Rico, Alejandra and Ficek, Aleksander and others},
+  journal       = {arXiv preprint arXiv:2508.14444},
+  year          = {2025},
+  eprint        = {2508.14444},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2508.14444}
+}
+
+% Deepseek R!
+@article{guo2025deepseek,
+  title         = {{DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning}},
+  author        = {Guo, Daya and Yang, Dejian and Zhang, Haowei and Song, Junxiao and Zhang, Ruoyu and Xu, Runxin and Zhu, Qihao and Ma, Shirong and Wang, Peiyi rank and Bi, Xiao and others},
+  journal       = {arXiv preprint arXiv:2501.12948},
+  year          = {2025},
+  eprint        = {2501.12948},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2501.12948}
+}
+
+% llama nemotron
+@article{bercovich2025llama,
+  title         = {{Llama-Nemotron: Efficient Reasoning Models}},
+  author        = {Bercovich, Akhiad and Levy, Itay and Golan, Izik and Dabbah, Mohammad and El-Yaniv, Ran and Puny, Omri and Galil, Ido and Moshe, Zach and Ronen, Tomer and Nabwani, Najeeb and others},
+  journal       = {arXiv preprint arXiv:2505.00949},
+  year          = {2025},
+  eprint        = {2505.00949},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2505.00949}
+}
+
+% Nemotron-4 15B
+@article{parmar2024nemotron,
+title         = {{Nemotron-4 15B Technical Report}},
+  author        = {Parmar, Jupinder and Prabhumoye, Shrimai and Jennings, Joseph and Patwary, Mostofa and Subramanian, Sandeep and Su, Dan and Zhu, Chen and Narayanan, Deepak and Jhunjhunwala, Aastha and Dattagupta, Ayush and others},
+  journal       = {arXiv preprint arXiv:2402.16819},
+  year          = {2024},
+  eprint        = {2402.16819},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2402.16819}
+}
+
+@misc{pruning_guidelines,
+  title        = {{{NVIDIA} Model Optimizer Pruning Guidelines}},
+  author       = {{NVIDIA}},
+  year         = {2025},
+  howpublished = {\url{https://github.com/NVIDIA/Model-Optimizer/blob/main/examples/pruning/README.md#pruning-guidelines}},
+  note         = {GitHub Documentation -- Model Optimizer (ModelOpt)}
+}
+
+@misc{open-llm-leaderboard,
+  author = {Edward Beeching and Clémentine Fourrier and Nathan Habib and Sheon Han and Nathan Lambert and Nazneen Rajani and Omar Sanseviero and Lewis Tunstall and Thomas Wolf},
+  title = {Open LLM Leaderboard},
+  year = {2023},
+  publisher = {Hugging Face},
+  howpublished = "\url{https://huggingface.co/spaces/open-llm-leaderboard-old/open_llm_leaderboard}"
+}
+
+@article{romanou2024include,
+  title={INCLUDE: Evaluating Multilingual Language Understanding with Regional Knowledge},
+  author={Romanou, Angelika and Foroutan, Negar and Sotnikova, Anna and Chen, Zeming and Nelaturu, Sree Harsha and Singh, Shivalika and Maheshwary, Rishabh and Altomare, Micol and Haggag, Mohamed A and Amayuelas, Alfonso and others},
+  journal={arXiv preprint arXiv:2411.19799},
+  year={2024}
+}
+
+@inproceedings{Bandarkar_2024,
+   title={The Belebele Benchmark: a Parallel Reading Comprehension Dataset in 122 Language Variants},
+   url={http://dx.doi.org/10.18653/v1/2024.acl-long.44},
+   DOI={10.18653/v1/2024.acl-long.44},
+   booktitle={Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+   publisher={Association for Computational Linguistics},
+   author={Bandarkar, Lucas and Liang, Davis and Muller, Benjamin and Artetxe, Mikel and Shukla, Satya Narayan and Husa, Donald and Goyal, Naman and Krishnan, Abhinandan and Zettlemoyer, Luke and Khabsa, Madian},
+   year={2024},
+   pages={749–775} 
+}
+
+@misc{goyal2021flores101evaluationbenchmarklowresource,
+      title={The FLORES-101 Evaluation Benchmark for Low-Resource and Multilingual Machine Translation}, 
+      author={Naman Goyal and Cynthia Gao and Vishrav Chaudhary and Peng-Jen Chen and Guillaume Wenzek and Da Ju and Sanjana Krishnan and Marc'Aurelio Ranzato and Francisco Guzman and Angela Fan},
+      year={2021},
+      eprint={2106.03193},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2106.03193}, 
+}
+
+@inproceedings{patil2025bfcl,
+title={The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models}, 
+author={Patil, Shishir G. and Mao, Huanzhi and Cheng-Jie Ji, Charlie and Yan, Fanjia and Suresh, Vishnu and Stoica, Ion and E. Gonzalez, Joseph},
+booktitle={Forty-second International Conference on Machine Learning},
+year={2025},
+}
+
+@misc{nemo_minitron,
+  title        = {{{NVIDIA} Minitron Pruning in NeMo Framework}},
+  author       = {{NVIDIA}},
+  year         = {2025},
+  howpublished = {\url{https://docs.nvidia.com/nemo-framework/user-guide/latest/model-optimization/pruning/pruning.html}},
+  note         = {NeMo Framework Documentation -- Minitron Pruning}
+}
+
+
+@misc{quantization_gguf,
+  title        = {{GGUF format quantization}},
+  author       = {{Hugging Face}},
+  howpublished = {\url{https://huggingface.co/docs/hub/en/gguf#gguf}},
+  note         = {Hugging Face Documentation -- GGUF}
+}
+
+@misc{quantization_nvfp4,
+  title        = {{Introducing NVFP4 for Efficient and Accurate Low-Precision Inference}},
+  author       = {{NVIDIA}},
+  year         = {2025},
+  howpublished = {\url{https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference/}},
+  note         = {NVIDIA NVFP4 blog}
+}
+
+@misc{quantization_modelopt,
+  title        = {{NVIDIA Model Optimizer GitHub repository}},
+  author       = {{NVIDIA}},
+  howpublished = {\url{https://github.com/NVIDIA/Model-Optimizer}},
+  note         = {NVIDIA Model Optimizer}
+}
+
+
+@article{xin2026quantization,
+  title={Quantization-Aware Distillation for NVFP4 Inference Accuracy Recovery},
+  author={Xin, Meng and Priyadarshi, Sweta and Xin, Jingyu and Kartal, Bilal and Vavre, Aditya and Thekkumpate, Asma Kuriparambil and Chen, Zijia and Mahabaleshwarkar, Ameya Sunil and Shahaf, Ido and Bercovich, Akhiad and others},
+  journal={arXiv preprint arXiv:2601.20088},
+  year={2026}
+}

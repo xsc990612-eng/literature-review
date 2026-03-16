@@ -1,0 +1,18 @@
+\section{Limitations}
+\label{sec:limitations}
+
+Our experimental design has many limitations, including:
+
+\begin{itemize}
+
+\item \textbf{Restricted Evaluation Scope:} Our evaluations are limited to the first 1000 examples of datasets with larger evaluation splits to manage costs while maintaining rigor. This may introduce selection bias and limit the generalizability of our findings. Future research should consider more comprehensive evaluations as resources allow.
+
+\item \textbf{Prompt Engineering Constraints:} Our study does not employ advanced prompt engineering techniques such as majority voting, n-shot prompting, or specialized tuning methods like MedPrompt or chain-of-thought prompting. In this study, we prioritize reproducibility and minimize biases from selective example choice by using simple zero or single-shot prompts across all tasks, however these techniques have shown potential in enhancing task-specific performance.
+
+\item \textbf{Training Constraints:} All LLMs are fine-tuned with the same Models are trained with consistent parameters: 40K examples, batch size of 1, 4-bit quantization, and a LoRA rank of 8, using an adam optimizer and a cosine learning rate scheduler with specific settings. Training is conducted on a single A10 GPU, using gradient checkpointing to manage memory limitations. For datasets where full sequence lengths induce memory overflow, we truncate sequences to the 95th percentile length. This approach may impact the thoroughness of model training, particularly on datasets where 40K steps do not complete even one full epoch. Expanding hardware capabilities, increasing batch sizes, or adjusting hyperparameters like the learning rate or scheduler could potentially enhance outcomes.
+
+\item \textbf{Limited Model Variety:} Our experiments are limited to LoRA fine-tuning on two model sizes, 2B and 7B. Exploring a broader range of model sizes, including larger models such as 13B or 70B, could provide insights into the scalability and effectiveness of fine-tuning across different computational capacities.
+
+\end{itemize}
+
+We maintain that LoRA Land successfully demonstrates the practical efficiency of training and serving several task-specialized LLMs that rival GPT-4 in a production application powered by LoRAX, despite these limitations.

@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "1609.02748",
+  "title": "INSIGHT-1 at SemEval-2016 Task 5: Deep Learning for Multilingual Aspect-based Sentiment Analysis",
+  "authors": ["Sebastian Ruder", "Parsa Ghaffari", "John G. Breslin"],
+  "abstract": "This paper describes our deep learning-based approach to multilingual aspect-based sentiment analysis as part of SemEval 2016 Task 5. We use a convolutional neural network (CNN) for both aspect extraction and aspect-based sentiment analysis.",
+  "published": "2016-09-09",
+  "categories": ["cs.CL", "cs.LG"],
+  "score": 4,
+  "source_term": "sentiment analysis SemEval aspect based",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "sentiment"
+}

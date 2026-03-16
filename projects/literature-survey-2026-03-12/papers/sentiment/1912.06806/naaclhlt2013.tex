@@ -1,0 +1,77 @@
+%
+% File naaclhlt2013.tex
+%
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage{naaclhlt2013}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\setlength\titlebox{6.5cm}    % Expanding the titlebox
+\usepackage{lscape}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{comment}
+
+%%% for comments
+\usepackage{covington}
+\usepackage{color}
+\newcommand{\todo}[1]{\textcolor{red}{\small {#1}}}
+
+
+\title{SemEval-2013 Task 2: Sentiment Analysis in Twitter}
+
+\author{
+{\bf Preslav Nakov}\\QCRI, Qatar Foundation\\{\small {\tt pnakov@qf.org.qa}}\\
+{\bf Zornitsa Kozareva}\\USC Information Sciences Institute\\{\small {\tt kozareva@isi.edu}}\\
+{\bf Alan Ritter}\\University of Washington\\{\small {\tt aritter@cs.washington.edu}}\\
+\And
+{\bf Sara Rosenthal }\\Columbia University\\{\small {\tt sara@cs.columbia.edu}}\\
+{\bf Veselin Stoyanov}\\JHU HLTCOE\\{\small {\tt ves@cs.jhu.edu}}\\
+{\bf Theresa Wilson}\\JHU HLTCOE\\{\small {\tt taw@jhu.edu}}\\
+}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\section{Introduction}
+\label{sec-intro}
+\input{introduction}
+
+\section{Task Description}
+\label{sec-decription}
+\input{description}
+
+\section{Dataset Creation}
+\label{sec-dataset}
+\input{dataset}
+
+\section{Scoring}
+\label{sec-scoring}
+\input{scoring}
+
+\section{Participants and Results}
+\label{sec-results}
+\input{results}
+
+\section{Discussion}
+\label{sec-discussion}
+\input{discussion}
+
+\section{Conclusion}
+\label{sec-conclusions}
+\input{conclusion}
+
+
+
+\bibliographystyle{acl}
+
+\bibliography{naaclhlt2013}
+
+\end{document}

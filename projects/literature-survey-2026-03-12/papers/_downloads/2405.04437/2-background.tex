@@ -1,0 +1,59 @@
+\section{Background}
+\label{sec:background}
+
+\subsection{Large Language Models}
+
+Given an input sequence, an LLM predicts the probability of an output sequence: a sequence is a set of tokens~\cite{vllmsosp}. Each inference request begins with a prefill phase that processes prompt tokens in parallel and produces the first output token of the request. Thereafter, the decode phase iteratively processes the output token generated in the previous step and produces the next output token in every iteration~\cite{sarathi2023}. 
+
+LLMs are built atop one of the variants of the transformer architecture~\cite{attentionpaper}; an LLM consists of multiple transformer blocks. Internally, a transformer block contains two types of operators: position-wise and sequence-wise~\cite{orca}. The former category includes feed-forward network, layer normalization, activation, embedding layer, output sampling layer, and residual connections  whereas \textit{attention} is a sequence-level operator. We primarily focus on attention since it is the primary consumer of GPU memory in LLM inference. \autoref{table:notation} summarizes the notations used in the paper.
+
+
+For the attention operator, the model computes the query, key and value vectors from a given sequence of tokens
+$(x_1, x_2,...., x_K)\in\mathbb{R}^{K\times E}$
+where E represents the embedding size of the model. For each $x_i$, query, key and value vectors are computed as follows:
+
+\begin{equation}
+    q_{i} = W_{q}x_{i},\;\;\; k_{i} = W_{k}x_{i}, \;\;\; v_{i} = W_{v}x_{i} 
+\end{equation}
+
+The resulting $k_{i}$ and $v_{i}$ are appended to the key and value vectors of the prior tokens of the corresponding request, producing two matrices $K, V \in \mathbb R^{L'\times (H\times D)}$ where $L'$ represents the context length of the request seen so far, H is the number of KV heads of the model on a worker and D is the dimension of each KV head. Then, attention is computed as follows:
+
+\begin{equation}
+Attention(q_{i}, K, V) = softmax(\frac{q_{i}K^T}{scale})V    
+\label{eq:attention}
+\end{equation}
+
+\begin{table}[t!]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{p{0.15\linewidth}p{0.75\linewidth}}
+\toprule
+\textbf{Symbol} & \textbf{Definition} \\ \midrule
+%\( N \) & Number of layers in the LLM \\
+\( N \) & Number of layers on a particular worker \\
+\( H \) & Number of KV heads on a particular worker \\
+\( D \) & Dimension of each attention head \\
+\( P \) & Number of bytes needed to store one element  \\
+\( B \) & Maximum batch size \\
+\( L \) & Maximum context length supported by the model \\
+\( L' \) & Context length of a request seen thus far \\
+%\( S \) & Size of a single token per layer = \( H \times D \times P \) \\
+\bottomrule
+\end{tabular}}
+\caption{Notations used in the paper.}
+\vspace{-1em}
+\label{table:notation}
+\end{table}
+
+
+The attention score is computed separately for each request in the batch. A request executes until the model generates a special end-of-sequence token or reaches the maximum context length for the request. Note that in each iteration of a request, all its preceding $k_{i}$ and $v_{i}$ are needed to compute attention. Hence, an inference engine stores the $k_{i}$ and $v_{i}$ vectors in memory to reuse them across iterations. We refer to this state of all layers collectively as \kvcache. In systems prior to \pa, the \kcache (or \vcache) at each layer of a worker is typically allocated as a 4D tensor of shape $[B, L, H, D]$ where $B$ refers to batch size and $L$ refers to the maximum possible context length of a request.
+
+
+\subsection{Fragmentation and PagedAttention}
+Serving LLMs with high throughput requires careful allocation of GPU memory. This is challenging because the total context length of a request is not known in advance. Serving systems worked around this challenge by pre-reserving \kvcache space assuming that each context is as long as the maximum length supported by the model (e.g., 200K for \yimedium-200K). \vllm shows that this strategy is prone to severe internal fragmentation. In fact, \vllm showed that prior reservation is suboptimal even if the context lengths are known in advance. This is because the per-request \kvcache grows one token at a time and hence prior reservation wastes memory over the entire lifetime of a request. 
+
+Inspired by the OS-based virtual memory systems, \vllm proposed \pa to mitigate fragmentation by dynamically allocating memory for the \kvcache. \pa splits \kvcache into fixed-sized blocks and allocates memory for one block at a time. This way, \vllm allocates only as much memory as a request needs, and only when required -- not ahead-of-time.
+ 
+
+\noindent
+\textbf{GPUs and page sizes:} NVIDIA GPUs support multiple page sizes in the hardware~\cite{mcmgpus,gpu-mismanaged,gpu-reverse-engg-tlb1,pascalmmu}. A single call to a CUDA VMM API can allocate one or more physical pages, which we refer to as a page-group. We use page-groups to support multiple allocation granularities for the \kvcache, similar to how multiple page sizes are commonly used in conventional OS-based virtual memory systems~\cite{ingens,hawkeye}.

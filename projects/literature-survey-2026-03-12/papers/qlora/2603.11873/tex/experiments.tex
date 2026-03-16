@@ -1,0 +1,213 @@
+\section{Evaluation}
+
+% Improve table float placement
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\dbltopfraction}{0.9}
+\setcounter{dbltopnumber}{2}
+
+% In this section, we present the experimental results to show the superiority of the proposed \sys in accuracy and runtime efficiency performance.
+
+\subsection{Experiment Setup}
+
+\noindent\textbf{Datasets/benchmarks.}
+To demonstrate the proposed \sys could augment general ability of LLM, we follow PESC~\cite{wu2024parameter} and simultaneously fine-tuned the model on a diverse set of skills, including encompassing coding, mathematical, and other general abilities from various subjects. This training involved integrating three distinct datasets from varied domains during the instruction tuning phase: SlimORCA~\cite{SlimOrca},  Magicoder~\cite{wei2023magicoder}, and MetaMathQA~\cite{yu2023metamath} datasets.
+We utilize LM-Eval-Harness~\cite{eval-harness} as tool to evaluate general ability on ARC~\cite{Clark2018ThinkYH}, HellaSwag~\cite{zellers2019hellaswag}, MMLU~\cite{hendryckstest2021}, TruthfulQA~\cite{lin-etal-2022-truthfulqa}, WinoGrande~\cite{sakaguchi2019winogrande}, and MT-Bench~\cite{zheng2023judging} benchmarks and report the accuracy.
+% 
+Also, to demonstrate the proposed \sys could improve domain specific ability of LLM, we follow MoLA~\cite{gao2024higher} and fine-tuned the model on downstream task. We evaluate three recent question-answering benchmarks, including ScienceQA\cite{lu2022learn}, CommonsenseQA\cite{talmor-etal-2019-commonsenseqa}, and OpenbookQA\cite{OpenBookQA2018}.
+% 
+To evaluate runtime efficiency performance of \sys, we utilize real-world sharegpt~\cite{openchat2023sharegpt4} dataset to simulate user queries. We serve 50 queries from sharegpt dataset one by one, and generate 200 new tokens for each query.
+
+\noindent\textbf{Baselines.}
+We compare \sys with four PEFT approaches, including LoRA~\cite{Hu2021LoRALA}, layer-wise gating dynamic adapters like MoRAL~\cite{yang2024moral} and MOLA~\cite{gao2024higher}, and block-wise gating dynamic adapters PESC~\cite{wu2024parameter}. We use LLama2-7B~\cite{Touvron2023Llama2O} and Mistral-7B~\cite{jiang2023mistral} as the pretrained base LLM.
+
+\subsection{Accuracy Evaluation}
+
+We evaluate the accuracy of \sys on both general capabilities and domain-specific tasks to demonstrate its effectiveness compared to existing dynamic adapter methods.
+
+\noindent\textbf{General Capability Enhancement.}
+To assess the general capability improvement, we fine-tune \sys and baseline methods on a mixture of general datasets and evaluate on standard benchmarks. Table~\ref{table:general accuracy} shows the results across five common evaluation tasks.
+
+\begin{table}[htbp] % 1. 改为 [t] 顶端对齐
+    \centering
+    
+    % 2. 使用花括号 { } 包裹表格区域
+    % 这样 \scriptsize 只影响表格内容，不影响外面的 Caption
+    {
+        \scriptsize 
+        \setlength{\tabcolsep}{2pt} % 保持紧凑间距
+        
+        \begin{tabular}{lccccccc}
+        \toprule
+        Method & ARC & HellaSwag & MMLU & TruthfulQA & Winogrande & Avg  \\
+        \midrule
+        Llama2-7B (base) & 51.71 & \textbf{77.74} & 48.30 & 45.31 & 72.45 & 59.10 \\
+        LoRA & 51.79 & 77.02 & 50.46 & 45.13 & 73.80 & 59.64 \\
+        MoRAL (layer-wise) & 52.13 & 77.57 & 51.10 & 45.93 & \textbf{74.35} & 60.22 \\
+        PESC (block-wise) & \textbf{53.58} & 77.27 & 51.07 & 46.04 & 74.27 & \textbf{60.45} \\
+        \sys (ours) & 52.39 & 77.60 & \textbf{51.15} & \textbf{46.15} & 73.32 & 60.12 \\
+        \bottomrule
+        \end{tabular}
+    } % <--- 花括号在这里结束
+    
+    % 3. Caption 必须放在表格下方
+    % 因为在花括号外面，它会自动恢复为正常的 10pt 字体
+    \caption{Accuracy of incremental training achieved with different dynamic adapters.}
+    \label{table:general accuracy}
+\end{table}
+
+As shown in Table~\ref{table:general accuracy}, \sys achieves competitive performance with an average accuracy of 60.12\%, which is comparable to the best performing baseline PESC (60.45\%). Notably, \sys achieves the highest scores on MMLU and TruthfulQA benchmarks, demonstrating its effectiveness in knowledge-intensive tasks.
+
+\noindent\textbf{Domain-Specific Customization.}
+We further evaluate \sys on domain-specific tasks to assess its adaptation capability. Tables~\ref{table:specific accuracy} and~\ref{table:specific accuracy2} present results on question-answering tasks for Llama2-7B and Mistral-7B respectively.
+
+\begin{table}[htbp] % 保留了你要求的 htbp
+    \centering
+    
+    % 1. 使用花括号包裹表格区域
+    % 这样 \scriptsize 仅作用于表格内容，不会把下面的 Caption 也变小
+    {
+        \scriptsize
+        \setlength{\tabcolsep}{2pt}
+        
+        \begin{tabular}{lcccc}
+        \toprule
+        Methods & ScienceQA & CommonsenseQA & OpenbookQA & Avg \\
+        \midrule
+        Llama2-7B (base) & 53.19 & 47.82 & 45.80 & 48.94 \\
+        Full-Parameter & 93.12 & 77.48 & 80.40 & 83.67 \\
+        LoRA & 91.01 & 75.51 & 77.00 & 81.17 \\
+        MoLA (layer-wise) & \textbf{91.91} & 77.89 & \textbf{82.80} & \textbf{84.20} \\
+        MoRAL (layer-wise) & 90.74 & 76.41 & 76.60 & 81.25 \\
+        PESC (block-wise) & 90.02 & 76.00 & 78.40 & 81.47 \\
+        \sys (ours) & 91.39 & \textbf{79.03} & 80.40 & 83.60 \\
+        \bottomrule
+        \end{tabular}
+    } % <--- 花括号在这里结束
+    
+    % 2. Caption 移到下方，且字号恢复正常
+    \caption{Accuracy of domain-specific fine-tuning achieved with different dynamic adapters on Llama2-7B.}
+    \label{table:specific accuracy}
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    
+    % 使用花括号包裹表格区域
+    {
+        \scriptsize
+        \setlength{\tabcolsep}{2pt}
+        
+        \begin{tabular}{lcccc}
+        \toprule
+        Methods           & ScienceQA & CommonsenseQA & OpenbookQA & Avg \\
+        \midrule
+        Mistral-7B (base) & 62.24             & 58.93                 & 57.8               & 59.66        \\
+        LoRA              & 94.15             & 79.85                 & 84.2               & 86.06        \\
+        MoRAL (layer-wise) & 93.79             & 81.57                 & 85.8               & 87.05        \\
+        PESC (block-wise) & 94.33             & 80.46                 & 86.4               & 87.06        \\
+        \sys (ours)       & 93.82             & 81.29                 & 86.6               & \textbf{87.24} \\
+        \bottomrule
+        \end{tabular}
+    } % 花括号结束
+    
+    % Caption 放在表格下方，字体恢复正常
+    \caption{Accuracy of domain-specific fine-tuning achieved with different dynamic adapters on Mistral-7B.}
+    \label{table:specific accuracy2}
+\end{table}
+
+
+
+
+For domain-specific tasks, \sys demonstrates strong performance, achieving 83.60\% average accuracy on Llama2-7B and 87.24\% on Mistral-7B, both competitive with or exceeding baseline methods. Particularly noteworthy is \sys's superior performance on CommonsenseQA, suggesting effective reasoning capability enhancement.
+
+\subsection{Runtime Performance}
+
+Beyond accuracy, a critical evaluation metric for dynamic adapters is their runtime efficiency. We conduct comprehensive latency and memory usage analysis to demonstrate the practical advantages of \sys over existing methods.
+
+% \begin{table}[htbp]
+%     \centering
+%     \small
+%     \setlength{\tabcolsep}{7pt}
+%     \caption{Decoding latency and peak memory overhead of different dynamic adapters.}
+%     \label{table:latency}
+%     \begin{tabular}{lcc}
+%     \toprule
+%     Method & Latency (ms/token) & Memory (GiB) \\
+%     \midrule
+%     Llama2-7B & 2.4 & 12.9\\
+%     MOLA (layer-wise) & 25.3 (+954\%) & 26.3 (+104\%)\\
+%     PESC (block-wise) & 8.5 (+254\%) & 13.1 (+2\%)\\
+%     MoRAL (layer-wise) & 8.6 (+258\%) & 13.3 (+3\%)  \\
+%     \sys (ours) & 3.1 (+29\%) & 13.8 (+7\%)\\
+%     \bottomrule
+%     \end{tabular}
+% \end{table}
+
+\begin{table}[t] % 建议使用 [t] 顶部对齐，避免侵入上边距
+    \centering
+    % 1. 缩小字号：AAAI 允许最小用到 \scriptsize (7pt)。
+    % 如果 \footnotesize (8pt) 还是宽，就改成 \scriptsize
+    \footnotesize 
+    
+    % 2. 缩小列间距：默认通常是 6pt，这里改小一点以节省横向空间
+    \setlength{\tabcolsep}{3.5pt} 
+    
+    \begin{tabular}{lcc}
+    \toprule
+    Method & Latency (ms/token) & Memory (GiB) \\
+    \midrule
+    Llama2-7B & 2.4 & 12.9\\
+    MOLA (layer-wise) & 25.3 (+954\%) & 26.3 (+104\%)\\
+    PESC (block-wise) & 8.5 (+254\%) & 13.1 (+2\%)\\
+    MoRAL (layer-wise) & 8.6 (+258\%) & 13.3 (+3\%)  \\
+    \sys (ours) & 3.1 (+29\%) & 13.8 (+7\%)\\
+    \bottomrule
+    \end{tabular}
+    
+    % 3. Caption 必须放在表格下方
+    \caption{Decoding latency and peak memory overhead of different dynamic adapters.}
+    \label{table:latency}
+\end{table}
+
+
+
+As reported in Table~\ref{table:latency}, we evaluated the inference latency and peak GPU memory usage of our method and various baseline methods on the ShareGPT dataset. The results show that \sys exhibits significantly lower decoding latency compared to all other dynamic adapter methods, being 2.7 times faster than the previously fastest method, PESC. Furthermore, \sys's decoding latency is less than 30\% higher than that of the original Llama2-7B model.
+% 
+The dramatic latency reduction achieved by \sys can be attributed to our fundamental architectural innovation. While traditional dynamic adapters require separate routing computations and adapter activations at each layer, our approach consolidates these operations into a single pre-gating decision followed by efficient batch processing through the SGMM kernel. This transforms the inference pattern from multiple sequential operations to a single parallelized computation.
+
+\subsection{Ablation Study}
+
+To understand the contribution of individual components in \sys, we conduct ablation studies focusing on the key system-level optimization: the SGMM kernel. 
+% We compare our full system against variants that use simpler merging strategies.
+
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{lc}
+    \toprule
+    Method & Latency (ms/token) \\
+    \midrule
+    Llama2-7B & 2.4 \\
+    MoRAL & 8.5 (+254\%) \\
+    MoRAL (Simple merge) & 4.5 (+88\%) \\
+    \sys (Simple merge) & 4.2 (+ 75\%) \\
+    \sys  & 3.1 (+29\%) \\
+    \bottomrule
+    \end{tabular}
+    
+    % Caption 必须放在表格下方
+    \caption{Ablation study for runtime decoding latency of \sys.}
+    \label{table:ablation study latency}
+\end{table}
+
+Table~\ref{table:ablation study latency} demonstrates the critical importance of the SGMM kernel in achieving our performance gains. Replacing the SGMM with a simple merge approach results in a substantial increase in decoding latency for \sys, rising from 3.1 ms/token to 4.2 ms/token. This validates our hypothesis that kernel-level optimizations are essential for dynamic adapter efficiency.
+
+The simple merge approach, while algorithmically equivalent, fails to exploit the parallelism opportunities inherent in our fused adapter switching strategy. We also tested this simple merge technique on MoRAL, which reduced its latency to 4.5 ms/token but still registered an 88\% increase over the original Llama2-7B. These findings highlight the effectiveness of our system-algorithm co-design approach.
+
+% Detailed ablation studies on model performance and additional experimental results can be found in Appendix.
+
+

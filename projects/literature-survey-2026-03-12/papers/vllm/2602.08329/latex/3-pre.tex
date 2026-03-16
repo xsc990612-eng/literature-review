@@ -1,0 +1,140 @@
+%\vspace{-0.05in}
+\section{Problem Formulation}
+
+This section introduces several variables and notation used throughout our analysis. For convenience, Table~\ref{tab:notation} summarizes the key symbols and their meanings.
+
+\subsection{LLM Inference}
+\label{sec:inference_background}
+% \vspace{-0.05in}
+
+To demonstrate the inference bottlenecks that KV compression aims to address, we present the inference process, consisting of two stages—prefill and decode—using the standard transformer architecture with multi-head attention~\cite{vaswani2017attention}.
+
+
+
+\paragraph{Multi-head Attention} Let the input token embeddings for head $h$ be $\bx^h=[\bx_1^h;\dots;\bx_L^h]\in\mathbb{R}^{L\times d}$. With $H$ heads and per-head dimension $d$, for each token $i$ and head $h\in{1,\dots,H}$,
+\begin{equation}
+\label{eq:qkv-proj}
+    \bq_i^h \!=\! \bx_{i} \bW_Q^h, \, \mathbf{k}_i^h \!=\! \bx_{i} \bW_K^h, \, \bv_i^h \!=\! \bx_{i} \bW_V^h, \,
+\end{equation}
+where $\bq_i^{h}, \bk_i^h, \bv_i^h \in \mathbb{R}^{d}$ and $\bK^h=[(\bk_1^h)^\top;\dots;(\bk_L^h)^\top], \bV^h=[(\bv_1^h)^\top;\dots;(\bv_L^h)^\top]\in\mathbb{R}^{L\times d}$ to form the KV cache. Attention weights for token $t$ in head $h$ over indices $i\in{1,\dots,t}$ and the attention output for step $t$ are
+\begin{equation}
+\label{eq:attn_eq}
+    A_i^h(\bq_t^h) \!=\! \frac{\exp\! \big((\bq_t^{h})^\top \bk_i^h/\sqrt d\big)}{\sum_{j=1}^{t}\exp\!\big((\bq_t^{h})^\top \bk_j^h/\sqrt d\big)}, \; 
+    \mathbf{y}_t^h \!=\! \sum_{i=1}^{t} A_i^h(\bq_t^h)\,\bv_i^h .
+\end{equation}
+Since all heads operate the same, we omit the head index for brevity in the following context, unless explicitly mentioned.
+
+
+\paragraph{Prefill} The prompt is processed once to construct and cache $(\bK,\bV)$, which is reused during subsequent decoding~\cite{ott2019fairseq}.
+
+\paragraph{Decode} Only the new token is processed while reusing the cached $\bK$ and $\bV$ from previous steps for each head.
+
+\paragraph{Bottlenecks} From Eq.~\eqref{eq:attn_eq}, the per-step attention FLOPs (score computation and value aggregation) scale as $\mathcal{O}(Htd)$, and the KV cache also scales as $\mathcal{O}(Htd)$. This linear growth in $t$ constitutes the primary compute and memory bottleneck for long-context inference.
+
+\input{latex/tables/notation-main}
+
+\subsection{Token-sparse Attention and Key-value Sharing}
+\label{sec:prob_def}
+
+KV compression mitigates the aforementioned bottlenecks by exploiting attention sparsity—a small subset of critical KV entries is selected to approximate full attention. This improves efficiency at the cost of approximation error. To evaluate accuracy–efficiency trade-offs across KV compression methods, and following prior work~\cite{xiao2024duoattention,wu2024tokenselect,wuhshare,liu2025freekv}, we formalize decoding with a limited KV set under a unified \emph{token-sparse attention} (TSA) concept, and then define \emph{KV sharing} as a special case that streamlines TSA selection.
+
+
+\textbf{Definition 3.1} (Token-sparse attention, informal).
+\textit{At decoding step $t$, with KV budget $N < t$, a selector $\mathcal{S}$ outputs an index set $S_t \subseteq [t] \coloneqq \{1,\dots,t\}$ with $|S_t| = N$. The corresponding key/value matrices are restricted to these indices, $\bK_{S_t}$ and $\bV_{S_t}$. Attention is computed only between $\bq_t$ and $\bK_{S_t}$ (cf. Eq.~\eqref{eq:attn_eq}), and the output uses $\bV_{S_t}$. The sparsity ratio at step $t$ is $N/t$.}
+
+
+\textbf{Definition 3.2} (Key-value sharing). \textit{Given indices $S_i$ retrieved by $\mathcal S$ at an anchor step $i$ in TSA, a later token at step $j$ may directly reuse them, denoted $S_j \leftarrow S_i$. In this case, $S_j$ is utilized to construct $\bK_{S_j}$ and $\bV_{S_j}$.}
+
+\textbf{Discussion}. Different TSA instantiations correspond to different selectors $\mathcal{S}$, and exhibit distinct accuracy–efficiency trade-offs under a fixed budget. For example, imprecise selection that admits many low-contribution pairs can crowd out salient entries, increasing approximation error and degrading model performance. This failure mode is analogous to erroneous KV sharing across steps whose truly critical sets have little overlap. Moreover, selectors rely on different criteria~\cite{liu2024hashevict,zhang2023h2o,sun2024shadowkv} (e.g., similarity heuristics, learned scores, recency rules), and the mechanism used to enforce these criteria determines selection complexity and entry-retrieval efficiency. Consequently, an effective TSA selector must balance accuracy (retained mass) and retrieval overhead (selection complexity).
+
+
+
+\vspace{-0.05in}
+\subsection{Information Loss Quantification}
+\label{sec:info_bound}
+
+To evaluate the accuracy of TSA selectors, we quantify the information loss—information gap between full attention and TSA—via a mutual-information (MI) bound, and pair it with retrieval-efficiency analysis to guide algorithm design. We first derive the MI bound as a function of dropped attention mass, which implies that the top-$k$ oracle attains the best accuracy under a fixed budget. However, it incurs prohibitive selection cost due to explicit attention evaluation. Practical selectors approximate this oracle for efficiency and thus incur additional MI loss. We then formalize selector design as an optimization problem towards minimizing the MI-loss gap relative to the top-$k$ oracle subject to retrieval constraints. Finally, we show that PrHS-based selectors remove posterior bias and, with design-time error control, nearly preserve top-$k$ accuracy without additional retrieval cost, thereby outperforming PoHS selectors.
+
+\paragraph{Mutual-information Bound} In TSA, a selector $\mathcal S$ keeps $N$ KV entries and drops the rest. Our core result (Sec.~\ref{sec:app_uib}) is that the MI loss induced by TSA depends only on the \emph{dropped mass}, independent of selector instantiations. Intuitively, preserving (nearly) the same total attention mass as full attention preserves (nearly) the same information. Hence, MI loss admits a unified characterization in terms of dropped mass. For a query $\bq$, define the retained and dropped attention mass
+\begin{equation}
+    \tau_{\mathcal S}(\bq)=\sum_{i\in\mathcal S}A_i(\bq), \quad \delta_{\mathcal S}(q)=1-\tau_{\mathcal S}(\bq).
+\end{equation}
+Let $I$ denote the MI loss measure. For any $\bq$, the MI loss between full attention $I_{\mathrm{full}}$ and selector $\mathcal{S}$ satisfies
+\begin{equation}
+\label{eq:mi_bound}
+\begin{aligned}
+    0 \, \le \, & I_{\mathrm{full}}(\bq)-I_{\mathcal S}(\bq) \, \le \, g\big(\delta_{\mathcal S}(\bq)\big), \\
+    \text{where} &\quad g(\delta) \coloneqq 2\left[h_{\mathrm b}(\delta)+\delta\log L\right].
+\end{aligned}
+\end{equation}
+Here $h_{\mathrm b}$ is the binary entropy function and $L$ the number of eligible positions (proved in Sec.~\ref{proof:MI_bound}). 
+
+\paragraph{Top-k Oracle and Optimization Goal} The top-$k$ oracle $\mathcal S^{*}(q)\!=\!\operatorname*{Top}_N \!\big(A(\bq)\big)$ minimizes the bound by maximizing retained mass under a fixed budget $N$:
+\begin{equation}
+% \label{eq:topk_oracle}
+\begin{aligned}
+\mathcal S^{*}(\bq)
+\!\in\! \operatorname*{arg min}_{S\subseteq [t],\, |S|=N}
+g\!\left(1\!-\!\!\sum_{i\in S} A_i(\bq)\right)
+\!=\!
+\operatorname*{arg max}_{S\subseteq [t],\, |S|=N}
+\sum_{i\in S} A_i(\bq).
+% \;=\;
+% \operatorname*{Top}_{N}\!\big(A(\bq)\big).
+\end{aligned}
+\end{equation}
+However, evaluating $A(\bq)$ exactly incurs prohibitive selection cost. Practical selectors (PoHS or PrHS) approximate $A(\bq)$ for efficiency and thus incur additional MI loss. We therefore pose the goal of selector optimization as
+\begin{equation}
+\label{eq:selector_opt}
+\min_{}\; % \theta\in\Theta
+\mathbb{E}\!\left[\, I_{\mathcal S^{*}}(\bq)\;-\;I_{\mathcal S}(\bq) \,\right]
+\;\; \text{s.t.}\;\; |S^*(\bq)|=|S(\bq)|=N,
+\end{equation}
+i.e., minimize the MI-loss gap relative to the top-$k$ oracle under constrained budget, where the expectation is over queries $\bq$.
+
+
+\paragraph{PoHS Selector $\mathcal S_D$}
+% \label{sec:pohs_bias}
+$\mathcal S_D(\bq)\!=\!\operatorname*{Top}_n(\widehat A_D(\bq))$ replaces $A(\bq)$ with its surrogate $\widehat A_D(\bq)$ derived from posterior side information $D$ (e.g., token ages, sketches), and suffers \emph{posterior bias} measured by the total-variation distance
+\begin{equation}
+\label{eq:pohs_bias}
+    \varepsilon_{D}(\bq)\coloneqq \tfrac12\|A(\bq)-\widehat A_D(\bq)\|_1 .
+\end{equation}
+The extra dropped-mass gap satisfies $\delta_{\mathcal S_D}(\bq) \le \delta^{*}(\bq)+2\varepsilon_{D}(\bq)$, which, by the monotonicity\footnote{Without loss of generality, in this paper, we restrict the domain of $g$ to the interval (0, L/(1+L)] to ensure its monotonicity, where L denotes the current text length. Note that as $L$ grows large,  $L/(1+L)$ will approach $1$, which renders the previous restriction reasonable.} of $g$ in Eq.~\eqref{eq:mi_bound}, lifts the MI loss bound to
+\begin{equation}
+\label{eq:posh_bound}
+    I_{\mathrm{full}}(\bq)-I_{\text{post}}(\bq)\ \le\ g\big(\delta^{*}(\bq)+2\varepsilon_{D}(\bq)\big).
+\end{equation}
+Thus, when the surrogate under- or over-scores tokens (large $\varepsilon_D$), the selected set retains less probability mass than the oracle and loses more information. We formalize both TDO and QAA from Sec.~\ref{sec:intro} as PoHS instances. In general, TDO induces larger $\varepsilon_D$ than QAA (worse accuracy) but avoids explicit evaluation of $A(\bq)$ (lower retrieval cost). Proofs are provided in Sec.~\ref{sec:app_tech_lemmas}. 
+
+
+
+\paragraph{PrHS Selector $\mathcal S_{pre}$} $\mathcal S_{pre}$ selects critical set \emph{without explicitly computing} $A(\bq)$ and controls a \emph{theoretical error} $\beta_{\mathrm{th}}(q)\!\ge\!0$ that satisfy
+\begin{equation}
+\label{eq:prhs_bound}
+\begin{aligned}
+    \tau_{\mathrm{pre}}(\bq)\! \ge\! \tau^{*}(\bq)-&\beta_{\mathrm{th}}(\bq) \Longleftrightarrow \delta_{\mathrm{pre}}(\bq)\! \le\! \delta^{*}(\bq)\!+\!\beta_{\mathrm{th}}(\bq), \\
+    \text{with} \quad I_{\mathrm{full}}(\bq)-&I_{\mathrm{pre}}(\bq)\ \le\ g\big(\delta^{*}(\bq)+\beta_{\mathrm{th}}(\bq)\big).
+\end{aligned}
+\end{equation}
+As $\beta_{\mathrm{th}}(q)\!\to\!0$, the bound \emph{converges to the top-$k$ oracle}
+\begin{equation}
+\label{eq:limit_to_oracle}
+I_{\mathrm{full}}(\bq)\!-\!I_{\mathrm{pre}}(\bq)
+\!\le\!
+g\big(\delta^{*}(\bq)\big)\!\le\!g\big(\delta^{*}(\bq)+2\varepsilon_{D}(\bq)\big),
+\end{equation}
+explicitly improving on PoHS by eliminating posterior bias. Detailed formulations are in Sec.~\ref{sec:app_mib_tsa}. Moreover, PrHS selectors can partially (CIS) or fully (PSAW, ETF) avoid computing $A(\bq)$ and the associated retrieval, improving accuracy without compromising efficiency.
+
+
+
+% Exploiting PrHS thus provides better performance than PoHS when $\beta_{\mathrm{th}}$ is appropriately bounded, which aligns with the promised posterior-bias removal in \emph{design time}. Detailed formulations are shown in Appendix~\ref{sec:app_mib_tsa}. Moreover, PrHS selectors can partially (CIS) or fully (PSAW and ETF) avoid the computation of $A(\bq)$ and its corresponding retrieval  as PoHS selectors, making PrHS selectors improve accuracy without compromising efficiency. 
+
+% Empirically, our CPE achieves higher accuracy than the recent advanced QAA technique, Double Sparsity~\cite{yang2024post}, while only requiring 1/15 of its selection complexity.
+
+
+
+
+
+
+

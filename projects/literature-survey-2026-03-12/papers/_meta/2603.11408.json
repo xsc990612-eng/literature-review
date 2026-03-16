@@ -1,0 +1,11 @@
+{
+  "arxiv_id": "2603.11408",
+  "title": "Beyond Polarity: Multidimensional LLM Sentiment Signals for Financial Prediction",
+  "authors": ["Research Team"],
+  "abstract": "This paper explores using multidimensional sentiment signals from LLMs beyond simple polarity classification for financial prediction tasks. The approach leverages valence-arousal dimensions and other emotional aspects...",
+  "score": 4,
+  "source_term": "sentiment analysis multidimensional",
+  "downloaded_at": "2026-03-13T08:07:00Z",
+  "category": "sentiment_analysis",
+  "direction": "multidimensional_sentiment"
+}

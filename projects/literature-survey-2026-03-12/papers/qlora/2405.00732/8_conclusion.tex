@@ -1,0 +1,10 @@
+\section{Conclusion}
+In this study, we assess the efficacy of Low Rank Adaptation (LoRA) for fine-tuning Large Language Models (LLMs) across a broad range of tasks and models and the viability of serving multiple fine-tuned LoRA LLMs in production.
+
+On model quality, our results confirm that LoRA fine-tuning significantly enhances LLM performance, surpassing non-fine-tuned bases and GPT-4. The standout performance of models like Mistral-7B across multiple tasks highlights the importance of base model selection in fine-tuning success. We find that dataset complexity heuristics can be reasonably leveraged as potential predictors of fine-tuning success, suggesting that the nature of the task plays an important role in the effectiveness of fine-tuning.
+
+Despite these outcomes, limitations such as the scale of evaluations, training constraints, and the simplicity of our prompt engineering approaches suggest areas for future improvement. We release all of our models and training setups for further community validation and experimentation.
+
+On serving, we demonstrate the practical deployment of these models using the LoRAX framework through the LoRA Land web application. We provide benchmarks for time to first token (TFTT), total request time, and token streaming time, and measure LoRAX's latency robustness to up to 100 concurrent users. 
+
+Altogether, LoRA Land emphasizes the quality and cost-effectiveness of employing multiple specialized LLMs over a single, general-purpose LLM.

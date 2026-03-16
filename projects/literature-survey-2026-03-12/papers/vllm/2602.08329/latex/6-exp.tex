@@ -1,0 +1,153 @@
+
+\section{Experiments}
+
+\input{latex/tables/gsm_coqa}
+
+\subsection{Experimental Setup}
+
+We evaluate our CPE on two widely-used model families: LLaMA~\cite{touvron2023llama} and Mistral~\cite{jiang2023mistral7b}. Specifically, we select LLaMA2-7B-Chat, LLaMA3-70B, and Mistral-7B for our experiments. As baselines, we select one TDO method H2O~\cite{zhang2023h2o}, two QAA algorithms: Quest~\cite{tang2406quest} and DS~\cite{yang2024post}, as well as a SOTA retrieval-based PoHS instantiation: HShare~\cite{wuhshare}. We report results on GSM8K~\cite{cobbe2021gsm8k}, COQA~\cite{reddy2019coqa}, and LongBench~\cite{bai2023longbench}.
+
+
+In our CPE, we adopt the following default hyperparameters. For CIS, we set the similarity threshold $\tau\!=\!0.8$, and apply dilation on the $m \!=\! \lfloor k/3\rfloor$ highest-score indices with radius $r=1$. Pruning and freezing of PSAW and ETF start from $\ell_s \!=\! \lfloor 3N/4 \rfloor$ for a model with $N$ layers. PSAW uses $\phi \!=\! 0.7$ and $\alpha \!=\! 1$, while ETF uses $\psi \!=\! 0.5$ and $\gamma \!=\! 1$. 
+
+Because CIS performs head-level KV sharing to avoid full retrieval, we define the \emph{per-step retrieval ratio} $\rho_t\!=\!\frac{R_t}{H\cdot N}$ to measure the retrieval frequency, where $R_t$ is the number of performed head–layer retrieval at step $t$, and $H\cdot N$ is the amount required by a naïve top-$k$ oracle. The ratio $\rho_t$ is controlled by the CIS block size $s$ and the similarity threshold $\tau$. In reports, we present the averaged ratio $\hat{\rho}=\tfrac{1}{T}\sum^{T}\rho_t$ over the $T$ generation steps. 
+
+
+\subsection{Results on GSM8K and COQA}
+\label{sec:gsm8k&coqa}
+
+%\paragraph{Datasets and Metrics}
+\subsubsection{Datasets and Metrics}
+We perform zero-shot evaluation with LM-Eval on the GSM8K~\cite{cobbe2021gsm8k} and COQA~\cite{reddy2019coqa} benchmarks. GSM8K comprises roughly 8 000 grade-school mathematics problems, whereas COQA targets multi-turn conversational question answering. The mean input lengths are about 500 tokens (GSM8K) and 2 000 tokens (COQA). Following prior work, we report both flexible and strict exact-match (EM) accuracy on GSM8K, and EM on COQA.
+
+%\paragraph{Inference Details}
+\subsubsection{Inference Details}
+We apply TSA in the decoding stage and solely evaluate CIS as presented in Table~\ref{tab:gsm_coqa}. We select a critical KV budget $C_t \!=\! 128$ ~\cite{wuhshare}. For CIS and Hshare, we set $C_{\text{local}} \!=\! 32$, and $k \!=\! 88$ in the middle. Since CIS dilation incurs additional KV budget during sharing, we therefore additionally include a variant CIS$^\ast$, which sets $k=72$, yielding its average budget close to 128. We choose $s\in\{8,16,20\}$ to vary $\hat{\rho}$.
+
+
+
+\input{latex/tables/longbench}
+
+%------------------------------------------------------
+\begin{figure}[!t]
+\includegraphics[width=0.48\textwidth]{assets/cis-vs-hshare.pdf}
+\centering
+\vspace{-1em}
+    \caption{\textbf{CIS vs. HShare on GSM8K across computation ratios.} \emph{Left}: Exact-match score accuracy comparisons. \emph{Right}: Overlap comparisons between each method’s retrieved critical set and the top-$k$ oracle.}
+    \label{fig:cis_vs_hshare}
+    %\vspace{-1.5em}
+\end{figure}
+%--------
+
+%\paragraph{Result Analysis}
+\subsubsection{Result Analysis}
+
+
+As shown in Table~\ref{tab:gsm_coqa}, CIS and its budget-matched variant CIS$^\ast$ consistently deliver a superior accuracy–efficiency trade-off to PoHS baselines on GSM8K and COQA. On LLaMA-2-7B-Chat, CIS at low selection cost already surpasses SOTA HShare, i.e., $40$–$55\%$ lower complexity at higher accuracy. The advantage widens on LLaMA-3-70B with deeper layers, consistent with reduced cross-layer error accumulation under sharing. CIS$^\ast$ still outperforms HShare at matched budgets, isolating selection \emph{quality} rather than capacity as the driver of the gains. Efficiency is materially better. For instance, on LLaMA-3-70B, CIS uses $0.0052T$ selection cost versus DS’s $0.0625T$.
+
+
+To further evaluate the accuracy-efficiency trade-offs of CIS, we compare the results of HShare and CIS under different computation ratios on GSM8K. As shown in Fig.~\ref{fig:cis_vs_hshare}(left), when computation ratio is below 30\%, the performance of HShare degrades sharply, while CIS maintains high accuracy. From the perspective of retrained attention mass, Fig.~\ref{fig:cis_vs_hshare}(right) shows that the average overlap of HShare collapses at low computation ratio. These results further demonstrate that the selection quality of CIS is much better than HShare under aggressive sharing.
+
+% As shown in Tab.~\ref{tab:gsm_coqa}, CIS and its budget-matched variant CIS$^\ast$ consistently deliver a superior accuracy–efficiency trade-off to PoHS baselines on GSM8K and COQA. On LLaMA-2-7B-Chat, CIS at low selection cost already surpasses SOTA HShare: CIS attains $0.1842/0.1827$ (flex/strict) with selection cost $0.0104T$, versus HShare(3/4-3/4-1/2) at $0.1803/0.1703$ and $0.0180T$, i.e., $40$–$55\%$ lower complexity at higher accuracy. These gains indicate that CIS under PrHS tightly controls induced error. CIS also shows strong strict–flex robustness on GSM8K (only $0.1842\!\to\!0.1827$ across various computation ratios), whereas HShare drops from $0.1803$ to $0.1703$, suggesting genuine reasoning accuracy rather than formatting artifacts. The advantage widens on LLaMA-3-70B with deeper layers, consistent with reduced cross-layer error accumulation under sharing.
+
+% CIS$^\ast$ still outperforms HShare at matched budgets, isolating selection \emph{quality} rather than capacity as the driver of the gains. Efficiency is materially better: on LLaMA-3-70B, CIS uses $0.0052T$ selection cost versus DS’s $0.0625T$, and across settings CIS operates at $0.0041$–$0.0117T$ compared to HShare’s $0.0180T$, sharpening the accuracy–efficiency frontier. Even under extreme sharing ($\hat{\rho}\!\approx\!0.06$–$0.08$), CIS remains competitive. On COQA, CIS and CIS$^\ast$ are near-dense or better—$0.6103$ on LLaMA-2-7B-Chat exceeds dense $0.5997$, and $0.7068$ on LLaMA-3-70B is close to $0.7085$—indicating that conversational understanding is well preserved.
+
+% To further evaluate the accuracy-efficiency trade-offs of CIS, we compare the results of HShare and CIS under different computation ratios on GSM8K. Fig.~\ref{fig:cis_vs_hshare}(left) plots the EM-computation curve. When computation ratio is high, the accuracy gap between CIS and HShare~\cite{wuhshare} remains relatively small. Below 30\%, the performance of HShare degrades sharply, while CIS maintains high accuracy. From the perspective of retrained attention mass, Fig.~\ref{fig:cis_vs_hshare}(right) shows the average overlap of the true positive of retrieved critical set compared to top-k oracle. Similar to EM, HShare’s overlap rate collapses at low computation ratio. Inspection reveals that HShare's coarse sharing schedules propagate indices between queries with low semantic similarity. Moreover, even for heads with high semantic similarity, its shared set is fragmented (Fig.~\ref{fig:index-frag}), missing many true positives. These problems drastically reduces its recall. CIS, by contrast, maintains a much higher overlap rate even under aggressive sharing.
+
+
+\subsection{Longbench}
+\label{sec:longbench}
+
+%\paragraph{Datasets and Metrics}
+\subsubsection{Datasets and Metrics}
+LongBench contains sixteen English tasks spanning code completion, few-shot learning, document-level QA, summarisation, and synthetic reasoning. We adhere to the official evaluation protocol: MultiNews, Qmsum, GovReport, Samsum with rouge score; Musique, HotpotQA, Qasper, 2WikiMQA, TriviaQA, NarrativeQA, MultifieldQA-EN (MQA) with F1 score; trec with classification accuracy; Passage-Count (PC), Passage-Retrieval-EN (PR-EN) exact-match accuracy; RepoBench-P (Repo-P) and LCC with similarity score.
+
+
+\input{latex/tables/attn_latency}
+
+\subsubsection{Inference Details}
+
+All baselines apply TSA only during decoding and retain a $512$ KV budget, with a sparsity ratio of ${\approx}$1/8. For HShare and CIS we set $C_{\text{sink}}{=}16$, $C_{\text{local}}{=}64$, and $k{=}432$. With CIS’s neighbor dilation, the effective shared-head set averages $547.5$ tokens. To enable a budget-matched comparison, CIS$^\ast$ reduces the middle-budget to $k{=}388$, equalizing the average KV budget processed during decoding to $512$. For the combined system \textbf{CPE}, we use $k{=}432$ and also activate PSAW and ETF during \emph{prefill}. Reductions achieved in prefill are not counted toward the decoding-budget metric, so CPE further lowers prefill cost in addition to the standard decoding-only comparison. We use block size $s\in\{8,16\}$.
+
+%\paragraph{Results Analysis}
+\subsubsection{Results Analysis}
+
+Across sparse baselines, CIS attains the best average while using substantially lower retrieval than SOTA HShare, as shown in Table \ref{tab:longbench}. Specifically, CIS achieves the highest non-dense average, $32.40$, at a moderate retrieval ratio $\hat{\rho}{=}0.177$, surpassing HShare’s best $31.97$ at $\hat{\rho}{=}0.281$ with $37\%$ less retrieval. Moreover, CIS$^{\ast}$ remains competitive with HShare while substantially reducing retrieval, indicating that gains stem from selection quality rather than capacity. CPE preserves this competitiveness ($32.11$) while additionally reducing prefill cost. Although prefill reductions are not counted in the decoding budget, CPE still ties or wins on several tasks, showing that pruning and freezing early tokens remove redundant compute without harming downstream reasoning—consistent with the error control guaranteed by PrHS.
+
+% Across sparse baselines, CIS attains the best average while using substantially lower retrieval than SOTA HShare, as shown in Table \ref{tab:longbench}. Specifically, CIS achieves the highest non-dense average, $32.40$, at a moderate retrieval ratio $\hat{\rho}{=}0.177$, surpassing HShare’s best $31.97$ at $\hat{\rho}{=}0.281$ with $37\%$ less retrieval. CIS$^{\ast}$ at $\hat{\rho}\!\approx\!0.085$ remains competitive at $32.22$, matching or exceeding HShare at $\hat{\rho}{=}0.125$ while reducing retrieval by $32\%$, indicating that gains stem from selection quality rather than capacity. CPE preserves this competitiveness ($32.11$) while additionally reducing prefill cost.
+
+% CIS yields the strongest non-dense results on retrieval-sensitive tasks. It leads on \textsc{2WikiMQA} ($32.51$), and CIS$^{\ast}$ wins on \textsc{PR-EN} ($9.50$) and \textsc{PC} ($3.34$). These gains align with cosine-gated head sharing plus light neighbor dilation, which improves true-positive recall without inflating the processed KV budget. Performance degrades gracefully as retrieval tightens: reducing $\hat{\rho}$ from $0.177$ (CIS) to $\approx 0.085$ (CIS$^{\ast}$) changes the average by only $0.18$, suggesting stable sharing decisions.
+
+% Although prefill reductions are not counted in the decoding budget, CPE still ties or wins on several tasks (\textsc{TREC} $65.0$, \textsc{MQA-EN} $37.96$, \textsc{Qasper} $21.63$), showing that pruning and freezing early tokens remove redundant compute without harming downstream reasoning—consistent with the error control guaranteed by PrHS.
+
+
+\input{latex/tables/throughput}
+
+
+\subsection{Efficiency Evaluation}
+
+\subsubsection{Inference Detail}
+
+Following prior work~\cite{yang2024post,wuhshare}, we measure (i) self-attention operator latency and (ii) end-to-end throughput in the decoding stage. Experiments use \mbox{LLaMA-2-7B-Chat} on a server with an Intel Xeon Platinum 8336C CPU, a single NVIDIA A100 GPU, and 120 GB RAM. For the operator benchmark, FlashAttention-2 (Flash)~\cite{dao2022flashattention} serves as the dense baseline. For the end-to-end benchmark, we use GPT-fast~\cite{pytorch} as the dense baseline and replace its attention module with our TSA implementation. We test batch sizes ${8,16}$ and sequence lengths $1\text{k}$–$4\text{k}$ at a token sparsity ratio of $1/8$. We report results for CIS and CPE (CIS+PSAW; ETF is prefill-only) with block sizes $s\in{8,16}$. Because CIS confines sharing within a block, the extra cache is minimal, and the added per-step bookkeeping is bounded by $\mathcal{O}(H s k)$.
+
+% , we add  as our baseline, which is an optimized dense attention mechanism designed to improve the speed and efficiency and ranks among the fastest attention mechanisms
+
+\subsubsection{Results Analysis}
+
+\paragraph{Operator latency} As shown in Table~\ref{tab:attention_latency}, CPE-16 delivers the fastest kernel at both small and long contexts for each batch size (BS). At $2\text{k}$ tokens and BS$=16$, it attains a $9.9\times$ speedup over Flash. At $4\text{k}$ tokens, relative to the SOTA PoHS baseline, HShare-1, CPE-16 reduces latency by $11.5\%$ (BS$=8$) and $17.1\%$ (BS$=16$), and it outperforms DS by up to $39\%$ at BS$=16$. H2O is competitive at $2\text{k}$, where its ultra-light TDO pattern minimizes overhead. CIS alone also confers a clear advantage: at BS$=16$, CIS-16 is $11$–$15\%$ faster than HShare-1. The pattern is consistent with head-level sharing plus PSAW amortizing their $\mathcal{O}(H s k)$ bookkeeping once the GPU is well utilized, leaving reduced active KV compute as the runtime driver.
+
+
+
+
+\paragraph{End-to-end throughput} Operator gains translate to real decoding speed, as shown in Table~\ref{tab:throughput}. Relative to GPT-Fast, CPE-16 reaches $2.82\times$ at BS$=$16, $4\text{k}$. At BS$=16$ and $1$–$2\text{k}$, CPE-16 achieves the highest throughput, edging out H2O; at BS$=8$, it leads at $1\text{k}$ and effectively ties H2O at longer contexts. As batch size and sequence length grow, the gap between operator-level and end-to-end gains narrows due to non-attention bottlenecks (MLPs, sampling), yet CPE consistently ranks first or near-first across realistic loads, with $s{=}16$ providing the strongest throughput.
+
+
+\paragraph{Effect of block size} Across settings, $s{=}16$ is consistently faster than $s{=}8$ for both CIS and CPE. Larger boundaries reduce launch and index-management overhead and allow sharing decisions to persist longer, so the small increase in per-block work is negligible compared to better kernel efficiency. This argues for $s{=}16$ as the default in high-throughput deployments.
+
+\definecolor{orange}{HTML}{FF5C33}
+\definecolor{darkgreen}{HTML}{2E7D32}
+
+\subsection{Further Analysis}
+
+%------------------------------------------------------
+\begin{figure}[!t]
+\includegraphics[width=0.4\textwidth]{assets/cis-dilation.pdf}
+\centering
+\vspace{-1em}
+    \caption{\textbf{Effect of CIS dilation on LongBench NarrativeQA.} The stacked bar shows the average processed KV set: the \textcolor{orange}{orange segment} counts tokens that also appear in the top-$k$ oracle (budget 512, following Sec.~\ref{sec:longbench}), while the \textcolor{darkgreen}{green segment} counts minimal tokens not in the top-$k$ set.}
+    \label{fig:cis-dilation}
+    \vspace{-0.5em}
+\end{figure}
+%--------
+
+%\paragraph{CIS Expansion}
+\subsubsection{CIS Dilation}
+\label{sec:cis-dilation}
+
+We assess CIS dilation using the CIS$^\ast$ configurations from Sec.~\ref{sec:longbench}, varying the number of top indices dilated $m$. As shown in Fig.~\ref{fig:cis-dilation}, the number of \emph{additional} tokens beyond the top-$k$ set remains small for moderate $m$; dilation overhead grows gradually as $m$ increases, and the added tokens are predominantly low-importance. Inspecting shared queries explains this behavior as follows. Their most influential critical tokens are tightly clustered and spatially stable, so dilation contributes few extra indices. In contrast, when the budget begins to include low-score tokens, these indices are irregular and scattered, and dilation substantially inflates the set. This motivates restricting dilation to a top fraction of retrieved tokens. In practice, the expanded set also overlaps heavily with the remaining retrieved indices, further limiting redundancy.
+
+
+\input{latex/tables/hyper_tune}
+
+%\paragraph{Ablation Studies}
+\subsubsection{Hyperparameter Tuning}
+\label{sec:hyper-tune}
+\paragraph{Setting} We tune the key knobs of our compression pipeline in Table~\ref{tab:hyper-tune}. For \emph{CIS}, we adopt the CIS$^\ast$ configuration from Sec.~\ref{sec:gsm8k&coqa} and vary the block size $s$, similarity threshold $\tau$, and neighbor radius $r$. For \emph{PSAW} and \emph{ETF} in isolation, we apply them on dense attention, fix $\ell_s=\lfloor 3N/4\rfloor$, and control pruning/freezing aggressiveness via $(\phi,\alpha)$ for PSAW and $(\psi,\gamma)$ for ETF; PSAW is active in both prefill and decoding. For \emph{CPE}, we combine all three components, adding PSAW and ETF to CIS under TSA. We report: the averaged computation ratio $\hat{\rho}$, the average processed tokens per head in decoding (Avg.Token), \emph{prefill}-only WikiText perplexity (PPL), and task accuracy on GSM8K (flex) and COQA (EM/F1).
+
+\paragraph{CIS} Varying $(s,\tau,r)$ reveals the accuracy–efficiency trade-off. Smaller $s$ increases retrieval frequency (higher $\hat{\rho}$), whereas enlarging to $s{=}32$ drives the retrieval ratio down to $\hat{\rho}{=}0.0046$ with only a modest GSM8K accuracy drop; COQA remains notably stable across all $s$. At fixed $s{=}8$, increasing the dilation radius to $r{=}2$ substantially enlarges the active set but yields negligible accuracy change on both GSM8K and COQA; inspection shows that the added neighbors often include low-importance tokens, perturbing the attention-mass distribution without benefits. Slightly loosening $\tau$ has little effect on accuracy. Overall, $s$ is the dominant lever for efficiency, while $\tau$ and $r$ offer fine-grained control of recall versus budget.
+
+\paragraph{PSAW} Prefill pruning is gentle on language modeling quality and downstream accuracy. Increasing aggressiveness from $(\phi{=}0.5,\alpha{=}1)$ to $(\phi{=}0.7,\alpha{=}1.5)$ barely changes WikiText PPL, and COQA is essentially unchanged, while GSM8K (flexible match) decreases only slightly.
+
+\paragraph{ETF} Freezing during prefill shows similarly small effects. Adjusting from $(\psi{=}0.5,\gamma{=}1.5)$ to $(\psi{=}0.4,\gamma{=}1)$ yields virtually identical PPL and a tiny trade between GSM8K and COQA. ETF is therefore a stable knob for further prefill savings and slightly milder freezing is a safe default setting.
+
+\paragraph{CPE} Combining CIS with PSAW and ETF preserves efficiency while keeping quality competitive. With aggressive dilation ($r{=}2$), GSM8K dips to $0.1348$. Increasing block size and reducing dilation to $r{=}1$ lowers selection frequency and trims Avg. Token by ${\sim}20\%$, recovering GSM8K to $0.1634$ with COQA nearly unchanged. Overall, CPE performs best with moderate–large blocks, restricted dilation ($r{=}1$), and mild PSAW/ETF schedules.
+
+
+
+
+\input{latex/tables/cis_variant}
+
+%\paragraph{CIS Variant Designs}
+\subsubsection{Similarity Ablations} 
+
+We explore alternative similarity metrics for CIS derived from different representations. Concretely, we replace the default cosine similarity between \emph{query} embeddings (Eq.~\ref{eq:cos_sim}) with cosine similarity computed on (i) hidden states $\bx$ and (ii) key embeddings $\bk$, and evaluate under the CIS$^\ast$ configuration in Sec.~\ref{sec:gsm8k&coqa}. As shown in Table~\ref{tab:cis_variant}, both variants reduce accuracy, with the hidden-state metric degrading most. This indicates that the query, key, and hidden-state spaces emphasize distinct semantics; temporal semantic proximity for CIS is best captured in the \emph{query} space, whereas measuring similarity in $\bx$ or $\bk$ misaligns clusters and harms selection quality.

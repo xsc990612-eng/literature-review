@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "2405.04437",
+  "title": "vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention",
+  "authors": ["Ramya Prabhu", "Ajay Nayak", "Jayashree Mohan", "Ramachandran Ramjee", "Ashish Panwar"],
+  "abstract": "PagedAttention is a popular approach for dynamic memory allocation in LLM serving systems. However, in trying to allocate physical GPU memory on-demand, PagedAttention loses the ability to rely on CUDA virtual memory management.",
+  "score": 4,
+  "source_term": "vLLM PagedAttention efficient inference serving",
+  "direction": "vllm-inference-optimization",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

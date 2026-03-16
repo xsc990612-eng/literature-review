@@ -1,0 +1,208 @@
+\begin{thebibliography}{46}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Addair and Angus(2023)]{12predibaseLoRAExchange}
+Travis Addair and Geoffrey Angus.
+\newblock {L}o{R}{A} {E}xchange ({L}o{R}{A}{X}): {S}erve 100s of {F}ine-{T}uned {L}{L}{M}s for the {C}ost of 1 - {P}redibase --- predibase.com.
+\newblock \url{https://predibase.com/blog/lora-exchange-lorax-serve-100s-of-fine-tuned-llms-for-the-cost-of-one}, 2023.
+\newblock [Accessed 15-04-2024].
+
+\bibitem[Beeching et~al.(2023)Beeching, Fourrier, Habib, Han, Lambert, Rajani, Sanseviero, Tunstall, and Wolf]{34open-llm-leaderboard}
+Edward Beeching, Clémentine Fourrier, Nathan Habib, Sheon Han, Nathan Lambert, Nazneen Rajani, Omar Sanseviero, Lewis Tunstall, and Thomas Wolf.
+\newblock Open llm leaderboard.
+\newblock \url{https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard}, 2023.
+
+\bibitem[Bommasani et~al.(2021)Bommasani, Hudson, Adeli, Altman, Arora, von Arx, Bernstein, Bohg, Bosselut, Brunskill, Brynjolfsson, Buch, Card, Castellon, Chatterji, Chen, Creel, Davis, Demszky, Donahue, Doumbouya, Durmus, Ermon, Etchemendy, Ethayarajh, Fei-Fei, Finn, Gale, Gillespie, Goel, Goodman, Grossman, Guha, Hashimoto, Henderson, Hewitt, Ho, Hong, Hsu, Huang, Icard, Jain, Jurafsky, Kalluri, Karamcheti, Keeling, Khani, Khattab, Koh, Krass, Krishna, Kuditipudi, Kumar, Ladhak, Lee, Lee, Leskovec, Levent, Li, Li, Ma, Malik, Manning, Mirchandani, Mitchell, Munyikwa, Nair, Narayan, Narayanan, Newman, Nie, Niebles, Nilforoshan, Nyarko, Ogut, Orr, Papadimitriou, Park, Piech, Portelance, Potts, Raghunathan, Reich, Ren, Rong, Roohani, Ruiz, Ryan, R'e, Sadigh, Sagawa, Santhanam, Shih, Srinivasan, Tamkin, Taori, Thomas, Tram{\`e}r, Wang, Wang, Wu, Wu, Wu, Xie, Yasunaga, You, Zaharia, Zhang, Zhang, Zhang, Zhang, Zheng, Zhou, and Liang]{52stanfordOpportunitiesRisks}
+Rishi Bommasani, Drew~A. Hudson, Ehsan Adeli, Russ Altman, Simran Arora, Sydney von Arx, Michael~S. Bernstein, Jeannette Bohg, Antoine Bosselut, Emma Brunskill, Erik Brynjolfsson, S.~Buch, Dallas Card, Rodrigo Castellon, Niladri~S. Chatterji, Annie~S. Chen, Kathleen~A. Creel, Jared Davis, Dora Demszky, Chris Donahue, Moussa Doumbouya, Esin Durmus, Stefano Ermon, John Etchemendy, Kawin Ethayarajh, Li~Fei-Fei, Chelsea Finn, Trevor Gale, Lauren~E. Gillespie, Karan Goel, Noah~D. Goodman, Shelby Grossman, Neel Guha, Tatsunori Hashimoto, Peter Henderson, John Hewitt, Daniel~E. Ho, Jenny Hong, Kyle Hsu, Jing Huang, Thomas~F. Icard, Saahil Jain, Dan Jurafsky, Pratyusha Kalluri, Siddharth Karamcheti, Geoff Keeling, Fereshte Khani, O.~Khattab, Pang~Wei Koh, Mark~S. Krass, Ranjay Krishna, Rohith Kuditipudi, Ananya Kumar, Faisal Ladhak, Mina Lee, Tony Lee, Jure Leskovec, Isabelle Levent, Xiang~Lisa Li, Xuechen Li, Tengyu Ma, Ali Malik, Christopher~D. Manning, Suvir~P. Mirchandani, Eric Mitchell, Zanele Munyikwa, Suraj
+  Nair, Avanika Narayan, Deepak Narayanan, Benjamin Newman, Allen Nie, Juan~Carlos Niebles, Hamed Nilforoshan, J.~F. Nyarko, Giray Ogut, Laurel Orr, Isabel Papadimitriou, Joon~Sung Park, Chris Piech, Eva Portelance, Christopher Potts, Aditi Raghunathan, Robert Reich, Hongyu Ren, Frieda Rong, Yusuf~H. Roohani, Camilo Ruiz, Jack Ryan, Christopher R'e, Dorsa Sadigh, Shiori Sagawa, Keshav Santhanam, Andy Shih, Krishna~Parasuram Srinivasan, Alex Tamkin, Rohan Taori, Armin~W. Thomas, Florian Tram{\`e}r, Rose~E. Wang, William Wang, Bohan Wu, Jiajun Wu, Yuhuai Wu, Sang~Michael Xie, Michihiro Yasunaga, Jiaxuan You, Matei~A. Zaharia, Michael Zhang, Tianyi Zhang, Xikun Zhang, Yuhui Zhang, Lucia Zheng, Kaitlyn Zhou, and Percy Liang.
+\newblock On the opportunities and risks of foundation models.
+\newblock \emph{ArXiv}, 2021.
+\newblock URL \url{https://crfm.stanford.edu/assets/report.pdf}.
+
+\bibitem[Chen et~al.(2023)Chen, Ye, Wu, Zhuo, Ceze, and Krishnamurthy]{38chen2023punica}
+Lequn Chen, Zihao Ye, Yongji Wu, Danyang Zhuo, Luis Ceze, and Arvind Krishnamurthy.
+\newblock Punica: Multi-tenant lora serving, 2023.
+
+\bibitem[Chen et~al.(2021)Chen, Tworek, Jun, Yuan, de~Oliveira~Pinto, Kaplan, Edwards, Burda, Joseph, Brockman, Ray, Puri, Krueger, Petrov, Khlaaf, Sastry, Mishkin, Chan, Gray, Ryder, Pavlov, Power, Kaiser, Bavarian, Winter, Tillet, Such, Cummings, Plappert, Chantzis, Barnes, Herbert-Voss, Guss, Nichol, Paino, Tezak, Tang, Babuschkin, Balaji, Jain, Saunders, Hesse, Carr, Leike, Achiam, Misra, Morikawa, Radford, Knight, Brundage, Murati, Mayer, Welinder, McGrew, Amodei, McCandlish, Sutskever, and Zaremba]{59chen2021codex}
+Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, Henrique~Ponde de~Oliveira~Pinto, Jared Kaplan, Harri Edwards, Yuri Burda, Nicholas Joseph, Greg Brockman, Alex Ray, Raul Puri, Gretchen Krueger, Michael Petrov, Heidy Khlaaf, Girish Sastry, Pamela Mishkin, Brooke Chan, Scott Gray, Nick Ryder, Mikhail Pavlov, Alethea Power, Lukasz Kaiser, Mohammad Bavarian, Clemens Winter, Philippe Tillet, Felipe~Petroski Such, Dave Cummings, Matthias Plappert, Fotios Chantzis, Elizabeth Barnes, Ariel Herbert-Voss, William~Hebgen Guss, Alex Nichol, Alex Paino, Nikolas Tezak, Jie Tang, Igor Babuschkin, Suchir Balaji, Shantanu Jain, William Saunders, Christopher Hesse, Andrew~N. Carr, Jan Leike, Josh Achiam, Vedant Misra, Evan Morikawa, Alec Radford, Matthew Knight, Miles Brundage, Mira Murati, Katie Mayer, Peter Welinder, Bob McGrew, Dario Amodei, Sam McCandlish, Ilya Sutskever, and Wojciech Zaremba.
+\newblock Evaluating large language models trained on code, 2021.
+
+\bibitem[cjadams et~al.(2019)cjadams, Borkan, inversion, Sorensen, Dixon, Vasserman, and nithum]{jigsaw-unintended-bias-in-toxicity-classification}
+cjadams, Daniel Borkan, inversion, Jeffrey Sorensen, Lucas Dixon, Lucy Vasserman, and nithum.
+\newblock Jigsaw unintended bias in toxicity classification, 2019.
+\newblock URL \url{https://kaggle.com/competitions/jigsaw-unintended-bias-in-toxicity-classification}.
+
+\bibitem[Cobbe et~al.(2021)Cobbe, Kosaraju, Bavarian, Chen, Jun, Kaiser, Plappert, Tworek, Hilton, Nakano, Hesse, and Schulman]{gsm8k}
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, Christopher Hesse, and John Schulman.
+\newblock Training verifiers to solve math word problems, 2021.
+
+\bibitem[Dettmers et~al.(2023)Dettmers, Pagnoni, Holtzman, and Zettlemoyer]{11dettmers2023qlora}
+Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, and Luke Zettlemoyer.
+\newblock Qlora: Efficient finetuning of quantized llms, 2023.
+
+\bibitem[Gao et~al.(2023)Gao, Tow, Abbasi, Biderman, Black, DiPofi, Foster, Golding, Hsu, Le~Noac'h, Li, McDonell, Muennighoff, Ociepa, Phang, Reynolds, Schoelkopf, Skowron, Sutawika, Tang, Thite, Wang, Wang, and Zou]{47eval-harness}
+Leo Gao, Jonathan Tow, Baber Abbasi, Stella Biderman, Sid Black, Anthony DiPofi, Charles Foster, Laurence Golding, Jeffrey Hsu, Alain Le~Noac'h, Haonan Li, Kyle McDonell, Niklas Muennighoff, Chris Ociepa, Jason Phang, Laria Reynolds, Hailey Schoelkopf, Aviya Skowron, Lintang Sutawika, Eric Tang, Anish Thite, Ben Wang, Kevin Wang, and Andy Zou.
+\newblock A framework for few-shot language model evaluation, 12 2023.
+\newblock URL \url{https://zenodo.org/records/10256836}.
+
+\bibitem[Han and Han(2024)]{65unslothUnslothFixing}
+Daniel Han and Michael Han.
+\newblock {U}nsloth {F}ixing {G}emma bugs --- unsloth.ai.
+\newblock \url{https://unsloth.ai/blog/gemma-bugs}, 2024.
+\newblock [Accessed 15-04-2024].
+
+\bibitem[Hendrycks et~al.(2020)Hendrycks, Burns, Basart, Zou, Mazeika, Song, and Steinhardt]{28hendrycks2020mmlu}
+Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn Song, and Jacob Steinhardt.
+\newblock Measuring massive multitask language understanding, 2020.
+
+\bibitem[Houlsby et~al.(2019)Houlsby, Giurgiu, Jastrzebski, Morrone, de~Laroussilhe, Gesmundo, Attariyan, and Gelly]{13houlsby2019peft}
+Neil Houlsby, Andrei Giurgiu, Stanislaw Jastrzebski, Bruna Morrone, Quentin de~Laroussilhe, Andrea Gesmundo, Mona Attariyan, and Sylvain Gelly.
+\newblock Parameter-efficient transfer learning for nlp, 2019.
+
+\bibitem[Howard and Ruder(2018)]{16howard2018finetuning}
+Jeremy Howard and Sebastian Ruder.
+\newblock Universal language model fine-tuning for text classification, 2018.
+
+\bibitem[Hu et~al.(2021)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen]{1hu2021lora}
+Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu~Wang, and Weizhu Chen.
+\newblock Lora: Low-rank adaptation of large language models, 2021.
+
+\bibitem[Jiang et~al.(2023)Jiang, Sablayrolles, Mensch, Bamford, Chaplot, de~las Casas, Bressand, Lengyel, Lample, Saulnier, Lavaud, Lachaux, Stock, Scao, Lavril, Wang, Lacroix, and Sayed]{5mistral}
+Albert~Q. Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford, Devendra~Singh Chaplot, Diego de~las Casas, Florian Bressand, Gianna Lengyel, Guillaume Lample, Lucile Saulnier, Lélio~Renard Lavaud, Marie-Anne Lachaux, Pierre Stock, Teven~Le Scao, Thibaut Lavril, Thomas Wang, Timothée Lacroix, and William~El Sayed.
+\newblock Mistral 7b, 2023.
+
+\bibitem[Kocmi et~al.(2021)Kocmi, Federmann, Grundkiewicz, Junczys-Dowmunt, Matsushita, and Menezes]{53kocmi2021nmteval}
+Tom Kocmi, Christian Federmann, Roman Grundkiewicz, Marcin Junczys-Dowmunt, Hitokazu Matsushita, and Arul Menezes.
+\newblock To ship or not to ship: An extensive evaluation of automatic metrics for machine translation, 2021.
+
+\bibitem[Kohút and Hradiš(2023)]{9kohut2023finetuning}
+Jan Kohút and Michal Hradiš.
+\newblock Finetuning is a surprisingly effective domain adaptation baseline in handwriting recognition, 2023.
+
+\bibitem[Kwon et~al.(2023)Kwon, Li, Zhuang, Sheng, Zheng, Yu, Gonzalez, Zhang, and Stoica]{41kwon2023efficient}
+Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin Zheng, Cody~Hao Yu, Joseph~E. Gonzalez, Hao Zhang, and Ion Stoica.
+\newblock Efficient memory management for large language model serving with pagedattention.
+\newblock In \emph{Proceedings of the ACM SIGOPS 29th Symposium on Operating Systems Principles}, 2023.
+
+\bibitem[Lester et~al.(2021)Lester, Al-Rfou, and Constant]{26lester2021prompttuning}
+Brian Lester, Rami Al-Rfou, and Noah Constant.
+\newblock The power of scale for parameter-efficient prompt tuning, 2021.
+
+\bibitem[Liang et~al.(2022)Liang, Bommasani, Lee, Tsipras, Soylu, Yasunaga, Zhang, Narayanan, Wu, Kumar, Newman, Yuan, Yan, Zhang, Cosgrove, Manning, Ré, Acosta-Navas, Hudson, Zelikman, Durmus, Ladhak, Rong, Ren, Yao, Wang, Santhanam, Orr, Zheng, Yuksekgonul, Suzgun, Kim, Guha, Chatterji, Khattab, Henderson, Huang, Chi, Xie, Santurkar, Ganguli, Hashimoto, Icard, Zhang, Chaudhary, Wang, Li, Mai, Zhang, and Koreeda]{liang2023helm}
+Percy Liang, Rishi Bommasani, Tony Lee, Dimitris Tsipras, Dilara Soylu, Michihiro Yasunaga, Yian Zhang, Deepak Narayanan, Yuhuai Wu, Ananya Kumar, Benjamin Newman, Binhang Yuan, Bobby Yan, Ce~Zhang, Christian Cosgrove, Christopher~D. Manning, Christopher Ré, Diana Acosta-Navas, Drew~A. Hudson, Eric Zelikman, Esin Durmus, Faisal Ladhak, Frieda Rong, Hongyu Ren, Huaxiu Yao, Jue Wang, Keshav Santhanam, Laurel Orr, Lucia Zheng, Mert Yuksekgonul, Mirac Suzgun, Nathan Kim, Neel Guha, Niladri Chatterji, Omar Khattab, Peter Henderson, Qian Huang, Ryan Chi, Sang~Michael Xie, Shibani Santurkar, Surya Ganguli, Tatsunori Hashimoto, Thomas Icard, Tianyi Zhang, Vishrav Chaudhary, William Wang, Xuechen Li, Yifan Mai, Yuhui Zhang, and Yuta Koreeda.
+\newblock Holistic evaluation of language models.
+\newblock Published in Transactions on Machine Learning Research (TMLR), 2023, 2022.
+
+\bibitem[Liu et~al.(2024)Liu, Wang, Yin, Molchanov, Wang, Cheng, and Chen]{dora}
+Shih-Yang Liu, Chien-Yi Wang, Hongxu Yin, Pavlo Molchanov, Yu-Chiang~Frank Wang, Kwang-Ting Cheng, and Min-Hung Chen.
+\newblock Dora: Weight-decomposed low-rank adaptation, 2024.
+
+\bibitem[Meng et~al.(2024)Meng, Dai, Luo, Yang, Wu, Wang, Wang, Dong, Chen, and Sui]{meng2024periodiclora}
+Xiangdi Meng, Damai Dai, Weiyao Luo, Zhe Yang, Shaoxiang Wu, Xiaochen Wang, Peiyi Wang, Qingxiu Dong, Liang Chen, and Zhifang Sui.
+\newblock Periodiclora: Breaking the low-rank bottleneck in lora optimization, 2024.
+
+\bibitem[Minaee et~al.(2024)Minaee, Mikolov, Nikzad, Chenaghlu, Socher, Amatriain, and Gao]{67minaee2024survey}
+Shervin Minaee, Tomas Mikolov, Narjes Nikzad, Meysam Chenaghlu, Richard Socher, Xavier Amatriain, and Jianfeng Gao.
+\newblock Large language models: A survey, 2024.
+
+\bibitem[Molino et~al.(2019)Molino, Dudin, and Miryala]{62Molino2019}
+Piero Molino, Yaroslav Dudin, and Sai~Sumanth Miryala.
+\newblock Ludwig: a type-based declarative deep learning toolbox, 2019.
+
+\bibitem[Nori et~al.(2023)Nori, Lee, Zhang, Carignan, Edgar, Fusi, King, Larson, Li, Liu, Luo, McKinney, Ness, Poon, Qin, Usuyama, White, and Horvitz]{33nori2023generalistvsfinetuned}
+Harsha Nori, Yin~Tat Lee, Sheng Zhang, Dean Carignan, Richard Edgar, Nicolo Fusi, Nicholas King, Jonathan Larson, Yuanzhi Li, Weishung Liu, Renqian Luo, Scott~Mayer McKinney, Robert~Osazuwa Ness, Hoifung Poon, Tao Qin, Naoto Usuyama, Chris White, and Eric Horvitz.
+\newblock Can generalist foundation models outcompete special-purpose tuning? case study in medicine, 2023.
+
+\bibitem[OpenAI(2023)]{35gpt4}
+OpenAI.
+\newblock Gpt-4 technical report, 2023.
+
+\bibitem[OpenAI(2024)]{githubGitHubOpenaitiktoken}
+OpenAI.
+\newblock {G}it{H}ub - openai/tiktoken: tiktoken is a fast {B}{P}{E} tokeniser for use with {O}pen{A}{I}'s models. --- github.com.
+\newblock \url{https://github.com/openai/tiktoken}, 2024.
+\newblock [Accessed 15-04-2024].
+
+\bibitem[Ouyang et~al.(2022)Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin, Zhang, Agarwal, Slama, Ray, Schulman, Hilton, Kelton, Miller, Simens, Askell, Welinder, Christiano, Leike, and Lowe]{2ouyang2022training}
+Long Ouyang, Jeff Wu, Xu~Jiang, Diogo Almeida, Carroll~L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, and Ryan Lowe.
+\newblock Training language models to follow instructions with human feedback, 2022.
+
+\bibitem[Peters et~al.(2019)Peters, Ruder, and Smith]{17peters2019finetuning}
+Matthew~E. Peters, Sebastian Ruder, and Noah~A. Smith.
+\newblock To tune or not to tune? adapting pretrained representations to diverse tasks, 2019.
+
+\bibitem[Pfeiffer et~al.(2020)Pfeiffer, Kamath, Rücklé, Cho, and Gurevych]{23pfeiffer2020adapterfusion}
+Jonas Pfeiffer, Aishwarya Kamath, Andreas Rücklé, Kyunghyun Cho, and Iryna Gurevych.
+\newblock Adapterfusion: Non-destructive task composition for transfer learning.
+\newblock Proceedings of EACL 2021, 2020.
+
+\bibitem[Razdaibiedina et~al.(2023)Razdaibiedina, Mao, Hou, Khabsa, Lewis, and Almahairi]{Razdaibiedina2023progressiveprompts}
+Anastasia Razdaibiedina, Yuning Mao, Rui Hou, Madian Khabsa, Mike Lewis, and Amjad Almahairi.
+\newblock Progressive prompts: Continual learning for language models, 2023.
+
+\bibitem[Rebuffi et~al.(2017)Rebuffi, Bilen, and Vedaldi]{22rebuffi2017residualadapters}
+Sylvestre-Alvise Rebuffi, Hakan Bilen, and Andrea Vedaldi.
+\newblock Learning multiple visual domains with residual adapters, 2017.
+
+\bibitem[Rücklé et~al.(2020)Rücklé, Geigle, Glockner, Beck, Pfeiffer, Reimers, and Gurevych]{24ruckle2020adapterdrop}
+Andreas Rücklé, Gregor Geigle, Max Glockner, Tilman Beck, Jonas Pfeiffer, Nils Reimers, and Iryna Gurevych.
+\newblock Adapterdrop: On the efficiency of adapters in transformers, 2020.
+
+\bibitem[Song et~al.(2022)Song, Wang, Mondal, and Sahoo]{37song2022evalsurvey}
+Yisheng Song, Ting Wang, Subrota~K Mondal, and Jyoti~Prakash Sahoo.
+\newblock A comprehensive survey of few-shot learning: Evolution, applications, challenges, and opportunities, 2022.
+
+\bibitem[Team(2023)]{32gemini}
+Gemini Team.
+\newblock Gemini: A family of highly capable multimodal models, 2023.
+
+\bibitem[Team(2024)]{3gemma}
+Gemma Team.
+\newblock Gemma: Open models based on gemini research and technology, 2024.
+
+\bibitem[Touvron et~al.(2023)Touvron, Lavril, Izacard, Martinet, Lachaux, Lacroix, Rozière, Goyal, Hambro, Azhar, Rodriguez, Joulin, Grave, and Lample]{4llama}
+Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, Aurelien Rodriguez, Armand Joulin, Edouard Grave, and Guillaume Lample.
+\newblock Llama: Open and efficient foundation language models, 2023.
+
+\bibitem[Tunstall et~al.(2023)Tunstall, Beeching, Lambert, Rajani, Rasul, Belkada, Huang, von Werra, Fourrier, Habib, Sarrazin, Sanseviero, Rush, and Wolf]{66zephyr}
+Lewis Tunstall, Edward Beeching, Nathan Lambert, Nazneen Rajani, Kashif Rasul, Younes Belkada, Shengyi Huang, Leandro von Werra, Clémentine Fourrier, Nathan Habib, Nathan Sarrazin, Omar Sanseviero, Alexander~M. Rush, and Thomas Wolf.
+\newblock Zephyr: Direct distillation of lm alignment, 2023.
+
+\bibitem[Wang et~al.(2018)Wang, Singh, Michael, Hill, Levy, and Bowman]{58wang2018glue}
+Alex Wang, Amanpreet Singh, Julian Michael, Felix Hill, Omer Levy, and Samuel~R. Bowman.
+\newblock Glue: A multi-task benchmark and analysis platform for natural language understanding, 2018.
+
+\bibitem[Wang et~al.(2022{\natexlab{a}})Wang, Wei, Schuurmans, Le, Chi, Narang, Chowdhery, and Zhou]{48wangselfconsistency}
+Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed~Chi, Sharan Narang, Aakanksha Chowdhery, and Denny Zhou.
+\newblock Self-consistency improves chain of thought reasoning in language models, 2022{\natexlab{a}}.
+
+\bibitem[Wang et~al.(2022{\natexlab{b}})Wang, Kordi, Mishra, Liu, Smith, Khashabi, and Hajishirzi]{50wang2022selfinstruct}
+Yizhong Wang, Yeganeh Kordi, Swaroop Mishra, Alisa Liu, Noah~A. Smith, Daniel Khashabi, and Hannaneh Hajishirzi.
+\newblock Self-instruct: Aligning language models with self-generated instructions, 2022{\natexlab{b}}.
+
+\bibitem[Wang et~al.(2021)Wang, Zhang, Lee, Zhang, Sun, Ren, Su, Perot, Dy, and Pfister]{wang2021learningtoprompt}
+Zifeng Wang, Zizhao Zhang, Chen-Yu Lee, Han Zhang, Ruoxi Sun, Xiaoqi Ren, Guolong Su, Vincent Perot, Jennifer Dy, and Tomas Pfister.
+\newblock Learning to prompt for continual learning, 2021.
+
+\bibitem[Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Ichter, Xia, Chi, Le, and Zhou]{36wei2022cot}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed~Chi, Quoc Le, and Denny Zhou.
+\newblock Chain-of-thought prompting elicits reasoning in large language models, 2022.
+
+\bibitem[Zellers et~al.(2019)Zellers, Holtzman, Bisk, Farhadi, and Choi]{29zellers2019zellers}
+Rowan Zellers, Ari Holtzman, Yonatan Bisk, Ali Farhadi, and Yejin Choi.
+\newblock Hellaswag: Can a machine really finish your sentence?, 2019.
+
+\bibitem[Zheng et~al.(2024)Zheng, Hong, Wang, Su, Liang, and Wu]{10zheng2024}
+Jiawei Zheng, Hanghai Hong, Xiaoli Wang, Jingsong Su, Yonggui Liang, and Shikai Wu.
+\newblock Fine-tuning large language models for domain-specific machine translation, 2024.
+
+\bibitem[Zhong et~al.(2017)Zhong, Xiong, and Socher]{zhongSeq2SQL2017}
+Victor Zhong, Caiming Xiong, and Richard Socher.
+\newblock Seq2sql: Generating structured queries from natural language using reinforcement learning.
+\newblock \emph{CoRR}, abs/1709.00103, 2017.
+
+\end{thebibliography}

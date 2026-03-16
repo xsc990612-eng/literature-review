@@ -1,0 +1,168 @@
+
+ \begin{table*}[t]
+\small
+\begin{center}
+%\begin{tabular}{|l | p{1.1cm} | p{1.4cm} | p{1.4cm} | p{1.4cm} | p{1.4cm} | p{1.5cm} | p{1.6cm} |}
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+ & \multicolumn{2}{c|}{\bf Average \# of} & \multicolumn{3}{c|}{\bf Total Phrase Count} & \bf Vocabulary \\
+\bf Corpus & \bf Words & \bf Characters & \bf Positive & \bf Negative & \bf Neutral & \multicolumn{1}{c|}{\bf Size}\\
+\hline
+Twitter - Training &25.4  &        120.0        &       5,895  &  3,131 &  471 &  20,012     \\
+Twitter - Dev & 25.5 & 120.0 & 648 & 430 & 57 & 4,426 \\
+Twitter - Test  & 25.4 & 121.2 & 2,734 & 1,541 & 160 & 11,736 \\
+SMS - Test & 24.5 & 95.6 & 1,071 & 1,104 & 159 & 3,562 \\
+\hline
+\end{tabular}
+\caption{Statistics for Subtask A.}
+\label{T:CorpusStatsA}
+\end{center}
+\end{table*}
+
+In the following sections we describe the collection and annotation of the Twitter and SMS datasets.
+
+ \subsection{Data Collection}
+
+Twitter is the most common micro-blogging site on the Web,
+%Tweets cover several topics and were filtered from a larger dataset to include topics where subjective words tended to occur.
+and we used it to gather tweets that express sentiment about popular topics.
+We first extracted named entities using a Twitter-tuned NER system \cite{ner}
+from millions of tweets, which we collected over a one-year period spanning from January 2012 to January 2013;
+we used the public streaming Twitter API to download tweets.
+%\footnote{\url{https://dev.twitter.com/docs/streaming-apis}}
+
+We then identified popular topics as those named entities that are frequently mentioned in association with a specific date \cite{ritter12}.
+Given this set of automatically identified topics, we gathered tweets from the same time period which mentioned the named entities.
+The testing messages had different topics from training and spanned later periods.
+
+To identify messages that express sentiment towards these topics, we filtered the tweets using SentiWordNet \cite{swn}.
+We removed messages that contained no sentiment-bearing words, keeping only those with at least one word with positive or negative sentiment score
+that is greater than 0.3 in SentiWordNet for at least one sense of the words.
+Without filtering, we found class imbalance to be too high.\footnote{Filtering based on an existing lexicon does bias the dataset to some degree; however, note that the text still contains sentiment expressions outside those in the lexicon.}
+
+ \begin{table}[h]
+\small
+\begin{center}
+%\begin{tabular}{|l |l |l | p{1.3cm} |}
+\begin{tabular}{|l |r |r | r |}
+\hline
+\bf Corpus & \bf Positive & \bf Negative & \bf Objective\\
+& & & \bf / Neutral\\
+\hline
+Twitter - Training  & 3,662 & 1,466 &  4,600  \\
+Twitter - Dev  & 575 & 340 & 739 \\
+Twitter - Test  & 1,573 & 601 & 1,640   \\
+SMS - Test  & 492 & 394 & 1,208  \\
+\hline
+\end{tabular}
+\caption{Statistics for Subtask B.}
+\label{T:CorpusStatsB}
+\end{center}
+\end{table}
+
+Twitter messages are rich in social media features, including out-of-vocabulary (OOV) words, emoticons, and acronyms;
+see Table~\ref{T:Sentences}.
+A large portion of the OOV words are hashtags (e.g., \texttt{\#sheenroast})
+and mentions (e.g., \texttt{@tash\_jade}).
+
+We annotated the same Twitter messages with annotations for subtask A and subtask B.
+However, the final training and testing datasets overlap only partially between the two subtasks
+since we had to throw away messages with low inter-annotator agreement, and this differed between the subtasks.
+For testing, we also annotated SMS messages, taken from the NUS SMS corpus\footnote{\texttt{http://wing.comp.nus.edu.sg/SMSCorpus/}} \cite{SMScorpus}.
+Tables~\ref{T:CorpusStatsA} and ~\ref{T:CorpusStatsB} show statistics about the corpora we created for subtasks A and B.
+
+
+
+ \subsection{Annotation Guidelines}
+
+The instructions provided to the annotators, along with an example, are shown in Figure~\ref{F:instructions}.
+We provided several additional examples to the annotators, shown in Table~\ref{T:annotation-examples}.
+
+ \begin{table}[t]
+\small
+\begin{center}
+\begin{tabular}{| l | l | l | l | l |}
+\hline
+& \multicolumn{3}{|c|}{\bf A} & \multicolumn{1}{|c|}{\bf B} \\
+\hline
+& \bf Lower & \bf Avg. & \bf Upper & \bf Avg. \\
+\hline
+Twitter - Train & 64.7 & 82.4 & 90.8 & 82.7\\
+Twitter - Dev & 51.2 & 74.7 & 87.8 & 78.4\\
+Twitter - Test & 68.8 & 83.6 & 90.9 & 76.9\\
+SMS - Test & 66.5 & 88.5 & 81.2 & 77.6\\
+\hline
+\end{tabular}
+\caption{Bounds for datasets in subtasks A and B.}
+\label{T:bounds}
+\end{center}
+\end{table}
+
+ \begin{table*}[t]
+ \centering
+\small
+\begin{tabular}{|p{16cm}|}
+\hline
+ Authorities are \textit{\color{red}only too aware} that Kashgar is 4,000 kilometres (2,500 miles) from Beijing but \textit{only} a tenth of the distance from the  Pakistani border, and are \textit{\color{red}desperate} to \textit{\color{red} ensure instability or militancy} does not leak over the frontiers. \\
+ \hline
+Taiwan-made products \textit{\color{green} stood a good chance} of becoming \textit{\color{green} even more competitive thanks to} wider access to overseas markets and lower costs for material imports, he said. \\
+\hline
+"March \textit{\color{blue}appears} to be a \textit{\color{blue}more reasonable} estimate while earlier admission \textit{\color{blue}cannot be entirely ruled out}," according to Chen, also Taiwan's chief WTO negotiator. \\
+\hline
+friday evening plans were great, but saturday's plans \textit{\color{red}didnt go as expected} -- i went dancing \& it was an \textit{\color{blue}ok} club, but \textit{\color{red}terribly crowded :-(} \\
+\hline
+WHY THE \textit{\color{red}HELL} DO YOU GUYS ALL HAVE MRS. KENNEDY! SHES A FUCKING DOUCHE \\
+\hline
+AT\&T was \textit{\color{blue}okay} but whenever they do something \textit{\color{green}nice} in the name of customer service it seems like a favor, while T-Mobile makes that a \textit{\color{green}normal everyday thin} \\
+\hline
+obama should be \textit{\color{red}impeached} on \textit{\color{red}TREASON} charges. Our Nuclear arsenal was TOP Secret. Till HE told our enemies what we had. \textit{\color{red}\#Coward \#Traitor} \\
+\hline
+My graduation speech: "I'd like to \textit{\color{green}thanks} Google, Wikipedia and my computer! \textit{\color{green}:D} \#iThingteens \\
+\hline
+\end{tabular}
+\caption{List of example sentences with annotations that were provided to the annotators. All subjective phrases are italicized. Positive phrases are in green, negative phrases are in red, and neutral phrases are in blue.}
+\label{T:annotation-examples}
+\end{table*}
+
+In addition, we filtered spammers by considering the following kinds of annotations invalid:
+
+\begin{itemize}[noitemsep]
+\item containing overlapping subjective phrases;
+\item subjective but without a subjective phrase;
+\item marking every single word as subjective;
+\item not having the overall sentiment marked.
+\end{itemize}
+
+\subsection{Annotation Process}
+
+Our datasets were annotated for sentiment on Mechanical Turk. Each sentence was annotated by five Mechanical Turk workers (Turkers). In order to qualify for the hits, the Turker had to have an approval rate greater than 95\% and have completed 50 approved hits. Each Turker was paid three cents per hit. The Turker had to mark all the subjective words/phrases in the sentence by indicating their start and end positions and say whether each subjective word/phrase was positive, negative, or neutral (subtask A). They also had to indicate the overall polarity of the sentence (subtask B).
+
+
+Figure~\ref{F:instructions} shows the instructions and an example provided to the Turkers.
+The first five rows of Table~\ref{T:Annotation} show an example of the subjective words/phrases
+marked by each of the workers.
+% as positive, negative or neutral.
+
+For subtask A, we combined the annotations of each of the workers using intersection as indicated in the last row of Table~\ref{T:Annotation}. A word had to appear in 2/3 of the annotations in order to be considered subjective.  Similarly, a word had to be labeled with a particular polarity (positive, negative, or neutral) 2/3 of the time in order to receive that label.
+
+We also experimented with combining annotations by computing the union of the sentences, and taking the sentence of the worker who annotated the most hits, but we found that these methods were not as accurate. Table~\ref{T:bounds} shows the lower, average, and upper bounds for all the hits by computing the bounds for each hit and averaging them together. This gives a good indication about how well we can expect the systems to perform. For example, even if we used the best annotator each time, it would still not be possible to get perfect accuracy.
+
+For subtask B, the polarity of the entire sentence was determined based on the majority of the labels. If there was a tie, the sentence was discarded. In order to reduce the number of sentences lost, we combined the objective and the neutral labels, which Turkers tended to mix up. Table~\ref{T:bounds} shows the average bound for subtask B by computing the bounds for each hit and averaging them together. Since the polarity is chosen based on the majority, the upper bound is 100\%.
+
+ \begin{table*}[t]
+\centering
+\small
+\begin{tabular}{|l|l|l|}
+\hline
+Worker 1 & \textbf{\textit{I would love}} to watch Vampire Diaries \textbf{\textit{:)}} and some Heroes! \textbf{\textit{Great combination}} & 9/13 \\
+Worker 2 & I would love to watch Vampire Diaries :) and some \textbf{\textit{Heroes!}} \textbf{\textit{Great}} combination & 11/13 \\
+Worker 3 & I \textbf{\textit{would love}} to watch Vampire Diaries \textbf{\textit{:)}} and some Heroes! \textbf{\textit{Great}} combination & 10/13 \\
+Worker 4 & I would \textbf{\textit{love}} to watch Vampire Diaries :) and some Heroes! \textbf{\textit{Great}} combination & 13/13 \\
+Worker 5 & I would love to watch Vampire Diaries :) and some Heroes! \textbf{\textit{Great}} combination & 11/13\\
+\hline
+Intersection & I would \textbf{\textit{love}} to watch Vampire Diaries :) and some Heroes! \textbf{\textit{Great}} combination & \\
+\hline
+\end{tabular}
+\caption{Example of a sentence annotated for subjectivity on Mechanical Turk. Words and phrases that were marked as subjective are italicized and highlighted in bold. The first five rows are annotations provided by Turkers, and the final row shows their intersection. The final column shows the accuracy for each annotation compared to the intersection.}
+\label{T:Annotation}
+\end{table*}

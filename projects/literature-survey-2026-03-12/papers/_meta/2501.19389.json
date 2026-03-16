@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2501.19389",
+  "title": "Federated Sketching LoRA: A Flexible Framework for Heterogeneous Collaborative Fine-Tuning of LLMs",
+  "authors": ["Wenzhi Fang", "Dong-Jun Han", "Liangqi Yuan", "Seyyedali Hosseinalipour", "Christopher G. Brinton"],
+  "abstract": "Fine-tuning large language models (LLMs) on resource-constrained clients remains a challenging problem. Recent works have fused low-rank adaptation (LoRA) techniques with federated fine-tuning.",
+  "published": "2025-01-31",
+  "categories": ["cs.LG"],
+  "score": 4,
+  "source_term": "QLoRA 4-bit quantization fine-tuning",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "qlora"
+}

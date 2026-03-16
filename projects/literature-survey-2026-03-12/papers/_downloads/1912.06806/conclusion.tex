@@ -1,0 +1,116 @@
+We have described a new task that entered SemEval-2013: task 2 on Sentiment Analysis on Twitter.
+The task has attracted a very high number of participants: 149 submissions from 44 teams.
+%Thus, we think it was a success.
+
+We believe that the datasets that we have created as part of the task and which we have
+released to the community\footnote{\texttt{http://www.cs.york.ac.uk/semeval-2013/task2/}} under a
+Creative Commons Attribution 3.0 Unported License,\footnote{\texttt{http://creativecommons.org/licenses/by/3.0/}}
+will be found useful by researchers beyond SemEval.
+
+\section*{Acknowledgments}
+
+The authors would like to thank Kathleen McKeown for her insight in creating the Amazon Mechanical Turk annotation task.
+
+%We would like to thank X for providing funding for annotating the SemEval Task 2 data with Amazon Mechanical Turk.
+%\todo{Zori: Theresa please feel free to put the correct reference to the funding source.}
+
+Funding for the Amazon Mechanical Turk annotations was provided by the JHU Human Language Technology Center of Excellence and by
+ the Office of the Director of National Intelligence (ODNI), Intelligence Advanced Research Projects Activity (IARPA), through the U.S. Army Research Lab. All statements of fact, opinion or conclusions contained herein are those of the authors and should not be construed as representing the official views or policies of IARPA, the ODNI or the U.S. Government.
+
+%\begin{landscape}
+%\begin{table}[b]
+%%    \centering
+%    \begin{tiny}
+%    \begin{tabular}{lccclcllll}
+%    \bf Run & \bf Const- & \bf Unconst- & \bf Use& \bf Approach & \bf Super- & \bf Features & \bf Tools & \bf Pre-/post-processing & \bf Other Data\\
+%    & \bf rained & \bf rained & \bf Neutral? & \bf & \bf vised? &  & & \bf & \\
+%    \hline
+%
+%    NRC-Canada & 88.93 &  & yes & SVM & yes & n-grams, word clusters, punctuation, & LIBSVM &  & lexicons: NRC Hashtag Sentiment, NRC Emotion,\\
+%    & &  & & & & negation, lexicons & & & Sentiment 140, Bing Liu's, MPQA\\
+%
+%    AVAYA &  & 87.38 & yes & linear & yes & words, dependency relations, POS tags, & UIMA, ClearTK, & normalizing @-mentions and ULRs & MPQA lexicon, hand-crafted negation and emoticon\\
+%    &  & & & classifier & & capitalization, repeated characters & LibLinear & &  polarity lexicons, data from Task B\\
+%
+%    AVAYA & 86.98 & & yes & linear & yes & words, dependency relations, POS tags, & UIMA, ClearTK, & normalizing @-mentions and ULRs & MPQA lexicon, hand-crafted negation and emoticon\\
+%    &  & & & classifier & & capitalization, repeated characters & LibLinear & &  polarity lexicons\\
+%
+%    BOUNCE & 86.79 &  & yes & MaxEnt & yes & sentiment and sentiment+POS sequences, & preprocess hashtags & CMU's ARK Tagger & AFINN, SentiWordNet, Emotion words,\\
+%    &  &  & & & & words, stems, lexicons, length & & & CMU clusters extracted from 50M tweets\\
+%
+%    LVIC-LIMSI & 85.70 &  & yes &  & yes & words, syntactic parse, & TreeSVM, SVMLight, Weka, & smiley extraction, lemmatization, & N/A\\
+%    & &  & &  & & negation, polarity markers & Stanford Core NLP & extended vowels elimination & \\
+%
+%    FBM & 85.50 &  & yes & ensemble & semi & negation, quantification & UIMA, OpenNLP, & N/A & various polarity lexicons\\
+%    & &  & & SVM+rules+CRF & & lexicon & LibSVM, Weka & & \\
+%
+%    GU-MLT-LT& 85.19 &  & yes & SVM-like & yes & words, Twitter word clusters, & scikit-learn, NLTK & tokenization, normalization & Twitter word clusters, SentiWordNet\\
+%    &  &  & & hinge loss & & stems, SentiWordNet scores & & & \\
+%
+%    UNITOR & 84.60 &  & yes & SVM & yes & Kernels: bag of words, semantic, & Chaos Parser, Word Spaces, & lowercasing, normalization of users,& co-occurrence word space\\
+%    & &  & & & & smoothed partial tree & SVM-Light-TK & links, hashtags, emoticons & built on a Tweet corpus\\
+%
+%    USNA & 81.31 &  & yes & ensemble& yes & tokens & Stanford JavaNLP, MaxEnt & some normalization & Opinion Lexicon\\
+%    \\
+%
+%    ECNUCS &  & 80.15 & yes & SVM & yes & punctuation, uppercase words, emoticons, & NLTK, Stanford parser, & slang normalization & SentiWordNet, MPQA, aclImdb,\\
+%    &  & &  &  &  & url, pos tags, lexicons & POS tagger & & Large Movie Review Dataset v1.0 \\
+%
+%    Serendio & 80.04 &  & yes &  & yes & sentiment words, dimensional words, & NLTK, Tweeter NLP & exaggerated word shortening, & SentiWordNet, Serendio taxonomy\\
+%    & &  &  &  &  & negation, emoticons, hashtag sentiment & & pronoun resolution & \\
+%
+%    ECNUCS &  & 79.48 & yes & SVM & yes & punctuation, uppercase words, emoticons, & NLTK, Stanford parser, & slang normalization & SentiWordNet, MPQA,\\
+%    &  & &  &  &  & url, pos tags, lexicons & POS tagger & & \\
+%
+%    TJP & 78.16 &  & yes & Naive Bayes & yes & emoticons & N/A & stopword, URL, username removal, & N/A\\
+%     &  &  &  & & &  & & \#tag and emoticon normalization & \\
+%
+%    $^\circ$columbia-nlp & 74.94 &  & yes & SVM & yes & stylistic features, DAL scores, & chunker and tagger & normalizing links, emoticons, & Dictionary of Affect and Language (DAL), Wiktionary, \\
+%    &  &  &  &  &  & POS, chunks &  & contractions, word lengthening & Emoticon and Acronym Dictionary, WordNet\\
+%
+%    teragram &  & 74.89 & yes & manual rules & yes & rules for positive, negative, & adapted version & N/A & SAS Domain Independent \\
+%    &  & &  & &  & and neutral phrases & of an existing system & N/A & Sentiment Taxonomy for English\\
+%
+%    sielers & 74.41 &  & yes & Naive Bayes & yes & prior polarity, POS tags, & Weka, CMU POS Tagger, & tokenization, POS tagging, normalization: & SentiWordNet, own emoticon lexicon, \\
+%    &  &  &  &  &  & emoticons, interjections & Snowball English Stemmer &  lowercase, repeated chars, \#tags, Unicode & interjection lexicon \\
+%
+%    KLUE & 73.74 &  & yes & MaxEnt & yes & words, lexicon, emoticons, & scikit-learn & tokenization, stemming, replacing user-IDs & AFINN-111, lists of emoticons\\
+%    & &  & &  &  & slang, abbreviations, length  & & and URLs, simple treatment of negation & and Internet slang abbreviations from Wikipedia\\
+%
+%    senti.ue-en &  & 71.38 & yes & Naive Bayes & yes & words, negations, & NLTK & tokenization, negation detection, & SentiWordNet, WordNet, AFFIN, Bing Liu's lexicon, \\
+%    &  &  &  & & & sentiment lexicon & & lemmatization & Sanders-Twitter Sentiment Corpus, IMDB sentiment corpus\\
+%
+%    OPTWIMA & 69.17 &  & yes & SVM & yes & unigrams, bigrams, & Weka & normalized sentiment bearing words, & General Inquirer, MicroWordNet Opinion,\\
+%    & &  &  &  &  & sentiment dictionaries & & emoticons and modifiers & LIWC, SentiStrength\\
+%
+%    swatcs & 67.19 &  & no & Naive Bayes & yes & unigrams and bigrams (word + POS), & CMU Tweet-based POS tagger, & URL cleaning, POS tagging & MPQA Sentiment lexicon\\
+%    &  &  &  & &  & lexicon & NLTK &  & \\
+%
+%    Kea & 63.94 &  & yes &  & yes & words, POS, sentiment lexicons, & Weka & remove noisy punctuation, & sentiment lexicons\\
+%    &  &  &  &  &  & syntactic dependencies & & normalize URLs & \\
+%
+%    swatcs & 63.89 &  & no & Naive Bayes & yes & unigrams and bigrams (word + POS), & CMU Tweet-based POS tagger, & URL cleaning, POS tagging & MPQA, 50,000 Tweets (25k positive, 25k negative)\\
+%    &  &  &  & &  & lexicon & NLTK &  & tagged for emoticon presence\\
+%
+%    senti.ue-en &  & 62.79 & yes & Naive Bayes & yes & words, negations, & NLTK & tokenization, negation detection, & SentiWordNet, WordNet\\
+%    &  &  &  & & & sentiment lexicon & & lemmatization & \\
+%
+%    uottawa & 60.20 &  & yes & Naive Bayes & yes & words, sentiment lexicons & Weka & stopword removal & SentiWordNet, WordNet\\
+%    \\
+%
+%    IITB-Sent. & 54.80 &  & yes &  & yes & sentiment lexicons, & Stanford POS tagger, parser, & remove noise, extract stem, & Bing Liu's lexicon\\
+%    &  &  &  &  &  & discourse relations & Lovins Stemmer & POS-tags, emoticons & Bing Liu's lexicon\\
+%
+%    SenselyticTeam & 53.88 &  & no & rule-based & no & sentiment phrases, antiwords &  & word correction & lexicons\\
+%    &  &  &  &  &  & &  & using regular expressions & \\
+%
+%    OPTWIMA &  & 36.91 & yes & SVM & yes & unigrams, bigrams, emoticons, & Weka & normalized slang, emoticons,  & MySpace comments corpus\\
+%    &  &  &  & &  & slang, punctuation, lexicons &  & exclamation and question marks  & \\
+%
+%    SU-sentilab &  & 0.3473 & no & MaxEnt & yes & words, lexicons & Weka & tokenization, punctuation handling & SentiWordNet, SenticNet\\
+%    \end{tabular}
+%    \end{tiny}
+%    \caption{\label{tab:TaskATwitterFull}Detailed results for Task A on the Twitter dataset.
+%                The $^\circ$ indicates a team that includes a task coorganizer.}
+%  \end{table}
+%\end{landscape}

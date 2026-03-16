@@ -1,0 +1,13 @@
+\section{Related Work}
+
+\paragraph{Reasoning Models}
+While traditional LLMs perform well on general tasks, achieving breakthroughs in complex logical reasoning has remained a significant challenge. This bottleneck has recently been addressed by a new class of models named reasoning models designed for long CoT generation.
+Pioneered by OpenAI-o1 \citep{openaio1}, DeepSeek-R1 \citep{deepseekr1} leverages Reinforcement Learning with Verifiable Rewards (RLVR) to unlock the model's latent abilities for long CoT generation and high-level reasoning.
+These breakthroughs catalyze a subsequent wave of increasingly powerful reasoning models from numerous research labs, including Qwen3 \citep{qwen3}, Gemini-2.5 \citep{gemini2.5}, and GPT-5 \citep{gpt5}. Researchers have employed advanced training strategies to develop increasingly powerful models that mark new milestones.
+However, the long-CoT reasoning paradigm introduces significant deployment challenges. Generating lengthy sequences inflates the KV cache, leading to severe memory and computational bottlenecks. This problem is further exacerbated by the models' tendency to overthink \citep{overthinking}. While numerous approaches have been proposed to develop more efficient reasoning models \citep{overthinking1, speculativecot, jiang2025think}, they often focus on shortening the CoT, which risks constraining the model's reasoning capability. Developing more effective methods remains an open challenge.
+
+
+
+\paragraph{KV Cache Compression}
+KV cache compression is a widely used technique for improving the efficiency of LLM inference by retaining essential contextual information under limited memory budgets. Existing methods typically exploit attention patterns to identify and evict less important tokens, or adopt more explicit objectives that approximate attention output similarity \citep{ada}.
+Despite their effectiveness in long-input scenarios, these eviction-based methods suffer from irreversible information loss and often incur non-trivial computational overhead, making them less suitable for long-output generation. To address this, more recent approaches construct compact representations instead of directly discarding tokens, for example through semantic chunking \citep{chunkkv} or cross-layer merging \citep{minicache}. Other methods periodically refresh cached representations to mitigate permanent information loss \citep{refreshkv}. While promising, these techniques typically introduce additional computation or architectural complexity. In contrast, our work focuses on a fundamentally lightweight KV cache compression method specifically tailored to the long-output setting of reasoning models.

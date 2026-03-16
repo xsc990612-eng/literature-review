@@ -1,0 +1,103 @@
+\begin{thebibliography}{20}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Aghajanyan et~al.(2020)Aghajanyan, Zettlemoyer, and Gupta}]{aghajanyan2020intrinsic}
+Armen Aghajanyan, Luke Zettlemoyer, and Sonal Gupta. 2020.
+\newblock Intrinsic dimensionality explains the effectiveness of language model fine-tuning.
+\newblock \emph{arXiv preprint arXiv:2012.13255}.
+
+\bibitem[{Chung et~al.(2022)Chung, Hou, Longpre, Zoph, Tay, Fedus, Li, Wang, Dehghani, Brahma et~al.}]{chung2022scaling}
+Hyung~Won Chung, Le~Hou, Shayne Longpre, Barret Zoph, Yi~Tay, William Fedus, Eric Li, Xuezhi Wang, Mostafa Dehghani, Siddhartha Brahma, et~al. 2022.
+\newblock Scaling instruction-finetuned language models.
+\newblock \emph{arXiv preprint arXiv:2210.11416}.
+
+\bibitem[{Cobbe et~al.(2021)Cobbe, Kosaraju, Bavarian, Chen, Jun, Kaiser, Plappert, Tworek, Hilton, Nakano et~al.}]{cobbe2021training}
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, et~al. 2021.
+\newblock Training verifiers to solve math word problems.
+\newblock \emph{arXiv preprint arXiv:2110.14168}.
+
+\bibitem[{Dettmers et~al.(2023)Dettmers, Pagnoni, Holtzman, and Zettlemoyer}]{dettmers2023qlora}
+Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, and Luke Zettlemoyer. 2023.
+\newblock Qlora: Efficient finetuning of quantized llms.
+\newblock \emph{arXiv preprint arXiv:2305.14314}.
+
+\bibitem[{Ding et~al.(2023)Ding, Qin, Yang, Wei, Yang, Su, Hu, Chen, Chan, Chen et~al.}]{ding2023parameter}
+Ning Ding, Yujia Qin, Guang Yang, Fuchao Wei, Zonghan Yang, Yusheng Su, Shengding Hu, Yulin Chen, Chi-Min Chan, Weize Chen, et~al. 2023.
+\newblock Parameter-efficient fine-tuning of large-scale pre-trained language models.
+\newblock \emph{Nature Machine Intelligence}, 5(3):220--235.
+
+\bibitem[{Edalati et~al.(2022)Edalati, Tahaei, Kobyzev, Nia, Clark, and Rezagholizadeh}]{edalati2022krona}
+Ali Edalati, Marzieh Tahaei, Ivan Kobyzev, Vahid~Partovi Nia, James~J Clark, and Mehdi Rezagholizadeh. 2022.
+\newblock Krona: Parameter efficient tuning with kronecker adapter.
+\newblock \emph{arXiv preprint arXiv:2212.10650}.
+
+\bibitem[{He et~al.(2021)He, Zhou, Ma, Berg-Kirkpatrick, and Neubig}]{he2021towards}
+Junxian He, Chunting Zhou, Xuezhe Ma, Taylor Berg-Kirkpatrick, and Graham Neubig. 2021.
+\newblock Towards a unified view of parameter-efficient transfer learning.
+\newblock \emph{arXiv preprint arXiv:2110.04366}.
+
+\bibitem[{Hendrycks et~al.(2020)Hendrycks, Burns, Basart, Zou, Mazeika, Song, and Steinhardt}]{hendrycks2020measuring}
+Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn Song, and Jacob Steinhardt. 2020.
+\newblock Measuring massive multitask language understanding.
+\newblock \emph{arXiv preprint arXiv:2009.03300}.
+
+\bibitem[{Houlsby et~al.(2019)Houlsby, Giurgiu, Jastrzebski, Morrone, De~Laroussilhe, Gesmundo, Attariyan, and Gelly}]{houlsby2019parameter}
+Neil Houlsby, Andrei Giurgiu, Stanislaw Jastrzebski, Bruna Morrone, Quentin De~Laroussilhe, Andrea Gesmundo, Mona Attariyan, and Sylvain Gelly. 2019.
+\newblock Parameter-efficient transfer learning for nlp.
+\newblock In \emph{International Conference on Machine Learning}, pages 2790--2799. PMLR.
+
+\bibitem[{Hu et~al.(2021)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}]{hu2021lora}
+Edward~J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu~Wang, and Weizhu Chen. 2021.
+\newblock Lora: Low-rank adaptation of large language models.
+\newblock \emph{arXiv preprint arXiv:2106.09685}.
+
+\bibitem[{Joshi et~al.(2017)Joshi, Choi, Weld, and Zettlemoyer}]{joshi2017triviaqa}
+Mandar Joshi, Eunsol Choi, Daniel~S Weld, and Luke Zettlemoyer. 2017.
+\newblock Triviaqa: A large scale distantly supervised challenge dataset for reading comprehension.
+\newblock \emph{arXiv preprint arXiv:1705.03551}.
+
+\bibitem[{K{\"o}pf et~al.(2023)K{\"o}pf, Kilcher, von R{\"u}tte, Anagnostidis, Tam, Stevens, Barhoum, Duc, Stanley, Nagyfi et~al.}]{kopf2023openassistant}
+Andreas K{\"o}pf, Yannic Kilcher, Dimitri von R{\"u}tte, Sotiris Anagnostidis, Zhi-Rui Tam, Keith Stevens, Abdullah Barhoum, Nguyen~Minh Duc, Oliver Stanley, Rich{\'a}rd Nagyfi, et~al. 2023.
+\newblock Openassistant conversations--democratizing large language model alignment.
+\newblock \emph{arXiv preprint arXiv:2304.07327}.
+
+\bibitem[{Kwon et~al.(2022)Kwon, Kim, Bae, Yoo, Kim, Park, Kim, Ha, Sung, and Lee}]{kwon2022alphatuning}
+Se~Jung Kwon, Jeonghoon Kim, Jeongin Bae, Kang~Min Yoo, Jin-Hwa Kim, Baeseong Park, Byeongwook Kim, Jung-Woo Ha, Nako Sung, and Dongsoo Lee. 2022.
+\newblock Alphatuning: Quantization-aware parameter-efficient adaptation of large-scale pre-trained language models.
+\newblock \emph{arXiv preprint arXiv:2210.03858}.
+
+\bibitem[{Liu et~al.(2022)Liu, Tam, Muqeeth, Mohta, Huang, Bansal, and Raffel}]{liu2022few}
+Haokun Liu, Derek Tam, Mohammed Muqeeth, Jay Mohta, Tenghao Huang, Mohit Bansal, and Colin~A Raffel. 2022.
+\newblock Few-shot parameter-efficient fine-tuning is better and cheaper than in-context learning.
+\newblock \emph{Advances in Neural Information Processing Systems}, 35:1950--1965.
+
+\bibitem[{Liu et~al.(2023)Liu, Lai, Yu, Xu, Zeng, Du, Zhang, Dong, and Tang}]{liu2023webglm}
+Xiao Liu, Hanyu Lai, Hao Yu, Yifan Xu, Aohan Zeng, Zhengxiao Du, Peng Zhang, Yuxiao Dong, and Jie Tang. 2023.
+\newblock Webglm: Towards an efficient web-enhanced question answering system with human preferences.
+\newblock \emph{arXiv preprint arXiv:2306.07906}.
+
+\bibitem[{Mao et~al.(2021)Mao, Mathias, Hou, Almahairi, Ma, Han, Yih, and Khabsa}]{mao2021unipelt}
+Yuning Mao, Lambert Mathias, Rui Hou, Amjad Almahairi, Hao Ma, Jiawei Han, Wen-tau Yih, and Madian Khabsa. 2021.
+\newblock Unipelt: A unified framework for parameter-efficient language model tuning.
+\newblock \emph{arXiv preprint arXiv:2110.07577}.
+
+\bibitem[{Sung et~al.(2022)Sung, Cho, and Bansal}]{sung2022lst}
+Yi-Lin Sung, Jaemin Cho, and Mohit Bansal. 2022.
+\newblock Lst: Ladder side-tuning for parameter and memory efficient transfer learning.
+\newblock \emph{Advances in Neural Information Processing Systems}, 35:12991--13005.
+
+\bibitem[{Taori et~al.(2023)Taori, Gulrajani, Zhang, Dubois, Li, Guestrin, Liang, and Hashimoto}]{taori2023stanford}
+Rohan Taori, Ishaan Gulrajani, Tianyi Zhang, Yann Dubois, Xuechen Li, Carlos Guestrin, Percy Liang, and Tatsunori~B Hashimoto. 2023.
+\newblock Stanford alpaca: An instruction-following llama model.
+
+\bibitem[{Valipour et~al.(2022)Valipour, Rezagholizadeh, Kobyzev, and Ghodsi}]{valipour2022DyLoRA}
+Mojtaba Valipour, Mehdi Rezagholizadeh, Ivan Kobyzev, and Ali Ghodsi. 2022.
+\newblock Dylora: Parameter efficient tuning of pre-trained models using dynamic search-free low-rank adaptation.
+\newblock \emph{arXiv preprint arXiv:2210.07558}.
+
+\bibitem[{Wang et~al.(2022)Wang, Kordi, Mishra, Liu, Smith, Khashabi, and Hajishirzi}]{wang2022self}
+Yizhong Wang, Yeganeh Kordi, Swaroop Mishra, Alisa Liu, Noah~A Smith, Daniel Khashabi, and Hannaneh Hajishirzi. 2022.
+\newblock Self-instruct: Aligning language model with self generated instructions.
+\newblock \emph{arXiv preprint arXiv:2212.10560}.
+
+\end{thebibliography}

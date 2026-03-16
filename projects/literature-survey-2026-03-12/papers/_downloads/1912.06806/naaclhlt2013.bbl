@@ -1,0 +1,113 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{Baccianella \bgroup et al.\egroup }2010]{swn}
+Stefano Baccianella, Andrea Esuli, and Fabrizio Sebastiani.
+\newblock 2010.
+\newblock {SentiWordNet} 3.0: An enhanced lexical resource for sentiment
+  analysis and opinion mining.
+\newblock In Nicoletta~Calzolari (chair), Khalid Choukri, Bente Maegaard,
+  Joseph Mariani, Jan Odijk, Stelios Piperidis, Mike Rosner, and Daniel Tapias,
+  editors, {\em Proceedings of the Seventh International Conference on Language
+  Resources and Evaluation}, LREC '10, pages 2200--2204, Valletta, Malta.
+
+\bibitem[\protect\citename{Barbosa and Feng}2010]{Barbosa10}
+Luciano Barbosa and Junlan Feng.
+\newblock 2010.
+\newblock Robust sentiment detection on {Twitter} from biased and noisy data.
+\newblock In {\em Proceedings of the 23rd International Conference on
+  Computational Linguistics: Posters}, COLING '10, pages 36--44, Beijing,
+  China.
+
+\bibitem[\protect\citename{Bifet \bgroup et al.\egroup }2011]{Bifet11}
+Albert Bifet, Geoffrey Holmes, Bernhard Pfahringer, and Ricard Gavald{\`a}.
+\newblock 2011.
+\newblock Detecting sentiment change in {Twitter} streaming data.
+\newblock {\em Journal of Machine Learning Research - Proceedings Track},
+  17:5--11.
+
+\bibitem[\protect\citename{Chen and Kan}2012]{SMScorpus}
+Tao Chen and Min-Yen Kan.
+\newblock 2012.
+\newblock Creating a live, public short message service corpus: the {NUS SMS}
+  corpus.
+\newblock {\em Language Resources and Evaluation}, pages 1--37.
+
+\bibitem[\protect\citename{Davidov \bgroup et al.\egroup }2010]{Davidov10}
+Dmitry Davidov, Oren Tsur, and Ari Rappoport.
+\newblock 2010.
+\newblock Semi-supervised recognition of sarcastic sentences in {Twitter} and
+  {Amazon}.
+\newblock In {\em Proceedings of the Fourteenth Conference on Computational
+  Natural Language Learning}, CoNLL '10, pages 107--116, Uppsala, Sweden.
+
+\bibitem[\protect\citename{Jansen \bgroup et al.\egroup }2009]{Jansen09}
+Bernard~J. Jansen, Mimi Zhang, Kate Sobel, and Abdur Chowdury.
+\newblock 2009.
+\newblock Twitter power: Tweets as electronic word of mouth.
+\newblock {\em J. Am. Soc. Inf. Sci. Technol.}, 60(11):2169--2188.
+
+\bibitem[\protect\citename{Kouloumpis \bgroup et al.\egroup
+  }2011]{Kouloumpis11}
+Efthymios Kouloumpis, Theresa Wilson, and Johanna Moore.
+\newblock 2011.
+\newblock Twitter sentiment analysis: The {Good} the {Bad} and the {OMG!}
+\newblock In Lada~A. Adamic, Ricardo~A. Baeza-Yates, and Scott Counts, editors,
+  {\em Proceedings of the Fifth International Conference on Weblogs and Social
+  Media}, ICWSM' 11, pages 538--541, Barcelona, Spain.
+
+\bibitem[\protect\citename{O'Connor \bgroup et al.\egroup }2010]{oconnor10}
+Brendan O'Connor, Ramnath Balasubramanyan, Bryan~R. Routledge, and Noah~A.
+  Smith.
+\newblock 2010.
+\newblock From tweets to polls: Linking text sentiment to public opinion time
+  series.
+\newblock In William~W. Cohen and Samuel Gosling, editors, {\em Proceedings of
+  the Fourth International Conference on Weblogs and Social Media}, ICWSM '10,
+  Washington, DC, USA.
+
+\bibitem[\protect\citename{Pak and Paroubek}2010]{Pak10}
+Alexander Pak and Patrick Paroubek.
+\newblock 2010.
+\newblock Twitter based system: Using {Twitter} for disambiguating sentiment
+  ambiguous adjectives.
+\newblock In {\em Proceedings of the 5th International Workshop on Semantic
+  Evaluation}, SemEval '10, pages 436--439, Los Angeles, CA, USA.
+
+\bibitem[\protect\citename{Ritter \bgroup et al.\egroup }2011]{ner}
+Alan Ritter, Sam Clark, Mausam, and Oren Etzioni.
+\newblock 2011.
+\newblock Named entity recognition in tweets: an experimental study.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, EMNLP '11, pages 1524--1534, Edinburgh, United Kingdom.
+
+\bibitem[\protect\citename{Ritter \bgroup et al.\egroup }2012]{ritter12}
+Alan Ritter, Mausam, Oren Etzioni, and Sam Clark.
+\newblock 2012.
+\newblock Open domain event extraction from twitter.
+\newblock In {\em Proceedings of the 18th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, KDD '12, pages 1104--1112, Beijing,
+  China.
+
+\bibitem[\protect\citename{Tumasjan \bgroup et al.\egroup }2010]{Tumasjan10}
+Andranik Tumasjan, Timm~O. Sprenger, Philipp~G. Sandner, and Isabell~M. Welpe.
+\newblock 2010.
+\newblock Predicting elections with {Twitter}: What 140 characters reveal about
+  political sentiment.
+\newblock In William~W. Cohen and Samuel Gosling, editors, {\em Proceedings of
+  the Fourth International Conference on Weblogs and Social Media}, ICWSM '10,
+  pages 178--185, Washington, DC, USA. The AAAI Press.
+
+\bibitem[\protect\citename{Villena-Rom{\'a}n \bgroup et al.\egroup }2013]{TASS}
+Julio Villena-Rom{\'a}n, Sara Lana-Serrano, Eugenio Mart\'{\i}nez-C{\'a}mara,
+  and Jos{\'e} Carlos~Gonz{\'a}lez Crist{\'o}bal.
+\newblock 2013.
+\newblock {TASS - Workshop on Sentiment Analysis at SEPLN}.
+\newblock {\em Procesamiento del Lenguaje Natural}, 50:37--44.
+
+\bibitem[\protect\citename{Wiebe \bgroup et al.\egroup }2005]{Wiebe05}
+Janyce Wiebe, Theresa Wilson, and Claire Cardie.
+\newblock 2005.
+\newblock Annotating expressions of opinions and emotions in language.
+\newblock {\em Language Resources and Evaluation}, 39(2-3):165--210.
+
+\end{thebibliography}

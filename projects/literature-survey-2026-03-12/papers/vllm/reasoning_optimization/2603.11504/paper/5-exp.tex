@@ -1,0 +1,90 @@
+\section{Experiments}
+
+We conduct a series of experiments to comprehensively evaluate the effectiveness of LongFlow. Our evaluation focuses on three key aspects: model quality, inference speed, and memory efficiency.
+
+
+
+
+
+\subsection{Experimental Setup}
+\label{sec:setup}
+\noindent\textbf{Models.}
+We evaluate LongFlow on different reasoning models to demonstrate its applicability.
+Our experiments are primarily conducted on \textbf{DeepSeek-R1-Distill-Llama-8B} \citep{deepseekr1} and the \textbf{Qwen3} \citep{qwen3} series, including its 0.6B, 1.7B, 4B, and 8B variants.
+
+\noindent\textbf{Datasets.}
+Our evaluation spans a wide spectrum of challenging reasoning benchmarks to ensure a comprehensive assessment of model accuracy. For competition-level mathematics, we use problems from MATH-500 \citep{hendrycks2021measuring}, AMC-23 \citep{amc}, AIME-24 \citep{aime2024} and AIME-25 \citep{aime2025}. To test advanced scientific reasoning, we employ the graduate-level expert QA from GPQA \citep{rein2024gpqa}, university-level problems from Minerva \citep{lewkowycz2022solving}, and Olympiad-level questions from OlympiadBench \citep{he2024olympiadbench}. Finally, we include the widely-used GSM8K benchmark \citep{cobbe2021training} for grade-school math word problems.
+
+\noindent\textbf{Baselines.}
+We compare LongFlow against several representative KV cache compression methods:
+\begin{itemize}[itemsep=0pt,topsep=0pt,parsep=0pt]
+    \item \textbf{Vanilla:} The standard attention without any KV cache management. It serves as the accuracy upper bound but represents the worst scenario for memory consumption and latency.
+    
+    \item \textbf{H2O}\citep{h2o}: A classic importance-based method that prioritizes tokens based on accumulated attention scores.
+    
+    \item \textbf{VATP}\citep{vatp}: An advanced method that integrates both attention scores and Value vector information into its importance metric.
+    
+    \item \textbf{R-KV}\citep{rkv}: A recent method also designed for reasoning models. It incorporates information about repetitive patterns in the generation to guide its eviction policy.
+\end{itemize}
+
+\noindent\textbf{Evaluation Metrics.}
+We evaluate all methods across two primary dimensions. For system performance, we measure the inference throughput, peak GPU memory usage, and memory fragments. For model accuracy, we report the task-specific accuracy on each of the benchmarks.
+
+\noindent\textbf{Implementation Details.}
+For our main experiments, the generation output length is set to 16,000 tokens. For all compression methods, we set the KV cache budget to be either 3,200 or 2,400 tokens.
+For H2O and VATP, this budget is evenly split between heavy-hitter tokens and recent tokens.
+For LongFlow, if the number of tokens in the prefill stage exceeds the budget, we first use SnapKV \citep{snapkv} to compress the tokens to the budget size.
+For all the baselines, we set the compression interval to achieve a balance between compression ratio and inference speed.
+All the experiments are conducted on NVIDIA A100 40GB GPUs.
+
+
+\subsection{Main Results on Model Accuracy}
+\input{table/math_consequence}
+We present our main results on model accuracy in Table \ref{tab:model_performance}. The evaluation across two distinct model families and two KV cache budget settings demonstrates that LongFlow effectively preserves the reasoning capabilities of the base models, achieving performance that is highly competitive with state-of-the-art baselines and close to the uncompressed Vanilla model.
+
+\noindent\textbf{Comparison With the Baselines.}
+Across both models and budget settings, our proposed LongFlow demonstrates highly competitive performance against state-of-the-art baselines. R-KV generally achieves the highest average accuracy (with more memory for redundant token identification), establishing itself as a strong baseline focused on quality preservation. LongFlow consistently performs on par with or better than other methods like VATP and H2O. 
+
+\noindent\textbf{Comparison with Full KV and Different Cache Budgets.}
+A key finding is that all compression methods, including LongFlow, successfully preserve the vast majority of the original model's capabilities while operating on a significantly reduced KV cache (e.g., a 3.2k budget representing an 80\% compression ratio for a 16k generation).
+As shown in Table \ref{tab:model_performance}, the average performance degradation compared to the uncompressed Vanilla baseline is negligible to minor—as low as 0.08\% for DeepSeek-R1-Distill-Llama-8B and approximately 1.3\% for Qwen3-8B.
+When the KV cache budget is tightened from 3.2k to 2.4k, a graceful degradation is observed across all methods. LongFlow performs better under this pressure, showing less degradation than both H2O and VATP.
+
+\subsection{Performance on Different Model Sizes}
+To assess the performance of LongFlow across different model sizes, we conduct a comparative analysis using the Qwen3 model family, including the 0.6B, 1.7B, 4B, and 8B variants.
+For this specific analysis, the AIME-24 and AIME-25 datasets were excluded due to their small sample sizes and for brevity.
+The results in Figure \ref{fig:all_images} (in Appendix \ref{sec:additional figures}) show that LongFlow maintains a highly competitive performance, achieving results that are comparable or superior to the baselines across all tested model sizes and benchmarks, which demonstrates the effectiveness and robustness of our method.
+
+
+
+\begin{figure*}[t]
+\centering
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{figure/throughput_comparison.pdf}
+    \caption{Throughput}
+\end{subfigure}
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{figure/memory_comparison.pdf}
+    \caption{Memory usage}
+\end{subfigure}
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{figure/gpu_memory_diff_comparison.pdf}
+    \caption{Memory fragment}
+\end{subfigure}
+\caption{Performance comparison of LongFlow against baselines. The compression is conducted every step for LongFlow and every 128 steps for other methods. LongFlow achieves higher throughput and supports a larger maximum batch size due to superior memory management.}
+\vspace{-10pt}
+\label{fig:memory_and_speed}
+\end{figure*}
+
+\subsection{Throughput and Memory Analysis}
+Finally, we evaluate the system-level performance of LongFlow in terms of throughput and memory efficiency. For this analysis, we use the Qwen3-1.7B on a single NVIDIA A100 40GB GPU. We configure a scenario with an input length of 512 and an output length of 16,000. We set the KV cache budget to 3,200 for all compression methods. To measure the maximum performance, we progressively increase the batch size for each method until an Out-of-Memory (OOM) error occurs. We report the throughput, peak memory footprint, and memory fragments in Figure \ref{fig:memory_and_speed}.
+
+
+The results clearly demonstrate LongFlow's substantial advantages in both throughput and memory management. In terms of throughput, LongFlow outperforms FullKV by a remarkable 11.8 times and is approximately 4.0 times faster than other methods.
+Although LongFlow performs KV cache compression at every decoding step, its algorithmic efficiency and fused kernel implementation substantially reduce per-step overhead, enabling remarkably higher throughput than competing methods.
+Regarding peak memory usage, LongFlow's footprint is comparable to other methods under the same budget, while R-KV consumes slightly more due to its more complex importance estimation logic.
+Notably, LongFlow's advantage in memory management lies in its superior handling of fragmentation. Its static memory scheme and consistent per-step eviction policy result in a memory layout that is both less fragmented and highly predictable.
+This less fragmented memory layout allows LongFlow to support a larger maximum batch size than competing methods.
+The predictability makes LongFlow more stable and reliable in real-world deployment by eliminating runtime memory-related uncertainties,.
+
+

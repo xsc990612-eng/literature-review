@@ -1,0 +1,647 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Abdul-Mageed et~al.(2014)Abdul-Mageed, Diab, and
+  K{\"u}bler}]{abdul2014samar}
+Muhammad Abdul-Mageed, Mona Diab, and Sandra K{\"u}bler. 2014.
+\newblock Samar: Subjectivity and sentiment analysis for {A}rabic social media.
+\newblock {\em Computer Speech \& Language\/} 28(1):20--37.
+
+\bibitem[{Abdul-Mageed and Diab(2011)}]{abdul2011subjectivity}
+Muhammad Abdul-Mageed and Mona~T. Diab. 2011.
+\newblock Subjectivity and sentiment annotation of modern standard {A}rabic
+  newswire.
+\newblock In {\em Proceedings of the 5th Linguistic Annotation Workshop\/}.
+  Portland, Oregon, USA, LAW~'11, pages 110--118.
+
+\bibitem[{Al-Smadi et~al.(2015)Al-Smadi, Qawasmeh, Talafha, and
+  Quwaider}]{al2015human}
+Mohammad Al-Smadi, Omar Qawasmeh, Bashar Talafha, and Muhannad Quwaider. 2015.
+\newblock Human annotated {A}rabic dataset of book reviews for aspect based
+  sentiment analysis.
+\newblock In {\em Proceedings of the 3rd International Conference on Future
+  Internet of Things and Cloud\/}. Rome, Italy, FiCloud~'15, pages 726--730.
+
+\bibitem[{Anselmo Corr\^{e}a~J\'{u}nior et~al.(2017)Anselmo
+  Corr\^{e}a~J\'{u}nior, Marinho, and Santos}]{SemEval:2017:task4:nilc-usp}
+Edilson Anselmo Corr\^{e}a~J\'{u}nior, Vanessa Marinho, and Leandro Santos.
+  2017.
+\newblock {NILC-USP} at {SemEval-2017 Task 4: {A} Multi-view Ensemble for
+  {T}witter Sentiment Analysis}.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 610--614.
+
+\bibitem[{Ayata et~al.(2017)Ayata, Saraclar, and
+  Ozgur}]{SemEval:2017:task4:busem}
+Deger Ayata, Murat Saraclar, and Arzucan Ozgur. 2017.
+\newblock {BUSEM} at {SemEval-2017 Task 4A: {S}entiment Analysis with Word
+  Embedding and Long Short Term Memory {RNN} Approaches}.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 776--782.
+
+\bibitem[{Baccianella et~al.(2009)Baccianella, Esuli, and
+  Sebastiani}]{Baccianella:2009qd}
+Stefano Baccianella, Andrea Esuli, and Fabrizio Sebastiani. 2009.
+\newblock Evaluation measures for ordinal regression.
+\newblock In {\em Proceedings of the 9th IEEE International Conference on
+  Intelligent Systems Design and Applications\/}. Pisa, Italy, ISDA~'09, pages
+  283--287.
+
+\bibitem[{Balikas(2017)}]{SemEval:2017:task4:twise}
+Georgios Balikas. 2017.
+\newblock {TwiSe} at {SemEval-2017 Task 4: {F}ive-point {T}witter Sentiment
+  Classification and Quantification}.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 754--758.
+
+\bibitem[{Baly et~al.(2017)Baly, Badaro, Hamdi, Moukalled, Aoun, El-Khoury,
+  Al~Sallab, Hajj, Habash, Shaban, and El-Hajj}]{SemEval:2017:task4:omam}
+Ramy Baly, Gilbert Badaro, Ali Hamdi, Rawan Moukalled, Rita Aoun, Georges
+  El-Khoury, Ahmad Al~Sallab, Hazem Hajj, Nizar Habash, Khaled Shaban, and
+  Wassim El-Hajj. 2017.
+\newblock {OMAM} at {SemEval-2017 Task 4: {E}valuation of {E}nglish
+  State-of-the-Art Sentiment Analysis Models for {A}rabic and a New Topic-based
+  Model}.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~17, pages 602--609.
+
+\bibitem[{Baziotis et~al.(2017)Baziotis, Pelekis, and
+  Doulkeridis}]{SemEval:2017:task4:datastories}
+Christos Baziotis, Nikos Pelekis, and Christos Doulkeridis. 2017.
+\newblock {DataStories} at {SemEval-2017 Task 4: {D}eep {LSTM} with Attention
+  for Message-level and Topic-based Sentiment Analysis}.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 746--753.
+
+\bibitem[{Bollen et~al.(2011)Bollen, Mao, and Zeng}]{Bollen:2011bf}
+Johan Bollen, Huina Mao, and Xiao-Jun Zeng. 2011.
+\newblock {T}witter mood predicts the stock market.
+\newblock {\em Journal of Computational Science\/} 2(1):1--8.
+
+\bibitem[{Borge-Holthoefer et~al.(2015)Borge-Holthoefer, Magdy, Darwish, and
+  Weber}]{Borge-Holthoefer:2015dz}
+Javier Borge-Holthoefer, Walid Magdy, Kareem Darwish, and Ingmar Weber. 2015.
+\newblock Content and network dynamics behind {Egyptian} political polarization
+  on {{T}witter}.
+\newblock In {\em Proceedings of the 18th ACM Conference on Computer Supported
+  Cooperative Work and Social Computing\/}. Vancouver, Canada, CSCW~'15, pages
+  700--711.
+
+\bibitem[{Burton and Soboleva(2011)}]{Burton:2011sh}
+Suzan Burton and Alena Soboleva. 2011.
+\newblock Interactive or reactive? {Marketing} with {{T}witter}.
+\newblock {\em Journal of Consumer Marketing\/} 28(7):491--499.
+
+\bibitem[{Castro et~al.(2017)Castro, Oliva, Abreu, Mart\'{i}nez, and
+  Guti\'{e}rrez}]{SemEval:2017:task4:ucsc-nlp}
+Iv\'{a}n Castro, Sebasti\'{a}n Oliva, Jos\'{e} Abreu, Claudia Mart\'{i}nez, and
+  Yoan Guti\'{e}rrez. 2017.
+\newblock {UCSC-NLP} at {SemEval-2017 Task 4}: {S}ense n-grams for sentiment
+  analysis in {T}witter.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 806--810.
+
+\bibitem[{Cliche(2017)}]{SemEval:2017:task4:BB_twtr}
+Mathieu Cliche. 2017.
+\newblock {BB\_twtr} at {SemEval-2017 Task 4: {T}witter Sentiment Analysis with
+  {CNN}s and {LSTM}s}.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 572--579.
+
+\bibitem[{Deborah et~al.(2017)Deborah, Rajendram, and
+  Mirnalinee}]{SemEval:2017:task4:ssn_mlrg1}
+Angel Deborah, Milton Rajendram, and T.~Mirnalinee. 2017.
+\newblock {SSN\_MLRG1} at {SemEval-2017 Task 4: {S}entiment Analysis in
+  {T}witter Using Multi-Kernel Gaussian Process Classifier }.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17.
+
+\bibitem[{Deshmane and Friedrichs(2017)}]{SemEval:2017:task4:tsa-inf}
+Amit~Ajit Deshmane and Jasper Friedrichs. 2017.
+\newblock {TSA-INF} at {SemEval-2017 Task 4}: {A}n ensemble of deep learning
+  architectures including lexicon features for {T}witter sentiment analysis.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 801--805.
+
+\bibitem[{Dodds et~al.(2011)Dodds, Harris, Kloumann, Bliss, and
+  Danforth}]{Dodds:2011uq}
+Peter~S. Dodds, Kameron~D. Harris, Isabel~M. Kloumann, Catherine~A. Bliss, and
+  Christopher~M. Danforth. 2011.
+\newblock Temporal patterns of happiness and information in a global social
+  network: {H}edonometrics and {{T}witter}.
+\newblock {\em {PLoS ONE}\/} 6(12).
+
+\bibitem[{Dovdon and Saias(2017)}]{SemEval:2017:task4:ej-sa-2017}
+Enkhzol Dovdon and Jos\'{e} Saias. 2017.
+\newblock ej-sa-2017 at {SemEval-2017 Task 4}: {E}xperiments for target
+  oriented sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 643--646.
+
+\bibitem[{El-Beltagy et~al.(2017)El-Beltagy, El~Kalamawy, and
+  Soliman}]{SemEval:2017:task4:niletmrg}
+Samhaa~R. El-Beltagy, Mona El~Kalamawy, and Abu~Bakr Soliman. 2017.
+\newblock {NileTMRG} at {SemEval-2017 Task 4}: {A}rabic sentiment analysis.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 789--794.
+
+\bibitem[{Elarnaoty et~al.(2012)Elarnaoty, AbdelRahman, and
+  Fahmy}]{elarnaoty2012machine}
+Mohamed Elarnaoty, Samir AbdelRahman, and Aly Fahmy. 2012.
+\newblock A machine learning approach for opinion holder extraction in {A}rabic
+  language.
+\newblock {\em arXiv preprint arXiv:1206.1011\/} .
+
+\bibitem[{Esuli and Sebastiani(2010)}]{Esuli:2010fk}
+Andrea Esuli and Fabrizio Sebastiani. 2010.
+\newblock Sentiment quantification.
+\newblock {\em IEEE Intelligent Systems\/} 25(4):72--75.
+
+\bibitem[{Esuli and Sebastiani(2015)}]{Esuli:2015gh}
+Andrea Esuli and Fabrizio Sebastiani. 2015.
+\newblock Optimizing text quantifiers for multivariate loss functions.
+\newblock {\em ACM Transactions on Knowledge Discovery and Data\/} 9(4):Article
+  27.
+
+\bibitem[{Farra and McKeown(2017)}]{farra2017smarties}
+Noura Farra and Kathleen McKeown. 2017.
+\newblock {SMART}ies: Sentiment models for {A}rabic target entities.
+\newblock In {\em Proceedings of the 15th Conference of the European Chapter of
+  the Association for Computational Linguistics\/}. Valencia, Spain, EACL~'17.
+
+\bibitem[{Farra et~al.(2015)Farra, McKeown, and Habash}]{farra2015annotating}
+Noura Farra, Kathy McKeown, and Nizar Habash. 2015.
+\newblock Annotating targets of opinions in {A}rabic using crowdsourcing.
+\newblock In {\em Proceedings of the Second Workshop on Arabic Natural Language
+  Processing\/}. Beijing, China, ANLP~'17, pages 89--98.
+
+\bibitem[{Forman(2005)}]{Forman:2005fk}
+George Forman. 2005.
+\newblock Counting positives accurately despite inaccurate classification.
+\newblock In {\em Proceedings of the 16th European Conference on Machine
+  Learning\/}. Porto, Portugal, ECML~'05, pages 564--575.
+
+\bibitem[{Forman(2008)}]{Forman:2008kx}
+George Forman. 2008.
+\newblock Quantifying counts and costs via classification.
+\newblock {\em Data Mining and Knowledge Discovery\/} 17(2):164--206.
+
+\bibitem[{Ghosh et~al.(2015)Ghosh, Li, Veale, Rosso, Shutova, Barnden, and
+  Reyes}]{ghosh2015semeval}
+Aniruddha Ghosh, Guofu Li, Tony Veale, Paolo Rosso, Ekaterina Shutova, John
+  Barnden, and Antonio Reyes. 2015.
+\newblock {SemEval-2015 Task 11}: Sentiment analysis of figurative language in
+  {T}witter.
+\newblock In {\em Proceedings of the 9th International Workshop on Semantic
+  Evaluation\/}. Denver, Colorado, USA, SemEval~'15, pages 470--478.
+
+\bibitem[{Gonz\'{a}lez et~al.(2017)Gonz\'{a}lez, Pla, and
+  Hurtado}]{SemEval:2017:task4:elirf-upv}
+Jos\'{e}~\'{A}ngel Gonz\'{a}lez, Ferran Pla, and Llu\'{i}s-F Hurtado. 2017.
+\newblock {ELiRF-UPV} at {SemEval-2017 Task 4: {S}entiment Analysis using Deep
+  Learning}.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 722--726.
+
+\bibitem[{Gupta and Yang(2017)}]{SemEval:2017:task4:CrystalNest}
+Raj~Kumar Gupta and Yinping Yang. 2017.
+\newblock {CrystalNest} at {SemEval-2017 Task 4}: {U}sing sarcasm detection for
+  enhancing sentiment classification and quantification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 625--632.
+
+\bibitem[{Hamdan(2017)}]{SemEval:2017:task4:Senti17}
+Hussam Hamdan. 2017.
+\newblock {Senti17} at {SemEval-2017 Task 4}: Ten convolutional neural network
+  voters for tweet polarity classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 699--702.
+
+\bibitem[{Hao et~al.(2017)Hao, Lan, Li, and Li}]{SemEval:2017:task4:xjsa}
+Yazhou Hao, YangYang Lan, Yufei Li, and Chen Li. 2017.
+\newblock {XJSA at SemEval-2017 Task 4}: A deep system for sentiment
+  classification in {T}witter.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 727--730.
+
+\bibitem[{Hovy(2015)}]{hovy2015demographic}
+Dirk Hovy. 2015.
+\newblock Demographic factors improve classification performance.
+\newblock In {\em Proceedings of the 53rd Annual Meeting of the Association for
+  Computational Linguistics and the 7th International Joint Conference on
+  Natural Language Processing (Volume 1: Long Papers)\/}. Beijing, China,
+  ACL-IJCNLP~'17, pages 752--762.
+
+\bibitem[{Htait et~al.(2017)Htait, Fournier, and
+  Bellot}]{SemEval:2017:task4:lsis}
+Amal Htait, S\'{e}bastien Fournier, and Patrice Bellot. 2017.
+\newblock {LSIS} at {SemEval-2017 Task 4}: Using adapted sentiment similarity
+  seed words for {E}nglish and {A}rabic tweet polarity classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 717--721.
+
+\bibitem[{Jabreel and Moreno(2017)}]{SemEval:2017:task4:SiTAKA}
+Mohammed Jabreel and Antonio Moreno. 2017.
+\newblock {SiTAKA} at {SemEval-2017 Task 4}: Sentiment analysis in {T}witter
+  based on a rich set of features.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 693--698.
+
+\bibitem[{Jim\'{e}nez-Zafra et~al.(2017)Jim\'{e}nez-Zafra, Montejo-R\'{a}ez,
+  Mart\'{i}n-Valdivia, and Ure\~{n}a L\'{o}pez}]{SemEval:2017:task4:sinai}
+Salud~Mar\'{i}a Jim\'{e}nez-Zafra, Arturo Montejo-R\'{a}ez, M.~Teresa
+  Mart\'{i}n-Valdivia, and L.~Alfonso Ure\~{n}a L\'{o}pez. 2017.
+\newblock {SINAI} at {SemEval-2017 Task 4}: User based classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 633--638.
+
+\bibitem[{Karpov(2017)}]{SemEval:2017:task4:nru-hse}
+Nikolay Karpov. 2017.
+\newblock {NRU-HSE} at {SemEval-2017 Task 4}: Tweet quantification using deep
+  learning architecture.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 682--687.
+
+\bibitem[{Kaya et~al.(2013)Kaya, Fidan, and Toroslu}]{Kaya:2013ca}
+Mesut Kaya, Guven Fidan, and Ismail~Hakki Toroslu. 2013.
+\newblock Transfer learning using {T}witter data for improving sentiment
+  classification of {T}urkish political news.
+\newblock In {\em Proceedings of the 28th International Symposium on Computer
+  and Information Sciences\/}. Paris, France, ISCIS~'13, pages 139--148.
+
+\bibitem[{Kiritchenko et~al.(2016)Kiritchenko, Mohammad, and
+  Salameh}]{kiritchenko2016semeval}
+Svetlana Kiritchenko, Saif Mohammad, and Mohammad Salameh. 2016.
+\newblock {SemEval-2016 Task 7}: Determining sentiment intensity of {E}nglish
+  and {A}rabic phrases.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation\/}. San Diego, California, USA, SemEval~'16, pages 42--51.
+
+\bibitem[{Kolovou et~al.(2017)Kolovou, Kokkinos, Fergadis, Papalampidi, Iosif,
+  Malandrakis, Palogiannidi, Papageorgiou, Narayanan, and
+  Potamianos}]{SemEval:2017:task4:Tweester}
+Athanasia Kolovou, Filippos Kokkinos, Aris Fergadis, Pinelopi Papalampidi,
+  Elias Iosif, Nikolaos Malandrakis, Elisavet Palogiannidi, Haris Papageorgiou,
+  Shrikanth Narayanan, and Alexandro Potamianos. 2017.
+\newblock {Tweester} at {SemEval-2017 Task 4}: Fusion of semantic-affective and
+  pairwise classification models for sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 674--681.
+
+\bibitem[{Li et~al.(2017)Li, Nourbakhsh, Liu, Fang, and
+  Shah}]{SemEval:2017:task4:funsentiment}
+Quanzhi Li, Armineh Nourbakhsh, Xiaomo Liu, Rui Fang, and Sameena Shah. 2017.
+\newblock {funSentiment} at {SemEval-2017 Task 4}: Topic-based message
+  sentiment classification by exploiting word embeddings, text features and
+  target contexts.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 740--745.
+
+\bibitem[{Lozi\'{c} et~al.(2017)Lozi\'{c}, \u{S}ari\'{c}, Toki\'{c}, Medi\'{c},
+  and \u{S}najder}]{SemEval:2017:task4:takelab}
+David Lozi\'{c}, Doria \u{S}ari\'{c}, Ivan Toki\'{c}, Zoran Medi\'{c}, and Jan
+  \u{S}najder. 2017.
+\newblock {TakeLab} at {SemEval-2017 Task 4}: Recent deaths and the power of
+  nostalgia in sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 783--788.
+
+\bibitem[{Maoquan et~al.(2017)Maoquan, Shiyun, Yufei, and
+  Lu}]{SemEval:2017:task4:eica}
+Wang Maoquan, Chen Shiyun, Xie Yufei, and Zhao Lu. 2017.
+\newblock {EICA} at {SemEval-2017 Task 4}: A simple convolutional neural
+  network for topic-based sentiment classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 293--299.
+
+\bibitem[{Marchetti-Bowick and
+  Chambers(2012)}]{marchettibowick-chambers:2012:EACL2012}
+Micol Marchetti-Bowick and Nathanael Chambers. 2012.
+\newblock Learning for microblogs with distant supervision: Political
+  forecasting with {T}witter.
+\newblock In {\em Proceedings of the 13th Conference of the European Chapter of
+  the Association for Computational Linguistics\/}. Avignon, France, EACL~'12,
+  pages 603--612.
+
+\bibitem[{Miranda-Jim\'{e}nez et~al.(2017)Miranda-Jim\'{e}nez, Graff,
+  Sadit~Tellez, and Moctezuma}]{SemEval:2017:task4:ingeotec}
+Sabino Miranda-Jim\'{e}nez, Mario Graff, Eric Sadit~Tellez, and Daniela
+  Moctezuma. 2017.
+\newblock {INGEOTEC} at {SemEval 2017 Task 4}: A {B4MSA} ensemble based on
+  genetic programming for {T}witter sentiment analysis.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 770--775.
+
+\bibitem[{Mislove et~al.(2011)Mislove, Lehmann, Ahn, Onnela, and
+  Rosenquist}]{mislove2011understanding}
+Alan Mislove, Sune Lehmann, Yong-Yeol Ahn, Jukka-Pekka Onnela, and J~Niels
+  Rosenquist. 2011.
+\newblock Understanding the demographics of {T}witter users.
+\newblock In {\em Proceedings of the 9th AAAI International Conference on Web
+  and Social Media\/}. Barcelona, Spain, ICWSM~'11, pages 554--557.
+
+\bibitem[{Mohammad et~al.(2016{\natexlab{a}})Mohammad, Kiritchenko, Sobhani,
+  Zhu, and Cherry}]{mohammad2016semeval}
+Saif Mohammad, Svetlana Kiritchenko, Parinaz Sobhani, Xiao{-}Dan Zhu, and Colin
+  Cherry. 2016{\natexlab{a}}.
+\newblock {SemEval-2016 Task 6}: Detecting stance in tweets.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation\/}. San Diego, California, USA, SemEval~'16, pages 31--41.
+
+\bibitem[{Mohammad et~al.(2016{\natexlab{b}})Mohammad, Salameh, and
+  Kiritchenko}]{mohammad2016translation}
+Saif~M Mohammad, Mohammad Salameh, and Svetlana Kiritchenko.
+  2016{\natexlab{b}}.
+\newblock How translation alters sentiment.
+\newblock {\em J. Artif. Intell. Res.(JAIR)\/} 55:95--130.
+
+\bibitem[{Mourad and Darwish(2013)}]{mourad2013subjectivity}
+Ahmed Mourad and Kareem Darwish. 2013.
+\newblock Subjectivity and sentiment analysis of modern standard {A}rabic and
+  {A}rabic microblogs.
+\newblock In {\em Proceedings of the 4th workshop on computational approaches
+  to subjectivity, sentiment and social media analysis\/}. Atlanta, Georgia,
+  USA, WASSA~'13, pages 55--64.
+
+\bibitem[{Mulki et~al.(2017)Mulki, Haddad, Gridach, and
+  Babaoğlu}]{SemEval:2017:task4:1w-StAr}
+Hala Mulki, Hatem Haddad, Mourad Gridach, and Ismail Babaoğlu. 2017.
+\newblock {Tw-StAR} at {SemEval-2017 Task 4}: Sentiment classification of
+  {A}rabic tweets.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 663--668.
+
+\bibitem[{Nakov et~al.(2016{\natexlab{a}})Nakov, Ritter, Rosenthal, Sebastiani,
+  and Stoyanov}]{nakov-EtAl:2016:SemEval1}
+Preslav Nakov, Alan Ritter, Sara Rosenthal, Fabrizio Sebastiani, and Veselin
+  Stoyanov. 2016{\natexlab{a}}.
+\newblock {SemEval}-2016 task 4: Sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation\/}. San Diego, California, USA, SemEval '16, pages 1--18.
+
+\bibitem[{Nakov et~al.(2016{\natexlab{b}})Nakov, Rosenthal, Kiritchenko,
+  Mohammad, Kozareva, Ritter, Stoyanov, and Zhu}]{Nakov:2016rm}
+Preslav Nakov, Sara Rosenthal, Svetlana Kiritchenko, Saif~M. Mohammad, Zornitsa
+  Kozareva, Alan Ritter, Veselin Stoyanov, and Xiaodan Zhu. 2016{\natexlab{b}}.
+\newblock Developing a successful {SemEval} task in sentiment analysis of
+  {{T}witter} and other social media texts.
+\newblock {\em Language Resources and Evaluation\/} 50(1):35--65.
+
+\bibitem[{Nakov et~al.(2013)Nakov, Rosenthal, Kozareva, Stoyanov, Ritter, and
+  Wilson}]{Nakov:2013ty}
+Preslav Nakov, Sara Rosenthal, Zornitsa Kozareva, Veselin Stoyanov, Alan
+  Ritter, and Theresa Wilson. 2013.
+\newblock {SemEval-2013 Task 2}: Sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 7th International Workshop on Semantic
+  Evaluation\/}. Atlanta, Georgia, USA, SemEval~'13, pages 312--320.
+
+\bibitem[{Nguyen et~al.(2013)Nguyen, Gravel, Trieschnigg, and
+  Meder}]{nguyen2013old}
+Dong Nguyen, Rilana Gravel, Dolf Trieschnigg, and Theo Meder. 2013.
+\newblock ``{H}ow old do you think {I} am?'' {A} study of language and age in
+  {T}witter.
+\newblock In {\em Proceedings of the Seventh International Conference on
+  Weblogs and Social Media\/}. Cambridge, Massachusetts, USA, ICWSM~'13, pages
+  439--448.
+
+\bibitem[{O'Connor et~al.(2010)O'Connor, Balasubramanyan, Routledge, and
+  Smith}]{OConnor:2010fk}
+Brendan O'Connor, Ramnath Balasubramanyan, Bryan~R. Routledge, and Noah~A.
+  Smith. 2010.
+\newblock From tweets to polls: Linking text sentiment to public opinion time
+  series.
+\newblock In {\em Proceedings of the Fourth International Conference on Weblogs
+  and Social Media\/}. Washington, DC, USA, ICWSM~'10, pages 122--129.
+
+\bibitem[{Onyibe and Habash(2017)}]{SemEval:2017:task4:omam2}
+Chukwuyem Onyibe and Nizar Habash. 2017.
+\newblock {OMAM} at {SemEval-2017 Task 4}: {E}nglish sentiment analysis with
+  conditional random fields.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 669--673.
+
+\bibitem[{Pontiki et~al.(2016)Pontiki, Galanis, Papageorgiou, Androutsopoulos,
+  Manandhar, AL-Smadi, Al-Ayyoub, Zhao, Qin, De~Clercq, Hoste, Apidianaki,
+  Tannier, Loukachevitch, Kotelnikov, Bel, Jim\'{e}nez-Zafra, and
+  Eryi\u{g}it}]{pontiki2016semeval}
+Maria Pontiki, Dimitris Galanis, Haris Papageorgiou, Ion Androutsopoulos,
+  Suresh Manandhar, Mohammad AL-Smadi, Mahmoud Al-Ayyoub, Yanyan Zhao, Bing
+  Qin, Orphee De~Clercq, Veronique Hoste, Marianna Apidianaki, Xavier Tannier,
+  Natalia Loukachevitch, Evgeniy Kotelnikov, N\'{u}ria Bel, Salud~Mar\'{i}a
+  Jim\'{e}nez-Zafra, and G\"{u}l\c{s}en Eryi\u{g}it. 2016.
+\newblock {SemEval-2016 Task 5}: Aspect based sentiment analysis.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation\/}. San Diego, California, USA, SemEval~'16, pages 19--30.
+
+\bibitem[{Pontiki et~al.(2015)Pontiki, Galanis, Papageorgiou, Manandhar, and
+  Androutsopoulos}]{pontiki2015semeval}
+Maria Pontiki, Dimitris Galanis, Haris Papageorgiou, Suresh Manandhar, and Ion
+  Androutsopoulos. 2015.
+\newblock {SemEval-2015 Task 12}: Aspect based sentiment analysis.
+\newblock In {\em Proceedings of the 9th International Workshop on Semantic
+  Evaluation\/}. Denver, Colorado, USA, SemEval~'15, pages 486--495.
+
+\bibitem[{Pontiki et~al.(2014)Pontiki, Galanis, Pavlopoulos, Papageorgiou,
+  Androutsopoulos, and Manandhar}]{pontiki2014semeval}
+Maria Pontiki, Dimitris Galanis, John Pavlopoulos, Harris Papageorgiou, Ion
+  Androutsopoulos, and Suresh Manandhar. 2014.
+\newblock {SemEval-2014 Task 4}: Aspect based sentiment analysis.
+\newblock In {\em Proceedings of the 8th International Workshop on Semantic
+  Evaluation\/}. Dublin, Ireland, SemEval~'14, pages 27--35.
+
+\bibitem[{Qureshi et~al.(2013)Qureshi, O'Riordan, and Pasi}]{Qureshi:2013fb}
+Muhammad~A. Qureshi, Colm O'Riordan, and Gabriella Pasi. 2013.
+\newblock Clustering with error estimation for monitoring reputation of
+  companies on {T}witter.
+\newblock In {\em Proceedings of the 9th Asia Information Retrieval Societies
+  Conference\/}. Singapore, AIRS~'13, pages 170--180.
+
+\bibitem[{Refaee and Rieser(2014)}]{refaee2014subjectivity}
+Eshrag Refaee and Verena Rieser. 2014.
+\newblock Subjectivity and sentiment analysis of {A}rabic {T}witter feeds with
+  limited resources.
+\newblock In {\em Workshop on Free/Open-Source {A}rabic Corpora and Corpora
+  Processing Tools\/}. Reykjavik, Iceland, pages 16--21.
+
+\bibitem[{Refaee and Rieser(2015)}]{refaee2015benchmarking}
+Eshrag Refaee and Verena Rieser. 2015.
+\newblock Benchmarking machine translated sentiment analysis for {A}rabic
+  tweets.
+\newblock In {\em Proceedings of the 2015 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies\/}. Denver, Colorado, USA, NAACL-HLT~'15, pages 71--78.
+
+\bibitem[{Rosenthal and McKeown(2016)}]{rosenthal2016social}
+Sara Rosenthal and Kathy McKeown. 2016.
+\newblock Social proof: The impact of author traits on influence detection.
+\newblock In {\em Proceedings of the First Workshop on NLP and Computational
+  Social Science\/}. Austin, Texas, USA, pages 27--36.
+
+\bibitem[{Rosenthal et~al.(2015)Rosenthal, Nakov, Kiritchenko, Mohammad,
+  Ritter, and Stoyanov}]{rosenthal-EtAl:2015:SemEval}
+Sara Rosenthal, Preslav Nakov, Svetlana Kiritchenko, Saif Mohammad, Alan
+  Ritter, and Veselin Stoyanov. 2015.
+\newblock {SemEval-2015 Task 10}: Sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 9th International Workshop on Semantic
+  Evaluation\/}. Denver, Colorado, USA, SemEval '15, pages 451--463.
+
+\bibitem[{Rosenthal et~al.(2014)Rosenthal, Ritter, Nakov, and
+  Stoyanov}]{rosenthal-EtAl:2014:SemEval}
+Sara Rosenthal, Alan Ritter, Preslav Nakov, and Veselin Stoyanov. 2014.
+\newblock {SemEval}-2014 task 9: Sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 8th International Workshop on Semantic
+  Evaluation\/}. Dublin, Ireland, SemEval '14, pages 73--80.
+
+\bibitem[{Rouvier(2017)}]{SemEval:2017:task4:lia}
+Mickael Rouvier. 2017.
+\newblock {LIA at SemEval-2017 Task 4}: An ensemble of neural networks for
+  sentiment classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 759--764.
+
+\bibitem[{Rozental and Fleischer(2017)}]{SemEval:2017:task4:Amobee}
+Alon Rozental and Daniel Fleischer. 2017.
+\newblock {Amobee at SemEval-2017 Task 4}: {D}eep learning system for sentiment
+  detection on {T}witter.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 652--657.
+
+\bibitem[{Rubner et~al.(2000)Rubner, Tomasi, and Guibas}]{Rubner:2000fk}
+Yossi Rubner, Carlo Tomasi, and Leonidas~J. Guibas. 2000.
+\newblock The {Earth Mover's Distance} as a metric for image retrieval.
+\newblock {\em International Journal of Computer Vision\/} 40(2):99--121.
+
+\bibitem[{R{\"u}schendorf(2001)}]{Ruschendorf:2001mz}
+Ludger R{\"u}schendorf. 2001.
+\newblock Wasserstein metric.
+\newblock In Michiel Hazewinkel, editor, {\em Encyclopaedia of Mathematics\/},
+  Kluwer Academic Publishers, Dordrecht, Netherlands.
+
+\bibitem[{Russo et~al.(2015)Russo, Caselli, and Strapparava}]{russo2015semeval}
+Irene Russo, Tommaso Caselli, and Carlo Strapparava. 2015.
+\newblock {SemEval-2015 Task 9}: {CLIPEval} implicit polarity of events.
+\newblock In {\em Proceedings of the 9th International Workshop on Semantic
+  Evaluation\/}. Denver, Colorado, USA, SemEval~'15, pages 443--450.
+
+\bibitem[{Salameh et~al.(2015)Salameh, Mohammad, and
+  Kiritchenko}]{salameh2015sentiment}
+Mohammad Salameh, Saif Mohammad, and Svetlana Kiritchenko. 2015.
+\newblock Sentiment after translation: A case-study on {A}rabic social media
+  posts.
+\newblock In {\em Proceedings of the 2015 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies\/}. Denver, Colorado, USA, NAACL-HLT~'15, pages 767--777.
+
+\bibitem[{Sarker and Gonzalez(2017)}]{SemEval:2017:task4:hlp@upenn}
+Abeed Sarker and Graciela Gonzalez. 2017.
+\newblock {HLP@UPenn} at {SemEval-2017 Task 4A: {A} simple, self-optimizing
+  text classification system combining dense and sparse vectors}.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 639--642.
+
+\bibitem[{Sebastiani(2015)}]{Sebastiani:2015zl}
+Fabrizio Sebastiani. 2015.
+\newblock An axiomatically derived measure for the evaluation of classification
+  algorithms.
+\newblock In {\em Proceedings of the 2015 International Conference on The
+  Theory of Information Retrieval\/}. Northampton, Massachusetts, USA,
+  ICTIR~'15, pages 11--20.
+
+\bibitem[{Strapparava and Mihalcea(2007)}]{strapparava2007semeval}
+Carlo Strapparava and Rada Mihalcea. 2007.
+\newblock {SemEval-2007 Task 14}: Affective text.
+\newblock In {\em Proceedings of the Fourth International Workshop on Semantic
+  Evaluations\/}. Prague, Czech Republic, SemEval~'07, pages 70--74.
+
+\bibitem[{Symeonidis et~al.(2017)Symeonidis, Effrosynidis, Kordonis, and
+  Arampatzis}]{SemEval:2017:task4:duth}
+Symeon Symeonidis, Dimitrios Effrosynidis, John Kordonis, and Avi Arampatzis.
+  2017.
+\newblock {DUTH at SemEval-2017 Task 4}: A voting classification approach for
+  {T}witter sentiment analysis.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 703--707.
+
+\bibitem[{Troncy et~al.(2017)Troncy, Palumbo, Sygkounas, and
+  Rizzo}]{SemEval:2017:task4:SentiME++}
+Raphael Troncy, Enrico Palumbo, Efstratios Sygkounas, and Giuseppe Rizzo. 2017.
+\newblock {SentiME++ at SemEval-2017 Task 4}: Stacking state-of-the-art
+  classifiers to enhance sentiment classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 647--651.
+
+\bibitem[{Vanzo et~al.(2014)Vanzo, Croce, and
+  Basili}]{vanzo-croce-basili:2014:Coling}
+Andrea Vanzo, Danilo Croce, and Roberto Basili. 2014.
+\newblock A context-based model for sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 25th International Conference on
+  Computational Linguistics: Technical Papers\/}. Dublin, Ireland, COLING~'14,
+  pages 2345--2354.
+
+\bibitem[{Volkova et~al.(2013)Volkova, Wilson, and
+  Yarowsky}]{volkova2013exploring}
+Svitlana Volkova, Theresa Wilson, and David Yarowsky. 2013.
+\newblock Exploring demographic language variations to improve multilingual
+  sentiment analysis in social media.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing\/}. Seattle, Washington, USA, EMNLP~'13, pages
+  1815--1827.
+
+\bibitem[{Wang et~al.(2017)Wang, Chu, Liu, and
+  Zhou}]{SemEval:2017:task4:ynu-1510}
+Ming Wang, Biao Chu, Qingxun Liu, and Xiaobing Zhou. 2017.
+\newblock {YNUDLG at SemEval-2017 Task 4}: A {GRU-SVM} model for sentiment
+  classification and quantification in {T}witter.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 712--716.
+
+\bibitem[{Yang et~al.(2017)Yang, Tseng, and Chen}]{SemEval:2017:task4:deepSA}
+Tzu-Hsuan Yang, Tzu-Hsuan Tseng, and Chia-Ping Chen. 2017.
+\newblock {deepSA at SemEval-2017 Task 4}: Interpolated deep neural networks
+  for sentiment analysis in {T}witter.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 615--619.
+
+\bibitem[{Yang and Eisenstein(2015)}]{DBLP:journals/corr/YangE15}
+Yi~Yang and Jacob Eisenstein. 2015.
+\newblock Putting things in context: Community-specific embedding projections
+  for sentiment analysis.
+\newblock {\em CoRR\/} abs/1511.06052.
+
+\bibitem[{Yin et~al.(2017)Yin, Song, and Zhang}]{SemEval:2017:task4:nnembs}
+Yichun Yin, Yangqiu Song, and Ming Zhang. 2017.
+\newblock {NNEMBs at SemEval-2017 Task 4}: Neural {T}witter sentiment
+  classification: a simple ensemble method with different embeddings.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 620--624.
+
+\bibitem[{Yoon et~al.(2017)Yoon, Kim, and Lyu}]{SemEval:2017:task4:adullam}
+Joosung Yoon, Hyeoncheol Kim, and Kigon Lyu. 2017.
+\newblock {Adullam at SemEval-2017 Task 4}: Sentiment analyzer using lexicon
+  integrated convolutional neural networks with attention.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 731--735.
+
+\bibitem[{Zhang et~al.(2017)Zhang, Wang, Zhang, and
+  Zhang}]{SemEval:2017:task4:ynu-hpcc}
+Haowei Zhang, Jin Wang, Jixian Zhang, and Xuejie Zhang. 2017.
+\newblock {YNU-HPCC at SemEval 2017 Task 4}: Using a multi-channel {CNN-LSTM}
+  model for sentiment classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 795--800.
+
+\bibitem[{Zhao et~al.(2017)Zhao, Yang, and Xu}]{SemEval:2017:task4:mitlab}
+Jingjing Zhao, Yan Yang, and Bing Xu. 2017.
+\newblock {MI\&T Lab at SemEval-2017 Task 4}: An integrated training method of
+  word vector for sentiment classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, SemEval~'17, pages 688--692.
+
+\bibitem[{Zhou et~al.(2017)Zhou, Lan, and Wu}]{SemEval:2017:task4:ecnu}
+Yunxiao Zhou, Man Lan, and Yuanbin Wu. 2017.
+\newblock {ECNU at SemEval-2017 Task 4}: Evaluating effective features on
+  machine learning methods for {T}witter message polarity classification.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation\/}. Vancouver, Canada, Semeval 2017, pages 811--815.
+
+\end{thebibliography}

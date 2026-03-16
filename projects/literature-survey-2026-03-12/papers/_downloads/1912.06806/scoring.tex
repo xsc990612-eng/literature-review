@@ -1,0 +1,98 @@
+
+For both subtasks, the participating systems were required to perform a three-way classification -- a particular marked phrase (for subtask A) or an entire message (for subtask B) was to be classified as {\em positive}, {\em negative}, or {\em objective}.
+For each system, we computed a score for predicting positive/negative phrases/messages vs. the other two classes.
+
+For instance, to compute positive precision, $P_{pos}$, we find the number of phrases/messages that a system correctly predicted to be positive,
+and we divide that number by the total number of messages it predicted to be positive.
+To compute recall, for the positive class, $R_{pos}$, we find the number of messages correctly predicted to be positive and we divide that number by the total number of positive messages in the gold standard.
+
+We then calculate F-score for the positive labels, the harmonic average of precision and recall as follows $F_{pos}= 2 \frac{P_{pos} R_{pos}}{P_{pos}+R_{pos}}$.
+We carry out a similar computation to calculate $F_{neg}$, which is F1 for negative messages.
+
+The overall score for each system run is then given by the average of the F1-scores for the positive and negative classes: $F=(F_{pos}+F_{neg})/2$.
+
+Note that ignoring $F_{neutral}$ does not reduce the task to predicting positive vs. negative labels only (even though some participants have chosen to do so)
+since the gold standard still contains neutral labels which are to be predicted:
+$F_{pos}$ and $F_{neg}$ would suffer if these examples are labeled as positive and/or negative instead of neutral.
+
+We provided participants with a scorer. In addition to outputting the overall F-score, it produced a confusion matrix for the three prediction classes ({\em positive}, {\em negative}, and {\em objective}), and it also validated the data submission format.
+
+\begin{table}[hbt]
+    \centering
+    \begin{small}
+    \begin{tabular}{@{ }lc@{ }c@{ }cc@{ }}
+    \bf Run & \bf Const- & \bf Unconst- & \bf Use & \bf Super-\\
+    & \bf rained & \bf rained & \bf Neut.? & \bf vised?\\
+    \hline
+    NRC-Canada & 88.93 &  & yes & yes\\
+    AVAYA & 86.98 & 87.38$_{(1)}$ & yes & yes\\
+    BOUNCE & 86.79 &  & yes & yes\\
+    LVIC-LIMSI & 85.70 &  & yes & yes\\
+    FBM & 85.50 &  & yes & semi\\
+    GU-MLT-LT & 85.19 &  & yes & yes\\
+    $^\diamond$UNITOR & 84.60 &  & yes & yes\\
+    USNA & 81.31 &  & yes & yes\\
+    Serendio & 80.04 &  & yes & yes\\
+    $^\diamond$ECNUCS & 79.48 & 80.15$_{(2)}$ & yes & yes\\
+    TJP & 78.16 &  & yes & yes\\
+    $^\circ$columbia-nlp & 74.94 &  & yes & yes\\
+    teragram &  & 74.89$_{(3)}$ & yes & yes\\
+    sielers & 74.41 &  & yes & yes\\
+    KLUE & 73.74 &  & yes & yes\\
+    OPTWIMA & 69.17 & 36.91$_{(6)}$ & yes & yes\\
+    swatcs & 67.19 & 63.86$_{(5)}$ & no & yes\\
+    Kea & 63.94 &  & yes & yes\\
+    senti.ue-en & 62.79 & 71.38$_{(4)}$ & yes & yes\\
+    uottawa & 60.20 &  & yes & yes\\
+    IITB & 54.80 &  & yes & yes\\
+    SenselyticTeam & 53.88 &  & yes & yes\\
+    SU-sentilab &  & 34.73$_{(7)}$ & no & yes\\
+        \hline
+    Majority Baseline & \multicolumn{2}{c}{38.10} & N/A & N/A \\
+    \hline
+    \end{tabular}
+    \end{small}
+    \caption{\label{tab:TaskATwitter}Results for subtask A on the Twitter dataset.
+             The $^\circ$ marks a team that includes a task coorganizer,
+             and the $^\diamond$ indicates a system submitted as constrained but which used additional Tweets or additional sentiment-annotated text
+             to collect statistics that were then used as a feature.}
+  \end{table}
+
+
+\begin{table}[hbt]
+    \centering
+    \begin{small}
+    \begin{tabular}{@{ }lc@{ }c@{ }cc@{ }}
+    \bf Run & \bf Const- & \bf Unconst- & \bf Use & \bf Super-\\
+    & \bf rained & \bf rained & \bf Neut.? & \bf vised?\\
+    \hline
+    GU-MLT-LT & 88.37 &  & yes & yes\\
+    NRC-Canada & 88.00 &  & yes & yes\\
+    $^\star$AVAYA & 83.94 & 85.79$_{(1)}$ & yes & yes\\
+    $^\diamond$UNITOR & 82.49 &  & yes & yes\\
+    TJP & 81.23 &  & yes & yes\\
+    LVIC-LIMSI & 80.16 &  & yes & yes\\
+    USNA & 79.82 &  & yes & yes\\
+    $^\diamond$ECNUCS & 76.69 & 77.34$_{(2)}$ & yes & yes\\
+    sielers & 73.48 &  & yes & yes\\
+    FBM & 72.95 &  & no & semi\\
+    teragram & 72.83 & 72.83$_{(4)}$ & yes & yes\\
+    KLUE & 70.54 &  & yes & yes\\
+    $^\circ$columbia-nlp & 70.30 &  & yes & yes\\
+    senti.ue-en & 66.09 & 74.13$_{(3)}$ & yes & yes\\
+    swatcs & 66.00 & 67.68$_{(5)}$ & no & yes\\
+    Kea & 63.27 &  & yes & yes\\
+    uottawa & 55.89 &  & yes & yes\\
+    SU-sentilab &  & 55.38$_{(6)}$ & no & yes\\
+    SenselyticTeam & 51.13 &  & yes & yes\\
+    OPTWIMA & 37.32 & 36.38$_{(7)}$ & yes & yes\\
+   \hline
+    Majority Baseline & \multicolumn{2}{c}{31.50}  & N/A & N/A \\
+    \hline
+        \end{tabular}
+    \end{small}
+    \caption{\label{tab:TaskASMS}Results for subtask A on the SMS dataset. The $^\star$ indicates a late submission,
+                the $^\circ$ marks a team that includes a task co-organizer,
+             and the $^\diamond$ indicates a system submitted as constrained but which used additional Tweets or additional sentiment-annotated text
+             to collect statistics that were then used as a feature.}
+  \end{table}

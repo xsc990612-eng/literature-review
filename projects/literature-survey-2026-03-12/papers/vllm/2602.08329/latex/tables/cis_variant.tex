@@ -1,0 +1,32 @@
+%------------------------------------------------------------
+\begin{table}[tb]
+\centering
+\footnotesize
+%\normalsize
+\caption{Variants of CIS on the similarity designs. The model is LlaMA2-7b-chat.}
+\label{tab:cis_variant}
+%\resizebox{\linewidth}{!}
+{
+\begin{tabular}{l|c|ccc}
+\toprule
+Method & $s$ & GSM8K (flexible/strict) & COQA\\ 
+\midrule
+
+%\multirow{2}{*}{Query} & 8  & 0.1744 / 0.1736 & 0.6093  \\ 
+% & 16  & 0.1668 / 0.1653 & 0.6093 \\ 
+
+% \midrule
+
+\multirow{2}{*}{Key} & 8  & 0.1547 / 0.1482 & 0.5613 \\ 
+ & 16  &  0.1405 / 0.1334 & 0.5608  \\ 
+
+\midrule
+
+\multirow{2}{*}{Hidden} &  8 & 0.1303 / 0.1289 & 0.5416  \\ 
+ &  16 &  0.1121 / 0.1108 & 0.5214 \\ 
+
+\bottomrule
+\end{tabular}
+}
+\end{table}
+%------------------------------------------------------------

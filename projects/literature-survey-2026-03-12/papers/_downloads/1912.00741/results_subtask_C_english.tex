@@ -1,0 +1,35 @@
+\begin{table}[h!]
+\centering
+\begin{small}
+\renewcommand{\arraystretch}{1.0}% Tighter
+\begin{tabular}{|c|l|l|l|}
+\hline
+      \bf \# & \bf System & \multicolumn{1}{c|}{$MAE^M$} & \multicolumn{1}{c|}{$MAE^{\mu}$} \\
+\hline
+\bf 1 & BB\_twtr & \bf 0.481$_{1}$ & 0.554$_{6}$ \\
+\bf 2 & DataStories & \bf 0.555$_{2}$ & 0.543$_{4}$ \\
+\bf 3 & Amobee-C-137 & \bf 0.599$_{3}$ & 0.582$_{10}$ \\
+\bf 4 & Tweester & \bf 0.623$_{4}$ & 0.734$_{13}$ \\
+\bf 5 & TwiSe & \bf 0.640$_{5}$ & 0.616$_{12}$ \\
+\bf 6 & CrystalNest & \bf 0.698$_{6}$ & 0.571$_{9}$ \\
+\bf 7 & ELiRF-UPV & \bf 0.806$_{7}$ & 0.586$_{11}$ \\
+\bf 8 & EICA & \bf 0.823$_{8}$ & 0.509$_{2}$ \\
+\bf 9 & funSentiment & \bf 0.842$_{9}$ & 0.530$_{3}$ \\
+\bf 10 & DUTH & \bf 0.895$_{10}$ & 0.544$_{5}$ \\
+& OMAM & \bf 0.895$_{10}$ & 0.475$_{1}$ \\
+\bf 12 & YNU-HPCC & \bf 0.925$_{12}$ & 0.567$_{8}$ \\
+\bf 13 & NRU-HSE & \bf 0.928$_{13}$ & 0.557$_{7}$ \\
+\bf 14 & YNU-1510 & \bf 1.262$_{14}$ & 0.764$_{14}$ \\
+\bf 15 & SSN\_MLRG1 & \bf 1.325$_{15}$ & 0.985$_{15}$ \\
+\hline
+B1 &  \textsc{HighlyNegative} & 2.000 & 1.895\\
+B2 & \textsc{Negative} & 1.400 & 0.923\\
+B3 & \textsc{Neutral} & \bf 1.200 & \bf 0.525\\
+B4 & \textsc{Positive} & 1.400 & 1.127\\
+B5 & \textsc{HighlyPositive} & 2.000 & 2.105\\
+\hline
+\end{tabular}
+\caption{\textbf{Results for Subtask C ``Tweet classification according to a five-point scale'', English.} The systems are ordered by their $MAE^{M}$ score (lower is better). B$x$ indicates a baseline.}
+\label{table:ResultsSubtaskC:English}
+\end{small}
+\end{table}

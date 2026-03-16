@@ -1,0 +1,147 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[numbers]{natbib}
+\usepackage{multirow}
+\usepackage{multicol}
+\newtheorem{property}{Property}
+\newtheorem{theorem}{Theorem}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\usepackage{amssymb}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\usepackage[caption=false,font=footnotesize]{subfig}
+%\usepackage[caption=false,font=scriptsize,labelfont=sf,textfont=sf]{subfig}
+
+\definecolor{PSAW}{RGB}{138,122,197} % = RGB 213,94,0
+
+% ETF Unupdated Token (blue)
+\definecolor{ETF}{RGB}{143,74,109}
+
+
+\newcommand{\argmax}{\operatorname*{\arg\!\max}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bq}{\mathbf{q}}
+\newcommand{\bk}{\mathbf{k}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+% updated with editorial comments 8/9/2021
+
+\begin{document}
+
+\title{Near-Oracle KV Selection via Pre-hoc Sparsity for Long-Context Inference} % Near-Lossless 
+%HyperKV: Toward Extreme Retrieval Reduction and Ultra-Sparse Attention for Hyper KV Compression
+
+\author{Yifei Gao$\dagger$, Lei Wang$\dagger$,~\IEEEmembership{Senior Member,~IEEE,} Rong-Cheng Tu$\dagger$, Qixin Zhang, \\ Jun Cheng$^*$,~\IEEEmembership{Senior Member,~IEEE,} and Dacheng Tao,~\IEEEmembership{Fellow,~IEEE}
+        % <-this % stops a space
+%\thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
+\thanks{This work was supported in part by the Guangdong Major Project of Basic and Applied Basic Research (2023B0303000016), Guangdong S\&T Program (No. 2024B0101050002), Guangdong-Hong Kong-Macao Joint Laboratory of Human-Machine Intelligence-Synergy Systems (2019B121205007), CAS Key Technology Talent Program, Colleges and Universities Key Laboratory of Intelligent Integrated Automation (No.201502), CAS Key Laboratory of Human-Machine Intelligence-Synergy Systems, Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences (2014DP173025). }
+
+\thanks{Manuscript received July 1, 2025; revised XX, 2025. (Corresponding author: jun.cheng@siat.ac.cn)}
+\thanks{Yifei Gao is with University College London, London, UK. (E-mail: ucabaoj@ucl.ac.uk).}
+\thanks{Lei Wang and Jun Cheng are with the Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences (CAS), Shenzhen 518055, China. They are also with the Chinese University of Hong Kong.  (e-mail: lei.wang1@siat.ac.cn, jun.cheng@siat.ac.cn).}
+\thanks{Rong-Cheng Tu, Qixin Zhang and Dacheng Tao are with the College of Computing \& Data Science, Nanyang Technological University, Singapore. (E-mail: rongcheng.tu@ntu.edu.sg, qixin.zhang@ntu.edu.sg, dacheng.tao@ntu.edu.sg)}
+}
+
+% The paper headers
+\markboth{IEEE Transactions on Pattern Analysis and Machine Intelligence,~Vol.~X, No.~X, August~2025}%
+{Shell \MakeLowercase{\textit{et al.}}: A Sample Article Using IEEEtran.cls for IEEE Journals}
+
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+\maketitle
+
+\input{latex/0-abs}
+
+%\begin{IEEEkeywords}
+%LLM, KV Compression.
+%\end{IEEEkeywords}
+
+\input{latex/1-intro}
+
+% \input{latex/2-related}
+
+\input{latex/3-pre}
+
+\input{latex/4-obs}
+
+\input{latex/5-method}
+
+\input{latex/6-exp}
+
+\input{latex/7-con}
+
+\input{latex/8-info-error}
+
+
+
+% \section*{Acknowledgments}
+% The authors would like to thank the anonymous reviewers and the editors who helped to improve the quality of this paper.
+
+
+
+%{\appendices
+%\section*{Proof of the First Zonklar Equation}
+%Appendix one text goes here.
+% You can choose not to have a title for an appendix if you want by leaving the argument blank
+%\section*{Proof of the Second Zonklar Equation}
+%Appendix two text goes here.}
+
+
+
+
+\bibliography{references}
+%\begin{thebibliography}{1}
+\bibliographystyle{IEEEtran}
+\input{latex/bio}
+
+\clearpage
+\appendix
+
+\input{latex/9-cis}
+
+\input{latex/10-psaw-etf}
+
+%\end{thebibliography}
+
+
+\vfill
+
+\end{document}
+
+

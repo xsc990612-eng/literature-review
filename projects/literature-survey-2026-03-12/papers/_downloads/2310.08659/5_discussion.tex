@@ -1,0 +1,52 @@
+\section{Discussion}
+\label{sec:discussion}
+\textbf{Start with quantization or SVD in the alternating optimization?}
+An alternative algorithm to the alternating optimization is that we first obtain the low-rank approximation $A_t, B_t$ and then obtain the quantized weight $Q_t$ by switching Line 3 and Line 4 in Algorithm \ref{alg:alter}. We note this is a valid alternative method as both still jointly minimize the objective in \eqref{eq:optimization}. Table \ref{tab:glue_alternative} summarizes the performance of this alternative method. It is noteworthy that the alternative method still outperforms QLoRA significantly, even though it is worse than the primary version. This observation underscores the potential for performance improvement by achieving a closer approximation of pre-trained weights within the low-precision regime.
+
+% \noindent \textbf{Quantization as regularizer} We find {\OurAlg} outperforms full precision LoRA in XSum and GSM8K (see Table \ref{tab:bart_summerization_bit4} and Table \ref{tab:llama}). One possible explanation is that the lack of regularization causes overfitting on full precision LoRA fine-tuning. From Table \ref{tab:llama}, regularization helps full precision LoRA fine-tuning to overcome overfitting, but has negative effect on quantization. This implies that quantization already has regularization that prevents overfitting.
+% One possible explanation for this unexpected phenomenon is that the initial low-rank adapters obtained by {\OurAlg} are non-zero while they are all zero in full precision LoRA as described in \eqref{eq:lora_init}. Such zero initialization could make the fine-tuning unstable, and therefore it performs worse than {\OurAlg}. We leave the study of the robustness of {\OurAlg} as future work.
+
+\begin{table}[htb!]
+\caption{Results of 2-bit uniformly quantized DeBERTaV3-base on part of GLUE. \OurAlg (SVD First) indicates the alternative {\OurAlg} that swiches Line 3 and Line 4 in Algorithm \ref{alg:alter}. We report the median over four random seeds. The best results on each task are shown in {\bf bold}.}
+\vspace{-3mm}
+\label{tab:glue_alternative}
+\begin{center}
+\begin{small}
+\begin{tabular}{cc|cccc}
+\toprule
+\multirow{2}*{\bf Method} & \multirow{2}*{\bf Rank} & {\bf MNLI}  & {\bf QNLI} & {\bf SST2}   \\  
+~ & ~ & {m / mm} & {Acc} & {Acc}  \\
+\midrule 
+{ Full FT} & - & {90.5/90.6} & {94.0} & {95.3}\\
+\midrule
+QLoRA & 32 & 79.9/79.5 & 83.8 & 86.6 \\
+\midrule
+LoftQ(SVD First) & 32 & 87.8/87.7 & 84.9 & 89.7 \\
+
+\midrule
+{\OurAlg}(Quantiztion First)& {32}  & \bf 88.0/88.1 & {\bf 92.2}&{ \bf 94.7}   \\
+
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+\end{table}
+
+% \begin{table}[htb!]
+% \caption{Quantization as regularization. The results of adding weight decay to low-rank adapters of LLAMA-2-13b. Results are accuracy on GSM8K. }
+% \vspace{-3mm}
+% \label{tab:reg}
+% \begin{center}
+% \begin{small}
+% \begin{tabular}{c|ccc}
+% \toprule
+% {\bf Quantization} & {w/ weight decay} & {w/o weight decay}\\  
+% \midrule 
+% {Full precision} & {45.3} & {43.1} \\
+% \midrule
+% {NF4} & {43.4} & {45.0} \\
+% \bottomrule
+% \end{tabular}
+% \end{small}
+% \end{center}
+% \end{table}

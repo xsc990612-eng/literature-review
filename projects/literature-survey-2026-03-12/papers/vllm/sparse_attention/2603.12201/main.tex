@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage[preprint]{colm2026_conference}
+
+% Typography (load early for maximum effect)
+\usepackage{microtype}
+
+% Math
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+
+\newcounter{proposition}
+\renewcommand{\theproposition}{\arabic{proposition}}
+\newenvironment{proposition}{\refstepcounter{proposition}\par\medskip\noindent\textbf{Proposition~\theproposition.}\itshape}{\par\medskip}
+\newenvironment{proof}{\par\noindent\textbf{Proof.}}{\hfill$\square$\par\medskip}
+
+% Tables and figures
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{caption}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+
+\definecolor{mygray}{gray}{.9}
+
+% Lists
+\usepackage{enumitem}
+
+% Spacing after abbreviations
+\usepackage{xspace}
+
+% Algorithms
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% Line numbers for review
+\usepackage{lineno}
+
+% URLs and cross-references (hyperref almost always last)
+\usepackage{url}
+\usepackage[colorlinks=true,citecolor=DarkOrchid,linkcolor=NavyBlue,urlcolor=NavyBlue]{hyperref}
+
+% Math commands from COLM template
+\input{math_commands}
+
+% Placeholder command for TODOs
+\newcommand{\todo}[1]{\textcolor{red}{[\textsc{todo}: #1]}}
+\newcommand{\textproc}[1]{\textsc{#1}}
+
+\title{IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse}
+
+\author{Yushi Bai$^{1\dagger}$, Qian Dong$^{1\dagger}$, Ting Jiang$^{2}$, Xin Lv$^{2}$ \\ \textbf{Zhengxiao Du$^{2}$, Aohan Zeng$^{12}$, Jie Tang$^{1}$, Juanzi Li$^{1}$}\vspace{0.42em} \\ 
+$^1$Tsinghua University
+  \quad
+  $^2$Z.ai
+}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\footnotetext[2]{Work done while interned at Z.ai.}
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\begin{document}
+
+\ifcolmsubmission
+\linenumbers
+\fi
+
+\maketitle
+
+\begin{abstract}
+Long-context agentic workflows have emerged as a defining use case for large language models, making attention efficiency critical for both inference speed and serving cost.
+Sparse attention addresses this challenge effectively, and DeepSeek Sparse Attention~(DSA) is a representative production-grade solution: a lightweight \emph{lightning indexer} selects the top-$k$ most relevant tokens per query, reducing core attention from~$O(L^2)$ to~$O(Lk)$.
+However, the indexer itself retains~$O(L^2)$ complexity and must run independently at every layer, despite the fact that the resulting top-$k$ selections are highly similar across consecutive layers.
+We present \textbf{IndexCache}, which exploits this cross-layer redundancy by partitioning layers into a small set of \emph{Full}~layers that run their own indexers and a majority of \emph{Shared}~layers that simply reuse the nearest Full layer's top-$k$ indices.
+We propose two complementary approaches to determine and optimize this configuration.
+\emph{Training-free IndexCache} applies a greedy search algorithm that selects which layers to retain indexers by directly minimizing language modeling loss on a calibration set, requiring no weight updates.
+\emph{Training-aware IndexCache} introduces a multi-layer distillation loss that trains each retained indexer against the averaged attention distributions of all layers it serves, enabling even simple interleaved patterns to match full-indexer accuracy.
+Experimental results on a 30B DSA model show that IndexCache can remove 75\%\ of indexer computations with negligible quality degradation, achieving up to 1.82$\times$~prefill speedup and 1.48$\times$~decode speedup compared to standard DSA.
+These positive results are further confirmed by our preliminary experiments on the production-scale GLM-5 model (Figure~\ref{fig:glm5}).
+\end{abstract}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/glm5_new.pdf}
+\caption{%
+    Benchmark comparison between GLM-5 and GLM-5 + IndexCache. IndexCache removes 50\% of indexer computations while maintaining comparable performance across both long-context and reasoning tasks, delivering $\sim1.2\times$ end-to-end speedup.
+}
+\label{fig:glm5}
+\end{figure}
+
+\input{sections/1_introduction}
+\input{sections/2_background}
+\input{sections/3_method}
+\input{sections/4_experiments}
+\input{sections/5_related_work}
+\input{sections/6_conclusion}
+
+\bibliography{references}
+\bibliographystyle{colm2026_conference}
+
+\newpage
+\appendix
+\input{sections/7_appendix}
+
+\end{document}

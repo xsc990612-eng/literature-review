@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2511.17593",
+  "title": "Comparative Analysis of Large Language Model Inference Serving Systems: A Performance Study of vLLM and HuggingFace TGI",
+  "authors": ["Saicharan Kolluru"],
+  "abstract": "The deployment of Large Language Models (LLMs) in production environments requires efficient inference serving systems that balance throughput, latency, and resource utilization. This paper presents a comprehensive empirical evaluation of vLLM and HuggingFace TGI.",
+  "published": "2025-11-17",
+  "categories": ["cs.LG", "cs.DC", "cs.PF"],
+  "score": 4,
+  "source_term": "vLLM PagedAttention inference serving",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "vllm"
+}

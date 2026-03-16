@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "2402.10462",
+  "title": "QDyLoRA: Quantized Dynamic Low-Rank Adaptation for Efficient Large Language Model Tuning",
+  "authors": ["Hossein Rajabzadeh", "Mojtaba Valipour", "Tianshu Zhu", "Marzieh Tahaei", "Hyock Ju Kwon", "Ali Ghodsi", "Boxing Chen", "Mehdi Rezagholizadeh"],
+  "abstract": "Finetuning large language models requires huge GPU memory. While the quantized version of the Low-Rank Adaptation technique, named QLoRA, significantly alleviates this issue, finding the efficient LoRA rank is still challenging.",
+  "score": 4,
+  "source_term": "QLoRA quantization low-rank adaptation LLM",
+  "direction": "qlora-efficient-finetuning",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

@@ -1,0 +1,53 @@
+\section{Introduction} \label{sec:introduction}
+% （1）研究的问题是什么；（2）有什么意义、研究的困难；（3）它的独特性表现在哪里？
+% 引言或介绍部分需要对研究现状进行概述。最好用归纳总结的方式来概述，将解决问题的策略分成几种不同的思路。
+
+% (1)研究的问题是什么、研究有什么意义
+\IEEEPARstart{T}{he} proliferation of mobile internet has led to an exponential increase in user-generated data on online platforms, including video, text, and image data. Intelligent processing of such data can significantly enhance the quality of life across society and generate substantial economic benefits. Short text data are a prevalent and important form of user-generated data, consisting of concise texts such as microblogs and comments. This genre of data can reveal rich information about user’s intentions, emotions, interests, and other aspects. Short text clustering is a key technique for intelligent processing of short text data, which aims to group similar short texts together based on their contents or semantics. Short text clustering has many application scenarios, such as information retrieval~\cite{carpineto2012consensus}, event exploration~\cite{feng2015streamcube}, text summarization~\cite{shou2013sumblr}, and content recommendation~\cite{pazzani2007content}. 
+% 研究遇到的困难-概括性
+% (2)分类概述研究现状、研究现状存在的问题--根据文章具体性
+% ①研究的困难-稀疏
+Berkhin~\cite{Clustering2006survey} has discussed several important issues of clustering: 1) Setting of the number of clusters; 2) Ability to work with high-dimensional data; 3) Interpretability of results; 4) Scalability to large datasets. Short text clustering has all the above challenges. Different from normal text clustering, short text clustering also suffers from data sparsity~\cite{ZhaiTextmining2012} due to the limited words. 
+% Most words only occur once in each short text, as a result, the Term Frequency-Inverse Document Frequency (TF-IDF) measure cannot work well in the short text setting.
+% ②vector方法问题-计算效率低
+Traditional clustering algorithms, such as K-means~\cite{dhillon2001concept} and hierarchical agglomerative clustering~\cite{mullner2011modern}, have been widely applied to various text clustering tasks. However, these approaches often rely on the Vector Space Model (VSM)~\cite{salton1975VSM}, where each word dimension is treated equally and independence is assumed among features. Furthermore, if we use the vector space model to represent the short texts, the sparse and high-dimensional vectors will result in waste of both memory and computation time.
+% ③大模型方法问题
+% 最近，关于大模型的研究非常火热，但是由于聚类任务
+
+% (5)我们方法如何去解决上述问题的，方法的独特性表现在哪里？
+% ①GSDMM如何解决上述问题
+Specifically, we try to cope with the above challenges of short text clustering and propose a collapsed Gibbs Sampling algorithm for the Dirichlet Multinomial Mixture (DMM) model~\cite{nigam2000text} for short text clustering (abbr. to GSDMM). GSDMM sets an upper bound on the number of clusters and automatically prunes redundant clusters during Gibbs sampling. The gradual reduction in the number of clusters resembles hierarchical clustering, enabling GSDMM to effectively uncover deep thematic structures. Through mathematical derivation, we explore how and why GSDMM works as well as the meaning of its parameters.
+
+% ②GSDMM方法的独特性表现
+We find that GSDMM has the following nice properties: 1) GSDMM can infer the number of clusters automatically; 
+% 2) GSDMM has a clear way to balance the completeness and homogeneity of the clustering results; 3) GSDMM is fast to converge; 
+2) Unlike the VSM-based approaches, GSDMM can cope with the sparse and high-dimensional problem of short texts; 3) Like topic models~\cite{Blei:LDA2003}, GSDMM can also obtain the representative words of each cluster. This enables GSDMM to efficiently address key clustering challenges, including the sparsity issue in short texts.
+
+% ③GSDMM存在的问题
+Next, although the proposed GSDMM demonstrates outstanding performance\cite{GSDMM}, an in-depth analysis reveals several aspects that warrant further refinement.
+
+1) GSDMM randomly assigns documents to clusters during initialization, which often introduces noise and leads to instability in the early stages of sampling. 
+
+2) The DMM model assumes a uniform Dirichlet prior for word distributions, thereby assigning equal importance to all words. This oversimplification can diminish the impact of highly discriminative words while overemphasizing globally frequent but less informative terms. 
+
+3) Although GSDMM can prune redundant clusters within a limited number of iterations, it still risks producing a suboptimal number of clusters. Moreover, we also need to consider how to optimize GSDMM when the number of categories is known to achieve better performance. 
+
+% ③GSDMM+如何解决上述问题，以及独特性表现
+Based on these findings, we propose three key enhancements to the original GSDMM, thereby introducing \sysname{}, a refined approach designed to further optimize its performance.
+
+1) A new adaptive clustering initialization introduces less noise into clustering because it assigns each document to a cluster according to the probability of the document belonging to each cluster. This not only accelerates convergence but also provides more semantically coherent starting clusters.
+
+2) We introduce entropy-based word weighting to adaptively adjust the weight of different words based on their informational significance within each cluster. This highlights discriminative words while reducing the impact of less informative terms.
+
+3) We dynamically adjust the clustering granularity through cluster merging to better align the predicted distribution with the true category distribution. This effectively consolidates redundant clusters and enhances clustering performance.
+
+% 提及的贡献点或创新点都应该是用来解决先前文献中存在的问题的。这样，才能在文章引言部分形成逻辑闭环。
+The contributions of our work can be summarized as follows: 
+\begin{enumerate} 
+    \item We propose GSDMM that is an attempt to apply the DMM model to short text clustering, and our experimental study has validated its effectiveness. We find it can cope with the sparse and high-dimensional problem of short texts, and can obtain the representative words of each cluster. Specifically, we propose GSDMM, a collapsed Gibbs sampling algorithm for the DMM model, which demonstrates high performance in short text clustering.
+    \item We propose \sysname{}, an enhanced GSDMM method consisting of three modules: adaptive clustering initialization, entropy-based word weighting, and granularity adjustment with cluster merging. This method reduces initial noise and adaptively adjusts word weights based on entropy, achieving fine-grained clustering that reveals more topic-related information. Furthermore, merging clusters reduces granularity and improves clustering quality.
+    \item We conduct extensive experiments, comparing our method with both classical and state-of-the-art approaches. The experimental results demonstrate the efficiency and effectiveness of our method. Furthermore, through detailed structural and hyper-parameter analysis, we explore the significance of each module and the impact of different hyper-parameters.
+\end{enumerate}
+
+% 引言或介绍的最后一段需要对论文的结构做个总结和导引，介绍随后章节中，每一节的内容是什么。
+The rest of this paper is organized as follows. Section~\ref{method} first introduces the DMM model and the GSDMM algorithm, then presents an improved version, \sysname{}, by enhancing the original GSDMM. Section~\ref{Discussion} discusses several important aspects of both GSDMM and GSDMM+. Section~\ref{sec:Exp} describes the experimental design used to evaluate the performance of our model and provides a detailed analysis. Section~\ref{related_works} reviews related work on text clustering. Finally, Section~\ref{sec:conclusion} presents conclusions and outlines future research directions.

@@ -1,0 +1,283 @@
+%\newpage
+\subsection{Mean-shift Property of Token-sparse Attention}
+\label{sec:mean-shift}
+
+In this section, building upon prior research Deja Vu~\cite{liu2023deja}, we first describe the analytical foundation of our work: self-attention can be interpreted as a form of mean-shift clustering. Based on this perspective, we then explore the among-query properties of self-attention and leveraging the formal definition of TSA (as introduced in \textbf{Definition 3.1}) to construct and complete our theoretical proof.
+
+\subsubsection{Self-Attention as Mean-Shift Clustering}
+
+
+\paragraph{Implicit Clustering in Attention} The softmax weighting means that the query $\bq$ mainly focuses on a subset of keys with the largest dot-products $\bq \cdot \bk_j$. This behavior causes tokens to form clusters: tokens (keys) that are similar to a given query will receive high attention weights (“cluster members”), whereas unrelated tokens get negligible weight. In other words, each query \textbf{picks out clusters} of relevant key tokens and largely ignores the rest, which is exactly the token sparsity phenomenon~\cite{zhang2023h2o,tang2406quest} (only a few tokens significantly contribute to the attention result).
+
+% Intuitively, $q$ will attend most to keys that are most similar to $q$ in the embedding space. 
+
+% Notably, different attention heads learn different notions of similarity by projecting queries/keys into different subspaces; each head clusters tokens in its own projected space. After multiple layers, token embeddings themselves tend to form clusters as a result of these attention dynamics. Fig. 4 of the Deja Vu paper illustrates this: some heads concentrate their attention on specific tokens (“heavy hitters”~\cite{zhang2023h2o}) while others distribute it uniformly.
+
+\paragraph{Mean-Shift Interpretation} 
+
+Importantly, the Deja Vu study observed that \textbf{self-attention implements a one-step mean-shift clustering update}. Formally, fixing within one head, for the attention output $\by {=} \sum_{i} A_i (\bx_i \bW_V)$, if we ignore the $\bW_V$ projection for a moment, this computes the \emph{weighted centroid} of the token embeddings $\bx$ around the query $\bq$ (in the projected space). That is, define an \emph{attention mean} $m(\bq)$ as the weighted mean of the embeddings:
+\begin{equation}
+    m(q) \;=\; \frac{\sum_i \bK(\bx_i, \bq)\, \bx_i}{\sum_i \bK(\bx_i, \bq)}\,,
+\end{equation}
+so $\by {=} m(\bq) \bW_V$.  This is exactly the update step of the \textbf{mean-shift clustering algorithm}: $m(\bq)$ is pulling the query’s embedding toward a nearby cluster of points ${\bx_i}$ that are similar to $\bq$. In mean-shift, one would iteratively set $\bq \leftarrow m(\bq)$ to converge to the cluster center (mode of the density). In a Transformer, we usually apply just one such step per layer, but the analogy holds: \emph{each attention head nudges the query vector toward the centroid of a cluster of key vectors}.
+
+
+\subsubsection{Among-Query Property}
+
+
+\paragraph{Problem Setting} Consider two queries $\bq_t$ and $\bq_{t+1}$ from adjacent time steps in a sequence. Thanks to residual connections and the smooth nature of transformer dynamics, adjacent queries in a sequence tend to be close in embedding space~\cite{sun2024shadowkv,wuhshare}. We then assume as a general principle that \emph{$\bq_{t+1}$ is a small perturbation of $\bq_t$} (i.e. $\bq_{t+1} \approx \bq_t$ in $\ell_2$ norm or cosine similarity), as the among-query property only concerns the behavior of attention when queries are similar, we revise the \textbf{Among-query Property}~\ref{prop:among-query} that:
+
+\begin{property}[Among-query Property]
+\label{prop:among-query_new}
+If two query vectors $\bq_t$ and $\bq_{t+1}$ are aligned enough in vector space, then the distributions of their attention weights are also very similar.
+\end{property}
+
+In other words, adjacent queries attend to largely the same cluster of key tokens. As $\bq_t$ shifts to $\bq_{t+1}$, the attention weight mass simply shifts smoothly among those keys–obeying a continuous mean-shift-like change–rather than jumping to a completely different set of keys.
+
+\paragraph{Intuition via Mean-Shift} Think of the keys ${\bk_i}$ as data points in the embedding space. The query $\bq_t$ will put most weight on keys in some neighborhood (a “cluster”) around $\bq_t$. Now if $\bq_{t+1}$ moves slightly (say $\bq_{t+1} = \bq_t + \Delta$ for a small $\Delta$), it will still lie in roughly the same neighborhood of points. The attention kernel $\bK(x_i,\bq) = \exp(\bq\cdot \bk_i)$ is a smooth, continuous function of $q$. A slight change in $\bq$ causes only a slight change in all the similarity scores $\bq\cdot \bk_i$. Thus the weights $A_i$ shift slightly: keys that are highly ranked for $\bq_t$ will remain highly ranked for $\bq_{t+1}$, as long as $\bq_{t+1}$ hasn’t moved so far that it finds a totally different cluster.
+
+
+\paragraph{Formal Derivation of the Among-Query Property}
+\label{sec:among-query-def}
+Let $\bK{=}\{\bk_1, \bk_2, \dots, \bk_t\}$ be the key vectors available. Consider two queries $\bq$ and $\bq'$ (think of $\bq = \bq_t$ and $\bq' = \bq_{t+1}$) such that $\bq'$ is a small perturbation of $\bq$. We will show that the attention distributions of $A(\bq)$ and $A(\bq')$ are \emph{close}, and in particular that the high-weight components of $A(\bq)$ correspond to high-weight components of $A(\bq')$. We also look at the weighted average outputs $\by(\bq)$ and $y(\bq')$. We first consider the perturbation changes in queries (e.g., $\bq$ to $\bq'$) to that of logits. For each key $\bk_i$, the score (logit) for $q$ as $a_i = \frac{1}{\sqrt{d}} \, \bq\cdot \bk_i$ and for $\bq'$ as $a'_i = \frac{1}{\sqrt{d}} \, \bq'\cdot \bk_i$. Because $\bq' = \bq + \Delta$ for a small $\Delta$, we have
+$a'_j {-} a_j {=} \frac{1}{\sqrt{d}}(\bq' {-} \bq){\cdot} \bk_i {=} \frac{1}{\sqrt{d}} \Delta {\cdot} \bk_i$.
+
+Let $\Delta_i := a'_i - a_i$. Since $| \Delta |$ is small and (typically) the keys ${\bk_i}$ have bounded norm, each $\Delta_i$ is a small real number. In other words, the entire vector of logits $a' = (a'_1,\dots,a'_t)$ is a small perturbation of $a = (a_1,\dots,a_t)$, and there exists some $\epsilon \ll 1$ such that $|\Delta_i| \le \epsilon$ for all $i$. ($\Delta_i$ might vary across $i$, but we can bound the maximum change by $\epsilon {=} \frac{|\Delta| \max_i|k_i|}{\sqrt{d}}$.) Then, combining the Softmax part in attention weights, by definition, $A_j(\bq) = \frac{e^{a_i}}{\sum_j e^{a_j}}$ and $A_j(\bq') = \frac{e^{a'*i}}{\sum_{j} e^{a'_j}}$. It will be convenient to express $A_i(\bq')$ in terms of $A(\bq)$ and the perturbations $\Delta_i$. We can write:
+\begin{equation}
+   A_i(\bq') = \frac{e^{a_i + \Delta_i}}{\sum_j e^{z_j + \Delta_j}} = \frac{e^{z_i}\,e^{\Delta_i}}{\sum_j e^{z_j}\,e^{\Delta_j}} = \frac{A_j(\bq)\,e^{\Delta_i}}{\sum_j A_j(\bq)\,e^{\Delta_j}}\,. 
+\end{equation}
+Here we use $e^{a_i}/\sum_j e^{a_j} = A_i(\bq)$ and factored $e^{\Delta_j}$ out of the denominator. Let $A^{n} = \sum_j A_j(q)\, e^{\Delta_i}$ denote the normalization factor that adjusts the weights due to the query change. Since each $\Delta_j$ is small, we can expand $A^{n}$ in a Taylor series:
+\begin{equation}
+\label{eq:d_taylor_exp}
+\begin{aligned}
+      A^{n} {=} \sum_j A_j(\bq)(1 {+} \Delta_j {+} O(\Delta_j^2)){=} 1 {+} \sum_j A_j(\bq)\Delta_j {+} O(\epsilon^2).  
+\end{aligned}
+\end{equation}
+Here $\sum_j A_j(q)\Delta_j$ is the expectation of $\Delta$ under the original distribution $A(\bq)$. Let $\mu_\Delta {=} \sum_j A_j(q)\Delta_j$ for brevity. Combining Eq.~\eqref{eq:d_taylor_exp}, we can write $A^{n} {=} 1 {+} \mu_\Delta {+} O(\epsilon^2)$. Using this, we can approximate the new weights $A_i(\bq')$ based on the First-Order Taylor Approximation in small $\Delta$,
+\begin{equation}
+\begin{aligned}
+\label{eq:d_first_order_taylor}
+    A_i(\bq') \approx \frac{A_i(\bq)(1 {+} \Delta_i)}{1 + \mu_\Delta} \approx A_i(\bq)(1 {+} \Delta_i {-} \mu_\Delta),
+\end{aligned}
+\end{equation}
+where second approximation used $\frac{1}{1+\mu_\Delta} \approx 1 - \mu_\Delta$ for small $\mu_\Delta$. Thus, for small query shifts, the new attention weight is approximately $A_i(\bq') {\approx} A_i(\bq) {+} A_i(\bq)(\Delta_i {-} \mu_\Delta)$. This formula reveals how the attention distribution shifts in response to $\Delta$:
+\begin{itemize}[leftmargin=3mm]
+    \item If $\Delta_i$ is larger than the average $\mu_\Delta$, then $A_i$ will increase ($\Delta_i - \mu_\Delta > 0$).
+    \item If $\Delta_i$ is smaller than the average, $A_i$ will decrease slightly.
+    \item The total change is zero-sum to first order as shown in Eq.~\eqref{eq:zero_sum}, as expected (the weights still sum to 1).
+\end{itemize}
+\begin{align}
+\label{eq:zero_sum}
+    &\sum_i [A_i(\bq') - A_i(\bq)] \approx \sum_i A_i(\bq)(\Delta_i - \mu_\Delta) \nonumber \\ 
+    = &(\sum_i A_i(\bq)\Delta_i) - \mu_\Delta\sum_i A_i(\bq) =
+    \mu_\Delta - \mu_\Delta(1) = 0
+\end{align}
+
+\paragraph{Transmission to Token-sparse Attention}
+
+After proving the minimal attention score shifts in self-attention, we integrate them to the token-sparse attention defined in Sec.~\ref{sec:prob_def}. Suppose the original query $\bq$ had a set of critical keys (a cluster) $C = \{i : A_i(\bq)\}$ is among the top weights and above some importance threshold. We want to show that for $\bq'$, the high-weight keys $C' = \{i : A_i(\bq')\}$ largely overlap with $C$. From the approximation above, if $i {\in} C$ had a large original weight $A_i(\bq)$, then $A_i(\bq')$ will remain large unless something drastic happens to $\Delta_i$, as $\bq'{\cdot} \bk_i$ will remain relatively larger for those same $i{\in}C$ than for others.
+
+For any $i$ in the original top cluster $C$, $a_i$ was high relative to most other $a_j$. The change $\Delta_i$ would have to be exceptionally negative (compared to others) to knock $i$ out of the top ranks. But $\Delta_i = \frac{1}{\sqrt{d}}\Delta {\cdot} \bk_i$ is small for all $i$, so it’s highly unlikely to completely invert the ordering of scores. In effect, the ranking of the top few $ A_i$ is stable under small perturbations of $\bq$. (One can make this rigorous by noting that softmax is a Lipschitz continuous function of its input logits; a sufficiently small change in $\bq$ cannot cause a large change in the output distribution. More concretely, if $| \Delta_i | < \delta$ for all $j$, then $\max_i |A_i(\bq') {-} A_i(\bq)|$ is $O(\delta)$ and the indices of the top weights cannot all change at once.) 
+
+For any $i$ outside the cluster ($i {\notin} C$ with tiny $A_i(\bq)$), $\bq'$ would have to move much closer to $\bk_i$ (relative to the others) to elevate its weight significantly. A small $\Delta$ won’t make a previously irrelevant key suddenly important. Thus those outside keys remain with near-zero weight in $A(\bq')$. These observations imply $C'$ will contain $C$ or at least have large overlap. \textbf{Overall, $\bq$ and $\bq'$ induce very similar attention weight distributions.} Quantitatively, one could bound the KL-divergence or total variation between $A(\bq)$ and $A(\bq')$ in terms of $|\Delta|$. But the key point is that no single small $\Delta$ causes a big discrete jump in the distribution.
+
+\paragraph{Smooth Shift of the Attention Centroid} 
+
+Because the weight distribution shifts only slightly, the centroid (weighted average) of the attended keys also shifts smoothly. The output for query $q'$ is thus
+\begin{equation}
+\begin{aligned}
+    \by(\,q') &= \sum_i [A_i(\bq) + A_i(\bq)(\Delta_i - \mu_\Delta)]\, \bk_i \\
+    &\approx \sum_i A_i(\bq) \bk_i + \sum_i A_i(\bq)(\Delta_i - \mu_\Delta)\,\bk_i.
+\end{aligned}
+\end{equation}
+The second term is a small adjustment. In fact, note that $\sum_i A_i(\bq)\Delta_i \bk_i {=} (\Delta {\cdot} \bk_i)$ weighted by $A_i$, this is roughly $\Delta$ projected onto the direction of the original output. Without going too deep into the algebra, the main result indicates that $\by(\bq') {-} \by(\bq)$ is of order $O(|\Delta|)$, a small change. Geometrically, if $\by(\bq)$ is (proportional to) the mean of cluster $C$, then $\by(\bq')$ will be the mean of almost the same cluster, just adjusted towards $\bq'$. \textbf{This is precisely what we expect from a mean-shift update: as the query moves, the cluster centroid moves along with it, continuously.}
+
+% \paragraph{Conclusion of Proof} 
+
+% We have shown that a small change in the query leads to a small change in the attention distribution $A(q)$. In particular, the identities of the keys with large attention weight remain mostly the same, and their weights adjust gradually. Thus, adjacent similar queries $q_t$ and $q_{t+1}$ will attend to an overlapping set of key tokens with smoothly varying weights. And this is the Among-Query Property for token-sparse attention: \emph{the cluster of critical tokens for $q_{t+1}$ is almost the same as that for $q_t$, shifting only slightly in a mean-shift fashion as the query embedding shifts.}
+
+
+\subsubsection{Centroid Shift}
+\label{sec:centroid-shift}
+
+We formalize the Lipschitz continuity of the attention centroid with respect to the query. Follow the definition in Sec.~\ref{sec:among-query-def}, let $\{p_i\}_{i=1}^t\subset\mathbb{R}$ be scalar token positions (sequence coordinates), and define the sequence-axis centroid $c(\bq){=} \sum_{i=1}^t A_i(\bq)p_i$. Assume unit-norm queries ($\|\bq\|{=}\|\bq'\|{=}1$) so that $\|\bq'{-}\bq\|{=} \sqrt{2 {-} 2 \cos \angle(\bq,\bq')}$; non-normalized statements follow by the triangle inequality. We write $K_{\max}\!\stackrel{\mathrm{def}}{=}\!\max_i\|\bk_i\|$ and $\mathrm{diam}\,\mathcal{P}{=}\max_i p_i-\min_i p_i$.
+
+\begin{lemma}[Softmax $\ell_\infty\!\to\!\ell_1$ Lipschitzness]
+\label{lem:softmax-lip}
+For any $a,a'\in\mathbb{R}^t$,
+\[
+\big \|\mathrm{softmax}(a')-\mathrm{softmax}(a)\big\|_1
+\;\le\; 2\,\|a'-a\|_\infty.
+\]
+\end{lemma}
+
+\begin{proof}
+By the mean value theorem on the line segment between $a$ and $a'$, for some $\tilde a$ we have
+$\mathrm{softmax}(a')- \mathrm{softmax}(a)= J(\tilde a)(a'-a)$, where
+$J(\tilde a){=}\mathrm{diag}(A){-}AA^\top$ is the Jacobian at $\tilde a$ with
+$A{=}\mathrm{softmax}(\tilde a)$. One checks that $\|J(\tilde a)\|_{\infty{\to}1}{\le} 2$ (equivalently, the total variation norm of the
+softmax is $2$-Lipschitz with respect to $\ell_\infty$ perturbations of logits). Hence
+$\|\mathrm{softmax}(a') {-} \mathrm{softmax}(a)\|_1 {\le} 2 \|a'-a\|_\infty$.
+\end{proof}
+
+\begin{lemma}[Logit change under query perturbation]
+\label{lem:logit-perturb}
+Let $\bq'=\bq+\Delta$. Then
+\[
+\|a(\bq')-a(\bq)\|_\infty
+\;=\;
+\max_{i}\frac{1}{\sqrt d}\,|\,\Delta^\top \bk_i\,|
+\;\le\; \frac{K_{\max}}{\sqrt d}\,\|\Delta\|.
+\]
+\end{lemma}
+
+\begin{proof}
+Immediate from Cauchy–Schwarz: $|\Delta^\top \bk_i| \!\le\! \|\Delta\|\|\bk_i\|$.
+\end{proof}
+
+\begin{theorem}[Query-Lipschitz Centroid Drift]
+\label{thm:centroid-lip}
+For $\bq'{=}\bq{+}\Delta$,
+\begin{equation}
+\begin{aligned}
+\big|c(\bq'){-}c(\bq)\big|
+&\;\le\;
+(\mathrm{diam}\,\mathcal{P})\cdot
+\big\|A(\bq')-A(\bq)\big\|_1 \\
+&\;\le\;
+2\,(\mathrm{diam}\,\mathcal{P})\cdot \frac{K_{\max}}{\sqrt d}\,\|\Delta\|.
+\end{aligned}
+\end{equation}
+In particular, $c(\bq') {=} c(\bq) {+} O(\|\Delta\|).$
+\end{theorem}
+
+\begin{proof}
+By definition,
+$|c(\bq')\!-\!c(\bq)|\le \|A(\bq')\!-\!A(\bq)\|_1 \cdot \max_i |p_i\!-\!\bar p|$ for any $\bar p$.
+Choosing $\bar p\in[\min_i p_i,\max_i p_i]$ gives $\max_i|p_i-\bar p|\le \mathrm{diam}\,\mathcal{P}$, hence the first inequality. The second inequality follows by Lemmas~\ref{lem:softmax-lip} and \ref{lem:logit-perturb}.
+\end{proof}
+
+\iffalse
+\paragraph{Key/Value-space centroid (optional).}
+Define the key-space centroid $\bar k(q)=\sum_j A_j(q)k_j$. Then
+\[
+\|\bar k(q')-\bar k(q)\|
+\;\le\; \sum_j \|k_j\|\,|A_j(q')-A_j(q)|
+\;\le\; K_{\max}\,\|A(q')-A(q)\|_1
+\;\le\; 2\,\frac{K_{\max}^2}{\sqrt d}\,\|\Delta\|.
+\]
+If values are used ($y_{\mathrm{out}}=\sum_j A_j(q)\,v_j$), replace $K_{\max}$ by
+$V_{\max}=\max_j\|v_j\|$ to obtain
+$\|y_{\mathrm{out}}(q')-y_{\mathrm{out}}(q)\|\le 2\,\frac{K_{\max}V_{\max}}{\sqrt d}\,\|\Delta\|$.
+\fi
+
+\subsubsection{CIS MI Bound Parameterization}
+\label{sec:cis-mi-parameterization}
+
+We connect CIS parameters $(\tau,m,r)$ to the pre–hoc retained-mass gap $\beta_{\mathrm{th}}$, which
+feeds into the MI bound in Eq.~(\ref{eq:mi_bound}).
+
+\paragraph{Notation}
+Fix a head and a decoding step $t$. Let $\mathcal{S}_t^\ast(\bq)$ be the oracle top-$k$ set under query $\bq$,
+sorted by attention weight. Let $\mathcal{S}_{t,m}(\bq)\subset\mathcal{S}_t^\ast(\bq)$ be its top-$m$ winners.
+For an integer radius $r\ge 0$, define the $r$-neighborhood (on the sequence axis)
+$\mathcal{N}_r(S)=\bigcup_{p\in S}\{p+\delta:\delta\in\{-r,\dots,r\}\}$ with clipping to $[1,t]$.
+CIS reuses $\hat S_t(\bq) \;\stackrel{\mathrm{def}}{=}\; \mathcal{S}_t^\ast(\bq)\;\cup\;\mathcal{N}_r\!\big(\mathcal{S}_{t,m}(\bq)\big)$. For a later query $\bq'$ in the same block with cosine similarity $\mathsf{sim}(\bq,\bq')\ge \tau$, CIS uses $\hat S_t(\bq)$ as the shared index set for $\bq'$ (per Eq.~(\ref{eq:neighboring})). Define retained mass
+$\tau_{\hat S_t}(\bq){=}\sum_{i{\in}\hat S_t(\bq)}A_i(\bq)$ and $\tau_{\mathrm{pre}}(\bq'){=}\sum_{i\in \hat S_t(\bq)}A_i(\bq')$, and the oracle mass $\tau^\ast(\bq') = \sum_{i\in \mathcal{S}_t^\ast(\bq')}A_i(\bq')$. Let $\Delta_{\mathrm{att}}(\tau)
+{=} \big\|A(\bq'){-}A(\bq)\big\|_1$.
+
+\begin{lemma}[Similarity ${\Rightarrow}$ attention variation]
+\label{lem:sim-to-var}
+If $\|\bq\|{=}\|\bq'\|{=}1$ and $\mathsf{sim}(\bq,\bq'){=}\cos\angle(\bq,\bq'){\ge} \tau$, then
+\[
+\Delta_{\mathrm{att}}(\tau)
+\;\le\;
+\frac{2K_{\max}}{\sqrt d}\,\|\bq'-\bq\|
+\;=\;
+\frac{2K_{\max}}{\sqrt d}\,\sqrt{2-2\tau}.
+\]
+\end{lemma}
+\begin{proof}
+Combine Lemmas~\ref{lem:softmax-lip}--\ref{lem:logit-perturb} and $\|\bq'{-}\bq\|{=}\sqrt{2{-}2\tau}$ for unit-norm queries.
+\end{proof}
+
+\begin{lemma}[Oracle continuity]
+\label{lem:oracle-mass}
+$\big|\tau^\ast(\bq'){-}\tau^\ast(\bq)\big|{\le} \Delta_{\mathrm{att}}(\tau)$.
+\end{lemma}
+
+\begin{proof}
+For any fixed index set $S$, the map $q{\mapsto} \sum_{i\in S}A_i(\bq)$ is $1$-Lipschitz in total variation:
+$\big|\sum_{i\in S}(A_i(\bq')-A_i(\bq))\big|\le \|A(\bq'){-}A(\bq)\|_1$.
+Taking $S{=}\mathcal{S}^\ast_t(\bq')$ yields
+$\tau^\ast(\bq') \le \sum_{i\in \mathcal{S}^\ast_t(\bq')} A_i(\bq) + \Delta_{\mathrm{att}}(\tau){\le} \tau^\ast(\bq){+}\Delta_{\mathrm{att}}(\tau)$.
+By symmetry, also $\tau^\ast(\bq)\le \tau^\ast(\bq')+\Delta_{\mathrm{att}}(\tau)$.
+\end{proof}
+
+\begin{lemma}[Reuse lower bound]
+\label{lem:reuse-lb}
+$\tau_{\mathrm{pre}}(\bq') \ge \tau_{\hat S_t}(\bq)-\Delta_{\mathrm{att}}(\tau)$.
+\end{lemma}
+\begin{proof}
+$\tau_{\mathrm{pre}}(\bq')- \tau_{\hat S_t}(\bq)=\sum_{j\in \hat S_t(\bq)}(A_i(\bq')-A_i(\bq))\ge -\|A(\bq'){-}A(\bq)\|_1$.
+\end{proof}
+
+\paragraph{Covering drift with radius $r$}
+Observation~\ref{prop:among-query_new} and Theorem~\ref{thm:centroid-lip} imply that, along the sequence axis,
+cluster centers move by at most
+\[
+\Delta_{\mathrm{centroid}}(\tau)
+\;\le\; 2\,(\mathrm{diam}\,\mathcal{P})\cdot \frac{K_{\max}}{\sqrt d}\,\sqrt{2-2\tau}.
+\]
+Let $s(\tau)$ be any integer radius satisfying $s(\tau)\ge \Delta_{\mathrm{centroid}}(\tau)$.
+If $r\ge s(\tau)$, $\mathcal{N}_r(\mathcal{S}_{t,m}(\bq))$ covers the mean shift of the dominant
+modes between $\bq$ and $\bq'$; in particular, no additional loss is incurred from cluster translation outside $\hat S_t(\bq)$.
+
+\begin{proposition}[Pre–hoc retained-mass gap under CIS]
+\label{prop:cis-beta}
+Assume $r\ge s(\tau)$ as above. Then
+\begin{equation}
+\begin{aligned}
+\tau_{\mathrm{pre}}(\bq') &\;\ge\; \tau^\ast(\bq') - 2\,\Delta_{\mathrm{att}}(\tau),
+ \\
+\beta_{\mathrm{th}}(\bq') &\;\stackrel{\mathrm{def}}{=}\; \tau^\ast(\bq')-\tau_{\mathrm{pre}}(\bq') \;\le\; 2\,\Delta_{\mathrm{att}}(\tau).
+\end{aligned}
+\end{equation}
+Consequently, with $L$ candidate indices and baseline truncation $\delta^\ast(\bq')$ from TSA,
+\begin{equation}
+\begin{aligned}
+I_{\mathrm{full}}(\bq')-I_{\mathrm{pre}}(\bq')
+&\;\le\; 2[h_b\!\Big(\delta^\ast(\bq')+2\,\Delta_{\mathrm{att}}(\tau)\Big) \\
+&+ \Big(\delta^\ast(\bq')+2\,\Delta_{\mathrm{att}}(\tau)\Big)\log L].
+\end{aligned}
+\end{equation}
+
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:reuse-lb}, $\tau_{\mathrm{pre}}(\bq') \ge \tau_{\hat S_t}(q)-\Delta_{\mathrm{att}}(\tau)$.
+Since $\hat S_t(\bq)$ contains $\mathcal{S}_t^\ast(\bq)$ by definition, $\tau_{\hat S_t}(\bq)\ge \tau^\ast(\bq)$.
+By Lemma~\ref{lem:oracle-mass}, $\tau^\ast(\bq)\ge \tau^\ast(q')-\Delta_{\mathrm{att}}(\tau)$.
+Combine to get $\tau_{\mathrm{pre}}(\bq') \ge \tau^\ast(\bq')-2\,\Delta_{\mathrm{att}}(\tau)$.
+The MI bound follows by substituting $\beta_{\mathrm{th}}(\bq')\le 2\,\Delta_{\mathrm{att}}(\tau)$ into Eq.~(\ref{eq:mi_bound}).
+\end{proof}
+
+\paragraph{When $r<s(\tau)$ (under-dilation)}
+Define the residual drift loss as
+\[
+\varepsilon_{\mathrm{drift}}(\bq,\bq';m,r)
+\;\stackrel{\mathrm{def}}{=}\;
+\sum_{j\in \mathcal{N}_{s(\tau)}(\mathcal{S}_{t,m}(\bq))\setminus \mathcal{N}_{r}(\mathcal{S}_{t,m}(\bq))}
+\hspace{-2mm}A_j(\bq)\,,
+\]
+i.e., the attention mass (under $\bq$) that can shift within $s(\tau)$ but lies outside the chosen radius $r$.
+Then the same proof yields
+\[
+\beta_{\mathrm{th}}(\bq') \;\le\; 2\,\Delta_{\mathrm{att}}(\tau) \;+\; \varepsilon_{\mathrm{drift}}(\bq,\bq';m,r),
+\]
+and the MI bound holds with $\beta_{\mathrm{th}}$ replaced by the PrHS.
+In practice we set $r\!=\!1$ and increase $m$ before $r$; this covers the dominant modes while keeping
+$\varepsilon_{\mathrm{drift}}$ negligible and the workload
+$\hat S_t\!\approx C_{\mathrm{sink}}+C_{\mathrm{local}}+k+m(2r)$ small.
+
+

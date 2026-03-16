@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\caption{Attention operator latency (ms $\downarrow$) of different methods across various batch sizes and sequence lengths. Lower values indicate better performance. HShare-0 corresponds to HShare(3/4-3/4-1/2), and HShare-1 to HShare(1/2-1/2-1/2). The number following each of our methods indicates the block size $s$ used in CIS.}
+\label{tab:attention_latency}
+\begin{tabular}{cccccccc|cccc}
+\toprule
+BS & Seqlen & Flash & H2O \cite{zhang2023h2o} & Quest \cite{tang2406quest} & DS \cite{yang2024post} & HShare-0 \cite{wuhshare} & HShare-1 \cite{wuhshare} & CIS-8 & CIS-16 & CPE-8 & CPE-16 \\
+\midrule
+\multirow{3}{*}{8}
+  & 1k & 0.230 & 0.088 & 0.200 & 0.141 & 0.124 & 0.090 & 0.116 & 0.083 & 0.092 & \textbf{0.078}\\
+  & 2k & 0.830 & \textbf{0.093} & 0.460 & 0.241 & 0.160 & 0.120 & 0.147 & 0.106 & 0.144 & 0.095 \\
+  & 4k & 1.630 & 0.470 & 0.850 & 0.733 & 0.570 & 0.530 & 0.534 & 0.501 & 0.506 & \textbf{0.469} \\
+\midrule
+\multirow{3}{*}{16}
+  & 1k & 0.440 & 0.089 & 0.280 & 0.233 & 0.120 & 0.093 & 0.113 & 0.081 & 0.089 & \textbf{0.075} \\
+  & 2k & 1.630 & \textbf{0.110} & 0.770 & 0.422 & 0.230 & 0.190 & 0.214 & 0.178 & 0.196 & 0.165 \\
+  & 4k & 3.230 & 0.850 & 2.21  & 1.350 & 1.041 & 0.990 & 0.953 & 0.869 & 0.904 & \textbf{0.821} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+

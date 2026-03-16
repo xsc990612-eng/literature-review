@@ -1,0 +1,98 @@
+\section{Results}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/finetuning_lift.pdf}
+    \caption{Performance lift from the best fine-tuned LLM over 1) the best base model (<= 7B) (in blue) and GPT-4 (in red) across 31 tasks, in absolute points.}
+    \label{fig:finetuninglift}
+\end{figure}
+
+LoRA fine-tuning provides a consistent and significant boost from fine-tuning across base models and tasks, as seen in Figure \ref{fig:finetuninglift}. Before fine-tuning, GPT-4 and GPT-3.5 have the strongest performance out of the box compared to all other base models, with 0.599 and 0.661 overall scores, respectively. Performance boosts from fine-tuning range from +26.3 to +51.2 points of improvement depending on the base model, and +38.7 on average (Table \ref{table:performancesummarybytask}). Depending on the task, the best fine-tuned LLM outperforms the best base model from +8.3 to +67.5 points, +25.0 points on average (Table \ref{table:performancesummarybymodel}).
+
+\begin{table*}[ht]
+\centering
+\footnotesize
+\small
+\scalebox{0.9}{
+\begin{tabular}{ccccccc}
+\textbf{Task}        & \textbf{Metric}      & \textbf{Best BM}     & \textbf{Best FT}     & \textbf{GPT-4}       & \textbf{Lift over BM} & \textbf{Lift over GPT-4} \\
+\midrule
+magicoder            & humaneval            & 0.201                & 0.433                & 0.829                & 0.232                 & -0.396                   \\
+mmlu                 & accuracy             & 0.506                & 0.589                & 0.774                & 0.083                 & -0.185                   \\
+glue\_wnli           & accuracy             & 0.437                & 0.873                & 0.93                 & 0.436                 & -0.057                   \\
+arc\_combined        & accuracy             & 0.673                & 0.915                & 0.947                & 0.242                 & -0.032                   \\
+wikisql              & rouge                & 0.301                & 0.898                & 0.909                & 0.597                 & -0.011                   \\
+boolq                & accuracy             & 0.764                & 0.909                & 0.911                & 0.145                 & -0.002                   \\
+customer\_support    & accuracy             & 0.850                & 1.000                & 1.000                & 0.150                 & 0.000                    \\
+glue\_cola           & accuracy             & 0.797                & 0.872                & 0.864                & 0.075                 & 0.008                    \\
+winogrande           & accuracy             & 0.576                & 0.84                 & 0.832                & 0.264                 & 0.008                    \\
+glue\_sst2           & accuracy             & 0.933                & 0.961                & 0.942                & 0.028                 & 0.019                    \\
+dbpedia              & accuracy             & 0.868                & 0.988                & 0.965                & 0.120                 & 0.023                    \\
+hellaswag            & accuracy             & 0.393                & 0.834                & 0.805                & 0.441                 & 0.029                    \\
+glue\_qnli           & accuracy             & 0.743                & 0.931                & 0.902                & 0.188                 & 0.029                    \\
+e2e\_nlg             & rouge                & 0.482                & 0.552                & 0.513                & 0.070                 & 0.039                    \\
+glue\_qqp            & accuracy             & 0.708                & 0.883                & 0.841                & 0.175                 & 0.042                    \\
+bc5cdr               & rouge                & 0.703                & 0.972                & 0.89                 & 0.269                 & 0.082                    \\
+glue\_mnli           & accuracy             & 0.455                & 0.899                & 0.803                & 0.444                 & 0.096                    \\
+webnlg               & rouge                & 0.563                & 0.681                & 0.583                & 0.118                 & 0.098                    \\
+tldr\_content\_gen   & rouge                & 0.183                & 0.23                 & 0.125                & 0.047                 & 0.105                    \\
+glue\_mrpc           & accuracy             & 0.694                & 0.887                & 0.777                & 0.193                 & 0.11                     \\
+jigsaw               & accuracy             & 0.704                & 0.867                & 0.754                & 0.163                 & 0.113                    \\
+hellaswag\_processed & rouge                & 0.146                & 0.261                & 0.134                & 0.115                 & 0.127                    \\
+viggo                & rouge                & 0.374                & 0.505                & 0.374                & 0.131                 & 0.131                    \\
+glue\_stsb           & mae                  & 0.814                & 0.913                & 0.773                & 0.099                 & 0.14                     \\
+gsm8k                & accuracy             & 0.364                & 0.569                & 0.373                & 0.205                 & 0.196                    \\
+conllpp              & rouge                & 0.733                & 0.989                & 0.742                & 0.256                 & 0.247                    \\
+tldr\_headline\_gen  & rouge                & 0.174                & 0.441                & 0.175                & 0.267                 & 0.266                    \\
+drop                 & rouge                & 0.066                & 0.741                & 0.393                & 0.675                 & 0.348                    \\
+legal                & rouge                & 0.158                & 0.683                & 0.305                & 0.525                 & 0.378                    \\
+reuters              & rouge                & 0.010                & 0.479                & 0.014                & 0.469                 & 0.465                    \\
+covid                & accuracy             & 0.322                & 0.843                & 0.309                & 0.521                 & 0.534                    \\
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{}  & \multicolumn{1}{l}{}     \\
+\midrule
+Average              & \multicolumn{1}{l}{} & \textbf{0.506}       & \textbf{0.756}       & \textbf{0.661}       & \textbf{0.250}        & \textbf{0.095}          
+\end{tabular}
+}
+
+\caption{Best model performance for each task, before and after fine-tuning, compared to GPT-4.}
+\label{table:performancesummarybytask}
+
+\end{table*}
+
+After fine-tuning, 301/310 models surpass their base model counterpart\footnote{Most instances where fine-tuning was worse than the base model were in the family of Gemma models. This is possibly due to the bugs with the Gemma family of models as identified by Unsloth\cite{65unslothUnslothFixing}, which were not accounted for when benchmarks were collected.}, while 224/310 fine-tuned LLMs surpass the benchmark set by GPT-4 (Table \ref{table:performancesummarybymodel}). Gemma-2b is the worst performing base model after fine-tuning, but also experiences the largest lift from fine-tuning overall, which suggests that models with lower initial scores stand to benefit the most from fine-tuning (Figure 1).
+
+By overall average across all tasks, all fine-tuned models perform better than GPT-3.5, and all 7B fine-tuned models perform better than GPT-4, except for gemma-7b and gemma-7b-it. Phi-2, with as few as 2 billion parameters, exhibits performance competitive with GPT-4 after fine-tuning, consistent with the findings of the Phi-2 technical report [46].
+
+Averaged over 31 tasks, the overall performance of the best fine-tuned LLMs (0.756) are significantly higher than GPT-4 (0.661) (Table \ref{table:performancesummarybymodel}). A detailed breakdown of performance per model, per task, can be found in Appendix \ref{sec:appendixresults}.
+
+\begin{table*}[ht]
+\centering
+\footnotesize
+\small
+\scalebox{0.70}{
+\begin{tabular}{cccccccc}
+\textbf{Base Model}  & \textbf{No FT}       & \textbf{With FT}     & \textbf{\begin{tabular}[c]{@{}c@{}}Average lift\\ from FT\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Average lift\\ from FT\\ vs. GPT-4\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Frequency \\ FT \textgreater No FT\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Frequency\\ FT \textgreater GPT-4\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Frequency\\ FT = max(task)\end{tabular}} \\
+\midrule
+gpt-3.5-turbo        & 0.599                & ---                  & ---                                                                     & ---                                                                                 & ---                                                                                 & ---                                                                                & 0/31                                                                        \\
+gemma-2b-instruct    & 0.326                & 0.645                & 0.319                                                                   & -0.016                                                                              & 96.7\% (30/31)                                                                      & 64.5\% (20/31)                                                                     & 0/31                                                                        \\
+gemma-7b             & 0.187                & 0.645                & 0.458                                                                   & -0.016                                                                              & 93.5\% (29/31)                                                                      & 64.5\% (20/31)                                                                     & 1/31                                                                        \\
+gemma-7b-instruct    & 0.377                & 0.656                & 0.279                                                                   & -0.005                                                                              & 83.8\% (26/31)                                                                      & 64.5\% (20/31)                                                                     & 0/31                                                                        \\
+gemma-2b             & 0.145                & 0.657                & \textbf{0.512}                                                          & -0.004                                                                              & 100.0\% (31/31)                                                                     & 67.7\% (21/31)                                                                     & 0/31                                                                        \\
+gpt-4                & \textbf{0.661}       & ---                  & ---                                                                     & ---                                                                                 & ---                                                                                 & ---                                                                                & 6/31                                                                        \\
+phi-2                & 0.274                & 0.677                & 0.403                                                                   & 0.016                                                                               & 100.0\% (31/31)                                                                     & 71.0\% (22/31)                                                                     & 1/31                                                                        \\
+llama-2-7b           & 0.252                & 0.696                & 0.444                                                                   & 0.035                                                                               & 96.7\% (30/31)                                                                      & 67.7\% (21/31)                                                                     & 0/31                                                                        \\
+llama-2-7b-chat      & 0.370                & 0.708                & 0.337                                                                   & 0.047                                                                               & 100.0\% (31/31)                                                                     & 74.2\% (23/31)                                                                     & 0/31                                                                        \\
+mistral-7b-instruct  & 0.462                & 0.724                & 0.263                                                                   & 0.063                                                                               & 100.0\% (31/31)                                                                     & 77.4\% (24/31)                                                                     & 3/31                                                                        \\
+mistral-7b           & 0.271                & 0.732                & 0.461                                                                   & 0.071                                                                               & 100.0\% (31/31)                                                                     & 83.8\% (26/31)                                                                     & \textbf{10/31}                                                              \\
+zephyr-7b-beta       & 0.350                & \textbf{0.742}       & 0.392                                                                   & 0.081                                                                               & 100.0\% (31/31)                                                                     & 87.1\% (27/31)                                                                     & 8/31                                                                        \\
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{}                                                    & \multicolumn{1}{l}{}                                                                & \multicolumn{1}{l}{}                                                                & \multicolumn{1}{l}{}                                                               & \multicolumn{1}{l}{}                                                        \\
+\midrule
+Average              & 0.301                & 0.688                & 0.387                                                                   & 0.027                                                                               & 97.1\% (301/310)                                                                    & 72.3\% (224/310)                                                                   & \multicolumn{1}{l}{}                                                       
+\end{tabular}
+}
+\caption{Model performance by base model averaged over 31 tasks, before and after fine-tuning.}
+\label{table:performancesummarybymodel}
+\end{table*}
+
+% TODO: Appendix.
+

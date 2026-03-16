@@ -1,0 +1,111 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{Collobert \bgroup et al.\egroup
+  }2011]{Collobert2011a}
+Ronan Collobert, Jason Weston, Leon Bottou, Michael Karlen, Koray Kavukcuoglu,
+  and Pavel Kuksa.
+\newblock 2011.
+\newblock {Natural Language Processing (almost) from Scratch}.
+\newblock {\em Journal of Machine Learning Research}, 12(Aug):2493--2537.
+
+\bibitem[\protect\citename{Kim}2014]{Kim2014}
+Yoon Kim.
+\newblock 2014.
+\newblock {Convolutional Neural Networks for Sentence Classification}.
+\newblock {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, pages 1746--1751.
+
+\bibitem[\protect\citename{Liu}2012]{Liu2012}
+Bing Liu.
+\newblock 2012.
+\newblock {Sentiment Analysis and Opinion Mining}.
+\newblock {\em Synthesis Lectures on Human Language Technologies}, 5(1):1--167.
+
+\bibitem[\protect\citename{Nair and Hinton}2010]{Nair2010}
+Vinod Nair and Geoffrey~E Hinton.
+\newblock 2010.
+\newblock {Rectified Linear Units Improve Restricted Boltzmann Machines}.
+\newblock {\em Proceedings of the 27th International Conference on Machine
+  Learning}, (3):807--814.
+
+\bibitem[\protect\citename{Nguyen and Shirai}2015]{Nguyen2015a}
+Thien~Hai Nguyen and Kiyoaki Shirai.
+\newblock 2015.
+\newblock {PhraseRNN : Phrase Recursive Neural Network for Aspect-based
+  Sentiment Analysis}.
+\newblock (September):2509--2514.
+
+\bibitem[\protect\citename{Pennington \bgroup et al.\egroup
+  }2014]{Pennington2014}
+Jeffrey Pennington, Richard Socher, and Christopher~D Manning.
+\newblock 2014.
+\newblock {Glove: Global Vectors for Word Representation}.
+\newblock {\em Proceedings of the 2014 Conference on Empirical Methods in
+  Natural Language Processing}, pages 1532--1543.
+
+\bibitem[\protect\citename{Pontiki \bgroup et al.\egroup }2014]{Pontiki2014a}
+Maria Pontiki, Dimitrios Galanis, John Pavlopoulos, Haris Papageorgiou, Ion
+  Androutsopoulos, and Suresh Manandhar.
+\newblock 2014.
+\newblock {SemEval-2014 Task 4: Aspect Based Sentiment Analysis}.
+\newblock {\em Proceedings of the 8th International Workshop on Semantic
+  Evaluation (SemEval 2014)}, pages 27--35.
+
+\bibitem[\protect\citename{Pontiki \bgroup et al.\egroup }2015]{Pontiki2015}
+Maria Pontiki, Dimitris Galanis, Haris Papageorgiou, Suresh Manandhar, and Ion
+  Androutsopoulos.
+\newblock 2015.
+\newblock {SemEval-2015 Task 12: Aspect Based Sentiment Analysis}.
+\newblock {\em Proceedings of the 9th International Workshop on Semantic
+  Evaluation (SemEval 2015)}, pages 486--495.
+
+\bibitem[\protect\citename{Pontiki \bgroup et al.\egroup
+  }2016]{SemEval2016:task5}
+Maria Pontiki, Dimitrios Galanis, Haris Papageorgiou, Ion Androutsopoulos,
+  Suresh Manandhar, Mohammad AL-Smadi, Mahmoud Al-Ayyoub, Yanyan Zhao, Bing
+  Qin, Orph{\'{e}}e~De Clercq, V{\'{e}}ronique Hoste, Marianna Apidianaki,
+  Xavier Tannier, Natalia Loukachevitch, Evgeny Kotelnikov, Nuria Bel,
+  Salud~Mar{\'{i}}a Jim{\'{e}}nez-Zafra, and G{\"{u}}lşen Eryiğit.
+\newblock 2016.
+\newblock {SemEval-2016 Task 5: Aspect-Based Sentiment Analysis}.
+\newblock In {\em Proceedings of the 10th International Workshop on Semantic
+  Evaluation}, San Diego, California. Association for Computational
+  Linguistics.
+
+\bibitem[\protect\citename{Socher \bgroup et al.\egroup }2013]{Socher2013}
+Richard Socher, Danqi Chen, Christopher~D. Manning, and Andrew~Y. Ng.
+\newblock 2013.
+\newblock {Reasoning With Neural Tensor Networks for Knowledge Base
+  Completion}.
+\newblock {\em Proceedings of the Advances in Neural Information Processing
+  Systems 26 (NIPS 2013)}, pages 1--10.
+
+\bibitem[\protect\citename{Tang \bgroup et al.\egroup }2014]{Tang2014a}
+Duyu Tang, Furu Wei, Nan Yang, Ming Zhou, Ting Liu, and Bing Qin.
+\newblock 2014.
+\newblock {Learning Sentiment-Specific Word Embedding}.
+\newblock {\em Proceedings of the 52nd Annual Meeting of the Association for
+  Computational Linguistics}, 1:1555--1565.
+
+\bibitem[\protect\citename{Tang \bgroup et al.\egroup }2015]{Tang2015}
+Duyu Tang, Bing Qin, Xiaocheng Feng, and Ting Liu.
+\newblock 2015.
+\newblock {Target-Dependent Sentiment Classification with Long Short Term
+  Memory}.
+\newblock {\em arXiv preprint arXiv:1512.01100}.
+
+\bibitem[\protect\citename{Zeiler}2012]{Zeiler2012}
+Matthew~D. Zeiler.
+\newblock 2012.
+\newblock {ADADELTA: An Adaptive Learning Rate Method}.
+\newblock {\em arXiv preprint arXiv:1212.5701}.
+
+\bibitem[\protect\citename{Zhang \bgroup et al.\egroup }2006]{Zhang2006}
+Min-ling Zhang, Zhi-hua Zhou, and Senior Member.
+\newblock 2006.
+\newblock {Multilabel Neural Networks with Applications to Functional Genomics
+  and Text Categorization}.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering},
+  18(10):1338--1351.
+
+\end{thebibliography}

@@ -1,0 +1,28 @@
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Efficient Attention}
+\label{sec:related-efficient}
+
+Reducing the quadratic cost of self-attention is a central research theme, especially in the era of long-horizon agents.
+\emph{Training-free sparse} methods introduce sparsity at inference via fixed patterns, heuristic eviction strategies, or lightweight importance estimation~\citep{h2o,streamingllm,sparq,quest,minference,duoattention,xattention,flexprefill,moa,sampleattention,lserve,spargeattention}.
+Nevertheless, the resulting training-inference mismatch can cause error accumulation in long-context settings~\citep{lil}.
+In contrast, \emph{trainable sparse} methods incorporate sparsity directly into the training stage, for example, through learned gating mechanisms~\citep{seerattention,seerattentionr}, end-to-end sparse pre-training~\citep{nsa}, block-level mixture routing~\citep{moba,infllm-v2,minicpm4}, or full-to-sparse distillation~\citep{deepseekv32,ssa}.
+DSA~\citep{deepseekv32}, the foundation of our work, distills a lightweight lightning indexer from full attention to select the top-$k$ tokens for each query, reducing the core attention complexity to~$O(Lk)$.
+Beyond sparsity, \emph{hybrid architectures} reduce the number of expensive quadratic layers by interleaving them with sliding window attention (with or without sink)~\citep{gptoss,gemma3,mimov2,longcat}, linear attention~\citep{gdn,minimax01,nemotron-h,kimilinear}, or state-space layers~\citep{mamba,mamba2,jamba}.
+
+\subsection{Cross-Layer Sharing}
+\label{sec:related-crosslayer}
+Recent studies demonstrate that representation exhibits strong consistency across adjacent layers.
+This structural property is often leveraged to reduce computational redundancy and accelerate inference.
+TidalDecode~\citep{tidaldecode}, LessIsMore~\citep{lessismore}, OmniKV~\citep{omnikv}, and DELTA~\citep{delta} reuse top-$k$ indices from periodic anchor layers for sparse decoding.
+Kascade~\citep{kascade} formalizes anchor layer selection via dynamic programming over a cross-layer similarity matrix and identifies head-aware remapping as critical for maintaining accuracy.
+All of these methods rely on \emph{full attention} at anchor layers to compute exact top-$k$ indices.
+Independently, cross-layer \emph{KV cache sharing} reduces memory by letting multiple layers reuse the same key-value tensors~\citep{yoco,cla,minicache,swiftkv,mlkv,wu2025improving}.
+HySparse~\citep{hysparse} unifies both directions, interleaving full attention layers with sparse layers that inherit both top-$k$ block indices and KV~caches.
+However, all of these approaches require full attention layers as the oracle, which DSA removes completely.
+
+IndexCache differs in two key aspects.
+First, the oracle is fundamentally cheaper because we share the output of DSA's lightweight indexer rather than full~$O(L^2)$ attention scores.
+Second, we introduce systematic techniques for optimizing the sharing configuration, including a training-free greedy search to identify the optimal structural layout and a training-aware multi-layer distillation loss for parameter adaptation.
+Although we instantiate IndexCache on DSA, the core principle extends to any sparse attention method that does not rely on a fixed sparse pattern but rather involves a dynamic token selection step: for instance, the block-level selection in MoBA~\citep{moba} and NSA~\citep{nsa} could similarly benefit from cross-layer reuse.

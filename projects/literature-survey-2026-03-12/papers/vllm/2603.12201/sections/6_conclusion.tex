@@ -1,0 +1,7 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented IndexCache, a method that accelerates sparse attention by exploiting the cross-layer redundancy of the indexer in charge of token selection.
+IndexCache partitions layers into a small number of~\texttt{F}~layers that retain their indexers and a majority of~\texttt{S}~layers that reuse inherited top-$k$ indices, eliminating up to~75\%\ of the~$O(NL^2)$ total indexer cost with a single conditional branch without any performance degradation.
+More broadly, our work demonstrates that the cross-layer sharing principle that previously applied only where full attention serves as the oracle extends naturally to sparse attention.
+As sparse attention becomes the default for frontier LLMs (DeepSeek-V3.2, GLM-5), we expect cross-layer index reuse to become a standard component of efficient inference pipelines.

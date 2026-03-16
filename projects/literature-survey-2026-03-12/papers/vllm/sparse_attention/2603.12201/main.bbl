@@ -1,0 +1,288 @@
+\begin{thebibliography}{56}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Agarwal et~al.(2025)Agarwal, Ahmad, Ai, Altman, Applebaum, Arbus, Arora, Bai, Baker, Bao, et~al.]{gptoss}
+Sandhini Agarwal, Lama Ahmad, Jason Ai, Sam Altman, Andy Applebaum, Edwin Arbus, Rahul~K Arora, Yu~Bai, Bowen Baker, Haiming Bao, et~al.
+\newblock gpt-oss-120b \& gpt-oss-20b model card.
+\newblock \emph{arXiv preprint arXiv:2508.10925}, 2025.
+
+\bibitem[{Artificial Analysis}(2025)]{aalcr}
+{Artificial Analysis}.
+\newblock Artificial analysis long context reasoning ({AA-LCR}).
+\newblock \url{https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning}, 2025.
+
+\bibitem[Bai et~al.(2025)Bai, Tu, Zhang, Peng, Wang, Lv, Cao, Xu, Hou, Dong, et~al.]{longbenchv2}
+Yushi Bai, Shangqing Tu, Jiajie Zhang, Hao Peng, Xiaozhi Wang, Xin Lv, Shulin Cao, Jiazheng Xu, Lei Hou, Yuxiao Dong, et~al.
+\newblock Longbench v2: Towards deeper understanding and reasoning on realistic long-context multitasks.
+\newblock In \emph{Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pp.\  3639--3664, 2025.
+
+\bibitem[Blakeman et~al.(2025)Blakeman, Basant, Khattar, Renduchintala, Bercovich, Ficek, Bjorlin, Taghibakhshi, Deshmukh, Mahabaleshwarkar, et~al.]{nemotron-h}
+Aaron Blakeman, Aarti Basant, Abhinav Khattar, Adithya Renduchintala, Akhiad Bercovich, Aleksander Ficek, Alexis Bjorlin, Ali Taghibakhshi, Amala~Sanjay Deshmukh, Ameya~Sunil Mahabaleshwarkar, et~al.
+\newblock Nemotron-h: A family of accurate and efficient hybrid mamba-transformer models.
+\newblock \emph{arXiv preprint arXiv:2504.03624}, 2025.
+
+\bibitem[Brandon et~al.(2024)Brandon, Mishra, Nrusimha, Panda, and Ragan-Kelley]{cla}
+William Brandon, Mayank Mishra, Aniruddha Nrusimha, Rameswar Panda, and Jonathan Ragan-Kelley.
+\newblock Reducing transformer key-value cache size with cross-layer attention.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37:\penalty0 86927--86957, 2024.
+
+\bibitem[Dao \& Gu(2024)Dao and Gu]{mamba2}
+Tri Dao and Albert Gu.
+\newblock Transformers are ssms: Generalized models and efficient algorithms through structured state space duality.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  10041--10071. PMLR, 2024.
+
+\bibitem[Deshmukh et~al.(2025)Deshmukh, Goyal, Kwatra, and Ramjee]{kascade}
+Dhruv Deshmukh, Saurabh Goyal, Nipun Kwatra, and Ramachandran Ramjee.
+\newblock Kascade: A practical sparse attention method for long-context llm inference.
+\newblock \emph{arXiv preprint arXiv:2512.16391}, 2025.
+
+\bibitem[Fu et~al.(2025)Fu, Huang, Ning, Zhang, Chen, Wu, Wang, Huang, Li, Yan, et~al.]{moa}
+Tianyu Fu, Haofeng Huang, Xuefei Ning, Genghan Zhang, Boju Chen, Tianqi Wu, Hongyi Wang, Zixiao Huang, Shiyao Li, Shengen Yan, et~al.
+\newblock Moa: Mixture of sparse attention for automatic large language model compression.
+\newblock In \emph{ICLR 2025 Workshop on Foundation Models in the Wild}, 2025.
+
+\bibitem[Gao et~al.(2024)Gao, Zeng, Du, Cao, So, Cao, Yang, and Yang]{seerattention}
+Yizhao Gao, Zhichen Zeng, Dayou Du, Shijie Cao, Hayden Kwok-Hay So, Ting Cao, Fan Yang, and Mao Yang.
+\newblock Seerattention: Learning intrinsic sparse attention in your llms.
+\newblock \emph{URL https://arxiv. org/abs/2410.13276}, 2024.
+
+\bibitem[Gao et~al.(2025)Gao, Guo, Cao, Xia, Cheng, Wang, Ma, Sun, Ye, Dong, et~al.]{seerattentionr}
+Yizhao Gao, Shuming Guo, Shijie Cao, Yuqing Xia, Yu~Cheng, Lei Wang, Lingxiao Ma, Yutao Sun, Tianzhu Ye, Li~Dong, et~al.
+\newblock Seerattention-r: Sparse attention adaptation for long reasoning.
+\newblock \emph{arXiv preprint arXiv:2506.08889}, 2025.
+
+\bibitem[Gao et~al.(2026)Gao, Wei, Zhang, Cheng, Chen, Tang, Jiang, Song, Zhang, Zhao, et~al.]{hysparse}
+Yizhao Gao, Jianyu Wei, Qihao Zhang, Yu~Cheng, Shimao Chen, Zhengju Tang, Zihan Jiang, Yifan Song, Hailin Zhang, Liang Zhao, et~al.
+\newblock Hysparse: A hybrid sparse attention architecture with oracle token selection and kv cache sharing.
+\newblock \emph{arXiv preprint arXiv:2602.03560}, 2026.
+
+\bibitem[{Gemma Team}(2025)]{gemma3}
+{Gemma Team}.
+\newblock Gemma 3 technical report.
+\newblock \emph{arXiv preprint arXiv:2503.19786}, 2025.
+
+\bibitem[Gu \& Dao(2024)Gu and Dao]{mamba}
+Albert Gu and Tri Dao.
+\newblock Mamba: Linear-time sequence modeling with selective state spaces.
+\newblock In \emph{First conference on language modeling}, 2024.
+
+\bibitem[Hao et~al.(2025)Hao, Zhu, Wang, Yu, Xin, Zheng, Ren, and Guo]{omnikv}
+Jitai Hao, Yuke Zhu, Tian Wang, Jun Yu, Xin Xin, Bo~Zheng, Zhaochun Ren, and Sheng Guo.
+\newblock Omnikv: Dynamic context selection for efficient long-context llms.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2025.
+
+\bibitem[Hsieh et~al.(2024)Hsieh, Sun, Kriman, Acharya, Rekesh, Jia, and Ginsburg]{ruler}
+Cheng-Ping Hsieh, Simeng Sun, Samuel Kriman, Shantanu Acharya, Dima Rekesh, Fei Jia, and Boris Ginsburg.
+\newblock Ruler: What’s the real context size of your long-context language models?
+\newblock In \emph{First Conference on Language Modeling}, 2024.
+
+\bibitem[Hu et~al.(2026)Hu, Li, Xu, Meng, Zhao, Hu, Peng, Liu, Huang, Liu, et~al.]{lil}
+Junhao Hu, Fangze Li, Mingtao Xu, Feifan Meng, Shiju Zhao, Tiancheng Hu, Ting Peng, Anmin Liu, Wenrui Huang, Chenxu Liu, et~al.
+\newblock Lil: Less is less when applying post-training sparse-attention algorithms in long-decode stage.
+\newblock \emph{arXiv preprint arXiv:2601.03043}, 2026.
+
+\bibitem[Jain et~al.(2024)Jain, Han, Gu, Li, Yan, Zhang, Wang, Solar-Lezama, Sen, and Stoica]{livecodebench}
+Naman Jain, King Han, Alex Gu, Wen-Ding Li, Fanjia Yan, Tianjun Zhang, Sida Wang, Armando Solar-Lezama, Koushik Sen, and Ion Stoica.
+\newblock Livecodebench: Holistic and contamination free evaluation of large language models for code.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2024.
+
+\bibitem[Jiang et~al.(2024)Jiang, Li, Zhang, Wu, Luo, Ahn, Han, Abdi, Li, Lin, et~al.]{minference}
+Huiqiang Jiang, Yucheng Li, Chengruidong Zhang, Qianhui Wu, Xufang Luo, Surin Ahn, Zhenhua Han, Amir~H Abdi, Dongsheng Li, Chin-Yew Lin, et~al.
+\newblock Minference 1.0: Accelerating pre-filling for long-context llms via dynamic sparse attention.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37:\penalty0 52481--52515, 2024.
+
+\bibitem[Lai et~al.(2025)Lai, Lu, Luo, Ma, and Zhou]{flexprefill}
+Xunhao Lai, Jianqiao Lu, Yao Luo, Yiyuan Ma, and Xun Zhou.
+\newblock Flexprefill: A context-aware sparse attention mechanism for efficient long-sequence inference.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2025.
+
+\bibitem[Li et~al.(2025)Li, Gong, Yang, Shan, Liu, Zhu, Zhang, Guo, Chen, Li, et~al.]{minimax01}
+Aonian Li, Bangwei Gong, Bo~Yang, Boji Shan, Chang Liu, Cheng Zhu, Chunhao Zhang, Congchao Guo, Da~Chen, Dong Li, et~al.
+\newblock Minimax-01: Scaling foundation models with lightning attention.
+\newblock \emph{arXiv preprint arXiv:2501.08313}, 2025.
+
+\bibitem[Lieber et~al.(2024)Lieber, Lenz, Bata, Cohen, Osin, Dalmedigos, Safahi, Meirom, Belinkov, Shalev-Shwartz, et~al.]{jamba}
+Opher Lieber, Barak Lenz, Hofit Bata, Gal Cohen, Jhonathan Osin, Itay Dalmedigos, Erez Safahi, Shaked Meirom, Yonatan Belinkov, Shai Shalev-Shwartz, et~al.
+\newblock Jamba: A hybrid transformer-mamba language model.
+\newblock \emph{arXiv preprint arXiv:2403.19887}, 2024.
+
+\bibitem[Liu et~al.(2024{\natexlab{a}})Liu, Feng, Wang, Wang, Liu, Zhao, Dengr, Ruan, Dai, Guo, et~al.]{deepseekv2}
+Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo~Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, et~al.
+\newblock Deepseek-v2: A strong, economical, and efficient mixture-of-experts language model.
+\newblock \emph{arXiv preprint arXiv:2405.04434}, 2024{\natexlab{a}}.
+
+\bibitem[Liu et~al.(2025)Liu, Mei, Lin, Xue, Wang, Xu, Wu, Zhang, Lin, Dong, et~al.]{deepseekv32}
+Aixin Liu, Aoxue Mei, Bangcai Lin, Bing Xue, Bingxuan Wang, Bingzheng Xu, Bochao Wu, Bowei Zhang, Chaofan Lin, Chen Dong, et~al.
+\newblock Deepseek-v3. 2: Pushing the frontier of open large language models.
+\newblock \emph{arXiv preprint arXiv:2512.02556}, 2025.
+
+\bibitem[Liu et~al.(2024{\natexlab{b}})Liu, Liu, Pan, He, Haffari, and Zhuang]{minicache}
+Akide Liu, Jing Liu, Zizheng Pan, Yefei He, Gholamreza Haffari, and Bohan Zhuang.
+\newblock Minicache: Kv cache compression in depth dimension for large language models.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37:\penalty0 139997--140031, 2024{\natexlab{b}}.
+
+\bibitem[Lu et~al.(2025)Lu, Jiang, Liu, Du, Jiang, Hong, Liu, He, Yuan, Wang, et~al.]{moba}
+Enzhe Lu, Zhejun Jiang, Jingyuan Liu, Yulun Du, Tao Jiang, Chao Hong, Shaowei Liu, Weiran He, Enming Yuan, Yuzhi Wang, et~al.
+\newblock Moba: Mixture of block attention for long-context llms.
+\newblock In \emph{The Thirty-ninth Annual Conference on Neural Information Processing Systems}, 2025.
+
+\bibitem[{Mathematical Association of America}(2025)]{aime2025}
+{Mathematical Association of America}.
+\newblock {AIME} 2025.
+\newblock \url{https://artofproblemsolving.com/wiki/index.php/2025_AIME}, 2025.
+
+\bibitem[{OpenAI}(2025{\natexlab{a}})]{graphwalks}
+{OpenAI}.
+\newblock {GraphWalks}.
+\newblock \url{https://huggingface.co/datasets/openai/graphwalks}, 2025{\natexlab{a}}.
+
+\bibitem[{OpenAI}(2025{\natexlab{b}})]{mrcr}
+{OpenAI}.
+\newblock Multi-round coreference resolution ({MRCR}).
+\newblock \url{https://huggingface.co/datasets/openai/mrcr}, 2025{\natexlab{b}}.
+
+\bibitem[Pyatkin et~al.(2025)Pyatkin, Malik, Graf, Ivison, Huang, Dasigi, Lambert, Smith, and Hajishirzi]{ifbench}
+Valentina Pyatkin, Saumya Malik, Victoria Graf, Hamish Ivison, Shengyi Huang, Pradeep Dasigi, Nathan Lambert, Noah~A. Smith, and Hannaneh Hajishirzi.
+\newblock Generalizing verifiable instruction following.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2025.
+
+\bibitem[Qiao et~al.(2025)Qiao, Yao, Rajbhandari, and He]{swiftkv}
+Aurick Qiao, Zhewei Yao, Samyam Rajbhandari, and Yuxiong He.
+\newblock Swiftkv: Fast prefill-optimized inference with knowledge-preserving model transformation.
+\newblock In \emph{Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing}, pp.\  25745--25764, 2025.
+
+\bibitem[Rein et~al.(2024)Rein, Hou, Stickland, Petty, Pang, Dirani, Michael, and Bowman]{gpqa}
+David Rein, Betty~Li Hou, Asa~Cooper Stickland, Jackson Petty, Richard~Yuanzhe Pang, Julien Dirani, Julian Michael, and Samuel~R Bowman.
+\newblock Gpqa: A graduate-level google-proof q\&a benchmark.
+\newblock In \emph{First conference on language modeling}, 2024.
+
+\bibitem[Ribar et~al.(2024)Ribar, Chelombiev, Hudlass-Galley, Blake, Luschi, and Orr]{sparq}
+Luka Ribar, Ivan Chelombiev, Luke Hudlass-Galley, Charlie Blake, Carlo Luschi, and Douglas Orr.
+\newblock Sparq attention: Bandwidth-efficient llm inference.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  42558--42583. PMLR, 2024.
+
+\bibitem[Shen et~al.(2025)Shen, Lu, Gui, Li, He, Yin, and Sun]{ssa}
+Zhenyi Shen, Junru Lu, Lin Gui, Jiazheng Li, Yulan He, Di~Yin, and Xing Sun.
+\newblock Ssa: Sparse sparse attention by aligning full and sparse attention outputs in feature space.
+\newblock \emph{arXiv preprint arXiv:2511.20102}, 2025.
+
+\bibitem[Sun et~al.(2024)Sun, Dong, Zhu, Huang, Wang, Ma, Zhang, Wang, and Wei]{yoco}
+Yutao Sun, Li~Dong, Yi~Zhu, Shaohan Huang, Wenhui Wang, Shuming Ma, Quanlu Zhang, Jianyong Wang, and Furu Wei.
+\newblock You only cache once: Decoder-decoder architectures for language models.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37:\penalty0 7339--7361, 2024.
+
+\bibitem[Tang et~al.(2024)Tang, Zhao, Zhu, Xiao, Kasikci, and Han]{quest}
+Jiaming Tang, Yilong Zhao, Kan Zhu, Guangxuan Xiao, Baris Kasikci, and Song Han.
+\newblock Quest: Query-aware sparsity for efficient long-context llm inference.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  47901--47911. PMLR, 2024.
+
+\bibitem[Team et~al.(2025{\natexlab{a}})Team, Zhang, Lin, Yao, Hu, Meng, Liu, Men, Yang, Li, et~al.]{kimilinear}
+Kimi Team, Yu~Zhang, Zongyu Lin, Xingcheng Yao, Jiaxi Hu, Fanqing Meng, Chengyin Liu, Xin Men, Songlin Yang, Zhiyuan Li, et~al.
+\newblock Kimi linear: An expressive, efficient attention architecture.
+\newblock \emph{arXiv preprint arXiv:2510.26692}, 2025{\natexlab{a}}.
+
+\bibitem[Team et~al.(2026)Team, Gui, Li, Tao, Zhou, Chen, Zhang, Gao, Zhang, Han, et~al.]{longcat}
+Meituan~LongCat Team, Anchun Gui, Bei Li, Bingyang Tao, Bole Zhou, Borun Chen, Chao Zhang, Chen Gao, Chen Zhang, Chengcheng Han, et~al.
+\newblock Longcat-flash-thinking-2601 technical report.
+\newblock \emph{arXiv preprint arXiv:2601.16725}, 2026.
+
+\bibitem[Team et~al.(2025{\natexlab{b}})Team, Xiao, Li, Han, Bai, Cai, Chen, Chen, Cong, Cui, et~al.]{minicpm4}
+MiniCPM Team, Chaojun Xiao, Yuxuan Li, Xu~Han, Yuzhuo Bai, Jie Cai, Haotian Chen, Wentong Chen, Xin Cong, Ganqu Cui, et~al.
+\newblock Minicpm4: Ultra-efficient llms on end devices.
+\newblock \emph{arXiv preprint arXiv:2506.07900}, 2025{\natexlab{b}}.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, and Polosukhin]{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan~N Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock \emph{Advances in neural information processing systems}, 30, 2017.
+
+\bibitem[Wu et~al.(2025)Wu, Zhang, Dong, Zhang, Fang, Yuan, and Lin]{wu2025improving}
+Zhoutong Wu, Yuan Zhang, Yiming Dong, Chenheng Zhang, Cong Fang, Kun Yuan, and Zhouchen Lin.
+\newblock Improving model representation and reducing {KV} cache via skip connections with first value heads.
+\newblock In \emph{The Thirty-ninth Annual Conference on Neural Information Processing Systems}, 2025.
+
+\bibitem[Xiao et~al.(2026)Xiao, Xia, Yang, Gao, Shen, Zhang, He, Lou, Luo, Wang, et~al.]{mimov2}
+Bangjun Xiao, Bingquan Xia, Bo~Yang, Bofei Gao, Bowen Shen, Chen Zhang, Chenhong He, Chiheng Lou, Fuli Luo, Gang Wang, et~al.
+\newblock Mimo-v2-flash technical report.
+\newblock \emph{arXiv preprint arXiv:2601.02780}, 2026.
+
+\bibitem[Xiao et~al.(2024)Xiao, Tian, Chen, Han, and Lewis]{streamingllm}
+Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis.
+\newblock Efficient streaming language models with attention sinks.
+\newblock In \emph{The Twelfth International Conference on Learning Representations}, 2024.
+
+\bibitem[Xiao et~al.(2025)Xiao, Tang, Zuo, Yang, Tang, Fu, Han, et~al.]{duoattention}
+Guangxuan Xiao, Jiaming Tang, Jingwei Zuo, Shang Yang, Haotian Tang, Yao Fu, Song Han, et~al.
+\newblock Duoattention: Efficient long-context llm inference with retrieval and streaming heads.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2025.
+
+\bibitem[Xu et~al.(2025)Xu, Xiao, Huang, Guo, and Han]{xattention}
+Ruyi Xu, Guangxuan Xiao, Haofeng Huang, Junxian Guo, and Song Han.
+\newblock Xattention: Block sparse attention with antidiagonal scoring.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  69819--69831. PMLR, 2025.
+
+\bibitem[Yang et~al.(2025{\natexlab{a}})Yang, Zhang, Chen, Li, and Jia]{tidaldecode}
+Lijie Yang, Zhihao Zhang, Zhuofu Chen, Zikun Li, and Zhihao Jia.
+\newblock Tidaldecode: Fast and accurate llm decoding with position persistent sparse attention.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2025{\natexlab{a}}.
+
+\bibitem[Yang et~al.(2025{\natexlab{b}})Yang, Zhang, Jain, Cao, Yuan, Chen, Jia, and Netravali]{lessismore}
+Lijie Yang, Zhihao Zhang, Arti Jain, Shijie Cao, Baihong Yuan, Yiwei Chen, Zhihao Jia, and Ravi Netravali.
+\newblock Less is more: Training-free sparse attention with global locality for efficient reasoning.
+\newblock \emph{arXiv preprint arXiv:2508.07101}, 2025{\natexlab{b}}.
+
+\bibitem[Yang et~al.(2025{\natexlab{c}})Yang, Guo, Tang, Hu, Xiao, Tang, Lin, Liu, Lu, and Han]{lserve}
+Shang Yang, Junxian Guo, Haotian Tang, Qinghao Hu, Guangxuan Xiao, Jiaming Tang, Yujun Lin, Zhijian Liu, Yao Lu, and Song Han.
+\newblock Lserve: Efficient long-sequence llm serving with unified sparse attention.
+\newblock \emph{Proceedings of Machine Learning and Systems}, 7, 2025{\natexlab{c}}.
+
+\bibitem[Yang et~al.(2025{\natexlab{d}})Yang, Kautz, and Hatamizadeh]{gdn}
+Songlin Yang, Jan Kautz, and Ali Hatamizadeh.
+\newblock Gated delta networks: Improving mamba2 with delta rule.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2025{\natexlab{d}}.
+
+\bibitem[Yuan et~al.(2025)Yuan, Gao, Dai, Luo, Zhao, Zhang, Xie, Wei, Wang, Xiao, et~al.]{nsa}
+Jingyang Yuan, Huazuo Gao, Damai Dai, Junyu Luo, Liang Zhao, Zhengyan Zhang, Zhenda Xie, Yuxing Wei, Lean Wang, Zhiping Xiao, et~al.
+\newblock Native sparse attention: Hardware-aligned and natively trainable sparse attention.
+\newblock In \emph{Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pp.\  23078--23097, 2025.
+
+\bibitem[Zarch et~al.(2025)Zarch, Gao, Jiang, and Annavarm]{delta}
+Hossein~Entezari Zarch, Lei Gao, Chaoyi Jiang, and Murali Annavarm.
+\newblock {DELTA}: Dynamic layer-aware token attention for efficient long-context reasoning.
+\newblock \emph{arXiv preprint arXiv:2510.09883}, 2025.
+
+\bibitem[Zeng et~al.(2026)Zeng, Lv, Hou, Du, Zheng, Chen, Yin, Ge, Xie, Wang, et~al.]{glm5}
+Aohan Zeng, Xin Lv, Zhenyu Hou, Zhengxiao Du, Qinkai Zheng, Bin Chen, Da~Yin, Chendi Ge, Chengxing Xie, Cunxiang Wang, et~al.
+\newblock Glm-5: from vibe coding to agentic engineering.
+\newblock \emph{arXiv preprint arXiv:2602.15763}, 2026.
+
+\bibitem[Zhang et~al.(2025)Zhang, Xiang, Huang, Wei, Xi, Zhu, and Chen]{spargeattention}
+Jintao Zhang, Chendong Xiang, Haofeng Huang, Jia Wei, Haocheng Xi, Jun Zhu, and Jianfei Chen.
+\newblock Spargeattention: Accurate and training-free sparse attention accelerating any model inference.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  76397--76413. PMLR, 2025.
+
+\bibitem[Zhang et~al.(2023)Zhang, Sheng, Zhou, Chen, Zheng, Cai, Song, Tian, R{\'e}, Barrett, et~al.]{h2o}
+Zhenyu Zhang, Ying Sheng, Tianyi Zhou, Tianlong Chen, Lianmin Zheng, Ruisi Cai, Zhao Song, Yuandong Tian, Christopher R{\'e}, Clark Barrett, et~al.
+\newblock H2o: Heavy-hitter oracle for efficient generative inference of large language models.
+\newblock \emph{Advances in Neural Information Processing Systems}, 36:\penalty0 34661--34710, 2023.
+
+\bibitem[Zhao et~al.(2025)Zhao, Zhou, Su, Xiao, Li, Li, Zhang, Zhao, Li, Huang, et~al.]{infllm-v2}
+Weilin Zhao, Zihan Zhou, Zhou Su, Chaojun Xiao, Yuxuan Li, Yanghao Li, Yudi Zhang, Weilun Zhao, Zhen Li, Yuxiang Huang, et~al.
+\newblock Infllm-v2: Dense-sparse switchable attention for seamless short-to-long adaptation.
+\newblock \emph{arXiv preprint arXiv:2509.24663}, 2025.
+
+\bibitem[Zhu et~al.(2025)Zhu, Duan, Chen, Liu, Li, Feng, Lv, Chuanfu, Lin, and Yang]{sampleattention}
+Qianchao Zhu, Jiangfei Duan, Chang Chen, Siran Liu, Xiuhong Li, Guanyu Feng, Xin Lv, Xiao Chuanfu, Dahua Lin, and Chao Yang.
+\newblock Sampleattention: Near-lossless acceleration of long context llm inference with adaptive structured sparse attention.
+\newblock \emph{Proceedings of Machine Learning and Systems}, 7, 2025.
+
+\bibitem[Zuhri et~al.(2025)Zuhri, Adilazuarda, Purwarianti, and Aji]{mlkv}
+Zayd Muhammad~Kawakibi Zuhri, Muhammad~Farid Adilazuarda, Ayu Purwarianti, and Alham~Fikri Aji.
+\newblock Mlkv: Multi-layer key-value heads for memory efficient transformer decoding.
+\newblock In \emph{Findings of the Association for Computational Linguistics: NAACL 2025}, pp.\  5516--5525, 2025.
+
+\end{thebibliography}

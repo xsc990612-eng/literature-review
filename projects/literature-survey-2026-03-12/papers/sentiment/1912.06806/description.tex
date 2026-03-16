@@ -1,0 +1,26 @@
+
+We had two subtasks: an expression-level subtask and a message-level subtask.
+Participants could choose to participate in either or both subtasks.
+Below we provide short descriptions of the objectives of these two subtasks.
+
+\begin{description}
+  \item[Subtask A: Contextual Polarity Disambiguation] Given a message containing a marked instance of a word or a phrase, determine whether that instance is positive, negative or neutral in that context. The boundaries for the marked instance were provided:
+      this was a classification task, not an entity recognition task.
+  \item [Subtask B: Message Polarity Classification]
+  Given a message, decide whether it is of positive, negative, or neutral sentiment.
+    For messages conveying both a positive and a negative sentiment, whichever is the stronger one was to be chosen.
+\end{description}
+
+Each participating team was allowed to submit results for two different systems per subtask: one constrained, and one unconstrained.
+A constrained system could only use the provided data for training, but it could also use other resources such as lexicons obtained elsewhere.
+An unconstrained system could use any additional data as part of the training process;
+this could be done in a supervised, semi-supervised, or unsupervised fashion.
+
+  \begin{figure*}
+\framebox{\parbox[t]{16.2cm}{\small\textbf{Instructions:} Subjective words are ones which convey an opinion. Given a sentence, identify whether it is objective, positive, negative, or neutral. Then, identify each subjective word or phrase in the context of the sentence and mark the position of its start and end in the text boxes below. The number above each word indicates its position. The word/phrase will be generated in the adjacent textbox so that you can confirm that you chose the correct range. Choose the polarity of the word or phrase by selecting one of the radio buttons: positive, negative, or neutral. If a sentence is not subjective please select the checkbox indicating that "There are no subjective words/phrases". Please read the examples and invalid responses before beginning if this is your first time answering this hit.}}
+\framebox{\parbox[t]{16.2cm}{\includegraphics[scale=.37]{example}}}
+\caption{Instructions provided to workers on Mechanical Turk followed by a screenshot.}
+\label{F:instructions}
+\end{figure*}
+
+Note that constrained/unconstrained refers to the data used to train a classifier. For example, if other data (excluding the test data) was used to develop a sentiment lexicon, and the lexicon was used to generate features, the system would still be constrained. However, if other data (excluding the test data) was used to develop a sentiment lexicon, and this lexicon was used to automatically label additional Tweet/SMS messages and then used with the original data to train the classifier, then such a system would be unconstrained.

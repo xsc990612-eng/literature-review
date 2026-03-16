@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2507.13793",
+  "title": "An Enhanced Model-based Approach for Short Text Clustering",
+  "authors": ["Enhao Cheng", "Shoujia Zhang", "Jianhua Yin", "Xuemeng Song", "Tian Gan", "Liqiang Nie"],
+  "abstract": "Short text clustering has become increasingly important with the popularity of social media like Twitter, Google+, and Facebook. Existing methods can be broadly categorized into two paradigms: topic model-based approaches and deep representation learning-based approaches.",
+  "published": "2025-07-18",
+  "categories": ["cs.CL"],
+  "score": 5,
+  "source_term": "GSDMM short text clustering",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "gsdmm"
+}

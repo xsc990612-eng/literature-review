@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "2004.11464",
+  "title": "A Gamma-Poisson Mixture Topic Model for Short Text",
+  "authors": ["Jocelyn Mazarura", "Alta de Waal", "Pieter de Villiers"],
+  "abstract": "Most topic models are constructed under the assumption that documents follow a multinomial distribution. The Poisson distribution is an alternative distribution to describe the probability of count data. For topic modelling, the Poisson distribution describes the number of occurrences of a word in documents.",
+  "score": 4,
+  "source_term": "GSDMM Gibbs sampling Dirichlet multinomial mixture short text",
+  "direction": "gsdmm-short-text-topic-modeling",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

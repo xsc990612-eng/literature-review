@@ -1,0 +1,462 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % APPENDIX
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\appendix
+\section{Model Compression Ratio and Memory Footprint}
+\label{app:model_compression_ratio}
+
+We report the compression ratio after applying {\OurAlg} in Table \ref{tab:model-arch1}. It is defined as 
+\begin{align*}
+    \text{compression ration} = \frac{\text{backbone size}+\text{LoRA adapter size}}{\text{pre-trained size}}.
+\end{align*}
+
+We also measure the GPU memory cost during training. Given that GPU memory varies by models, tasks, sequence lengths, batch sizes, etc. We report LLAMA-2 on GSM8K as an example in Table \ref{tab:mem_footprint}.
+
+\begin{table}[htb]
+\centering
+\caption{Compression ratios of backbones.}
+\vspace{-0.1in}
+\begin{tabular}{c|c|c|c|c|c}
+\toprule 
+\multirow{2}*{\bf Model} & {\bf Compression} & {\bf Trainable}  & \multirow{2}*{\bf Rank} & \multirow{2}*{\bf Bits} & {\bf Quantization}     \\
+~ & {\bf ratio (\%)} & {\bf ratio (\%)} & ~ & ~ & {\bf method} \\
+\midrule
+DeBERTaV3-base & 15.6 & 3.1 & 16 & 2& Uniform \\
+DeBERTaV3-base & 18.8 & 6.3 & 32 & 2& Uniform \\
+DeBERTaV3-base & 17.2 & 3.1 & 16 & 2& NF2 \\
+DeBERTaV3-base & 20.4 & 6.3 & 32 & 2& NF2 \\
+BART-large &  15.3   & 1.2 & 8 & 4  &     NF2      \\
+BART-large &  16.7   & 2.5 & 16 & 4  &     NF2      \\
+BART-large &  27.8   & 1.2 & 8 & 4  &     NF4      \\
+BART-large &  29.0   & 2.5 & 16 & 4  &     NF4      \\
+BART-large &  26.2  & 1.2 & 8 & 4  &    Uniform      \\
+BART-large &  27.5  & 2.5 & 16 & 4  &     Uniform      \\
+LLAMA-2-7b & 16.6 & 2.4 &64 & 2& Nf2\\
+LLAMA-2-7b & 29.0 & 2.4 & 64& 4& Nf4\\
+LLAMA-2-13b & 16.0 &1.9 &64 & 2& Nf2\\
+LLAMA-2-13b & 28.5 &1.9 & 64& 4& Nf4\\
+\bottomrule
+\end{tabular}
+\label{tab:model-arch1}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\caption{GPU memory footprint}
+\begin{tabular}{c|c|c|c|c}
+\toprule
+{\bf Model} & {\bf Dataset}  & {\bf Seq length} & {\bf Batch size}  & {\bf GPU Mem}   \\
+\midrule
+LLAMA-2-7b & GSM8K & 384 & 1 & 15GB \\
+LLAMA-2-13b & GSM8K & 384 & 1 & 24GB \\
+\bottomrule
+\end{tabular}
+\label{tab:mem_footprint}
+\end{table}
+
+\section{Quantization Time}
+We report the execution time of {\OurAlg} applying to a single weight matrix in Table \ref{tab:model-arch2}. The time is tested on Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz.
+\begin{table}[htb]
+\centering
+\caption{Execution time of {\OurAlg} applying to different weight matrices.}
+\begin{tabular}{c|c|c|c|c}
+\toprule
+{\bf Model} & {\bf Size} & {\bf Step $T$} & {\bf Quantization method}  & {\bf Time}   \\
+\midrule
+DeBERTaV3-base & $768\times 768$ & 5& Uniform & 1s\\
+BART-large & $1024\times 1024$ & 5 & NF4 & 1s\\
+LLAMA-2-7b & $4096\times 4096$ & 5 & NF4 & 21s\\
+LLAMA-2-13b & $5120\times 5120$ & 5 & NF4 & 43s\\
+\bottomrule
+\end{tabular}
+\label{tab:model-arch2}
+\end{table}
+
+\section{GLUE Dataset Statistics}
+\label{app:dataset-glue}
+
+We present the dataset statistics of GLUE \cite{wang2018glue} in the following table. 
+\begin{table*}[htb]
+	\begin{center}
+		\begin{tabular}{l|l|c|c|c|c|c}
+			\toprule 
+			\bf Corpus & \bf Task &\bf \#Train &\bf \#Dev &\bf \#Test &\bf \#Label &\bf Metrics\\ \midrule
+			\multicolumn{6}{@{\hskip1pt}r@{\hskip1pt}}{Single-Sentence Classification (GLUE)} \\ \hline
+			CoLA & Acceptability&8.5k & 1k & 1k & 2 & Matthews corr\\ \hline
+			SST & Sentiment&67k & 872 & 1.8k & 2 & Accuracy\\ \midrule
+			\multicolumn{6}{@{\hskip1pt}r@{\hskip1pt}}{Pairwise Text Classification (GLUE)} \\ \hline
+			MNLI & NLI& 393k& 20k & 20k& 3 & Accuracy\\ \hline
+			RTE & NLI &2.5k & 276 & 3k & 2 & Accuracy \\ \hline
+			% WNLI & NLI &634& 71& 146& 2 & Accuracy \\ \hline
+			QQP & Paraphrase&364k & 40k & 391k& 2 & Accuracy/F1\\ \hline
+			MRPC & Paraphrase &3.7k & 408 & 1.7k& 2&Accuracy/F1\\ \hline
+			QNLI & QA/NLI& 108k &5.7k&5.7k&2& Accuracy\\ \midrule
+			\multicolumn{5}{@{\hskip1pt}r@{\hskip1pt}}{Text Similarity (GLUE)} \\ \hline
+			STS-B & Similarity &7k &1.5k& 1.4k &1 & Pearson/Spearman corr\\ \bottomrule
+			%			\multicolumn{6}{@{\hskip1pt}r@{\hskip1pt}}{Pairwise Text Classification} \bottomrule %\\ \hline
+			% 			SNLI & NLI& 549k &9.8k&9.8k&3& Accuracy\\ \hline
+			% 			SciTail & NLI& 23.5k &1.3k&2.1k&2& Accuracy\\ \hline
+			% 			ANLI & NLI& 163k &3.2k&3.2k&3& Accuracy\\ \hline
+		\end{tabular}
+	\end{center}
+	\vskip -0.05in
+	\caption{Summary of the GLUE benchmark.}
+	\label{tab:glue}
+\end{table*}
+
+GLUE includes two single-sentence classification tasks: SST-2 \citep{socher-etal-2013-recursive} and CoLA \citep{warstadt-etal-2019-neural}, and three similarity and paraphrase tasks: MRPC \citep{dolan-brockett-2005-automatically}, STS-B \citep{cer-etal-2017-semeval}, and QQP. GLUE also includes four natural language inference tasks in GLUE: MNLI \citep{williams-etal-2018-broad}, QNLI \citep{rajpurkar-etal-2016-squad}, RTE \citep{Dagan2007ThePR,BarHaim2006TheSP,giampiccolo-etal-2007-third,bentivogli2009fifth}, and WNLI \citep{levesque2012winograd}.
+
+
+\section{Natural Language Understanding}
+\label{sec:app_nlu}
+\subsection{GLUE with 4-bit}
+We show the 4-bits results in the Table \ref{tab:glue_nf4}. Both methods can achieve performance close to full-finetuning.
+\label{sec: app_nlu_nf4}
+\begin{table}[htb]
+\vspace{-3mm}
+\caption{Results with 4-bit {\OurAlg} of DeBERTaV3-base models on GLUE development set using NF4 quantization. We report the median over four seeds. Results with N.A. indicate the model does not converge. The best results on each dataset are shown in bold}
+\vspace{1mm}
+\label{tab:glue_nf4}
+\begin{center}
+\begin{tabular}{c|c|cccc}
+\toprule
+\multirow{2}*{\bf Method} & \multirow{2}*{\bf Rank} & {\bf MNLI} & {\bf SST-2} & {\bf QNLI} & {\bf ANLI}   \\  
+~ & ~ & {m / mm} & {Acc} & {Acc} & {Acc} \\
+\midrule 
+{ Full FT} & - & {90.5/90.6} & {95.3} & {94.0} & {59.8}\\
+\midrule
+QLoRA & 32 & 89.9/89.9 & \bf 95.3 & \bf 94.2 & {59.4}\\
+
+\midrule
+{\OurAlg}& {32}  & \bf 89.9/90.0 & {\bf 95.3}&{ 94.1}  & {\bf59.9}  \\
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{table}
+
+\subsection{Training Details} 
+\label{sec:app_nlu_details}
+{\bf Implementation Details.} The implementation of {\OurAlg} is based on publicly available Huggingface \citep{NEURIPS2019_9015} code-base \footnote{\url{https://github.com/huggingface/transformers/tree/main/examples/pytorch}}. 
+
+\noindent {\bf Hyper-parameter Details.} 
+We select the learning rate of $\{1\times10^{-5}, 5\times10^{-5}, 1\times10^{-4}, 5\times10^{-4}\}$, and use the selected learning rate for both uniform quantization experiments and nf2 quantization experiments. We use batch size of 32 for all GLUE tasks and ANLI. We use batch size of 16 for SQuADv1.1. We use {\OurAlg} of 5 iterations for all GLUE tasks. 
+
+Table \ref{tab:app_glue_setup_uniform} summarizes the detailed hyperparameters for each task used in training DeBERTaV3-base using uniform quantization. Table \ref{tab:app_glue_setup_nf2}
+ summarizes the detailed hyperparameters for each task used in training DeBERTaV3-base using nf2 quantization. 
+
+\begin{table*}[htb]
+\vspace{-1mm}
+\caption{Hyper-parameter setup of {\OurAlg} for GLUE benchmark for training DeBERTaV3-base using Uniform quantization.}
+%\vspace{-1mm}
+\label{tab:app_glue_setup_uniform}
+\begin{center}
+\scalebox{0.68}{
+\begin{small}
+\begin{tabular}{c|cccccccccc}
+\toprule
+ {\bf Hyper-parameter} & {\bf MNLI} & {\bf RTE} & {\bf QNLI}  & {\bf MRPC} & {\bf QQP } & {\bf SST-2} & {\bf CoLA} & {\bf STS-B} & {\bf SQuADv1.1}&{\bf ANLI} \\ 
+\midrule 
+ \# epochs &   5  &  20 & 10 & 60 & 10 & 10 & 60 & 60&10 &12 \\
+Learning rate & $ 1\times 10^{-4}$ & $5\times 10^{-4}$ & $ 5\times 10^{-5} $ & $ 1\times 10^{-4} $  & $ 5\times 10^{-5} $ & $ 5\times 10^{-5}$ & $ 5\times 10^{-5} $ & $5\times 10^{-5}$ & $5\times 10^{-5}$ & $5\times 10^{-5}$ \\
+
+\bottomrule
+\end{tabular}
+\end{small}}
+\end{center}
+%\vspace{-1mm}
+\end{table*}
+
+\begin{table*}[htb]
+\vspace{-1mm}
+\caption{Hyper-parameter setup of {\OurAlg} for GLUE benchmark for training DeBERTaV3-base using NF2 quantization.}
+%\vspace{-1mm}
+\label{tab:app_glue_setup_nf2}
+\begin{center}
+\scalebox{0.68}{
+\begin{small}
+\begin{tabular}{c|cccccccccc}
+\toprule
+ {\bf Hyper-parameter} & {\bf MNLI} & {\bf RTE} & {\bf QNLI}  & {\bf MRPC} & {\bf QQP } & {\bf SST-2} & {\bf CoLA} & {\bf STS-B} & {\bf SQuADv1.1}&{\bf ANLI} \\ 
+\midrule 
+ \# epochs &   5  &  20 & 10 & 60 & 10 & 10 & 60 & 60&10 &12 \\
+Learning rate & $ 1\times 10^{-4}$ & $5\times 10^{-5}$ & $ 5\times 10^{-5} $ & $ 1\times 10^{-4} $  & $ 5\times 10^{-5} $ & $ 5\times 10^{-5}$ & $ 5\times 10^{-5} $ & $1\times 10^{-4}$ & $5\times 10^{-5}$ & $5\times 10^{-5}$ \\
+
+\bottomrule
+\end{tabular}
+\end{small}}
+\end{center}
+%\vspace{-1mm}
+\end{table*}
+% % \section{Question Answering}
+% % \label{sec:app_squad}
+
+% % \subsection{Dataset}
+% % Following \citet{sanh2020movement}, we also choose SQuAD v1.1 \cite{rajpurkar2016squad} to evaluate the performance of {\OurAlg} on question answering task.  
+
+
+% % \subsection{Training Details}
+% % %\vspace{0.05in} \noindent
+% % %{\bf Implementation Details.} 
+% % We set the batch size as 16, the number of epochs for fine-tuning as 10, the optimizer as AdamW and the learning rate as $ 5\times 10^{-5} $ for all experiments. Similarly, we follow the pruning schedule of \citet{zhang2022platon},i.e. we take the same initial warm up steps and final warm up steps. We use the same settings for all sparsities. The hyperparameters are summarized specifically in Table \ref{tab:app_squad_setup}. We use the hyperparameters in Table \ref{tab:app_squad_setup} for pruning both DeBERTaV3-base and BERT-base.
+% % % Please see Appendix~\ref{sec:app_squad} for more details about hyperparameter setup.  
+
+% % \begin{table*}[htb!]
+% % \vspace{-2mm}
+% % \caption{Hyper-parameter setup of {\OurAlg} on question answering tasks (SQuAD v1.1, \citet{rajpurkar2016squad}).}
+% % \vspace{3mm}
+% % \label{tab:app_squad_setup}
+% % \begin{center}
+% % \begin{small}
+% % \begin{tabular}{l|cccccccc}
+% % \toprule
+% % \multirow{1}*{\bf Task} & \# epochs & Batch size  & Learning rate & $ t_i $ & $ t_f $ & $r$ & $\beta$ \\ 
+% % \midrule 
+% % SQuAD  & 10&16& $ 5\times 10^{-5} $ &5400&22000&5\% & 0.85 \\
+% % \bottomrule
+% % \end{tabular}
+% % \end{small}
+% % \end{center}
+% % %\vspace{-1mm}
+% % \end{table*}
+
+\section{Summarization}
+\label{sec:app_summarization}
+\subsection{Training Details}
+We choose Adam as the optimizer and try learning rate from\{$1\times10^{-5}, 5\times10^{-5}, 7\times10^{-5}, 2\times10^{-4}, 3\times10^{-4}, 4\times10^{-4}\}$. We show the optimal learning rate for different settings in Table \ref{tab:app_bart_setup_cnn}.  We use {\OurAlg} of 1 iteration for all BART-large experiments. Table \ref{tab:app_bart_setup_cnn} and Table \ref{tab:app_bart_setup_xsum} summarize the learning rate and other hyper-parameters for CNN/DailyMail and XSum.
+
+\begin{table}[htb]
+\caption{Hyper-parameter setup of {\OurAlg} BART-large on  CNN/DailyMail}
+\vspace{-5mm}
+\label{tab:app_bart_setup_cnn}
+\begin{center}
+
+\begin{tabular}{c|cc|cc|cc}
+\toprule
+\multirow{2}*{\bf Hyperparameter} & \multicolumn{2}{c}{\bf NF4} & \multicolumn{2}{c}{\bf 4-bit Uniform}& \multicolumn{2}{c}{\bf NF2} \\ 
+
+~ & rank8& rank16& rank8&rank16 &rank8&rank16 \\
+\midrule 
+% \cmidrule{2-7}
+Learning rate&2e-4&2e-4&2e-4&3e-4 &2e-4&2e-4  \\
+\midrule 
+Epoch &15&15&15&15 &15&15  \\
+\midrule 
+Batch size &64&64&64&64&64&64  \\
+\bottomrule
+\end{tabular}
+
+\end{center}
+%\vspace{-1mm}
+\end{table}
+
+\begin{table*}[h!]
+\caption{Hyper-parameter setup of {\OurAlg} BART-large on XSum}
+\vspace{-5mm}
+\label{tab:app_bart_setup_xsum}
+\begin{center}
+\begin{tabular}{c|cc|cc|cc}
+\toprule
+\multirow{2}*{\bf Hyperparameter} & \multicolumn{2}{c}{\bf NF4} & \multicolumn{2}{c}{\bf 4-bit Uniform}& 
+\multicolumn{2}{c}{\bf NF2} \\ 
+ ~ & rank8& rank16& rank8&rank16 &rank8&rank16 \\
+\midrule 
+Learning rate & {2e-4} & {2e-4} & {2e-4} & {2e-4} & {2e-4} & {2e-4}  \\
+\midrule 
+Epoch &25&25&25&25 &25&25  \\
+\midrule 
+Batch size &32&32&32&32&32&32  \\
+\bottomrule
+\end{tabular}
+
+\end{center}
+%\vspace{-1mm}
+\end{table*}
+
+\section{Natural Language Generation}
+\label{sec:app_NLG}
+We set the batch size as 32 for WikiText-2 and 16 for GSM8K. We train 2 epochs on WikiText-2 and 6 epochs on GSM8K. We select learning rate from\{$1\times10^{-5}, 5\times10^{-5}, 7\times10^{-5}, 1\times10^{-4}, , 3\times10^{-4}, 4\times10^{-4}\}$.
+Specific settings are summarized in Table \ref{tab:app_llama_gsm8k} and Table \ref{tab:app_llama_wikitex}.
+
+\begin{table}[htb]
+\caption{Hyper-parameter setup of {\OurAlg} LLAMA-2-series on GSM8K}
+\vspace{-5mm}
+\label{tab:app_llama_gsm8k}
+\begin{center}
+\begin{tabular}{c|c|ccc}
+\toprule
+{\bf Model}& {\bf Hyperparameter}&  {\bf NF4} & {\bf NF2}& {\bf Mixed-precision}  \\ 
+\midrule 
+LLAMA-2-7b&learning rate&$3\times 10^{-4}$&$3\times 10^{-4}$&$3\times 10^{-4}$ \\
+\midrule
+LLAMA-2-13b&learning rate&$1\times 10^{-4}$ & $1\times 10^{-4}$&$3\times 10^{-4}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+%\vspace{-1mm}
+\end{table}
+
+\begin{table}[htb]
+\caption{Hyper-parameter setup of {\OurAlg} LLAMA-2-series on WikiText-2}
+\vspace{-5mm}
+\label{tab:app_llama_wikitex}
+\begin{center}
+\begin{tabular}{c|c|ccc}
+\toprule
+\bf Model& {\bf Hyperparameter}&  {\bf NF4} & {\bf NF2}& {\bf Mixed-precision}  \\ 
+\midrule 
+LLAMA-2-7b&learning rate&$3\times 10^{-4}$&$3\times 10^{-4}$&$3\times 10^{-4}$ \\
+\midrule
+LLAMA-2-13b&learning rate&$1\times 10^{-4}$&$1\times 10^{-4}$&$3\times 10^{-4}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+%\vspace{-1mm}
+\end{table}
+
+\section{Comparison to Pruning}
+\label{sec:app_compare_pruning}
+Pruning is also a widely used compression method. Here we compare {\OurAlg} with the state-of-the-art pruning method \citet{li2023losparse}. We show the comparison in Table \ref{tab:glue_compare_prunning}. We can see our method significantly outperforms the pruning methods on DeBERTaV3-base model. We also remark that {\OurAlg} can consistently reduce the memory of both training and storage. In contrast, pruning requires training the entire full-precision matrix, which implies that it can not achieve any memory savings during the training stage.
+\begin{table}[htb!]
+\vspace{-3mm}
+\caption{Results of {\OurAlg} using 2-bits uniform quantization compared with LoSparse with DeBERTaV3-base models on some of GLUE development sets. Here {\it Ratio} is the proportion of total remaining weights. Results with {\it N.A.} indicate the model does not converge.}
+\vspace{1mm}
+\label{tab:glue_compare_prunning}
+\begin{center}
+\begin{small}
+\begin{tabular}{l|l|ccc}
+\toprule
+\multirow{2}*{\bf Method} & \multirow{2}*{\bf Ratio} & {\bf MNLI} & {\bf SST-2} & {\bf QNLI}   \\  
+~ & ~ & {m / mm} & {Acc} & {Acc} \\
+\midrule 
+{ Full FT} & {100\%} & {90.5 / 90.6} & {95.3} & {94.0}\\
+\midrule
+\multirow{2}*{LoSparse} & {15\%} &{83.3/82.9} & 87.6 & 90.4\\
+~ & {20\%}& {84.5/83.8 } & {91.7} & {88.6} \\
+\midrule
+\multirow{2}*{{\OurAlg}} & {15.6\%}  &{\bf 87.3/87.1} & {\bf 94.0}&{\bf 90.6}    \\
+~ & {18.8\%} & {\bf88.0/88.1} &{\bf94.7}   &  {\bf92.4} \\
+\bottomrule
+\end{tabular}
+\end{small}
+\end{center}
+
+\end{table}
+
+\section{Extension to Convolutional Layers}
+Low-rank adapters can also be applied to convolutional layers. Given an input feature map $X \in \RR^{h \times w \times c_1}$ and $c_2$ 2D convolutional kernels $K_i \in \RR^{c_1 \times d \times d}, i=1, 2, ..., c_2$, the output of the convolutional layer is
+\begin{align}
+    Y = \mathrm{stack}(X \otimes K_1,..., X \otimes K_{c_2}),
+    \label{eq:conv}
+\end{align}
+where $Y \in \RR^{h \times w \times c_2}$ and $\otimes$ denotes the 2D convolution operation.
+
+We can reformulate Equation \eqref{eq:conv} into matrix multiplication as
+\begin{align*}
+    Y = Z \times H^{\top},
+\end{align*}
+where $Z \in \RR^{hw \times c_1 d^2}, H \in \RR^{c_2 \times c_1 d^2}$, by extending and flattening the input $X$ together with concatenating and flattening kernels. 
+We first extend a vector $x_{i, j} \in \RR^{c_1}$ by its neighbor vectors within the kernel window: 
+\begin{align*}
+    x_{i, j}^{'} = \rm{Concat}(x_{i-\frac{d}{2}, j-\frac{d}{2}}, ..., x_{i+\frac{d}{2}, j+\frac{d}{2}}).
+\end{align*}
+Now, $X$ becomes $X' \in \RR^{h \times w \times c_1 d^2}$. We then flatten $X'$ into $Z \in \RR^{hw \times c_1 d^2}$.
+For kernels, we first concatenate $\{K_1, ..., K_{c_2}\}$ into $H' \in \RR^{c_2 \times c_1 \times d \times d}$. We then flatten $H'$ into $H$.
+
+Note that $H$ can be approximated by a low-rank matrix
+\begin{align*}
+    R = UV^{\top},
+\end{align*}
+where $U \in \RR^{c_2 \times r}, V \in \RR^{c_1 d^2 \times r}, r \ll \min\{c_2, c_1 d^2\}$ by SVD. Therefore, the original convolution layer can be approximated as 
+\begin{align}
+    \hat{Y} &= Z \times (UV^{\top})^{\top} \\
+              &= (Z \times V) \times U^{\top} \\
+              &= M \times U^{\top}.
+\end{align}
+
+Note that $Z \times V$ can be restored into a convolution operation where we have $r$ kernels $D_i \in \RR^{c_1 \times d \times d}, i=1, 2,, ..., r$ and $M \times U^{\top}$ can also be restored into a convolution operation where we have $c_2$ kernels $U_i \in \RR^{r \times 1 \times 1}, i=1, 2,, ..., c_2$. 
+
+
+% In other words,
+% \begin{align}
+%     H &= \rm{stack}(X \otimes D_1, ..., X \otimes D_r) \\
+%     Z &= \rm{stack} (H \otimes U_1, ..., H \otimes U_{c_2}), 
+%     \label{eq:upsample}
+% \end{align}
+% where $H \in \RR^{h \times w \times r}, Z \in \RR^{h \times w \times c_2}$.
+% Note that the kernel size of $U_i$'s is $(1 \times 1)$. Therefore, we can flatten the hidden feature map $H$ into $H' \in \RR^{hw \times r}$ and concatenate the kernels into a matrix $R =[U_1, U_2, ..., U_{c_2}] \in \RR^{c_2 \times r}$. Equation \eqref{eq:upsample} is now equivalent to 
+% \begin{align}
+%     Z' = H' \times R^{\top},
+% \end{align}
+% as long as we reshape $Z'$ back to the same shape of $Z$.
+
+
+
+% \section{Combination with Knowledge Distillation}
+% \label{sec:app_KD}
+% \subsection{Teacher Models}
+% For DeBERTaV3-base teacher models, We trained the teacher models following the hyperparameters of in \citet{he2021debertav3}'s official repository \footnote{\url{https://github.com/microsoft/DeBERTa}}.The performance of the teacher model are shown in Table \ref{tab:glue_distillation}.
+
+% % For BERT-base teacher models, we used the teacher models released on Huggingface by textattack \footnote{\url{https://huggingface.co/textattack}}.
+
+% % \subsection{Training Details}
+% % We first prune the model following the details Table \ref{tab:app_glue_setup}. Then, we conduct layerwise distillation with distillation coefficient $\alpha$ as 15. The other training hyperparameters are listed as below.
+
+% % \begin{table*}[htb!]
+% % \vspace{-2mm}
+% % \caption{Hyper-parameter setup of {\OurAlg} on knowledge distillation with DeBERTaV3-base.}
+% % \vspace{3mm}
+% % \label{tab:app_kd_setup}
+% % \begin{center}
+% % \begin{small}
+% % \begin{tabular}{l|cccccc}
+% % \toprule
+% % \multirow{1}*{\bf Task} & \# epochs & Batch size  & Learning rate & alpha\_output & alpha\_layer \\ 
+% % \midrule 
+% % MNLI  & 50&32& $ 9\times 10^{-5} $ & 0 & 15 \\
+% % \midrule 
+% % SQuAD  & 50&16& $ 5\times 10^{-5} $ & 0 & 15 \\
+% % \midrule 
+% % SST-2  & 50&32& $ 8\times 10^{-5} $ & 0 & 15 \\
+% % \midrule 
+% % RTE  & 50&16& $ 1\times 10^{-4} $ & 0 & 15 \\
+% % \bottomrule
+% % \end{tabular}
+% % \end{small}
+% % \end{center}
+% % %\vspace{-1mm}
+% % \end{table*}
+
+% % \begin{table*}[htb!]
+% % \vspace{-2mm}
+% % \caption{Hyper-parameter setup of {\OurAlg} on knowledge distillation with BERT-base.}
+% % \vspace{3mm}
+% % \label{tab:app_kd_setup_bert}
+% % \begin{center}
+% % \begin{small}
+% % \begin{tabular}{l|cccccc}
+% % \toprule
+% % \multirow{1}*{\bf Task} & \# epochs & Batch size  & Learning rate & alpha\_output & alpha\_layer \\ 
+% % \midrule 
+% % MNLI  & 50&32& $ 9\times 10^{-5} $ & 0 & 15 \\
+% % \midrule 
+% % RTE & 50&16& $ 5\times 10^{-5} $ & 0 & 15 \\
+% % \midrule 
+% % QNLI  & 50&32& $ 5\times 10^{-5} $ & 5 & 5 \\
+% % \midrule 
+% % SST-2  & 50&32& $ 3\times 10^{-4} $ & 1 & 1 \\
+% % \bottomrule
+% % \end{tabular}
+% % \end{small}
+% % \end{center}
+% % %\vspace{-1mm}
+% % \end{table*}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

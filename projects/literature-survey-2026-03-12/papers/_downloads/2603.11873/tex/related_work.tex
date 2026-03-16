@@ -1,0 +1,11 @@
+\section{Related Work}
+\noindent\textbf{Parameter Efficient Fine-tuning (PEFT).}
+Parameter-efficient fine-tuning has emerged as the predominant approach for adapting pretrained large language models (LLMs) to downstream tasks. Representative methods include Adapters~\cite{houlsby2019parameter}, Prefix Tuning~\cite{Li2021PrefixTuningOC}, Prompt Tuning~\cite{Lester2021ThePO}, and LoRA~\cite{Hu2021LoRALA}. Among these, LoRA has gained prominence due to its elegant low-rank decomposition strategy that enables efficient inference through adapter merging. However, traditional LoRA is limited to static single-adapter scenarios, lacking the dynamicity needed for multi-task adaptation.
+
+\noindent\textbf{Dynamic Adapters and MoE-based PEFT.}
+The convergence of PEFT and MoE principles has led to dynamic adapter architectures. Block-wise methods such as MOLA~\cite{gao2024higher} and MoELoRA~\cite{luo2024moelora} require runtime routing within each block, preventing efficient batching. Layer-wise approaches like MoRAL~\cite{yang2024moral} and LoRAMoE~\cite{dou2024loramoe} apply routing at layer granularity but fundamentally cannot achieve the inference efficiency of static adapters due to their layer-by-layer routing decisions. In contrast, our token-wise pre-gated approach makes all routing decisions upfront, enabling adapter merging before inference and eliminating computational overhead entirely.
+
+\noindent\textbf{System Optimizations for LLM Inference.}
+System-level optimizations for LLMs include memory management techniques like PagedAttention~\cite{kwon2023efficient}, quantization~\cite{Frantar2022GPTQAP}, and pruning~\cite{Frantar2023SparseGPTML}. PEFT-specific optimization ~\cite{Ye2023ASPENHL} targets static adapter configurations but cannot address dynamic adapter selection due to irregular computation patterns. Our work uniquely addresses the gap between algorithmic innovations in dynamic adapters and system-level optimizations by redesigning the dynamic adapter paradigm to be system-friendly while preserving expressiveness.
+
+% Detailed related work analysis can be found in Appendix.

@@ -1,0 +1,11 @@
+{
+  "arxiv_id": "2603.11504",
+  "title": "LongFlow: Efficient KV Cache Compression for Reasoning Models",
+  "authors": ["Yi Su", "Zhenxu Tian", "Dan Qiao", "Yuechi Zhou", "Juntao Li", "Min Zhang"],
+  "abstract": "Recent reasoning models such as OpenAI-o1 and DeepSeek-R1 have shown strong performance on complex tasks including mathematical reasoning and code generation. However, this performance gain comes with substantially longer output sequences, leading to significantly increased deployment costs. In part...",
+  "score": 5,
+  "source_term": "reasoning model KV cache compression",
+  "downloaded_at": "2026-03-13T08:07:00Z",
+  "category": "vLLM",
+  "direction": "reasoning_optimization"
+}

@@ -1,0 +1,11 @@
+{
+  "arxiv_id": "2603.11873",
+  "title": "AdaFuse: Accelerating Dynamic Adapter Inference via Token-Level Pre-Gating and Fused Kernel Optimization",
+  "authors": ["Qiyang Li", "Rui Kong", "Yuchen Li", "Hengyi Cai", "Shuaiqiang Wang", "Linghe Kong", "Guihai Chen", "Dawei Yin"],
+  "abstract": "Parameter-efficient fine-tuning methods like LoRA have been widely adopted. However, when combined with dynamic architectures like MoE, the memory access overhead of adapter parameters significantly limits inference speed. This paper proposes token-level pre-gating and fused kernel optimization...",
+  "score": 5,
+  "source_term": "LoRA inference optimization",
+  "downloaded_at": "2026-03-13T08:07:00Z",
+  "category": "QLoRA",
+  "direction": "efficient_inference"
+}

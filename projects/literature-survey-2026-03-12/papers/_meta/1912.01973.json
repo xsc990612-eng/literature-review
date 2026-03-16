@@ -1,0 +1,10 @@
+{
+  "arxiv_id": "1912.01973",
+  "title": "SemEval-2016 Task 4: Sentiment Analysis in Twitter",
+  "authors": ["Preslav Nakov", "Alan Ritter", "Sara Rosenthal", "Fabrizio Sebastiani", "Veselin Stoyanov"],
+  "abstract": "This paper discusses the fourth year of the Sentiment Analysis in Twitter Task. SemEval-2016 Task 4 comprises five subtasks, three of which represent a significant departure from previous editions.",
+  "score": 5,
+  "source_term": "sentiment analysis Twitter SemEval",
+  "direction": "sentiment-analysis",
+  "downloaded_at": "2026-03-12T08:07:00Z"
+}

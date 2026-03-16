@@ -1,0 +1,324 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Lin2014The}
+T.~Lin, W.~Tian, Q.~Mei, C.~Hong, The dual-sparse topic model: mining focused
+  topics and focused terms in short text, in: International Conference on World
+  Wide Web, 2014.
+
+\bibitem{qiang2016topic}
+J.~Qiang, P.~Chen, W.~Ding, T.~Wang, F.~Xie, X.~Wu, Topic discovery from
+  heterogeneous texts, in: Tools with Artificial Intelligence (ICTAI), 2016
+  IEEE 28th International Conference on, IEEE, 2016, pp. 196--203.
+
+\bibitem{shi2018short}
+T.~Shi, K.~Kang, J.~Choo, C.~K. Reddy, Short-text topic modeling via
+  non-negative matrix factorization enriched with local word-context
+  correlations, in: Proceedings of the 2018 World Wide Web Conference on World
+  Wide Web, International World Wide Web Conferences Steering Committee, 2018,
+  pp. 1105--1114.
+
+\bibitem{wang2007mining}
+X.~{Wang}, C.~{Zhai}, X.~{Hu}, R.~{Sproat}, Mining correlated bursty topic
+  patterns from coordinated text streams, in: Proceedings of the 13th ACM
+  SIGKDD international conference on Knowledge discovery and data mining, 2007,
+  pp. 784--793.
+
+\bibitem{sriram2010short}
+B.~{Sriram}, D.~{Fuhry}, E.~{Demir}, H.~{Ferhatosmanoglu}, M.~{Demirbas}, Short
+  text classification in twitter to improve information filtering, in:
+  Proceedings of the 33rd international ACM SIGIR conference on Research and
+  development in information retrieval, 2010, pp. 841--842.
+
+\bibitem{ma2012topic}
+Z.~{Ma}, A.~{Sun}, Q.~{Yuan}, G.~{Cong}, Topic-driven reader comments
+  summarization, in: Proceedings of the 21st ACM international conference on
+  Information and knowledge management, 2012, pp. 265--274.
+
+\bibitem{weng2010twitterrank}
+J.~{Weng}, E.-P. {Lim}, J.~{Jiang}, Q.~{He}, Twitterrank: finding
+  topic-sensitive influential twitterers, in: Proceedings of the third ACM
+  international conference on Web search and data mining, 2010, pp. 261--270.
+
+\bibitem{hofmann1999probabilistic}
+T.~Hofmann, Probabilistic latent semantic indexing, in: Proceedings of the 22nd
+  annual international ACM SIGIR conference on Research and development in
+  information retrieval, ACM, 1999, pp. 50--57.
+
+\bibitem{blei2003latent}
+D.~M. Blei, A.~Y. Ng, M.~I. Jordan, Latent dirichlet allocation, the Journal of
+  machine Learning research 3 (2003) 993--1022.
+
+\bibitem{blei2012probabilistic}
+D.~M. Blei, Probabilistic topic models, Communications of the ACM 55~(4) (2012)
+  77--84.
+
+\bibitem{Hoffman2010Online}
+M.~D. Hoffman, D.~M. Blei, F.~Bach, Online learning for latent dirichlet
+  allocation, in: International Conference on Neural Information Processing
+  Systems, 2010.
+
+\bibitem{xie2013integrating}
+P.~Xie, E.~P. Xing, Integrating document clustering and topic modeling, UAI.
+
+\bibitem{xie2015incorporating}
+P.~Xie, D.~Yang, E.~P. Xing, Incorporating word correlation knowledge into
+  topic modeling, in: NACACL, 2015.
+
+\bibitem{cheng2014btm}
+X.~Cheng, X.~Yan, Y.~Lan, J.~Guo, Btm: Topic modeling over short texts,
+  Knowledge and Data Engineering, IEEE Transactions on 26~(12) (2014)
+  2928--2941.
+
+\bibitem{jin2011transferring}
+O.~Jin, N.~N. Liu, K.~Zhao, Y.~Yu, Q.~Yang, Transferring topical knowledge from
+  auxiliary long texts for short text clustering, in: Proceedings of the 20th
+  ACM international conference on Information and knowledge management, ACM,
+  2011, pp. 775--784.
+
+\bibitem{phan2008learning}
+X.-H. Phan, L.-M. Nguyen, S.~Horiguchi, Learning to classify short and sparse
+  text \& web with hidden topics from large-scale data collections, in:
+  Proceedings of the 17th international conference on World Wide Web, ACM,
+  2008, pp. 91--100.
+
+\bibitem{mehrotra2013improving}
+R.~Mehrotra, S.~Sanner, W.~Buntine, L.~Xie, Improving lda topic models for
+  microblogs via tweet pooling and automatic labeling, in: Proceedings of the
+  36th international ACM SIGIR conference on Research and development in
+  information retrieval, ACM, 2013, pp. 889--892.
+
+\bibitem{yin2014dirichlet}
+J.~Yin, J.~Wang, A dirichlet multinomial mixture model-based approach for short
+  text clustering, in: Proceedings of the 20th ACM SIGKDD international
+  conference on Knowledge discovery and data mining, 2014, pp. 233--242.
+
+\bibitem{zhao2011comparing}
+W.~X. Zhao, J.~Jiang, J.~Weng, J.~He, E.-P. Lim, H.~Yan, X.~Li, Comparing
+  twitter and traditional media using topic models, in: Advances in Information
+  Retrieval, 2011, pp. 338--349.
+
+\bibitem{quan2015short}
+X.~Quan, C.~Kit, Y.~Ge, S.~J. Pan, Short and sparse text topic modeling via
+  self-aggregation, in: Proceedings of the 24th International Conference on
+  Artificial Intelligence, 2015, pp. 2270--2276.
+
+\bibitem{yan2015probabilistic}
+X.~Yan, J.~Guo, Y.~Lan, J.~Xu, X.~Cheng, A probabilistic model for bursty topic
+  discovery in microblogs., in: AAAI, 2015, pp. 353--359.
+
+\bibitem{nigam2000text}
+K.~Nigam, A.~K. McCallum, S.~Thrun, T.~Mitchell, Text classification from
+  labeled and unlabeled documents using em, Machine learning 39~(2-3) (2000)
+  103--134.
+
+\bibitem{yu2010document}
+G.~Yu, R.~Huang, Z.~Wang, Document clustering via dirichlet process mixture
+  model with feature selection, in: SIGKDD, ACM, 2010, pp. 763--772.
+
+\bibitem{huang2013dirichlet}
+R.~Huang, G.~Yu, Z.~Wang, J.~Zhang, L.~Shi, Dirichlet process mixture model for
+  document clustering with feature partition, Knowledge and Data Engineering,
+  IEEE Transactions on 25~(8) (2013) 1748--1759.
+
+\bibitem{qiang2018short}
+J.~Qiang, Y.~Li, Y.~Yuan, X.~Wu, Short text clustering based on pitman-yor
+  process mixture model, Applied Intelligence 48~(7) (2018) 1802--1812.
+
+\bibitem{yin2016text}
+J.~Yin, J.~Wang, A text clustering algorithm using an online clustering scheme
+  for initialization, in: Proceedings of the 22nd ACM SIGKDD International
+  Conference on Knowledge Discovery and Data Mining, ACM, 2016, pp. 1995--2004.
+
+\bibitem{yin2018text}
+J.~Yin, D.~Chao, Z.~Liu, W.~Zhang, X.~Yu, J.~Wang, Model-based clustering of
+  short text streams, in: Proceedings of the 22nd ACM SIGKDD International
+  Conference on Knowledge Discovery and Data Mining, ACM, 2018, pp. 2634--2642.
+
+\bibitem{nguyen2015improving}
+D.~Q. Nguyen, R.~Billingsley, L.~Du, M.~Johnson, Improving topic models with
+  latent feature word representations, Transactions of the Association for
+  Computational Linguistics 3 (2015) 299--313.
+
+\bibitem{li2016topic}
+C.~Li, H.~Wang, Z.~Zhang, A.~Sun, Z.~Ma, Topic modeling for short texts with
+  auxiliary word embeddings, in: Proceedings of the 39th International ACM
+  SIGIR conference on Research and Development in Information Retrieval, ACM,
+  2016, pp. 165--174.
+
+\bibitem{Mikolov2013Dis}
+T.~Mikolov, I.~Sutskever, K.~Chen, G.~S. Corrado, J.~Dean, Distributed
+  representations of words and phrases and their compositionality, in: Advances
+  in neural information processing systems, 2013, pp. 3111--3119.
+
+\bibitem{li2017enhancing}
+C.~Li, Y.~Duan, H.~Wang, Z.~Zhang, A.~Sun, Z.~Ma, Enhancing topic modeling for
+  short texts with auxiliary word embeddings, ACM Transactions on Information
+  Systems (TOIS) 36~(2) (2017) 11.
+
+\bibitem{zuo2016word}
+Y.~Zuo, J.~Zhao, K.~Xu, Word network topic model: a simple but general solution
+  for short and imbalanced texts, Knowledge and Information Systems 48~(2)
+  (2016) 379--398.
+
+\bibitem{chen2015user}
+W.~{Chen}, J.~{Wang}, Y.~{Zhang}, H.~{Yan}, X.~{Li}, User based aggregation for
+  biterm topic model, in: Proceedings of the 53rd Annual Meeting of the
+  Association for Computational Linguistics and the 7th International Joint
+  Conference on Natural Language Processing (Volume 2: Short Papers), Vol.~2,
+  2015, pp. 489--494.
+
+\bibitem{wang2017learning}
+W.~{Wang}, H.~{Zhou}, K.~{He}, J.~E. {Hopcroft}, Learning latent topics from
+  the word co-occurrence network, National Conference of Theoretical Computer
+  Science (2017) 18--30.
+
+\bibitem{zuo2016topic}
+Y.~Zuo, J.~Wu, H.~Zhang, H.~Lin, F.~Wang, K.~Xu, H.~Xiong, Topic modeling of
+  short texts: A pseudo-document view, in: Proceedings of the 22nd ACM SIGKDD
+  international conference on knowledge discovery and data mining, ACM, 2016,
+  pp. 2105--2114.
+
+\bibitem{qiang2017topic}
+J.~Qiang, P.~Chen, T.~Wang, X.~Wu, Topic modeling over short texts by
+  incorporating word embeddings, in: Pacific-Asia Conference on Knowledge
+  Discovery and Data Mining, Springer, 2017, pp. 363--374.
+
+\bibitem{bicalho2017general}
+P.~V. {Bicalho}, M.~{Pita}, G.~{Pedrosa}, A.~{Lacerda}, G.~L. {Pappa}, A
+  general framework to expand short text for topic modeling, Information
+  Sciences 393 (2017) 66--81.
+
+\bibitem{hong2010empirical}
+L.~Hong, B.~D. Davison, Empirical study of topic modeling in twitter, in:
+  Proceedings of the first workshop on social media analytics, ACM, 2010, pp.
+  80--88.
+
+\bibitem{mccallum2002mallet}
+A.~K. McCallum, Mallet: A machine learning for language toolkit.
+
+\bibitem{liu1989limited}
+D.~C. Liu, J.~Nocedal, On the limited memory bfgs method for large scale
+  optimization, Mathematical programming 45~(1-3) (1989) 503--528.
+
+\bibitem{mahmoud2008polya}
+H.~Mahmoud, P{\'o}lya urn models, Chapman and Hall/CRC, 2008.
+
+\bibitem{rosen-zvi2004author}
+M.~{Rosen-Zvi}, T.~L. {Griffiths}, M.~{Steyvers}, P.~{Smyth}, The author-topic
+  model for authors and documents, uncertainty in artificial intelligence
+  (2004) 487--494.
+
+\bibitem{ramage2010characterizing}
+D.~Ramage, S.~Dumais, D.~Liebling, Characterizing microblogs with topic models,
+  in: Fourth International AAAI Conference on Weblogs and Social Media, 2010.
+
+\bibitem{guy2015social}
+I.~Guy, Social recommender systems, in: Recommender systems handbook, Springer,
+  2015, pp. 511--543.
+
+\bibitem{qian2014personalized}
+X.~Qian, H.~Feng, G.~Zhao, T.~Mei, Personalized recommendation combining user
+  interest and social circle, IEEE transactions on knowledge and data
+  engineering 26~(7) (2014) 1763--1777.
+
+\bibitem{phelan2009using}
+O.~Phelan, K.~McCarthy, B.~Smyth, Using twitter to recommend real-time topical
+  news, in: Proceedings of the third ACM conference on Recommender systems,
+  ACM, 2009, pp. 385--388.
+
+\bibitem{chen2010shorttweet}
+J.~Chen, R.~Nairn, L.~Nelson, M.~Bernstein, E.~Chi, Short and tweet:
+  experiments on recommending content from information streams, in: Proceedings
+  of the SIGCHI Conference on Human Factors in Computing Systems, ACM, 2010,
+  pp. 1185--1194.
+
+\bibitem{chen2011short}
+M.~Chen, X.~Jin, D.~Shen, Short text classification improved by learning
+  multi-granularity topics, in: IJCAI, 2011, pp. 1776--1781.
+
+\bibitem{vo2015learning}
+D.-T. Vo, C.-Y. Ock, Learning to classify short text from scientific documents
+  using topic models with various types of knowledge, Expert Systems with
+  Applications 42~(3) (2015) 1684--1698.
+
+\bibitem{dai2013crest}
+Z.~Dai, A.~Sun, X.-Y. Liu, Crest: Cluster-based representation enrichment for
+  short text classification, in: Pacific-Asia Conference on Knowledge Discovery
+  and Data Mining, Springer, 2013, pp. 256--267.
+
+\bibitem{razavi2014text}
+A.~H. Razavi, D.~Inkpen, Text representation using multi-level latent dirichlet
+  allocation, in: Canadian Conference on Artificial Intelligence, Springer,
+  2014, pp. 215--226.
+
+\bibitem{lin2010pet}
+C.~X. Lin, B.~Zhao, Q.~Mei, J.~Han, Pet: a statistical model for popular events
+  tracking in social communities, in: Proceedings of the 16th ACM SIGKDD
+  international conference on Knowledge discovery and data mining, ACM, 2010,
+  pp. 929--938.
+
+\bibitem{aggarwal2012event}
+C.~C. Aggarwal, K.~Subbian, Event detection in social streams, in: Proceedings
+  of the 2012 SIAM international conference on data mining, SIAM, 2012, pp.
+  624--635.
+
+\bibitem{ritter2012open}
+A.~Ritter, O.~Etzioni, S.~Clark, et~al., Open domain event extraction from
+  twitter, in: Proceedings of the 18th ACM SIGKDD international conference on
+  Knowledge discovery and data mining, ACM, 2012, pp. 1104--1112.
+
+\bibitem{lau2012line}
+J.~H. Lau, N.~Collier, T.~Baldwin, On-line trend analysis with topic
+  models:$\backslash$\# twitter trends detection topic model online,
+  Proceedings of COLING 2012 (2012) 1519--1534.
+
+\bibitem{pennington2014glove}
+J.~Pennington, R.~Socher, C.~Manning, Glove: Global vectors for word
+  representation, in: Proceedings of the 2014 conference on empirical methods
+  in natural language processing (EMNLP), 2014, pp. 1532--1543.
+
+\bibitem{rashtchian2010collecting}
+C.~Rashtchian, P.~Young, M.~Hodosh, J.~Hockenmaier, Collecting image
+  annotations using amazon's mechanical turk, in: Proceedings of the NAACL HLT
+  2010 Workshop on Creating Speech and Language Data with Amazon's Mechanical
+  Turk, Association for Computational Linguistics, 2010, pp. 139--147.
+
+\bibitem{finegan2016effects}
+C.~Finegan-Dollak, R.~Coke, R.~Zhang, X.~Ye, D.~Radev, Effects of creativity
+  and cluster tightness on short text clustering performance, in: Proceedings
+  of the 54th Annual Meeting of the Association for Computational Linguistics
+  (Volume 1: Long Papers), Vol.~1, 2016, pp. 654--665.
+
+\bibitem{newman2010automatic}
+D.~Newman, J.~H. Lau, K.~Grieser, T.~Baldwin, Automatic evaluation of topic
+  coherence, in: Human Language Technologies: The 2010 Annual Conference of the
+  North American Chapter of the Association for Computational Linguistics,
+  2010, pp. 100--108.
+
+\bibitem{mimno2011optimizing}
+D.~Mimno, H.~M. Wallach, E.~Talley, M.~Leenders, A.~McCallum, Optimizing
+  semantic coherence in topic models, in: Proceedings of the Conference on
+  Empirical Methods in Natural Language Processing, Association for
+  Computational Linguistics, 2011, pp. 262--272.
+
+\bibitem{chang2009reading}
+J.~Chang, S.~Gerrish, C.~Wang, J.~L. Boyd-Graber, D.~M. Blei, Reading tea
+  leaves: How humans interpret topic models, in: Advances in neural information
+  processing systems, 2009, pp. 288--296.
+
+\bibitem{chuang2012termite}
+J.~Chuang, C.~D. Manning, J.~Heer, Termite: Visualization techniques for
+  assessing textual topic models, in: Proceedings of the international working
+  conference on advanced visual interfaces, ACM, 2012, pp. 74--77.
+
+\bibitem{sievert2014ldavis}
+C.~Sievert, K.~Shirley, Ldavis: A method for visualizing and interpreting
+  topics, in: Proceedings of the workshop on interactive language learning,
+  visualization, and interfaces, 2014, pp. 63--70.
+
+\end{thebibliography}

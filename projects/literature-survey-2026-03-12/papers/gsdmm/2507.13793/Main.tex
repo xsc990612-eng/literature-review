@@ -1,0 +1,141 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+
+% ours
+% --------------------
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\newcommand{\sysname}{GSDMM+}
+
+% ------------------
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+% updated with editorial comments 8/9/2021
+
+\begin{document}
+
+\title{An Enhanced Model-based Approach for Short Text Clustering}
+
+\author{Enhao Cheng,
+        Shoujia Zhang,
+        Jianhua Yin$^{\dag}$,~\IEEEmembership{Member,~IEEE},
+        Xuemeng Song,~\IEEEmembership{Senior~Member,~IEEE},\\
+        Tian Gan,~\IEEEmembership{Member,~IEEE},
+        Liqiang Nie,
+        ~\IEEEmembership{Senior~Member,~IEEE},% <-this % stops a space
+\IEEEcompsocitemizethanks{
+% \IEEEcompsocthanksitem $^{\ast}$ Equal contribution.
+\IEEEcompsocthanksitem $^{\dag}$Jianhua Yin is Corresponding Author.
+\IEEEcompsocthanksitem 
+Enhao Cheng, Shoujia Zhang, Jianhua Yin, Tian Gan, are with the School of Computer Science and Technology, Shandong University (Qingdao), Qingdao, Shandong 266237, China. (e-mail: {enhaocheng@mail.sdu.edu.cn; sjzhang@mail.sdu.edu.cn; jhyin@sdu.edu.cn; gantian@sdu.edu.cn}).
+\IEEEcompsocthanksitem 
+Xuemeng Song is with the Department of Data Science, City University of Hong Kong, Hong Kong, China (e-mail: sxmustc@gmail.com).
+\IEEEcompsocthanksitem 
+Liqiang Nie is with the School of Computer Science and Technology, Harbin Institute of Technology (Shenzhen), Shenzhen, Guangzhou 518055, China (e-mail: nieliqiang@gmail.com).
+}% <-this % stops a space
+% \thanks{Manuscript received April 19, 2021; revised August 16, 2021.}
+}
+
+% The paper headers
+\markboth{IEEE Transactions on Knowledge and Data Engineering}%
+{Shell \MakeLowercase{\textit{et al.}}: A Sample Article Using IEEEtran.cls for IEEE Journals}
+
+% \IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+\maketitle
+
+\begin{abstract}
+% 摘要基本框架
+% 第一，要研究的任务是什么，有什么理论和实际应用价值。这大概可以用一句话来进行总结。比如步态识别根据走路的姿势识别身份，就可以写“步态识别是生物认证的方式之一，在社会安全、视频监控、身份认证方面有重要应用。与其他生物认证特征如人脸、虹膜、指纹等不同，步态是唯一可远距离识别的生物认证特征”。
+Short text clustering has become increasingly important with the popularity of social media like Twitter, Google+, and Facebook.
+% 第二，是概括性地总结现有的技术路线和方案，帮助读者了解前沿进展在哪里。仍以步态为例，可以写“现在的步态识别方法主要分两大类，其一是通过建模的方式，其二是基于图像模板”。
+Existing methods can be broadly categorized into two paradigms: topic model-based approaches and deep representation learning-based approaches.
+% 第三，指出这些方法存在什么问题，以便引出本论文想要做的研究。比如“前者计算复杂，后者效率高但识别性能低”。
+This task is inherently challenging due to the sparse, large-scale, and high-dimensional characteristics of the short text data. Furthermore, the computational intensity required by representation learning significantly increases the running time.
+% 第四，为了解决这些问题，你提出了什么新的方法，提出的方法主要创新在哪里，有什么优点。比如“我们提出了一种新的步态模板技术，该方法既具有以往图像模板计算效率高的优势，同时也具备建模方式识别率高的优点”。
+To address these issues, we propose a collapsed Gibbs Sampling algorithm for the Dirichlet Multinomial Mixture model (GSDMM), which effectively handles the sparsity and high dimensionality of short texts while identifying representative words for each cluster. Based on several aspects of GSDMM that warrant further refinement, we propose an improved approach, \sysname{}, designed to further optimize its performance. \sysname{} reduces initialization noise and adaptively adjusts word weights based on entropy, achieving fine-grained clustering that reveals more topic-related information. Additionally, strategic cluster merging is employed to refine clustering granularity, better aligning the predicted distribution with the true category distribution.
+% 第五，怎么证明提出的方法是有效的。比如“我们在3个公用步态数据集上进行了测试，与5个最高水平的步态算法相比，我们提出的步态模板技术取得了目前的最佳性能”。
+We conduct extensive experiments, comparing our methods with both classical and state-of-the-art approaches. The experimental results demonstrate the efficiency and effectiveness of our methods. 
+The source code for our model is publicly available at \url{https://github.com/chehaoa/VEMC}.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Short Text Clustering, Dirichlet Multinomial Mixture, Gibbs Sampling.
+\end{IEEEkeywords}
+
+\input{pre/Introduction}
+
+\input{method/Method}
+
+\input{method/Discussion}
+
+
+\section{Experiment and Analysis} \label{sec:Exp}
+In this section, we first introduce the experimental setup and compare \sysname{} with other state-of-the-art models to demonstrate its superiority. Next, we conduct a structural analysis to examine the functional roles of each module and validate its effectiveness. Besides, we conduct a running time analysis to evaluate efficiency and a hyper-parameter experiment to assess sensitivity.
+\input{experiment/Experiment_Setup}
+\input{experiment/Performance_Comparison} 
+\input{experiment/Structure_Analysis}
+\input{experiment/Running_Time_Analysis}
+\input{experiment/Hyper-parameter_Analysis}
+\input{experiment/Visualization_Analysis}
+
+\input{pre/Related_Works}
+
+\section{Conclusion} \label{sec:conclusion}
+%再次明确论文的贡献、亮点或优势，解决了哪些重要问题，以便把整篇论文的逻辑封闭。
+In this paper, we propose a collapsed Gibbs Sampling algorithm for the Dirichlet Multinomial Mixture model (GSDMM) for short text clustering, which effectively addresses sparsity and high dimensionality. GSDMM can also extract representative words for each cluster, enhancing the interpretability of the results. Next, based on several aspects of GSDMM that warrant further refinement, we propose an improved approach, \sysname{}, designed to further optimize its performance. \sysname{} reduces initial noise compared to random initialization by assigning each document to a cluster based on its probability of belonging to each cluster. Furthermore, \sysname{} employs entropy-based word weighting to adaptively adjust word importance and refines clustering granularity through cluster merging to better align the predicted distribution with the true category distribution. This effectively uncovers more topic-related information and enhances clustering performance.
+Finally, we conduct extensive experiments, comparing our methods with both classical and state-of-the-art approaches. The experimental results demonstrate the efficiency and effectiveness of our method.
+% （1）提出的方法在哪些地方有潜在应用。以研究人脸面部微表情的应用为例，论文可以强调该研究能用于评估人类的真实情绪，在银行信用评估方面有潜在应用。（2）下一步可在此基础上开展的研究方向有哪些。比如微表情的检测和识别的实时化，或者更高精度的检测和技术等。语言组织方面也要格外小心，不要出现明显的拼写和语法错误。（3）为防止评审追问问题，可主动提出论文中的不足之处。比如自己的方法可能存在的小局限。此时，可以将其明示，并指出将在未来工作中展开研究。
+In the future, we will explore how to integrate text embeddings with bag-of-words information to gain a deeper understanding of texts and enhance clustering performance while ensuring high efficiency.
+
+% \section*{Acknowledgments}
+% This should be a simple paragraph before the References to thank those individuals and institutions who have supported your work on this article.
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{Reference}
+
+% \newpage
+
+% \section{Biography Section}
+% If you have an EPS/PDF photo (graphicx package needed), extra braces are
+%  needed around the contents of the optional argument to biography to prevent
+%  the LaTeX parser from getting confused when it sees the complicated
+%  $\backslash${\tt{includegraphics}} command within an optional argument. (You can create
+%  your own custom macro containing the $\backslash${\tt{includegraphics}} command to make things
+%  simpler here.)
+ 
+% \vspace{11pt}
+
+% \bf{If you include a photo:}\vspace{-33pt}
+% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{fig1}}]{Michael Shell}
+% Use $\backslash${\tt{begin\{IEEEbiography\}}} and then for the 1st argument use $\backslash${\tt{includegraphics}} to declare and link the author photo.
+% Use the author name as the 3rd argument followed by the biography text.
+% \end{IEEEbiography}
+
+% \vspace{11pt}
+
+% \bf{If you will not include a photo:}\vspace{-33pt}
+% \begin{IEEEbiographynophoto}{John Doe}
+% Use $\backslash${\tt{begin\{IEEEbiographynophoto\}}} and the author name as the argument followed by the biography text.
+% \end{IEEEbiographynophoto}
+
+
+\vfill
+
+\end{document}
+
+

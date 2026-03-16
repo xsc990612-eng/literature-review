@@ -1,0 +1,43 @@
+\begin{table*}[t]
+\centering
+ % 使用更小的字体
+\small
+\renewcommand{\arraystretch}{1.2} % 稍微减小行间距
+\setlength{\tabcolsep}{6pt} % 进一步减小列间距
+\begin{tabular}{l|ccccccccc}
+\toprule
+\multirow{2}{*}{\parbox{1.8cm}{\centering\textbf{Model}}} & \multirow{2}{*}{\textbf{Method}} & \textbf{AIME24} & \textbf{AIME25} & \textbf{AMC} & \textbf{GPQA} & \textbf{GSM8K} & \textbf{MATH} & \textbf{Minerva} & \textbf{Olympiad}  \\
+& & \textbf{(30)} & \textbf{(30)} & \textbf{(40)} & \textbf{(198)} & \textbf{(1318)} & \textbf{(500)} & \textbf{(272)} & \textbf{(675)} \\
+\hline
+\multirow{13}{*}{\parbox{1.8cm}{\centering\textbf{\shortstack{DeepSeek-R1\\-Distill1\\-Llama-8B}}}}
+ & \multicolumn{9}{c}{\cellcolor{cyan!5}\textbf{Budget = 2400}} \\
+& Vanilla & 30.00 & 20.00 & 77.50 & 41.41 & 77.48 & 83.40 & 20.59 & 44.30 \\
+& H2O & \textbf{43.33} & \textbf{20.00} & 65.00 & \textbf{41.41} & \textbf{77.71} & 79.80 & 19.12 & 44.00 \\
+& R-KV & 36.67 & 20.00 & \textbf{75.00} & 38.38 & 77.41 & \textbf{80.80} & 20.22 & \textbf{45.93} \\
+& VATP & 33.33 & 13.33 & 72.50 & 33.84 & 77.48 & 79.80 & \textbf{20.59} & 43.56 \\
+& Ours & 33.33 & 16.67 & 70.00 & 40.40 & 77.71 & 79.80 & 20.22 & 43.85 \\
+ & \multicolumn{9}{c}{\cellcolor{cyan!5}\textbf{Budget = 3200}} \\
+& Vanilla & 30.00 & 20.00 & 77.50 & 41.41 & 77.47 & 83.40 & 20.59 & 44.30 \\
+& H2O & 36.67 & 23.33 & 72.50 & 38.38 & \textbf{77.69} & 81.60 & \textbf{21.32} & 46.22  \\
+& R-KV & 30.00 & 23.33 & 77.50 & \textbf{42.93} & 77.62 & \textbf{82.40} & 19.49 & \textbf{46.81}  \\
+& VATP & \textbf{40.00} & 16.67 & 72.50 & 42.42 & 77.39 & 81.60 & 19.12 & 46.67  \\
+& Ours & 33.33 & \textbf{26.67} & \textbf{82.50} & 40.91 & 77.62 & 79.80 & 20.22 & 45.93 \\
+\hline
+\multirow{13}{*}{\parbox{1.8cm}{\centering\textbf{Qwen3-8B}}}
+ & \multicolumn{9}{c}{\cellcolor{cyan!5}\textbf{Budget = 2400}} \\
+& Vanilla & 60.00 & 46.67 & 90.00 & 34.85 & 95.68 & 92.60 & 33.46 & 58.22 \\
+& H2O & 40.00 & 20.00 & 65.00 & 26.77 & 95.98 & 85.20 & 32.35 & 49.04  \\
+& R-KV & 33.33 & 23.33 & \textbf{85.00} & 28.79 & 96.13 & \textbf{89.00} & \textbf{32.72} & \textbf{53.33} \\
+& VATP & \textbf{40.00} & 26.67 & 77.50 & 23.23 & \textbf{96.29} & 87.60 & 31.99 & 49.33 \\
+& Ours & 36.67 & \textbf{26.67} & 80.00 & \textbf{30.81} & 95.83 & 88.00 & 31.25 & 51.11 \\
+ & \multicolumn{9}{c}{\cellcolor{cyan!5}\textbf{Budget = 3200}} \\
+& Vanilla & 60.00 & 46.67 & 90.00 & 34.85 & 95.68 & 92.60 & 33.46 & 58.22 \\
+& H2O & 46.67 & 26.67 & 80.00 & 27.78 & 96.36 & 90.40 & \textbf{35.29} & 53.78 \\
+& R-KV & 50.00 & \textbf{33.33} & 82.50 & \textbf{32.32} & 96.36 & \textbf{91.60} & 33.46 & \textbf{55.56} \\
+& VATP & 43.33 & 33.33 & 82.50 & 30.30 & \textbf{96.43} & 91.00 & 34.19 & 55.41 \\
+& Ours & \textbf{50.00} & 26.67 & \textbf{85.00} & 30.30 & 96.36 & 89.80 & 34.19 & 55.56 \\
+\bottomrule
+\end{tabular}
+\caption{Model Performance on different models across different datasets. Numbers in parentheses indicate dataset sizes. \textbf{Bold} indicates the best performance.}
+\label{tab:model_performance}
+\end{table*}

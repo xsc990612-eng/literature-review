@@ -1,0 +1,447 @@
+% ====== Requires in the preamble ============================================
+% \newtheorem{theorem}{Theorem}
+
+% ============================================================================
+
+\section{Unified Information Bounds}
+\label{sec:app_uib}
+\subsection{Setup}
+
+We consider the minimal unit of the information bound and fix both the layer and the head. Following the softmax attention distribution defined in Sec.~\ref{sec:inference_background} and Eq.~\ref{eq:attn_eq}, for a query $\bq$, with $\bK=[\bk_1,\dots,\bk_L]$ and $\bV=[\bv_1,\dots,\bv_L]$ denote keys/values for a context of length $L$, we introduce the \emph{latent index} random variable
+\begin{equation}
+    T\in[L],\qquad \mathbb P(T=i\,|\,\bq,\bK)=A_i(\bq),
+\end{equation}
+and the routed value $\bV_T$ for token-sparse attention. Let $I_{\mathrm{full}}(\bq)$ denote the (per-query) information carried by full attention, for a size-$n$ selector $\mathcal S\subseteq [L]$, the retained attention mass $\tau_{\mathcal S}(\bq)$ and dropped attention mass $\delta_{\mathcal S}$ are defined as:
+\begin{equation}
+    \tau_{\mathcal S}(\bq)=\sum_{i\in\mathcal S}A_i(\bq),\qquad
+\delta_{\mathcal S}(\bq)=1-\tau_{\mathcal S}(\bq).
+\end{equation}
+Let $\widetilde A_{\mathcal S}(\bq)$ be the truncated/renormalized distribution (follow the normalization of the softmax)
+\begin{equation}
+    \widetilde A_i(\bq)=
+    \begin{cases}
+    A_i(q)/\tau_{\mathcal S}(\bq), & i\in\mathcal S,\\[2pt]
+    0,& \text{otherwise},
+    \end{cases}
+    \quad
+    T_{\mathcal S}\sim \widetilde A_{\mathcal S}(\bq).
+\end{equation}
+Denote by $I_{\mathcal S}(\bq)$ the information of the token-sparse channel that keeps indices in $\mathcal S$ and routes $\bV_{T_{\mathcal S}}$. And let $\mathcal S^{*}(\bq)=\operatorname*{Top}_n\!\big(A(\bq)\big)$ be the top-$n$ oracle set with
+\begin{equation}
+\label{eq:oracle_attn_mass}
+    \tau^{*}(\bq)=\tau_{\mathcal S^{*}}(\bq),\qquad \delta^{*}(\bq)=1-\tau^{*}(\bq).
+\end{equation}
+
+\begin{remark}[We bound information via the index channel]
+By data processing along $(\bK,\bV)\to T\to \bV_T$, it suffices (and is conservative) to control the loss in mutual information induced by truncating $T$; this yields bounds for
+$I_{\mathrm{full}}(\bq)-I_{\mathcal S}(\bq)$.
+\end{remark}
+
+\subsection{Two universal technical lemmas}
+\label{sec:app_tech_lemmas}
+
+\begin{lemma}[Total-variation of truncation]
+\label{lem:tv}
+For any size-$n$ selector $\mathcal S$,
+\begin{equation}
+    \big\|A(\cdot\,|\,\bq)-\widetilde A_{\mathcal S}(\cdot\,|\,\bq)\big\|_{\mathrm{TV}}
+=\delta_{\mathcal S}(\bq).
+\end{equation}
+
+\begin{proof}
+Write $P=A(\cdot|\bq)$ and $Q=\widetilde A_{\mathcal S}(\cdot|\bq)$. Then
+\begin{align*}
+\|P-Q\|_{\mathrm{TV}}
+&=\tfrac12\sum_{i=1}^L |P_i-Q_i| \\
+&=\tfrac12\Big(\sum_{i\notin\mathcal S} P_i + \sum_{i\in\mathcal S}\big|P_i-P_i/\tau_{\mathcal S}\big|\Big)\\
+&=\tfrac12\big(\delta_{\mathcal S}+\delta_{\mathcal S}\big)=\delta_{\mathcal S}.
+\end{align*}\end{proof}\end{lemma}
+
+\begin{lemma}[Continuity of mutual information (MI) under TV perturbations]
+\label{lem:continuity}
+Let $\bX=(\bK,\bV)$ and consider two channels from $\bX$ to an output random variable $\bY \equiv \bV_T$ and $\bY' \equiv \bV_{T_{\mathcal S}}$, where for each $\bx=(\bk,\bv)$, the conditional law $T|\bX=\bx$ is $A(\cdot\,|\,\bq,\bk)$ and
+$T_{\mathcal S}|\bX=\bx$ is the truncated/renormalized $\widetilde A_{\mathcal S}(\cdot\,|\,\bq,\bk)$.
+Assume the (uniform) total-variation gap
+\begin{align}
+    \sup_{\bx}\, &\big\| \mathsf P(T\in\cdot\,|\,\bX=x)-\mathsf P(T_{\mathcal S}\in\cdot\,|\,\bX=x)\big\|_{\mathrm{TV}} \nonumber \\
+    &=\delta_{\mathcal S}(\bq)\eqqcolon \delta \in[0,1].
+\end{align}
+Then, for every input law $\mathsf P_\bX$,
+\[
+\big|I(\bX;\bY)-I(\bX;\bY')\big|
+\;\le\;
+2\Big[h_{\mathrm b}(\delta)+\delta\log L\Big],
+\]
+where $I$ is the MI measure, $h_{\mathrm b}$ is the binary entropy function. Consequently,
+\[
+0\le I_{\mathrm{full}}(\bq)-I_{\mathcal S}(\bq)
+\;\le\;
+2\Big[h_{\mathrm b}(\delta_{\mathcal S}(\bq))+\delta_{\mathcal S}(\bq)\log L\Big].
+\]
+\end{lemma}
+\begin{proof}
+\label{proof:MI_bound}
+\textbf{Step 1: Per-$\bx$ support size and induced kernels.}
+Fix $\bx=(\bk,\bv)$. The map $t\mapsto \bv_t$ is deterministic (given $\bx$), hence
+$\bY|\bX=\bx$ and $\bY'|\bX=\bx$ are obtained by pushing forward the probability mass function (pmfs) $A(\cdot\,|\,\bq,\bk)$ and $\widetilde A_{\mathcal S}(\cdot\,|\,\bq,\bk)$ through a map with image of size at most $L$:
+\[
+\mathcal \bY_\bx \;=\;\{\bv_1,\dots,\bv_L\},\qquad |\mathcal \bY_\bx|\le L.
+\]
+Let $W_x$ and $\widetilde W_x$ denote the conditional pmfs of $\bY|\bX=\bx$ and $\bY'|\bX=\bx$,
+respectively. Total variation cannot increase under measurable mappings, so
+\begin{equation}
+\label{eq:tv-per-x}
+\|\bW_\bx-\widetilde \bW_\bx\|_{\mathrm{TV}}
+\;\le\;
+\|A(\cdot\,|\,\bq,\bk)-\widetilde A_{\mathcal S}(\cdot\,|\,\bq,\bk)\|_{\mathrm{TV}}
+\;\le\; \delta.
+\end{equation}
+
+\textbf{Step 2: Continuity of (conditional) entropy at fixed $x$.}
+For pmfs $P,Q$ on a finite alphabet of size $m$ with
+$\|P-Q\|_{\mathrm{TV}}\le \varepsilon$, the classical continuity bound for the
+Shannon entropy gives
+\begin{align}
+\label{eq:entro-cont}
+|H(P)-H(Q)|
+&\;\le\;
+h_{\mathrm b}(\varepsilon)+\varepsilon\log(m-1)  \nonumber \\
+&\;\le\; 
+h_{\mathrm b}(\varepsilon)+\varepsilon\log m .
+\end{align}
+Applying \eqref{eq:entro-cont} to $(P,Q)=(\bW_\bx,\widetilde \bW_\bx)$ with
+$m=|\mathcal \bY_\bx|\le L$ and $\varepsilon\le \delta$ from \eqref{eq:tv-per-x}, we obtain
+\begin{equation}
+\label{eq:cond-entropy-bound}
+\big| H(\bY|\bX=\bx)-H(\bY'|\bX=\bx)\big|
+\;\le\;
+h_{\mathrm b}(\delta)+\delta\log L .
+\end{equation}
+Averaging over $\bX$ yields
+\begin{equation}
+\label{eq:cond-entropy-global}
+\big| H(\bY|\bX)-H(\bY'|\bX)\big|
+\;\le\;
+h_{\mathrm b}(\delta)+\delta\log L .
+\end{equation}
+
+\textbf{Step 3: Continuity of the \emph{marginal} entropy.}
+Let $P_\bY$ and $P_{\bY'}$ be the marginals induced by $\mathsf P_\bX$ and the
+kernels $\{\bW_\bx\},\{\widetilde \bW_\bx\}$:
+$P_\bY(\cdot)\!=\!\sum_\bx \mathsf P_\bX(\bx) \bW_\bx(\cdot)$ and
+$P_{\bY'}(\cdot)\!=\!\sum_\bx \mathsf P_\bX(\bx) \widetilde \bW_\bx(\cdot)$.
+Then
+\begin{align*}
+\|P_\bY-P_{\bY'}\|_{\mathrm{TV}}
+&=\frac12\sum_{\by}\left| \sum_\bx \mathsf P_\bX(\bx)\big(\bW_\bx(\by)-\widetilde \bW_\bx(\by)\big)\right|
+\\
+&\le \frac12 \sum_\bx \mathsf P_\bX(\bx)\sum_\by |\bW_\bx(\by)-\widetilde \bW_\bx(\by)| \\
+&= \sum_\bx \mathsf P_\bX(\bx)\,\|\bW_\bx-\widetilde \bW_\bx\|_{\mathrm{TV}}\le \delta,
+\end{align*}
+where the last step uses \eqref{eq:tv-per-x}. Since the (per-$\bx$) images have
+size $\le L$, the union of supports $\mathrm{supp}(P_\bY)\cup\mathrm{supp}(P_{\bY'})$ also has effective cardinality at most $L$ for the purpose of the continuity bound.\footnote{It
+suffices that each mixture component lives on an alphabet of size $\le L$; the
+bound \eqref{eq:entro-cont} only needs a uniform cardinality upper bound.}
+Therefore, applying \eqref{eq:entro-cont} to $(P_\bY,P_{\bY'})$ yields
+\begin{equation}
+\label{eq:marg-entropy-bound}
+\big| H(\bY)-H(\bY')\big|
+\;\le\;
+h_{\mathrm b}(\delta)+\delta\log L .
+\end{equation}
+
+\textbf{Step 4: Mutual information difference.}
+Using the chain rule $I(\bX;\bY)=H(\bY)-H(\bY|\bX)$ and combining
+\eqref{eq:cond-entropy-global}–\eqref{eq:marg-entropy-bound},
+\begin{align}
+    &\big|I(\bX;\bY)-I(\bX;\bY')\big| \nonumber \\
+    \le \, 
+    &\big|H(\bY)-H(\bY')\big|+\big|H(\bY'|\bX)-H(\bY|\bX)\big| \nonumber \\
+    \le \,
+    &2\big[h_{\mathrm b}(\delta)+\delta\log L\big].
+\end{align}
+which is the desired inequality.
+
+\textbf{Step 5: Consequence for $I_{\mathrm{full}}(\bq)-I_{\mathcal S}(\bq)$.}
+By construction, the "full attention" and "token-sparse attention" channels differ only in the selector distribution (full $T$ vs.\ truncated $T_{\mathcal S}$), while the
+downstream map $(\bX,T)\mapsto \bY$ is the same. Thus the loss in the information
+measure realized through $\bY$ is bounded by the above calculation with
+$\delta=\delta_{\mathcal S}(\bq)$, giving
+\[
+0\le I_{\mathrm{full}}(\bq)-I_{\mathcal S}(\bq)
+\;\le\;
+2\big[h_{\mathrm b}(\delta_{\mathcal S}(q))+\delta_{\mathcal S}(q)\log L\big].
+\]
+\end{proof}
+At this point, we have completed the full derivation of the information bound for token-sparse attention and incorporated a unified measure $\delta_{\mathcal S}$, related to dropped attention mass, to quantify the magnitude of information loss.
+
+\section{Information Bounds of Token-sparse Attention}
+\label{sec:app_mib_tsa}
+For the selector of the token-sparse attention, we have:
+
+\begin{proposition}[Universal MI bounds \& KL variant]
+\label{prop:universal}
+For any selector $\mathcal S$,
+\begin{equation}
+0 \le I_{\mathrm{full}}(\bq)-I_{\mathcal S}(\bq)
+\le 2\!\left[h_{\mathrm b}\big(\delta_{\mathcal S}(\bq)\big)+\delta_{\mathcal S}(\bq)\log L\right].
+\tag{U1}
+\end{equation}
+Moreover,
+\begin{equation}
+I_{\mathcal S}(q)\;\ge\; I_{\mathrm{full}}(q) - \log\!\frac{1}{\tau_{\mathcal S}(q)}.
+\tag{U2}
+\end{equation}
+\begin{proof}
+The first inequality is Lemma~\ref{lem:continuity}. For (U2),
+\[
+D_{\mathrm{KL}}\!\big(\widetilde A_{\mathcal S}\,\|\,A\big)
+=\sum_{i\in\mathcal S}\frac{A_i}{\tau_{\mathcal S}}
+\log\frac{A_i/\tau_{\mathcal S}}{A_i}
+= \log\frac{1}{\tau_{\mathcal S}}.
+\]
+A variational (Donsker–Varadhan) representation of MI plus data processing upper bounds the MI drop by this KL.
+\end{proof}
+\end{proposition}
+
+\subsection{\texorpdfstring{Oracle top-$k$ selection}{Oracle top-k selection}}
+
+\begin{theorem}[Oracle top-$k$ information bound]
+\label{thm:oracle}
+Let $\mathcal S^{*}(\bq)=\operatorname*{Top}_n\!\big(A(\bq)\big)$ and $\delta^{*}(\bq)=1-\tau^{*}(\bq)$. Then
+\begin{equation}
+0 \le I_{\mathrm{full}}(\bq)-I_{\mathcal S^{*}}(\bq)
+\le 2\!\left[h_{\mathrm b}\big(\delta^{*}(\bq)\big)+\delta^{*}(\bq)\log L\right],
+\tag{O1}
+\end{equation}
+and
+\begin{equation}
+I_{\mathcal S^{*}}(\bq)\ge I_{\mathrm{full}}(\bq)-\log\!\frac{1}{\tau^{*}(\bq)}.
+\tag{O2}
+\end{equation}
+\begin{proof}
+Among all $|S|{=}n$, $\mathcal S^{*}$ maximizes $\tau_{\mathcal S}$ and minimizes $\delta_{\mathcal S}$ by additivity of $\sum_{i\in S}A_i$. Apply Proposition~\ref{prop:universal} with $\mathcal S{=}\mathcal S^{*}$.
+\end{proof}
+\end{theorem}
+
+\subsection{Post–hoc sparsity}
+
+Post–hoc methods construct a \emph{surrogate} probability vector $\widehat A_D(\bq)$ from posterior side information $D$ and select
+\[
+\mathcal S_D(\bq)=\operatorname*{Top}_n\!\big(\widehat A_D(\bq)\big).
+\]
+Define the \emph{posterior-bias (mass gap)} $\beta_D$
+\begin{equation}
+\beta_D(\bq)\;\stackrel{\mathrm{def}}{=}\;\tau^{*}(\bq)-\tau_{\mathcal S_D}(\bq)
+=\delta_{\mathcal S_D}(\bq)-\delta^{*}(\bq)\;\ge 0.
+\tag{PB}
+\end{equation}
+Measure the surrogate misfit by
+\begin{equation}
+\varepsilon_D(\bq)\;\stackrel{\mathrm{def}}{=}\;\tfrac12\big\|A(\bq)-\widehat A_D(\bq)\big\|_1
+=\big\|A(\bq)-\widehat A_D(\bq)\big\|_{\mathrm{TV}}.
+% \tag{Eps}
+\end{equation}
+
+\begin{lemma}[Mis-scoring$\Rightarrow$mass loss]
+\label{lem:beta}
+Let $S^{*}=\operatorname*{Top}_n(A)$ and $S_D=\operatorname*{Top}_n(\widehat A_D)$. Then
+\begin{equation}
+\beta_D(\bq){\le} 2\,\varepsilon_D(\bq)
+{\Longleftrightarrow}
+\delta_{\mathcal S_D}(\bq){\le} \delta^{*}(\bq){+}2\,\varepsilon_D(\bq).
+\tag{MassLoss}
+\end{equation}
+\begin{proof}
+For any $S\subseteq[L]$, $|A(S)-\widehat A_D(S)|\le \varepsilon_D$. Since $\widehat A_D(S_D)\ge \widehat A_D(S^{*})$,
+\[
+A(S_D)\ge \widehat A_D(S_D)-\varepsilon_D \ge \widehat A_D(S^{*})-\varepsilon_D \ge A(S^{*})-2\varepsilon_D.
+\]
+Thus $\tau_{\mathcal S_D}\ge \tau^{*}-2\varepsilon_D$ and the claim follows.
+\end{proof}
+\end{lemma}
+
+\begin{theorem}[Unified post–hoc information bound]
+\label{thm:posthoc}
+For any post–hoc selector $\mathcal S_D$, let $\delta_{\varepsilon_D}(\bq)=\delta^{*}(\bq)+2\varepsilon_D(\bq)$,
+\begin{align}
+I_{\mathrm{full}}(q)-I_{\text{post}}(q) \le 2\!\left[
+h_{\mathrm b}\!\big(\delta_{\varepsilon_D}(\bq)\big)
++\delta_{\varepsilon_D}(\bq)\log L
+\right],
+\tag{P1}
+\end{align}
+and
+\begin{equation}
+I_{\text{post}}(\bq) \ge I_{\mathrm{full}}(\bq) - \log\!\frac{1}{1-\delta_{\varepsilon_D}(\bq)}.
+\tag{P2}
+\end{equation}
+\begin{proof}
+Combine Lemma~\ref{lem:beta} with Proposition~\ref{prop:universal} applied to $\mathcal S_D$ and the identity $\delta_{\mathcal S_D}=\delta^{*}+\beta_D$.
+For (P2), plug $\tau_{\mathcal S_D}=1-\delta_{\mathcal S_D}\ge 1-\delta_{\varepsilon_D}=1-\delta^{*}-2\varepsilon_D$ into (U2).
+\end{proof}
+\end{theorem}
+
+\paragraph{Token-Dropping Oracle (TDO)}
+TDO generally uses posterior statistics (e.g., age, cumulative attention), so it naturally confines to (P1). Since the statistics may not be strictly relevant to the current $\bq$, the surrogate error $\varepsilon_{D}(q)$ can be large when attention patterns shift, inflating the bias $2\varepsilon_{D}$.
+
+
+\iffalse
+Let $\widehat A_{\text{TDO}}(q)$ be the induced surrogate and $\varepsilon_{\text{TDO}}(q)=\tfrac12\|A(q)-\widehat A_{\text{TDO}}(q)\|_1$. From Theorem~\ref{thm:posthoc}:
+\begin{align}
+    & I_{\mathrm{full}}(q)-I_{\text{TDO}}(q) \nonumber \\
+    \le \,
+    & 2\!\left[h_{\mathrm b}\!\big(\delta^{*}(q)+2\varepsilon_{\text{TDO}}(q)\big)+\big(\delta^{*}(q)+2\varepsilon_{\text{TDO}}(q)\big)\log L
+\right].
+\tag{TDO}
+\end{align}
+Since $D_{\text{obs}}$ is not strictly relevant to the current $q$, the surrogate error $\varepsilon_{\text{TDO}}(q)$ can be large when attention patterns shift, inflating the bias term $2\varepsilon_{\text{TDO}}$.
+\fi
+
+\paragraph{Query-Aware Approximation (QAA)}
+QAA builds a query-conditioned compressed representation $B=B(\bK\,|\,\bq,C)$ (e.g., low-rank/sketch/ANN) that approximates oracle scores based on condition $C$. Let $\widehat A_{\text{QAA}}(\bq)$ be the surrogate. Assume logit approximation with the supremum norm $\| \|_\infty$ is
+\begin{equation}
+\|a(\bq)-\widehat a(\bq)\|_\infty \le \eta_C(\bq),\,
+a_i(q)=\bq^\top \bk_i/\sqrt d.
+\tag{LogitError}
+\end{equation}
+\begin{lemma}[Softmax Lipschitz from logits to probabilities]
+\label{lem:softmaxLip}
+For any $a,\widehat a\in\mathbb R^L$, $\|\mathrm{softmax}(a)-\mathrm{softmax}(\widehat a)\|_1 \le 2\,\|a-\widehat a\|_\infty$.
+\begin{proof}
+By the mean-value theorem,
+$\mathrm{softmax}(\widehat a)-\mathrm{softmax}(a)
+=\left(\int_0^1 J(a+t(\widehat a-a))\,dt\right)(\widehat a-a)$,
+where $J$ is the softmax Jacobian with row $\nabla s_i = s_i(\mathbf e_i - s)$.
+One checks $\|J\|_{1\to 1}\le 2$ (each column sums to at most $2\max_i s_i(1-s_i)\le 1/2$ in absolute value and the operator norm is attained by a signed vector; the resulting tight constant is $2$), hence the claim holds.
+\end{proof}
+\end{lemma}
+
+Therefore,
+\begin{align}
+    \varepsilon_{\text{QAA}}(\bq)&=\tfrac12\|\widehat A_{\text{QAA}}(\bq)-A(\bq)\|_1 \nonumber \\
+    & \le \|a(\bq)-\widehat a(\bq)\|_\infty
+    \le \eta_C(\bq).
+\tag{QAA-eps}
+\end{align}
+Let $\delta_\eta(\bq)=\delta^{*}(\bq)+2\eta_C(\bq)$, Theorem~\ref{thm:posthoc} yields
+\begin{align}
+\label{QAA}
+    I_{\mathrm{full}}(q)-I_{\text{QAA}}(q) \le 2\!\left[ h_{\mathrm b}\!\big(\delta_\eta(\bq)\big)+\big(\delta_\eta(\bq)\big)\log L 
+\right].
+\tag{QAA}
+\end{align}
+Compare two post-hoc sparsity methods, since $\eta_C(q)$ can be made small with adequate compression rank/index quality, QAA typically incurs a \emph{smaller} posterior bias than TDO. 
+
+\subsection{Pre–hoc sparsity}
+
+
+% We refine the pre--hoc selector by allowing a small, theoretically controlled deviation from the oracle top-$n$ mass.
+
+\begin{definition}[Pre--hoc selector with controlled mass error]
+\label{def:prehoc-error}
+A pre--hoc selector $\mathcal S_{\mathrm{pre}}(\bK,\bq;\zeta)$ (possibly using an
+theoretical error term $\zeta$) is said to have \emph{mass error} $\beta_{\mathrm{th}}(\bq)\ge 0$ if
+\begin{align}
+& \tau_{\mathrm{pre}}(\bq)
+\;\stackrel{\mathrm{def}}{=}\;
+\sum_{i\in \mathcal S_{\mathrm{pre}}(\bq)} A_i(\bq) \;\ge\; \tau^{*}(\bq) - \beta_{\mathrm{th}}(\bq), \nonumber
+\\ & \text{equivalently}\quad
+\delta_{\mathrm{pre}}(\bq)\;\le\;\delta^{*}(\bq)+\beta_{\mathrm{th}}(\bq),
+\label{eq:prehoc-mass-error}
+\end{align}
+where $\tau^{*}(\bq)$ and $\delta^{*}(\bq)$ denote the oracle retained and dropped mass as stated in~\eqref{eq:oracle_attn_mass}. We use either a \emph{pointwise} control
+$\beta_{\mathrm{th}}(\bq)\le \varepsilon_{\mathrm{th}}$ a.s., or an \emph{average} control
+$\mathbb E_q[\beta_{\mathrm{th}}(\bq)]\le \overline\varepsilon_{\mathrm{th}}$,
+with $\varepsilon_{\mathrm{th}},\overline\varepsilon_{\mathrm{th}}\ll 1$ to constrain $\zeta$.
+\end{definition}
+
+\begin{theorem}[Information bound for pre--hoc]
+\label{thm:prehoc-error}
+For every query $q$, let $\delta_{\beta_{\mathrm th}}(\bq)=\delta^{*}(\bq)+\beta_{\mathrm{th}}(\bq)$,
+\begin{align}
+    I_{\mathrm{full}}(\bq)-I_{\mathrm{pre}}(\bq) \le 2\Big[h_{\mathrm b}\!\big(\delta_{\beta_{\mathrm th}}(\bq)\big)+\delta_{\beta_{\mathrm th}}(\bq)\log L \Big].
+\label{eq:prehoc-pointwise}
+\end{align}
+Consequently, under the pointwise control $\beta_{\mathrm{th}}(\bq)\le \varepsilon_{\mathrm{th}}$,
+\begin{align}
+&I_{\mathrm{full}}(\bq)-I_{\mathrm{pre}}(\bq) \nonumber \\
+\le \,
+&2\Big[
+h_{\mathrm b}\!\big(\delta^{*}(\bq)+\varepsilon_{\mathrm{th}}\big)
++\big(\delta^{*}(\bq)+\varepsilon_{\mathrm{th}}\big)\log L
+\Big].
+\label{eq:prehoc-uniform}
+\end{align}
+Averaging over the query distribution and using $\mathbb E[\beta_{\mathrm{th}}]\le \overline\varepsilon_{\mathrm{th}}$,
+\begin{align}
+&\mathbb E_\bq\!\big[I_{\mathrm{full}}(\bq)-I_{\mathrm{pre}}(\bq)\big] \nonumber \\
+\le \,
+&2\Big[
+h_{\mathrm b}\!\big(\mathbb E_\bq[\delta^{*}(\bq)]+\overline\varepsilon_{\mathrm{th}}\big)
++\big(\mathbb E_\bq[\delta^{*}(\bq)]+\overline\varepsilon_{\mathrm{th}}\big)\log L
+\Big],
+\label{eq:prehoc-expected}
+\end{align}
+where Jensen's inequality for the concave $h_{\mathrm b}$ is used. Moreover, the KL--based variant holds pointwise:
+\begin{equation}
+I_{\mathrm{pre}}(\bq)
+\;\ge\;
+I_{\mathrm{full}}(\bq)\;-\;\log\!\frac{1}{1-\delta^{*}(\bq)-\beta_{\mathrm{th}}(\bq)}.
+\label{eq:prehoc-KL}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By Definition~\ref{def:prehoc-error},
+\[
+\delta_{\mathrm{pre}}(\bq)=1-\tau_{\mathrm{pre}}(\bq)
+\;\le\;
+1-\big(\tau^{*}(\bq)-\beta_{\mathrm{th}}(\bq)\big)
+=
+\delta^{*}(q)+\beta_{\mathrm{th}}(q).
+\]
+Apply the universal continuity bound for any selector (\textbf{Proposition}~(U1)) with
+$\delta_{\mathcal S}$ replaced by $\delta_{\mathrm{pre}}(\bq)$:
+\begin{align}
+    I_{\mathrm{full}}(\bq)-I_{\mathrm{pre}}(\bq)
+\le
+2\Big[h_{\mathrm b}\big(\delta_{\mathrm{pre}}(\bq)\big)
++\delta_{\mathrm{pre}}(\bq)\log L\Big] \nonumber \\
+\le
+2\Big[
+h_{\mathrm b}\!\big(\delta^{*}(\bq)+\beta_{\mathrm{th}}(\bq)\big)
++\big(\delta^{*}(\bq)+\beta_{\mathrm{th}}(\bq)\big)\log L
+\Big], \nonumber 
+\end{align}
+which is \eqref{eq:prehoc-pointwise}. The uniform version \eqref{eq:prehoc-uniform}
+follows by substituting $\beta_{\mathrm{th}}(\bq)\le \varepsilon_{\mathrm{th}}$.
+For the expectation bound \eqref{eq:prehoc-expected}, take expectations of the right‑Hand side of \eqref{eq:prehoc-pointwise}, we use linearity for the $\log L$ term and Jensen's inequality $\,\mathbb E[h_{\mathrm b}(\bX)]\le h_{\mathrm b}(\mathbb E[\bX])$ for concave $h_{\mathrm b}$. Finally, the KL variant \eqref{eq:prehoc-KL} is the direct specialization of (U2) with
+$\tau_{\mathrm{pre}}(\bq)\ge 1-\delta^{*}(\bq)-\beta_{\mathrm{th}}(\bq)$.
+\end{proof}
+
+From the perspective of error expansion, let $g(\delta)=2\big(h_{\mathrm b}(\delta)+\delta\log L\big)$.
+For fixed $\delta^{*}(\bq)$ and small $\beta_{\mathrm{th}}(\bq)$,
+a first-order Taylor expansion gives
+\begin{align}
+    & g\big(\delta^{*}(\bq)+\beta_{\mathrm{th}}(\bq)\big) = g\big(\delta^{*}(\bq)\big)
+    + \nonumber \\
+& 2\Big(\log\frac{1-\delta^{*}(\bq)}{\delta^{*}(\bq)}+\log L\Big)\beta_{\mathrm{th}}(\bq)
++ o\!\big(\beta_{\mathrm{th}}(\bq)\big), \nonumber
+\end{align}
+so the additional loss induced by the theoretical error is approximately linear in $\beta_{\mathrm{th}}(\bq)$ with slope
+$2\log\!\big(\tfrac{L(1-\delta^{*})}{\delta^{*}}\big)$.
+As $\beta_{\mathrm{th}}\!\to 0$ we recover the original pre--hoc/oracle bound
+(with $\beta_{\mathrm{th}}\equiv 0$).
+
+Therefore, when the theoretical error is sufficiently small, our proposed pre-hoc sparsity approach demonstrates a definitive performance advantage over post-hoc sparsity methods.
+
+\iffalse
+\subsection{Assumptions and empirical validation}
+
+\begin{itemize}
+\item \textbf{Latent-index sufficiency.} Bounding through $T$ is standard for stochastic-routing views of attention; empirically, attention is often peaked, making the retained-mass bounds tight.
+\item \textbf{Softmax Lipschitzness.} Lemma~\ref{lem:softmaxLip} provides a conservative constant linking logit errors to probability TV; any tighter constant directly sharpens \eqref{QAA}.
+\item \textbf{QAA surrogates.} Low-rank/sketch/ANN constructions admit certified logit/probability errors (e.g., spectral/Frobenius bounds), yielding small $\eta_C(q)$ in practice; TDO, being query-agnostic, typically exhibits larger $\varepsilon_D$.
+\end{itemize}
+\fi

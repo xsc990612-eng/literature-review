@@ -1,0 +1,42 @@
+\section{Discussion}  \label{Discussion}
+\subsection{Meaning of Alpha and Beta} \label{sec:disAlpahAndBeta}
+In this part, we try to explore the meaning of $\alpha$ and $\beta$ in GSDMM and \sysname{}. From Equation~\eqref{eq:dpm3.4.7} and Equation~\eqref{DMM-Entropy}, we can see that $\alpha$ relates to the prior probability of a document choosing a cluster. If we set $\alpha=0$, a cluster will never be chosen by the document once it gets empty, as the first part of the two equations becomes zero. When $\alpha$ gets larger, the probability of a document choosing an empty cluster also gets larger.
+In GSDMM, we can see $\beta$ is in the second part of Equation~\eqref{eq:dpm3.4.7} which relates to Rule 2. If we set $\beta=0$, a document will never choose a cluster. We can see this is not reasonable, because other words of the document may appear many times in that cluster and it may be similar to the documents of that cluster.
+In \sysname{}, we observe that $\beta$ is used in the adaptive clustering initialization, which controls the number of clusters obtained prior to granularity adjustment. When $\beta$ takes small values, a fine-grained clustering is achieved, producing more clusters that capture subtle local patterns during the iterations. However, as $\beta$ increases, the number of clusters decreases, resulting in coarser granularity. Similar to GSDMM, when $\beta=0$, the model cannot be trained. Detailed validation is provided in the Section~\ref{Hyper-parameter_Analysis}.
+
+DMM assumes symmetric priors for the Dirichlet distributions, in other words, it gives identical $\alpha$ for all clusters and consistent $\beta$'s for all words. The identical $\alpha$ for all clusters implies that different clusters are equally important at the start, which aligns with our intuition. 
+In GSDMM, assigning the same $\beta$ to all words implies that all words are equally important. This is not reasonable and may mislead the clustering algorithm. We should place less emphasis on overly common words that appear in too many documents and focus more on key terms. Therefore, in \sysname{}, we achieve this goal by employing the entropy-based word weighting to adaptively adjust the weight of different words based on their informational significance within each cluster.
+
+\subsection{Relationship with Naive Bayes Classifier} \label{sec:NBC}
+% The conditional distribution $p(z_d=z|\vec{z}_{\neg{d}}, \vec{d})$ in Equation \ref{eq:con1} is equivalent to the Naive Bayes Classifier (NBC) \cite{mccallum1998NBC}.
+% We should note that GSDMM has potentially well performance for incremental clustering. We can first group a number of documents into clusters with GSDMM, and a Naive Bayes Classifier (NBC) is learned during this process. Then each time a new document arrives, we can classify it to one of the clusters with the Naive Bayes Classifier and update the classifier (update $\vec{z}$, $m_z$, $n_z$, and $n_z^w$). We plan to explore this in future.
+
+The conditional distribution $p(z_d=z|\vec{z}_{\neg{d}}, \vec{d}, \alpha, \beta)$ in Equation~\eqref{eq:dpm3.4.7} is equivalent to the Bayesian Naive Bayes Classifier (BNBC)~\cite{rennie01BayesianNBC}. Intuitively, we can assign document $d$ to a cluster $z$ with the largest conditional probability $p(z_d=z|\vec{z}_{\neg{d}}, \vec{d}, \alpha, \beta)$. However, our methods choose to sample cluster $z$ from the conditional distribution in Equation~\eqref{eq:dpm3.4.7} and Equation~\eqref{DMM-Entropy}. GSDMM and \sysname{} can avoid falling into a local minimum which is a common problem of EM-based algorithms in this way.
+
+Furthermore, Rennie \cite{rennie01BayesianNBC} points out that BNBC performs worse in classification, because it over-emphasizes words that appear more than once in a test document. For example, if word $w$ appears twice in a document $d$, the contribution of $w$ for Equation~\eqref{eq:dpm3.4.7} is $(n_{z,\neg{d}} + \beta)(n_{z,\neg{d}} + \beta + 1)$. However, this is a good property in the text clustering problem, because words in a document tend to appear in bursts: if a word appears once, it is more likely to appear again~\cite{DCMmadsen2005modeling,rennie2003Burstness}. The conditional distribution $p(z_d=z|\vec{z}_{\neg{d}}, \vec{d}, \alpha, \beta)$ in Equation~\eqref{eq:dpm3.4.7} can give words that appear multi-times in a document more emphasis, and allows GSDMM to capture the burstiness of words~\cite{DCMelkan2006clustering}. \sysname{} retains all the advantages of GSDMM while addressing its existing issues.
+
+\subsection{Representation of Clusters}
+From Algorithm \ref{Algo:GSDMM}, we can see that GSDMM can assign each document to a cluster. With the fact that the Dirichlet distribution is conjugate to the multinomial distribution, we have:
+\begin{equation}\label{eq:posterior}
+    p(\phi_{z} | \vec{d}, \vec{z}, \vec{\alpha}, \vec{\beta})
+    =Dir(\phi_{z} | \vec{n}_z + \vec{\beta})
+\end{equation}
+where $\vec{n}_z = \{n_z^{w}\}_{w=1}^V$, and $n_z^{w}$ is the number of occurrences of word $w$ in the $z$th cluster.
+
+From Equation \ref{eq:posterior}, we can obtain the posterior mean of $\phi$ as follows:
+\begin{equation}\label{eq:posterior2}
+    \hat{\phi}_{z,w} = \frac{n_z^{w} + \beta}{\sum_{w=1}^V n_z^{w} +V\beta}
+\end{equation}
+where $\hat{\phi}_{z,w}$ corresponds to the probability of word $w$ being generated by cluster $z$, and can be regarded as the importance of word $w$ to cluster $z$.
+As a result, GSDMM and \sysname{} can obtain the representative words of each cluster like topic models~\cite{Blei:LDA2003}. It is interesting to notice that Equation~\eqref{eq:posterior2} actually defines the fraction of occurrences of word $w$ in cluster $z$, and is highly related to the second part of Equation~\eqref{eq:dpm3.4.7} and Equation~\eqref{DMM-Entropy}. If word $w$ has a relatively high value of $\hat{\phi}_{z,w}$, it can be regarded as the representative word of cluster $z$. In Section~\ref{Visualization_Analysis}, we present the top ten representative words for each cluster that \sysname{} finds on a dataset, and find that these words can perfectly represent those clusters.
+
+% \subsection{The High-dimensional Problem}
+% %high-dimensional
+% In traditional similarity-based clustering methods, we need to represent documents with vectors whose length are the vocabulary size and define similarity between documents with some distance metric like cosine similarity. As these vectors are high-dimensional, the similarity between these documents will lose their effectiveness and statistical significance because of irrelevant attributes \cite{beyer1999nearest}. Therefore, clustering algorithms based on similarity measure between documents may no longer be effective in the high-dimensional space.
+% Differently, GSDMM evaluates the frequency of the words in a document appearing in each cluster as some kind of similarity between the document and the clusters.
+% As GSDMM only considers the words in the current document, it will not be affected by other irrelevant words in the vocabulary, and can deal with the high-dimensional problem of text clustering.
+
+% \subsection{One Document Belongs to One Cluster}
+% Although we assume that each document belongs to only one cluster, \sysname{} can still obtain the probability of each document belonging to each cluster with Equation~\eqref{DMM-Entropy}. This means \sysname{} is a soft-clustering algorithm. Besides, GSDPMM has two advantages compared with algorithms (like LDA) which assume that each document is a distribution over topics as follows.
+% First, in each iteration, GSDPMM only needs to sample a cluster for each document, while LDA needs to sample a topic for each word. This means GSDPMM has lower time complexity than LDA.
+% Second, when sampling a topic for a word, LDA considers the popularity of the topic in the current document and the popularity of the current word in the topic. When we first see a document, we do not know the popularity of each topic in the document, and the first rule is useless. On the other hand, GSDPMM considers the popularity of each cluster in the whole dataset and the popularity of the document's words in the cluster. Even we first see a document, we already have the current popularity of each cluster in the dataset, and the two rules can both be useful. This illustrates why GSDPMM can converge faster than LDA.

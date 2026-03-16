@@ -1,0 +1,21 @@
+\section{Related Work}
+
+% \begin{figure}[htbp]
+%     \centering
+%     \resizebox{0.98\textwidth}{!}{\includegraphics{images/method.pdf}} % 强制调整大小
+%     \caption{An overview of DapQ.}
+%     \label{fig:DapQ}
+%     \vspace{-18pt}
+% \end{figure}
+
+\paragraph{Long-Context LLMs.} The growing demand for LLMs to process long contexts intensifies computational and memory challenges. Prior works address these issues through specialized fine-tuning \citep{longlora} and extending effective context windows via refined positional encodings, such as interpolation and extrapolation \citep{Interpolation,ntk}. To mitigate computational overhead, sparse attention and linear attention have been widely explored \citep{reformer,longformer,linformer}. Beyond traditional Transformer, novel architectures like State-Space Models (SSMs) \citep{longmamba,SSMs} provide linear complexity solutions for processing long sequences. Additionally, memory optimization techniques, such as KV cache compression \citep{streamingllm,snapkv} and memory offloading \citep{hcattention,deepspeed}, have been developed. These multifaceted techniques collectively advance LLMs' capabilities in handling ultra-long sequence tasks.
+
+\input{tables/rope_cos_table}
+\input{tables/rope_cos_figure}
+
+\paragraph{KV Cache Compression.} KV cache compression is crucial for enhancing the inference efficiency and deployability of LLMs, particularly in resource-constrained scenarios. Various methods have been developed to reduce KV cache memory footprint. Token eviction strategies aim to retain only the most important tokens based on metrics like attention scores \citep{snapkv,h2o}, positional heuristics \citep{streamingllm}, special tokens \citep{gemodel,sepllm}, or norm-based criteria \citep{simple}. Quantization \citep{kivi,kvquant} reduces memory by storing less important KV pairs with lower precision, some approaches even achieving sub-2-bit quantization via token-aware and channel-aware techniques. Sharing-based approaches deliver memory savings and accelerate inference through head-wise sharing \citep{mqa,gqa}, inter-layer sharing \citep{sun2024you,wu2024layer,brandon2024reducing}, or prefix sharing across sequences \citep{hydragen,relayattention}. Low-rank decomposition \citep{gear,palu} projects KV cache into lower-dimensional spaces to exploit inherent redundancy, as demonstrated by the Multi-Head Latent Attention \citep{deepseekv3} of DeepSeek, which reduces cache size through low-rank compression and decoupled RoPE while preserving model performance. KV merging \citep{keepkv,homogeneous} employs attention-pattern similarity or reparameterization to merge similar semantic information, achieving effective compression with minimal performance loss.
+
+
+
+
+

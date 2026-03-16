@@ -1,0 +1,10 @@
+[
+  "GSDMM Gibbs sampling Dirichlet mixture short text clustering",
+  "QLoRA 4-bit quantization low-rank adaptation LLM fine-tuning",
+  "vLLM PagedAttention memory-efficient LLM inference",
+  "knowledge distillation student teacher networks compression",
+  "TinyBERT DistilBERT MiniLLM transformer distillation",
+  "sentiment analysis Twitter SemEval dataset evaluation",
+  "short text topic modeling neural topic model VAE",
+  "LoRA low-rank adaptation parameter-efficient fine-tuning"
+]

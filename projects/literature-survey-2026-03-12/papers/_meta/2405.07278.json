@@ -1,0 +1,12 @@
+{
+  "arxiv_id": "2405.07278",
+  "title": "Human-interpretable clustering of short-text using large language models",
+  "authors": ["Justin K. Miller", "Tristram J. Alexander"],
+  "abstract": "Clustering short text is a difficult problem, due to the low word co-occurrence between short text documents. This work shows that large language models (LLMs) can overcome the limitations of traditional clustering approaches.",
+  "published": "2024-05-12",
+  "categories": ["cs.CL", "cs.LG"],
+  "score": 4,
+  "source_term": "GSDMM short text clustering",
+  "downloaded_at": "2026-03-12T07:00:00Z",
+  "direction": "gsdmm"
+}

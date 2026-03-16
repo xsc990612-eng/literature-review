@@ -1,0 +1,21 @@
+\begin{abstract}
+
+
+%Efficient management of GPU memory is essential for high throughput LLM inference. Prior systems used to reserve \kvcache memory ahead-of-time that resulted in wasted capacity due to internal fragmentation. Inspired by demand paging, \vllm proposed \pa to enable dynamic memory allocation for \kvcache. This approach eliminates fragmentation and improves serving throughout. However, to be able to allocate physical memory dynamically, \pa \textit{changes the layout of \kvcache from contiguous virtual memory to non-contiguous virtual memory}. As a consequence, one needs to rewrite the attention kernels to support paging, and implement a memory manager in the serving framework. This results in both performance and programming overheads, as well as portability challenges in adopting state-of-the-art attention kernels.
+
+%Efficient management of GPU memory is essential for high throughput LLM inference. Prior systems reserved large blocks  of memory for \kvcache ahead of time, resulting in excessive fragmentation. \pa addresses this issue by allocating small chunks of memory dynamically but ends up changing the virtual memory layout of \kvcache from contiguous to non-contiguous. Consequently, \pa adds non-trivial programmability and portability challenges, as well as performance overhead.
+
+%As a consequence, one needs to rewrite the attention kernels to support paging, and implement a memory manager in the serving framework. This results in both performance and programming overheads, as well as portability challenges in adopting new attention kernels.
+
+
+%This paper presents \sysname\footnote{Code publicly available at \url{https://github.com/microsoft/vattention}.} --- a simpler, performant and more portable approach  than \pa for dynamic \kvcache memory management. \sysname stores \kvcache in {\it contiguous virtual memory} and leverages GPU virtual memory support for on-demand allocation of physical memory, thereby enabling one to use state-of-the art attention kernels out-of-the-box. We implement \sysname in the \vllm serving stack to show that it also helps improve decode throughput by up to $1.99\times$ over \vllm, and the end-to-end serving throughput by up to $1.22\times$ and $1.29\times$, compared to using the state-of-the-art \pa based kernels of \flashattention and \flashinfer.
+
+%We present \sysname{} --- a simpler, performant and more portable alternative to \pa. Leveraging CUDA support for demand paging, \sysname stores \kvcache in contiguous virtual memory and uses on-demand allocation for physical memory. In doing so, we also introduce various LLM-specific optimizations to address the latency and fragmentation challenges that arise when using demand paging to serve LLMs on GPUs. \sysname supports various attention kernels out-of-the-box and improves LLM serving throughput by up to $22\%$ compared to using the state-of-the-art \pa based kernels of \flashattention and \flashinfer.
+
+
+PagedAttention is a popular approach for dynamic memory allocation in LLM serving systems. It enables on-demand allocation of GPU memory to mitigate \kvcache fragmentation --- a phenomenon that crippled the batch size (and consequently throughput) in prior systems. However, in trying to allocate \textbf{physical} memory at runtime, \pa ends up changing the \textbf{virtual} memory layout of the \kvcache from contiguous to non-contiguous. Such a design leads to non-trivial programming and performance overheads.
+
+We present \sysname{} --- an approach that mitigates fragmentation in physical memory while retaining the virtual memory contiguity of the \kvcache. We achieve this by decoupling the allocation of virtual and physical memory using CUDA virtual memory management APIs. We also introduce various LLM-specific optimizations to address the limitations of CUDA virtual memory support. Overall, \sysname is a simpler, portable, and performant alternative to \pa: it supports various attention kernels out-of-the-box and improves LLM serving throughput by up to $1.23\times$ compared to the use of \pa-based kernels of \flashattention and \flashinfer.
+
+
+\end{abstract}

@@ -1,0 +1,11 @@
+{
+  "arxiv_id": "2602.08329",
+  "title": "Near-Oracle KV Selection via Pre-hoc Sparsity for Long-Context Inference",
+  "authors": ["Yifei Gao", "Lei Wang", "Rong-Cheng Tu", "Qixin Zhang", "Jun Cheng", "Dacheng Tao"],
+  "abstract": "A core bottleneck in large language model (LLM) inference is the cost of attending over the ever-growing key-value (KV) cache. Although near-oracle top-k KV selection can preserve the quality of dense attention while sharply reducing computation and bandwidth, existing sparse methods generally rely on posterior heuristics. We propose Pre-hoc Sparsity (PrHS), which selects KV entries before attention scoring and provides explicit accuracy control. On LLaMA and Mistral families across GSM8K and CoQA, the approach reduces retrieval overhead by >90%, achieving 3× higher retrieval sparsity than the state-of-the-art HShare at matched or better accuracy.",
+  "score": 5,
+  "source_term": "vLLM inference optimization KV cache",
+  "downloaded_at": "2026-03-14T07:07:00Z",
+  "categories": ["cs.LG", "cs.AI", "cs.IT"],
+  "published": "2026-02-09T07:05:23Z"
+}

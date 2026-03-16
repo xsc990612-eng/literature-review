@@ -1,0 +1,243 @@
+\begin{thebibliography}{47}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bai et~al.(2024)Bai, Chen, Qian, Yao, and Li]{bai2024federatedfinetuninglargelanguage}
+J.~Bai, D.~Chen, B.~Qian, L.~Yao, and Y.~Li.
+\newblock Federated fine-tuning of large language models under heterogeneous tasks and client resources.
+\newblock \emph{arXiv preprint arXiv:2402.11505}, 2024.
+
+\bibitem[Bisk et~al.(2020)Bisk, Zellers, Gao, Choi, et~al.]{bisk2020piqa}
+Y.~Bisk, R.~Zellers, J.~Gao, Y.~Choi, et~al.
+\newblock Piqa: Reasoning about physical commonsense in natural language.
+\newblock In \emph{Proceedings of the AAAI conference on artificial intelligence}, volume~34, pages 7432--7439, 2020.
+
+\bibitem[Bottou et~al.(2018)Bottou, Curtis, and Nocedal]{bottou2018optimization}
+L.~Bottou, F.~E. Curtis, and J.~Nocedal.
+\newblock Optimization methods for large-scale machine learning.
+\newblock \emph{SIAM review}, 60\penalty0 (2):\penalty0 223--311, 2018.
+
+\bibitem[Bubeck et~al.(2015)]{bubeck2015convex}
+S.~Bubeck et~al.
+\newblock Convex optimization: Algorithms and complexity.
+\newblock \emph{Foundations and Trends{\textregistered} in Machine Learning}, 8\penalty0 (3-4):\penalty0 231--357, 2015.
+
+\bibitem[Byun and Lee(2024)]{byun2024towards}
+Y.~Byun and J.~Lee.
+\newblock Towards federated low-rank adaptation of language models with rank heterogeneity.
+\newblock \emph{arXiv preprint arXiv:2406.17477}, 2024.
+
+\bibitem[Charalambides and Mazumdar(2024)]{charalambides2024distributed}
+N.~Charalambides and A.~Mazumdar.
+\newblock Distributed hybrid sketching for l2-embeddings.
+\newblock \emph{arXiv preprint arXiv:2412.20301}, 2024.
+
+\bibitem[Chen et~al.(2023)Chen, Feng, Zhou, Yin, and Zheng]{chen2023federated}
+C.~Chen, X.~Feng, J.~Zhou, J.~Yin, and X.~Zheng.
+\newblock Federated large language model: A position paper.
+\newblock \emph{arXiv preprint arXiv:2307.08925}, 2023.
+
+\bibitem[Cho et~al.(2024)Cho, Liu, Xu, Fahrezi, and Joshi]{cho2024heterogeneouslorafederatedfinetuning}
+Y.~J. Cho, L.~Liu, Z.~Xu, A.~Fahrezi, and G.~Joshi.
+\newblock Heterogeneous {LoRA} for federated fine-tuning of on-device foundation models.
+\newblock \emph{arXiv preprint arXiv:2401.06432}, 2024.
+
+\bibitem[Clark et~al.(2019)Clark, Lee, Chang, Kwiatkowski, Collins, and Toutanova]{clark2019boolq}
+C.~Clark, K.~Lee, M.-W. Chang, T.~Kwiatkowski, M.~Collins, and K.~Toutanova.
+\newblock Boolq: Exploring the surprising difficulty of natural yes/no questions.
+\newblock \emph{arXiv preprint arXiv:1905.10044}, 2019.
+
+\bibitem[Clark et~al.(2018)Clark, Cowhey, Etzioni, Khot, Sabharwal, Schoenick, and Tafjord]{clark2018think}
+P.~Clark, I.~Cowhey, O.~Etzioni, T.~Khot, A.~Sabharwal, C.~Schoenick, and O.~Tafjord.
+\newblock Think you have solved question answering? try arc, the ai2 reasoning challenge.
+\newblock \emph{arXiv preprint arXiv:1803.05457}, 2018.
+
+\bibitem[Demidovich et~al.(2023)Demidovich, Malinovsky, Shulgin, and Richt{\'a}rik]{demidovich2023mast}
+Y.~Demidovich, G.~Malinovsky, E.~Shulgin, and P.~Richt{\'a}rik.
+\newblock Mast: Model-agnostic sparsified training.
+\newblock \emph{arXiv preprint arXiv:2311.16086}, 2023.
+
+\bibitem[Dubey et~al.(2024)Dubey, Jauhri, Pandey, Kadian, Al-Dahle, Letman, Mathur, Schelten, Yang, Fan, et~al.]{llama3}
+A.~Dubey, A.~Jauhri, A.~Pandey, A.~Kadian, A.~Al-Dahle, A.~Letman, A.~Mathur, A.~Schelten, A.~Yang, A.~Fan, et~al.
+\newblock The llama 3 herd of models.
+\newblock \emph{arXiv preprint arXiv:2407.21783}, 2024.
+
+\bibitem[Fan et~al.(2024)Fan, Messmer, and Jaggi]{fan2024device}
+D.~Fan, B.~Messmer, and M.~Jaggi.
+\newblock On-device collaborative language modeling via a mixture of generalists and specialists.
+\newblock \emph{arXiv preprint arXiv:2409.13931}, 2024.
+
+\bibitem[Fang et~al.(2022)Fang, Yu, Jiang, Shi, Jones, and Zhou]{fang2022communication}
+W.~Fang, Z.~Yu, Y.~Jiang, Y.~Shi, C.~N. Jones, and Y.~Zhou.
+\newblock Communication-efficient stochastic zeroth-order optimization for federated learning.
+\newblock \emph{IEEE Transactions on Signal Processing}, 70:\penalty0 5058--5073, 2022.
+
+\bibitem[Fang et~al.(2024)Fang, Han, Chen, Wang, and Brinton]{fang2024mtgc}
+W.~Fang, D.-J. Han, E.~Chen, S.~Wang, and C.~G. Brinton.
+\newblock Hierarchical federated learning with multi-timescale gradient correction.
+\newblock \emph{arXiv preprint arXiv:2409.18448}, 2024.
+
+\bibitem[Gower and Richt{\'a}rik(2015)]{gower2015randomized}
+R.~M. Gower and P.~Richt{\'a}rik.
+\newblock Randomized iterative methods for linear systems.
+\newblock \emph{SIAM Journal on Matrix Analysis and Applications}, 36\penalty0 (4):\penalty0 1660--1690, 2015.
+
+\bibitem[Guo et~al.(2025)Guo, Zeng, Wang, Fan, Wang, and Qu]{guo2025selectiveaggregationlowrankadaptation}
+P.~Guo, S.~Zeng, Y.~Wang, H.~Fan, F.~Wang, and L.~Qu.
+\newblock Selective aggregation for low-rank adaptation in federated learning.
+\newblock \emph{arXiv preprint arXiv:2410.01463}, 2025.
+
+\bibitem[Hu et~al.(2021)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen]{hu2021lora}
+E.~J. Hu, Y.~Shen, P.~Wallis, Z.~Allen-Zhu, Y.~Li, S.~Wang, L.~Wang, and W.~Chen.
+\newblock {LoRA}: Low-rank adaptation of large language models.
+\newblock \emph{arXiv preprint arXiv:2106.09685}, 2021.
+
+\bibitem[Hu et~al.(2023)Hu, Wang, Lan, Xu, Lim, Bing, Xu, Poria, and Lee]{hu2023llm}
+Z.~Hu, L.~Wang, Y.~Lan, W.~Xu, E.-P. Lim, L.~Bing, X.~Xu, S.~Poria, and R.~K.-W. Lee.
+\newblock {LLM}-adapters: An adapter family for parameter-efficient fine-tuning of large language models.
+\newblock \emph{arXiv preprint arXiv:2304.01933}, 2023.
+
+\bibitem[Kalajdzievski(2023)]{kalajdzievski2023rankstabilizationscalingfactor}
+D.~Kalajdzievski.
+\newblock A rank stabilization scaling factor for fine-tuning with {LoRA}.
+\newblock \emph{arXiv preprint arXiv:2312.03732}, 2023.
+
+\bibitem[Karimireddy et~al.(2020)Karimireddy, Kale, Mohri, Reddi, Stich, and Suresh]{karimireddy2020scaffold}
+S.~P. Karimireddy, S.~Kale, M.~Mohri, S.~Reddi, S.~Stich, and A.~T. Suresh.
+\newblock Scaffold: Stochastic controlled averaging for federated learning.
+\newblock In \emph{International conference on machine learning}, pages 5132--5143. PMLR, 2020.
+
+\bibitem[Khaled et~al.(2020)Khaled, Mishchenko, and Richt{\'a}rik]{khaled2020tighter}
+A.~Khaled, K.~Mishchenko, and P.~Richt{\'a}rik.
+\newblock Tighter theory for local sgd on identical and heterogeneous data.
+\newblock In \emph{International Conference on Artificial Intelligence and Statistics}, pages 4519--4529. PMLR, 2020.
+
+\bibitem[Koloskova et~al.(2020)Koloskova, Loizou, Boreiri, Jaggi, and Stich]{koloskova2020unified}
+A.~Koloskova, N.~Loizou, S.~Boreiri, M.~Jaggi, and S.~Stich.
+\newblock A unified theory of decentralized sgd with changing topology and local updates.
+\newblock In \emph{International conference on machine learning}, pages 5381--5393. PMLR, 2020.
+
+\bibitem[Koo et~al.(2024)Koo, Jang, and Ok]{koo2024robustefficientfederatedlowrank}
+J.~Koo, M.~Jang, and J.~Ok.
+\newblock Towards robust and efficient federated low-rank adaptation with heterogeneous clients.
+\newblock \emph{arXiv preprint arXiv:2410.22815}, 2024.
+
+\bibitem[Kuo et~al.(2024)Kuo, Raje, Rajesh, and Smith]{kuo2024federatedlorasparsecommunication}
+K.~Kuo, A.~Raje, K.~Rajesh, and V.~Smith.
+\newblock Federated {LoRA} with sparse communication.
+\newblock \emph{arXiv preprint arXiv:2406.05233}, 2024.
+
+\bibitem[Lester et~al.(2021)Lester, Al-Rfou, and Constant]{lester2021power}
+B.~Lester, R.~Al-Rfou, and N.~Constant.
+\newblock The power of scale for parameter-efficient prompt tuning.
+\newblock \emph{arXiv preprint arXiv:2104.08691}, 2021.
+
+\bibitem[Li and Liang(2021)]{li2021prefix}
+X.~L. Li and P.~Liang.
+\newblock Prefix-tuning: Optimizing continuous prompts for generation.
+\newblock \emph{arXiv preprint arXiv:2101.00190}, 2021.
+
+\bibitem[Liu et~al.(2024)Liu, Shang, Liu, Liu, Li, and Gong]{liu2024fedbcgd}
+J.~Liu, F.~Shang, Y.~Liu, H.~Liu, Y.~Li, and Y.~Gong.
+\newblock {FedBCGD}: Communication-efficient accelerated block coordinate gradient descent for federated learning.
+\newblock In \emph{Proceedings of the 32nd ACM International Conference on Multimedia}, pages 2955--2963, 2024.
+
+\bibitem[Liu(2019)]{liu2019roberta}
+Y.~Liu.
+\newblock Roberta: A robustly optimized bert pretraining approach.
+\newblock \emph{arXiv preprint arXiv:1907.11692}, 364, 2019.
+
+\bibitem[McMahan et~al.(2017)McMahan, Moore, Ramage, Hampson, and y~Arcas]{mcmahan2017communication}
+B.~McMahan, E.~Moore, D.~Ramage, S.~Hampson, and B.~A. y~Arcas.
+\newblock Communication-efficient learning of deep networks from decentralized data.
+\newblock In \emph{Artificial intelligence and statistics}, pages 1273--1282. PMLR, 2017.
+
+\bibitem[Mihaylov et~al.(2018)Mihaylov, Clark, Khot, and Sabharwal]{mihaylov2018can}
+T.~Mihaylov, P.~Clark, T.~Khot, and A.~Sabharwal.
+\newblock Can a suit of armor conduct electricity? a new dataset for open book question answering.
+\newblock \emph{arXiv preprint arXiv:1809.02789}, 2018.
+
+\bibitem[Nicolas et~al.(2025)Nicolas, Maouche, Mokhtar, and Coates]{nicolas2025communication}
+J.~Nicolas, M.~Maouche, S.~B. Mokhtar, and M.~Coates.
+\newblock Communication efficient, differentially private distributed optimization using correlation-aware sketching.
+\newblock \emph{arXiv preprint arXiv:2507.03545}, 2025.
+
+\bibitem[Sakaguchi et~al.(2021)Sakaguchi, Bras, Bhagavatula, and Choi]{sakaguchi2021winogrande}
+K.~Sakaguchi, R.~L. Bras, C.~Bhagavatula, and Y.~Choi.
+\newblock Winogrande: An adversarial winograd schema challenge at scale.
+\newblock \emph{Communications of the ACM}, 64\penalty0 (9):\penalty0 99--106, 2021.
+
+\bibitem[Sap et~al.(2019)Sap, Rashkin, Chen, LeBras, and Choi]{sap2019socialiqa}
+M.~Sap, H.~Rashkin, D.~Chen, R.~LeBras, and Y.~Choi.
+\newblock Socialiqa: Commonsense reasoning about social interactions.
+\newblock \emph{arXiv preprint arXiv:1904.09728}, 2019.
+
+\bibitem[Sarlos(2006)]{sarlos2006improved}
+T.~Sarlos.
+\newblock Improved approximation algorithms for large matrices via random projections.
+\newblock In \emph{2006 47th annual IEEE symposium on foundations of computer science (FOCS'06)}, pages 143--152. IEEE, 2006.
+
+\bibitem[Shrivastava et~al.(2024)Shrivastava, Isik, Li, Koyejo, and Banerjee]{shrivastava2024sketching}
+M.~Shrivastava, B.~Isik, Q.~Li, S.~Koyejo, and A.~Banerjee.
+\newblock Sketching for distributed deep learning: A sharper analysis.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37:\penalty0 6417--6447, 2024.
+
+\bibitem[Shuttleworth et~al.(2024)Shuttleworth, Andreas, Torralba, and Sharma]{shuttleworth2024lora}
+R.~Shuttleworth, J.~Andreas, A.~Torralba, and P.~Sharma.
+\newblock {LoRA} vs full fine-tuning: An illusion of equivalence.
+\newblock \emph{arXiv preprint arXiv:2410.21228}, 2024.
+
+\bibitem[Sun et~al.(2024)Sun, Li, Li, and Ding]{sun2024improving}
+Y.~Sun, Z.~Li, Y.~Li, and B.~Ding.
+\newblock Improving {LoRA} in privacy-preserving federated learning.
+\newblock \emph{arXiv preprint arXiv:2403.12313}, 2024.
+
+\bibitem[Wang(2018)]{wang2018glue}
+A.~Wang.
+\newblock Glue: A multi-task benchmark and analysis platform for natural language understanding.
+\newblock \emph{arXiv preprint arXiv:1804.07461}, 2018.
+
+\bibitem[Wang et~al.(2021)Wang, Liu, Liang, Joshi, and Poor]{jianyu}
+J.~Wang, Q.~Liu, H.~Liang, G.~Joshi, and H.~V. Poor.
+\newblock A novel framework for the analysis and design of heterogeneous federated learning.
+\newblock \emph{IEEE Transactions on Signal Processing}, 69:\penalty0 5234--5249, 2021.
+
+\bibitem[Wang et~al.(2022)Wang, Ouyang, and Xu]{wang2022iterative}
+R.~Wang, Y.~Ouyang, and W.~Xu.
+\newblock Iterative double sketching for faster least-squares optimization.
+\newblock In \emph{International Conference on Machine Learning}, pages 22935--22963. PMLR, 2022.
+
+\bibitem[Wang et~al.(2024)Wang, Shen, He, Sun, Wang, Lyu, and Li]{wang2024flora}
+Z.~Wang, Z.~Shen, Y.~He, G.~Sun, H.~Wang, L.~Lyu, and A.~Li.
+\newblock {FLoRA}: Federated fine-tuning large language models with heterogeneous low-rank adaptations.
+\newblock \emph{arXiv preprint arXiv:2409.05976}, 2024.
+
+\bibitem[Ye et~al.(2024)Ye, Wang, Chai, Li, Li, Xu, Du, Wang, and Chen]{ye2024openfedllm}
+R.~Ye, W.~Wang, J.~Chai, D.~Li, Z.~Li, Y.~Xu, Y.~Du, Y.~Wang, and S.~Chen.
+\newblock Openfedllm: Training large language models on decentralized private data via federated learning.
+\newblock In \emph{Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining}, pages 6137--6147, 2024.
+
+\bibitem[Yi et~al.(2022)Yi, Zhang, Yang, and Johansson]{yi2022zeroth}
+X.~Yi, S.~Zhang, T.~Yang, and K.~H. Johansson.
+\newblock Zeroth-order algorithms for stochastic distributed nonconvex optimization.
+\newblock \emph{Automatica}, 142:\penalty0 110353, 2022.
+
+\bibitem[Yu et~al.(2019)Yu, Yang, and Zhu]{yu2019parallel}
+H.~Yu, S.~Yang, and S.~Zhu.
+\newblock Parallel restarted sgd with faster convergence and less communication: Demystifying why model averaging works for deep learning.
+\newblock In \emph{Proceedings of the AAAI conference on artificial intelligence}, volume~33, pages 5693--5700, 2019.
+
+\bibitem[Zellers et~al.(2019)Zellers, Holtzman, Bisk, Farhadi, and Choi]{zellers2019hellaswag}
+R.~Zellers, A.~Holtzman, Y.~Bisk, A.~Farhadi, and Y.~Choi.
+\newblock Hellaswag: Can a machine really finish your sentence?
+\newblock \emph{arXiv preprint arXiv:1905.07830}, 2019.
+
+\bibitem[Zhang et~al.(2024)Zhang, Vahidian, Kuo, Li, Zhang, Yu, Wang, and Chen]{zhang2024towards}
+J.~Zhang, S.~Vahidian, M.~Kuo, C.~Li, R.~Zhang, T.~Yu, G.~Wang, and Y.~Chen.
+\newblock Towards building the federatedgpt: Federated instruction tuning.
+\newblock In \emph{ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, pages 6915--6919. IEEE, 2024.
+
+\end{thebibliography}
